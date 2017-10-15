@@ -3,8 +3,20 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="<%=request.getContextPath()%>/admin" class="simple-text">AdminCP</a>
+ 
+			    <!-- normal -->
+			    <div class="ih-item circle effect1"><a href="#">
+			        <div class="spinner"></div>
+			        <div class="img"><img src="<%=request.getContextPath()%>/templates/admin/img/Taylor-Swift.jpg" alt="img"></div>
+			        <div class="info">
+			          <div class="info-back">
+			            <h3>AdminCP</h3>
+			            <p>Description goes here</p>
+			          </div>
+			        </div></a></div>
+			    <!-- end normal -->
             </div>
-
+			
             <ul class="nav">
             	<li>
                     <a href="<%=request.getContextPath()%>/admin/cat">
