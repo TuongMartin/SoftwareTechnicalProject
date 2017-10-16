@@ -1,3 +1,6 @@
+<%@page import="model.bean.ChucVu"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.dao.ChucVuDAO"%>
 <%@page import="model.bean.NhanVien"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -41,7 +44,7 @@
 						%>
 							<form
 								action="<%=request.getContextPath()%>/admin/Sales/edit?idSale=<%=objSale.getIdNhanVien()%>"
-								method="post" enctype="multipart/form-data">
+								method="post" enctype="multipart/form-data" id = "editSales">
 								<div class="row">
 									<div class="col-md-2">
 										<div class="form-group">
@@ -102,12 +105,48 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label>Chức vụ</label> <select name="friend_list"
+										<%
+											ChucVuDAO chucVuDAO = new ChucVuDAO();
+											String selected = "";
+											if(chucVuDAO.getListChucVu() != null){
+												ArrayList<ChucVu> list = (ArrayList<ChucVu>) chucVuDAO.getListChucVu();
+												if(list.size() > 0){
+										%>
+											<label>Chức vụ</label> <select name="chucvu"
 												class="form-control border-input">
-												<option value="">Bạn quen thời phổ thông</option>
-												<option>Bạn quen thời đại học</option>
-												<option>Bạn tâm giao</option>
+												<%
+												for(ChucVu obj : list) { 
+													if(objSale.getIdChucVu() == obj.getIdChucVu()) {
+														selected = "selected";
+													} else {
+														selected = "";
+													}
+												%>
+													<option <%=selected%> value="<%=obj.getIdChucVu()%>"><%=obj.getTenChucVu()%></option>
+												<%} 
+												%>
 											</select>
+										<%}
+											} %>	
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Mật Khẩu</label> <input type="password"
+												name="password" id = "password" class="form-control border-input"
+												placeholder="password" value="" maxlength="100"
+												minlength="8" required>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Xác nhận mật Khẩu</label> <input type="password"
+												name="repassword" class="form-control border-input"
+												placeholder="password" value="" maxlength="100"
+												minlength="8" required>
 										</div>
 									</div>
 								</div>
@@ -142,8 +181,46 @@
 						</div>
 					</div>
 				</div>
+			
+			<script type="text/javascript">
+					$(document).ready(function() {
+						$("#addSales").validate({
+							rules : {
+								hoten : {
+									required : true,
+								},
+								ngaysinh : {
+									required : true,
+									date : true,
+								},
+								CMND : {
+									required : true,
+								},
+								quequan : {
+									required : true,
+								},
+								sdt : {
+									required : true,
+								},
+								diachi : {
+									required : true,
+								},
+								username : {
+									required : true,
+								},
+								password : {
+									required : true,
+								},
+								repassword : {
+									required : true,
+									equalTo: "#password",
+								},
+							},
+							messages : {},
 
-
+						});
+					});
+				</script>
 			</div>
 		</div>
 	</div>

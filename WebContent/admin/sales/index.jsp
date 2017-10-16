@@ -51,6 +51,9 @@
 										case 3:%>
 										<p class="category alert alert-warning">Mã Nhân Viên đã tồn tại</p>
 										<%break;
+										case 4:%>
+										<p class="category success">Xóa Thành Công</p>
+										<%break;
 										
 									}
 									
@@ -127,7 +130,7 @@
 											href="<%=request.getContextPath()%>/admin/show-editSales?idSales=<%=objSales.getIdNhanVien() %>"><img
 												src="<%=request.getContextPath()%>/templates/admin/img/edit.gif" alt="" />
 												Sửa</a> &nbsp;||&nbsp; <a
-											href="/admin/friend/del"><img
+											href="<%=request.getContextPath()%>/admin/delSales?idSale=<%=objSales.getIdNhanVien()%>" onClick="return confirm('Do you want to delete all device belong to this id?')"><img
 												src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
 												Xóa</a></td>
 									</tr>

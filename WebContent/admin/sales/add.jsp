@@ -37,14 +37,13 @@
 							<h4 class="title">Thêm thông tin</h4>
 						</div>
 						<div class="content">
-							<form
-								action="<%=request.getContextPath() %>/admin/addSales"
-								method="post" enctype="multipart/form-data">
+							<form action="<%=request.getContextPath()%>/admin/addSales"
+								method="post" enctype="multipart/form-data" id="addSales">
 								<div class="row">
 									<div class="col-md-2">
 										<div class="form-group">
 											<label>Mã Nhân Viên</label> <input type="text" name="id"
-												class="form-control border-input"  value="">
+												class="form-control border-input" value="">
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -56,18 +55,18 @@
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
-											<label for="date">Ngày Sinh</label>
-											<input type="date" id="myDate" name="ngaysinh" value=""
+											<label for="date">Ngày Sinh</label> <input type="date"
+												id="myDate" name="ngaysinh" value=""
 												class="form-control border-input" placeholder="Ngày tạo">
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="row">
 									<div class="col-md-2">
 										<div class="form-group">
 											<label>CMND</label> <input type="text" name="CMND"
-												class="form-control border-input" value = "">
+												class="form-control border-input" value="">
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -77,63 +76,77 @@
 												value="">
 										</div>
 									</div>
-									
+
 									<div class="col-md-4">
 										<div class="form-group">
 											<label for="date">Số Điện Thoại</label> <input type="text"
-												name="sdt" value=""
-												class="form-control border-input" placeholder="Ngày tạo">
+												name="sdt" value="" class="form-control border-input"
+												placeholder="Ngày tạo">
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="row">
 									<div class="col-md-6">
-											<div class="form-group">
-												<label>Địa Chỉ</label> <input type="text" name="diachi"
-													class="form-control border-input" placeholder="Họ tên"
-													value="">
-											</div>
+										<div class="form-group">
+											<label>Địa Chỉ</label> <input type="text" name="diachi"
+												class="form-control border-input" placeholder="Họ tên"
+												value="">
+										</div>
 									</div>
 								</div>
-				
+
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-										<%
-											ChucVuDAO chucVuDAO = new ChucVuDAO();
-											if(chucVuDAO.getListChucVu() != null){
-												ArrayList<ChucVu> list = (ArrayList<ChucVu>) chucVuDAO.getListChucVu();
-												if(list.size() > 0){
-										%>
+											<%
+												ChucVuDAO chucVuDAO = new ChucVuDAO();
+												if (chucVuDAO.getListChucVu() != null) {
+													ArrayList<ChucVu> list = (ArrayList<ChucVu>) chucVuDAO.getListChucVu();
+													if (list.size() > 0) {
+											%>
 											<label>Chức vụ</label> <select name="chucvu"
 												class="form-control border-input">
 												<%
-												for(ChucVu obj : list) { %>
-													<option value="<%=obj.getIdChucVu()%>"><%=obj.getTenChucVu()%></option>
-												<%} 
+													for (ChucVu obj : list) {
+												%>
+												<option value="<%=obj.getIdChucVu()%>"><%=obj.getTenChucVu()%></option>
+												<%
+													}
 												%>
 											</select>
-										<%}
-											} %>	
+											<%
+												}
+												}
+											%>
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="row">
 									<div class="col-md-4">
-											<div class="form-group">
-												<label>Tên Đăng Nhập</label> <input type="text" name="username"
-													class="form-control border-input" placeholder="username"
-													value="">
-											</div>
+										<div class="form-group">
+											<label>Tên Đăng Nhập</label> <input type="text"
+												name="username" class="form-control border-input"
+												placeholder="username" value="" maxlength="100"
+												minlength="8" required>
+										</div>
 									</div>
 									<div class="col-md-4">
-											<div class="form-group">
-												<label>Mật Khẩu</label> <input type="password" name="password"
-													class="form-control border-input" placeholder="password"
-													value="">
-											</div>
+										<div class="form-group">
+											<label>Mật Khẩu</label> <input type="password"
+												name="password" id = "password" class="form-control border-input"
+												placeholder="password" value="" maxlength="100"
+												minlength="8" required>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Xác nhận mật Khẩu</label> <input type="password"
+												name="repassword" class="form-control border-input"
+												placeholder="password" value="" maxlength="100"
+												minlength="8" required>
+										</div>
 									</div>
 								</div>
 
@@ -145,17 +158,71 @@
 										</div>
 									</div>
 								</div>
-
 								<div class="text-center">
-									<input type="submit" class="btn btn-info btn-fill btn-wd"
-										value="Thực hiện" />
+									<input type="submit" class="btn btn-info btn-fill btn-wd" onClick = "return phonenumber();"
+										value="Thực hiện"/>
 								</div>
 								<div class="clearfix"></div>
 							</form>
 						</div>
 					</div>
 				</div>
+				<script type="text/javascript">
+					function phonenumber() {
+						  var numberPhone = document.getElementsByName('sdt')[0].value;			
+						  var phoneno = /(\\+84|0)\\d{9,10}/;
+						  if(numberPhone.match(phoneno)) {
+						    return true;
+						  }
+						  else {
+						    alert("Vui lòng kiểm tra lại số điện thoại");
+						    return false;
+						  }
+						}
+				</script>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$("#addSales").validate({
+							rules : {
+								id : {
+									required : true,
+									number: true,
+								},
+								hoten : {
+									required : true,
+								},
+								ngaysinh : {
+									required : true,
+									date : true,
+								},
+								CMND : {
+									required : true,
+								},
+								quequan : {
+									required : true,
+								},
+								sdt : {
+									required : true,
+								},
+								diachi : {
+									required : true,
+								},
+								username : {
+									required : true,
+								},
+								password : {
+									required : true,
+								},
+								repassword : {
+									required : true,
+									equalTo: "#password",
+								},
+							},
+							messages : {},
 
+						});
+					});
+				</script>
 
 			</div>
 		</div>

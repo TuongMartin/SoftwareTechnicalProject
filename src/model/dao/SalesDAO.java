@@ -73,7 +73,7 @@ public class SalesDAO {
 	
 	public boolean editSale(NhanVien objSale) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
-		String sql = "UPDATE nhanvien SET TenNhanVien = ?,DiaChi = ?,QueQuan = ?,CMND = ?,NgaySinh = ?,SDT = ?,avatar = ? WHERE IdNhanVien = ?";
+		String sql = "UPDATE nhanvien SET TenNhanVien = ?,DiaChi = ?,QueQuan = ?,CMND = ?,NgaySinh = ?,SDT = ?,MatKhau = ?,IdChucVu= ?,avatar = ? WHERE IdNhanVien = ?";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -83,8 +83,10 @@ public class SalesDAO {
 			ps.setInt(4, objSale.getCMND());
 			ps.setString(5, objSale.getNgaySinh());
 			ps.setString(6, objSale.getSDT());
-			ps.setString(7, objSale.getAvatar());
-			ps.setInt(8, objSale.getIdNhanVien());
+			ps.setString(7, objSale.getMatKhau());
+			ps.setInt(8, objSale.getIdChucVu());
+			ps.setString(9, objSale.getAvatar());
+			ps.setInt(10, objSale.getIdNhanVien());
 			ps.executeUpdate();
 			
 			return true;
@@ -117,6 +119,28 @@ public class SalesDAO {
 			ps.setString(9, objSale.getMatKhau());
 			ps.setInt(10, objSale.getIdChucVu());
 			ps.setString(11, objSale.getAvatar());
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	public boolean delItemSale(int idSale) {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "DELETE FROM NhanVien where IdNhanVien = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idSale);
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import library.BCrypt;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.NhanVien;
@@ -53,6 +54,10 @@ public class AdminEditSales extends HttpServlet {
 		String quequan = new String(request.getParameter("quequan").getBytes("ISO-8859-1"),"UTF-8");
 		String diachi = new String(request.getParameter("diachi").getBytes("ISO-8859-1"),"UTF-8");
 		String sdt = new String(request.getParameter("sdt"));
+		String password = new String(request.getParameter("password")); 
+		String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+		System.out.println("Password sau khi mã hóa : " + hashed);
+		int idChucVu = Integer.parseInt(request.getParameter("chucvu"));
 		
 		String picture = "";
 		SalesDAO salesDAO = new SalesDAO();
@@ -107,7 +112,7 @@ public class AdminEditSales extends HttpServlet {
 			picture = salesDAO.getItemSale(idSale).getAvatar();
 		}
 		
-		NhanVien objSale = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, "", "", 0, "", picture);
+		NhanVien objSale = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, "", hashed, idChucVu, "", picture);
 		if(salesDAO.editSale(objSale)) {
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=1");
 		} else {

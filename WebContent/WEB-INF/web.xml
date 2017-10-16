@@ -50,4 +50,13 @@
     <servlet-name>AdminAddNewSale</servlet-name>
     <url-pattern>/admin/addSales</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminDelSales</servlet-name>
+    <servlet-class>controller.AdminDelSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelSales</servlet-name>
+    <url-pattern>/admin/delSales</url-pattern>
+  </servlet-mapping>
 </web-app>
