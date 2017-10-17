@@ -80,7 +80,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label for="date">Số Điện Thoại</label> <input type="text"
-												name="sdt" value="" class="form-control border-input"
+												name="sdt" value="" onmouseleave = "" class="form-control border-input"
 												placeholder="Ngày tạo">
 										</div>
 									</div>
@@ -167,19 +167,7 @@
 						</div>
 					</div>
 				</div>
-				<script type="text/javascript">
-					function phonenumber() {
-						  var numberPhone = document.getElementsByName('sdt')[0].value;			
-						  var phoneno = /(\\+84|0)\\d{9,10}/;
-						  if(numberPhone.match(phoneno)) {
-						    return true;
-						  }
-						  else {
-						    alert("Vui lòng kiểm tra lại số điện thoại");
-						    return false;
-						  }
-						}
-				</script>
+				
 				<script type="text/javascript">
 					$(document).ready(function() {
 						$("#addSales").validate({
@@ -222,6 +210,19 @@
 
 						});
 					});
+					
+					
+					function phonenumber() {
+						  var numberPhone = document.getElementsByName('sdt')[0].value;			
+						  var phoneno = "(\\+84|0)\\d{9,10}";
+						  if(numberPhone.match(phoneno)) {
+						    return true;
+						  }
+						  else {
+						    alert("Vui lòng kiểm tra lại số điện thoại");
+						    return false;
+						  }
+						}
 				</script>
 
 			</div>

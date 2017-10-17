@@ -59,4 +59,13 @@
     <servlet-name>AdminDelSales</servlet-name>
     <url-pattern>/admin/delSales</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminSearchSale</servlet-name>
+    <servlet-class>controller.AdminSearchSale</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSearchSale</servlet-name>
+    <url-pattern>/admin/search</url-pattern>
+  </servlet-mapping>
 </web-app>

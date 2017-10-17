@@ -1,3 +1,5 @@
+<%@page import="model.bean.ChucVu"%>
+<%@page import="model.dao.ChucVuDAO"%>
 <%@page import="model.bean.NhanVien"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.dao.SalesDAO"%>
@@ -54,18 +56,21 @@
 										case 4:%>
 										<p class="category success">Xóa Thành Công</p>
 										<%break;
+										case 5:%>
+										<p class="category alert alert-warning">Không tìm thấy</p>
+										<%break;
 										
 									}
 									
 								}
 							
 							%>
-							<form action="" method="post">
+							<form action="<%=request.getContextPath() %>/admin/search" method="post">
 								<div class="row">
 									<div class="col-md-1">
 										<div class="form-group">
-											<input type="text" name="id"
-												class="form-control border-input" value="" placeholder="ID">
+											<input type="text" name="idSale"
+												class="form-control border-input" value="" placeholder="ID Sales">
 										</div>
 									</div>
 									<div class="col-md-4">
@@ -77,12 +82,25 @@
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<select name="friend_list" class="form-control border-input">
-												<option value="0">-- Chọn danh mục --</option>
-												<option value="1">Bạn quen thời phổ thông</option>
-												<option>Bạn quen thời đại học</option>
-												<option>Bạn tâm giao</option>
+											<%
+											ChucVuDAO chucVuDAO = new ChucVuDAO();
+											String selected = "";
+											if(chucVuDAO.getListChucVu() != null){
+												ArrayList<ChucVu> list = (ArrayList<ChucVu>) chucVuDAO.getListChucVu();
+												if(list.size() > 0){
+										%>
+											 <select name="chucvu"
+												class="form-control border-input">
+												<option value="0">---Chọn chức vụ----</option>
+												<%
+												for(ChucVu obj : list) { 
+												%>
+													<option value="<%=obj.getIdChucVu()%>"><%=obj.getTenChucVu()%></option>
+												<%} 
+												%>
 											</select>
+										<%}
+											} %>	
 										</div>
 									</div>
 									<div class="col-md-4">
@@ -112,9 +130,8 @@
 								</thead>
 								<tbody>
 									<%	
-										SalesDAO salesDAO = new SalesDAO();
-										if(salesDAO.getListUser() != null){
-											ArrayList<NhanVien> listSales = (ArrayList<NhanVien>) salesDAO.getListUser();
+										if(request.getAttribute("listSales") != null ){
+											ArrayList<NhanVien> listSales = (ArrayList<NhanVien>) request.getAttribute("listSales");
 											if( listSales.size() > 0 ){
 												for(NhanVien objSales : listSales){
 									%>
@@ -144,10 +161,21 @@
 
 							<div class="text-center">
 								<ul class="pagination">
-									<li><a href="?p=0" title="">1</a></li>
-									<li><a href="?p=1" title="">2</a></li>
-									<li><a href="?p=1" title="">3</a></li>
-									<li><a href="?p=1" title="">4</a></li>
+								<%
+									if(request.getAttribute("sum_page") != null){
+										String active = "";
+										int sum_page = (Integer) request.getAttribute("sum_page");
+										int page_current = (Integer) request.getAttribute("page_current");
+										for(int i = 1 ; i <= sum_page ; i++){
+											if(page_current == i){
+												active = "class = 'current'";
+											}else{
+												active = "";
+											}%>
+											<li><a <%=active%> href="<%=request.getContextPath() %>/admin/manageSales?p=<%=i%>" title=""><%=i%></a></li>
+										<%}
+									}
+								%>
 								</ul>
 							</div>
 						</div>

@@ -8,18 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.RegularExpression;
 import model.dao.SalesDAO;
 
 /**
- * Servlet implementation class AdminManageSales
+ * Servlet implementation class AdminAddNewSale
  */
-public class AdminManageSales extends HttpServlet {
+public class AdminSearchSale extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminManageSales() {
+    public AdminSearchSale() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,22 +36,23 @@ public class AdminManageSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int page_curent = 1;
 		SalesDAO salesDAO = new SalesDAO();
-		int sum_news = salesDAO.countItem();
-		int row_count = 2;
-		int sum_page = (int) Math.ceil((float)sum_news/row_count);
-		request.setAttribute("sum_page", sum_page);
-		
-		if(request.getParameter("p")!=null){
-			page_curent = Integer.parseInt(request.getParameter("p"));
+		int idSale = 0;
+		if(request.getParameter("idSale") != null) {
+			if(RegularExpression.checkNumber(request.getParameter("idSale"))) {
+				idSale = Integer.parseInt(request.getParameter("idSale"));
+			}
 		}
-		request.setAttribute("page_current", page_curent);
-		int offset = (page_curent -1)*row_count;
-		request.setAttribute("listSales", salesDAO.getItemPagition(offset,row_count));
+		String fullname = new String(request.getParameter("fullname").getBytes("ISO-8859-1"),"UTF-8");
+		int idChucVu = Integer.parseInt(request.getParameter("chucvu"));
+		if(salesDAO.searchSales(idSale, fullname, idChucVu) != null) {
+			request.setAttribute("listSales", salesDAO.searchSales(idSale, fullname, idChucVu));
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp");
+			rd.forward(request, response);
+		}else {
+			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=5");
+		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp");
-		rd.forward(request, response);
 	}
 
 }
