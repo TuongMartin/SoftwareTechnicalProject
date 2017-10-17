@@ -1,0 +1,38 @@
+
+.row {
+    margin: 10px auto;
+    width: 600px;
+}
+.row .col-sm-6 {
+    border: 1px solid #bbb;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+.row .col-sm-6 .ih-item.circle.effect16.left_to_right {
+}
+.row .col-sm-6 .ih-item.circle.effect16.left_to_right a {
+}
+.row .col-sm-6 .ih-item.circle.effect16.left_to_right a .img {
+}
+.row .col-sm-6 .ih-item.circle.effect16.left_to_right a .img img {
+}
+.row .col-sm-6 .ih-item.circle.effect16.left_to_right a .info {
+}
+.row .col-sm-6 .ih-item.circle.effect16.left_to_right a .info h3 {
+}
+.row .col-sm-6 .ih-item.circle.effect16.left_to_right a .info p {
+}
+.row .col-sm-6 .ih-item.circle.effect16.right_to_left {
+}
+.row .col-sm-6 .ih-item.circle.effect16.right_to_left a {
+}
+.row .col-sm-6 .ih-item.circle.effect16.right_to_left a .img {
+}
+.row .col-sm-6 .ih-item.circle.effect16.right_to_left a .img img {
+}
+.row .col-sm-6 .ih-item.circle.effect16.right_to_left a .info {
+}
+.row .col-sm-6 .ih-item.circle.effect16.right_to_left a .info h3 {
+}
+.row .col-sm-6 .ih-item.circle.effect16.right_to_left a .info p {
+}

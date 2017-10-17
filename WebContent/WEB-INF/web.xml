@@ -9,4 +9,63 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>AdminManageSales</servlet-name>
+    <servlet-class>controller.AdminManageSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManageSales</servlet-name>
+    <url-pattern>/admin/manageSales</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminShowEditSales</servlet-name>
+    <servlet-class>controller.AdminShowEditSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowEditSales</servlet-name>
+    <url-pattern>/admin/show-editSales</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminEditSales</servlet-name>
+    <servlet-class>controller.AdminEditSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEditSales</servlet-name>
+    <url-pattern>/admin/Sales/edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminShowAddNewSales</servlet-name>
+    <servlet-class>controller.AdminShowAddNewSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowAddNewSales</servlet-name>
+    <url-pattern>/admin/show-addSales</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminAddNewSale</servlet-name>
+    <servlet-class>controller.AdminAddNewSale</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAddNewSale</servlet-name>
+    <url-pattern>/admin/addSales</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminDelSales</servlet-name>
+    <servlet-class>controller.AdminDelSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelSales</servlet-name>
+    <url-pattern>/admin/delSales</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminSearchSale</servlet-name>
+    <servlet-class>controller.AdminSearchSale</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSearchSale</servlet-name>
+    <url-pattern>/admin/search</url-pattern>
+  </servlet-mapping>
 </web-app>
