@@ -10,7 +10,7 @@
 			        <div class="img"><img src="<%=request.getContextPath()%>/templates/admin/img/Taylor-Swift.jpg" alt="img"></div>
 			        <div class="info">
 			          <div class="info-back">
-			            <h3>AdminCP</h3>
+			            <h3>Nhân Viên</h3>
 			            <p>Description goes here</p>
 			          </div>
 			        </div></a></div>

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/NhanVien/inc/leftBar.jsp"%>
+<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -12,7 +12,7 @@
 						class="icon-bar bar1"></span> <span class="icon-bar bar2"></span>
 					<span class="icon-bar bar3"></span>
 				</button>
-				<a class="navbar-brand" href="/admin">Trang quản lý</a>
+				<a class="navbar-brand" href="/nhanvien">Trang Cá Nhân</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -31,58 +31,38 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
+					
 						<div class="header">
-							<h4 class="title">Danh mục người dùng</h4>
+							<h4 class="title">Nhật Ký Tư Vấn</h4>
 							<p class="category success">Thêm thành công</p>
 							<a href="<%=request.getContextPath()%>/admin/user/add"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
 						</div>
+						
 						<div class="content table-responsive table-full-width">
+						
 							<table class="table table-striped">
 								<thead>
-									<th>ID</th>
-									<th>Username</th>
-									<th>Fullname</th>
-									<th>Chức năng</th>
+									<th>STT</th>
+									<th>Khách Hàng</th>
+									<th>Nội Dung Tư Vấn</th>
+									<th>Ngày Tư Vấn</th>
 								</thead>
+								
 								<tbody>
-
 									<tr>
 										<td>1</td>
 										<td><a
-											href="<%=request.getContextPath()%>/admin/user/edit">Admin</a></td>
-										<td>Trần Nguyễn Gia Huy</td>
-										<td><a
-											href="<%=request.getContextPath()%>/admin/user/edit"><img
-												src="<%=request.getContextPath()%>/templates/admin/img/edit.gif" alt="" />
-												Sửa</a> &nbsp;||&nbsp; <a
-											href="<%=request.getContextPath()%>/admin/user/del"><img
-												src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
-												Xóa</a></td>
+											href="<%=request.getContextPath()%>/admin/user/edit">Nguyễn Văn A</a></td>
+										<td>Tư vấn cho khách hàng về sự tiện dụng của các tiện nghi trong phòng khách</td>
+										<td>15/10/2017</td>
 									</tr>
-
-									<tr>
-										<td>2</td>
-										<td><a
-											href="<%=request.getContextPath()%>/admin/user/edit">Mod</a></td>
-										<td>Trần Nguyễn Gia Huy</td>
-										<td><a
-											href="${pageContext.request.contextPath}/admin/user/edit"><img
-												src="<%=request.getContextPath()%>/templates/admin/img/edit.gif" alt="" />
-												Sửa</a> &nbsp;||&nbsp; <a
-											href="${pageContext.request.contextPath}/admin/user/del"><img
-												src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
-												Xóa</a></td>
-									</tr>
-
-								</tbody>
+								</tbody>		
 							</table>
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
