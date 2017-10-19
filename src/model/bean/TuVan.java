@@ -1,29 +1,36 @@
 package model.bean;
 
 public class TuVan{
-	
+	 
 	private int stt;
-	private String tenKhachHang;
+	private int idNhanVien;
+	private int idKhachHang;
 	private String noiDungTuVan;
 	private String ngayTuVan;
 	
 	
-	public TuVan(int stt, String tenKhachHang, String noiDungTuVan, String ngayTuVan){
+	public TuVan(int stt, int idNhanVien, int idKhachHang, String noiDungTuVan, String ngayTuVan){
 		
 		this.stt = stt;
-		this.tenKhachHang = tenKhachHang;
+		this.idNhanVien = idNhanVien;
+		this.idKhachHang = idKhachHang;
 		this.noiDungTuVan = noiDungTuVan;
 		this.ngayTuVan = ngayTuVan;
 	}
 	
 	
-	public void setSTT(int stt){
+	public void setIdNK(int stt){
 		this.stt = stt;
 	}
 	
 	
-	public void setTenKhachHang(String tenKhachHang){
-		this.tenKhachHang = tenKhachHang;
+	public void setIdNhanVien(int idNhanVien){
+		this.idNhanVien = idNhanVien;
+	}
+	
+	
+	public void setIdKhachHang(int idKhachHang){
+		this.idKhachHang = idKhachHang;
 	}
 	
 	
@@ -37,13 +44,18 @@ public class TuVan{
 	}
 	
 	
-	public int getSTT(){
+	public int getIdNK(){
 		return stt;
 	}
 	
 	
-	public String getTenKhachHang(){
-		return tenKhachHang;
+	public int getIdNhanVien(){
+		return idNhanVien;
+	}
+	
+	
+	public int getIdKhachHang(){
+		return idKhachHang;
 	}
 	
 	
