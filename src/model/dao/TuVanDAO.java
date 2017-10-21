@@ -16,7 +16,7 @@ public class TuVanDAO{
 	
 	private static final String SELECT_NHAT_KY_TU_VAN = "select * from nhatkytuvan";
 	private static final String INSERT_NHAT_KY_TU_VAN = "insert into nhatkytuvan values(?, ?, ?, ?, ?)";
-	private static final String QUERY_TEN_KHACH_HANG = "select * from khachhang where idKH = 1";
+	private static final String QUERY_TEN_KHACH_HANG = "select tenKH from khachhang where idKH = ";
 	private static final String ID_NK = "IdNK";
 	private static final String ID_NHAN_VIEN = "idnhanvien";
 	private static final String ID_KHACH_HANG = "idkhachhang";
@@ -80,8 +80,15 @@ public class TuVanDAO{
 		try
 		{
 			st = conn.createStatement();
-			rs = st.executeQuery(QUERY_TEN_KHACH_HANG);
-			return rs.getString("TenKH");
+			rs = st.executeQuery(QUERY_TEN_KHACH_HANG + objTuVan.getIdKhachHang());
+			String tenKH = null;
+			
+			while (rs.next())
+			{
+				tenKH = rs.getString(1);
+			}
+			
+			return tenKH;
 		}
 		catch(SQLException e)
 		{
