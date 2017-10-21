@@ -1,3 +1,6 @@
+<%@page import="model.dao.TuVanDAO"%>
+<%@page import="model.bean.TuVan"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -51,13 +54,34 @@
 								</thead>
 								
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td><a
-											href="<%=request.getContextPath()%>/admin/user/edit">Nguyễn Văn A</a></td>
-										<td>Tư vấn cho khách hàng về sự tiện dụng của các tiện nghi trong phòng khách</td>
-										<td>15/10/2017</td>
-									</tr>
+								<%
+								TuVanDAO tuVan = new TuVanDAO();
+								ArrayList <TuVan> listTuVan = (ArrayList <TuVan>) tuVan.getListTuVan();
+								if(listTuVan != null)
+								{
+									if(listTuVan.size() > 0)
+									{
+										int index = 1;
+										for(TuVan obj : listTuVan)
+										{
+								%>			
+											<tr>
+												<td><%= index %></td>
+												<td><a
+													href="<%=request.getContextPath()%>/admin/user/edit"> <%= tuVan.getTenKhachHang(obj) %>
+													</a>
+												</td>
+												<td><%= obj.getNoiDungTuVan() %></td>
+												<td><%= obj.getNgayTuVan() %></td>
+											</tr>
+								<% 	
+										index++;
+										}
+									}
+								}
+								%>
+									
+									
 								</tbody>		
 							</table>
 						</div>

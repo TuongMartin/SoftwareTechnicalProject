@@ -1,15 +1,17 @@
 package model.bean;
 
+import java.sql.Date;
+
 public class TuVan{
 	 
 	private int stt;
 	private int idNhanVien;
 	private int idKhachHang;
 	private String noiDungTuVan;
-	private String ngayTuVan;
+	private Date ngayTuVan;
 	
 	
-	public TuVan(int stt, int idNhanVien, int idKhachHang, String noiDungTuVan, String ngayTuVan){
+	public TuVan(int stt, int idNhanVien, int idKhachHang, String noiDungTuVan, Date ngayTuVan){
 		
 		this.stt = stt;
 		this.idNhanVien = idNhanVien;
@@ -39,7 +41,7 @@ public class TuVan{
 	}
 	
 	
-	public void setNgayTuVan(String ngayTuVan){
+	public void setNgayTuVan(Date ngayTuVan){
 		this.ngayTuVan = ngayTuVan;
 	}
 	
@@ -64,7 +66,7 @@ public class TuVan{
 	}
 	
 	
-	public String getNgayTuVan(){
+	public Date getNgayTuVan(){
 		return ngayTuVan;
 	}
 }
