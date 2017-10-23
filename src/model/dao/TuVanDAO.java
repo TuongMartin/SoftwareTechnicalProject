@@ -22,7 +22,6 @@ public class TuVanDAO{
 	private static final String COUNT_RECORD_NHAT_KY_TU_VAN = "select count(*) as countRecord from nhatkytuvan";
 	private static final String SELECT_LIST_NOI_DUNG_EACH_PAGE = "select * from nhatkytuvan limit ?, ?";
 	
-	private static final String ID_NK = "IdNK";
 	private static final String ID_NHAN_VIEN = "idnhanvien";
 	private static final String TEN_KHACH_HANG = "tenkhachhangcantuvan";
 	private static final String SDT = "SDT";
@@ -94,7 +93,8 @@ public class TuVanDAO{
 			
 			while(rs.next()){
 				TuVan objTuVan = new TuVan(rs.getInt(ID_NHAN_VIEN), 
-						rs.getString(TEN_KHACH_HANG), rs.getString(SDT), 
+						rs.getString(TEN_KHACH_HANG), 
+						rs.getString(SDT), 
 						rs.getString(NOI_DUNG), 
 						rs.getDate(NGAY_TU_VAN));
 				list.add(objTuVan);

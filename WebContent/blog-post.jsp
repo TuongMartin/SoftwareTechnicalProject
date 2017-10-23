@@ -11,8 +11,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/colors/main.css" id="colors">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
 
 </head>
 
@@ -83,7 +83,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="images/logo.png" alt=""></a>
+					<a href="index-2.html"><img src="/public/images/logo.png" alt=""></a>
 				</div>
 
 
@@ -257,7 +257,7 @@
 			<div class="blog-post single-post">
 				
 				<!-- Img -->
-				<img class="post-img" src="images/blog-post-02a.jpg" alt="">
+				<img class="post-img" src="/public/images/blog-post-02a.jpg" alt="">
 
 				
 				<!-- Content -->
@@ -311,7 +311,7 @@
 
 			<!-- About Author -->
 			<div class="about-author">
-				<img src="images/agent-avatar.jpg" alt="" />
+				<img src="/public/images/agent-avatar.jpg" alt="" />
 				<div class="about-description">
 					<h4>Jennie Wilson</h4>
 					<a href="#"><span class="__cf_email__" data-cfemail="d7bdb2b9b9beb297b2afb6baa7bbb2f9b4b8ba">[email&#160;protected]</span></a>
@@ -331,7 +331,7 @@
 						
 						<!-- Img -->
 						<a href="#" class="post-img">
-							<img src="images/blog-post-02.jpg" alt="">
+							<img src="/public/images/blog-post-02.jpg" alt="">
 						</a>
 						
 						<!-- Content -->
@@ -354,7 +354,7 @@
 						
 						<!-- Img -->
 						<a href="#" class="post-img">
-							<img src="images/blog-post-03.jpg" alt="">
+							<img src="/public/images/blog-post-03.jpg" alt="">
 						</a>
 						
 						<!-- Content -->
@@ -517,7 +517,7 @@
 					<li>
 						<div class="widget-content">
 								<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="images/blog-widget-03.jpg" alt=""></a>
+								<a href="blog-full-width-single-post.html"><img src="/public/images/blog-widget-03.jpg" alt=""></a>
 							</div>
 							
 							<div class="widget-text">
@@ -532,7 +532,7 @@
 					<li>
 						<div class="widget-content">
 							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="images/blog-widget-02.jpg" alt=""></a>
+								<a href="blog-full-width-single-post.html"><img src="/public/images/blog-widget-02.jpg" alt=""></a>
 							</div>
 							
 							<div class="widget-text">
@@ -547,7 +547,7 @@
 					<li>
 						<div class="widget-content">
 							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="images/blog-widget-01.jpg" alt=""></a>
+								<a href="blog-full-width-single-post.html"><img src="/public/images/blog-widget-01.jpg" alt=""></a>
 							</div>
 							
 							<div class="widget-text">
@@ -598,7 +598,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="images/logo.png" alt="">
+				<img class="footer-logo" src="/public/images/logo.png" alt="">
 				<br><br>
 				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
 			</div>
