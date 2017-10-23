@@ -4,25 +4,20 @@ import java.sql.Date;
 
 public class TuVan{
 	 
-	private int stt;
 	private int idNhanVien;
-	private int idKhachHang;
+	private String tenKhachHang;
+	private String SDT;
 	private String noiDungTuVan;
 	private Date ngayTuVan;
 	
 	
-	public TuVan(int stt, int idNhanVien, int idKhachHang, String noiDungTuVan, Date ngayTuVan){
+	public TuVan(int idNhanVien, String tenKhachHang, String SDT, String noiDungTuVan, Date ngayTuVan){
 		
-		this.stt = stt;
 		this.idNhanVien = idNhanVien;
-		this.idKhachHang = idKhachHang;
+		this.tenKhachHang = tenKhachHang;
+		this.SDT = SDT;
 		this.noiDungTuVan = noiDungTuVan;
 		this.ngayTuVan = ngayTuVan;
-	}
-	
-	
-	public void setIdNK(int stt){
-		this.stt = stt;
 	}
 	
 	
@@ -31,8 +26,13 @@ public class TuVan{
 	}
 	
 	
-	public void setIdKhachHang(int idKhachHang){
-		this.idKhachHang = idKhachHang;
+	public void setTenKhachHang(String tenKhachHang){
+		this.tenKhachHang = tenKhachHang;
+	}
+	
+	
+	public void setSDT(String SDT){
+		this.SDT = SDT;
 	}
 	
 	
@@ -46,18 +46,18 @@ public class TuVan{
 	}
 	
 	
-	public int getIdNK(){
-		return stt;
-	}
-	
-	
 	public int getIdNhanVien(){
 		return idNhanVien;
 	}
 	
 	
-	public int getIdKhachHang(){
-		return idKhachHang;
+	public String getTenKhachHang(){
+		return tenKhachHang;
+	}
+	
+	
+	public String getSDT(){
+		return SDT;
 	}
 	
 	

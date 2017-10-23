@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/NhanVien/NhatKyTuVan.jsp">
+                    <a href="<%=request.getContextPath()%>/ShowNKTV">
                         <i class="ti-panel"></i>
                         <p>Nhật Ký Tư Vấn</p>
                     </a>

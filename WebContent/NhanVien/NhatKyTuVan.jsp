@@ -1,11 +1,10 @@
 <%@page import="model.dao.TuVanDAO"%>
 <%@page import="model.bean.TuVan"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
 <%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -37,8 +36,7 @@
 					
 						<div class="header">
 							<h4 class="title">Nhật Ký Tư Vấn</h4>
-							<p class="category success">Thêm thành công</p>
-							<a href="<%=request.getContextPath()%>/admin/user/add"
+							<a href="<%=request.getContextPath()%>/addNK"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
 						</div>
@@ -49,44 +47,79 @@
 								<thead>
 									<th>STT</th>
 									<th>Khách Hàng</th>
+									<th>Số Điện Thoại Liên Hệ</th>
 									<th>Nội Dung Tư Vấn</th>
 									<th>Ngày Tư Vấn</th>
 								</thead>
 								
 								<tbody>
 								<%
-								TuVanDAO tuVan = new TuVanDAO();
-								ArrayList <TuVan> listTuVan = (ArrayList <TuVan>) tuVan.getListTuVan();
-								if(listTuVan != null)
+								if(request.getAttribute("listNoiDung") != null)
 								{
-									if(listTuVan.size() > 0)
+									ArrayList<TuVan> listTuVan = (ArrayList<TuVan>) request.getAttribute("listNoiDung");
+									if(listTuVan != null)
 									{
-										int index = 1;
-										for(TuVan obj : listTuVan)
+										if(listTuVan.size() > 0)
 										{
+											int index = 1;
+											for(TuVan obj : listTuVan)
+											{
+								
 								%>			
 											<tr>
 												<td><%= index %></td>
-												<td><a
-													href="<%=request.getContextPath()%>/admin/user/edit"> <%= tuVan.getTenKhachHang(obj) %>
-													</a>
-												</td>
-												<td><%= obj.getNoiDungTuVan() %></td>
+												<td><%= obj.getTenKhachHang() %></td>
+												<td><%= obj.getSDT() %></td>
+												<td><a href = "#<%= obj.getSDT() %>" class="login-window">Chi Tiết</a></td>
+												
+												<div id="<%= obj.getSDT() %>" class="login">
+													<p class="login_title"> Nội Dung Tư Vấn</p>
+													<div class = "noidung"><p><%= obj.getNoiDungTuVan() %></p></div>
+												</div>
+												
 												<td><%= obj.getNgayTuVan() %></td>
 											</tr>
 								<% 	
-										index++;
+											index++;
+											}
 										}
 									}
-								}
+								}	
 								%>	
 								</tbody>
 										
 							</table>
+							
+							<div class="text-center">
+								<ul class="pagination">
+								<%
+								if(request.getAttribute("sumPage") != null)
+								{
+									String active = "";
+									int sumPage = (Integer) request.getAttribute("sumPage");
+									int currentPage = (Integer) request.getAttribute("currentPage");
+									for(int i = 1 ; i <= sumPage ; i++)
+									{
+										if(currentPage == i)
+										{
+											active = "class = 'current'";
+										}
+										else
+										{
+											active = "";
+										}%>
+										<li><a <%=active%> href="<%=request.getContextPath() %>/NhanVien/NhatKyTuVan?page=<%=i%>" title=""><%=i%></a></li>
+									<%}
+								}
+								%>
+								</ul>
+							</div>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<%@include file="/templates/admin/inc/footer.jsp"%>

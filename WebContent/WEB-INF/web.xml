@@ -68,4 +68,23 @@
     <servlet-name>AdminSearchSale</servlet-name>
     <url-pattern>/admin/search</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NhanVienAddNhatKyTuVan</servlet-name>
+    <servlet-class>controller.NhanVienAddNhatKyTuVan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NhanVienAddNhatKyTuVan</servlet-name>
+    <url-pattern>/NhanVien/AddNhatKyTuVan</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>NhanVienShowNhatKyTuVan</servlet-name>
+    <servlet-class>controller.NhanVienShowNhatKyTuVan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NhanVienShowNhatKyTuVan</servlet-name>
+    <url-pattern>/NhanVien/NhatKyTuVan</url-pattern>
+  </servlet-mapping>
+
 </web-app>
