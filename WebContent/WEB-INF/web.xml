@@ -41,7 +41,6 @@
     <servlet-name>AdminShowAddNewSales</servlet-name>
     <url-pattern>/admin/show-addSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminAddNewSale</servlet-name>
     <servlet-class>controller.AdminAddNewSale</servlet-class>
@@ -50,7 +49,6 @@
     <servlet-name>AdminAddNewSale</servlet-name>
     <url-pattern>/admin/addSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminDelSales</servlet-name>
     <servlet-class>controller.AdminDelSales</servlet-class>
@@ -59,13 +57,20 @@
     <servlet-name>AdminDelSales</servlet-name>
     <url-pattern>/admin/delSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-    <servlet-name>AdminSearchSale</servlet-name>
-    <servlet-class>controller.AdminSearchSale</servlet-class>
+    <servlet-name>AdminShowSetCalendarSales</servlet-name>
+    <servlet-class>controller.AdminShowSetCalendarSales</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminSearchSale</servlet-name>
-    <url-pattern>/admin/search</url-pattern>
+    <servlet-name>AdminShowSetCalendarSales</servlet-name>
+    <url-pattern>/admin/showSetCalendar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminSetCalendarSales</servlet-name>
+    <servlet-class>controller.AdminSetCalendarSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSetCalendarSales</servlet-name>
+    <url-pattern>/admin/schedule</url-pattern>
   </servlet-mapping>
 </web-app>

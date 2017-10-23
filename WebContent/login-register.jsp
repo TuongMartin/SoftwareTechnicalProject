@@ -11,8 +11,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/colors/main.css" id="colors">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
 
 </head>
 
@@ -415,17 +415,17 @@
 
 <!-- Scripts
 ================================================== -->
-<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/masonry.min.js"></script>
-<script type="text/javascript" src="scripts/jquery.jpanelmenu.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/chosen.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/slick.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/masonry.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery.jpanelmenu.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/custom.js"></script>
 
 
 <!-- Style Switcher

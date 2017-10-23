@@ -149,7 +149,9 @@
 												Sửa</a> &nbsp;||&nbsp; <a
 											href="<%=request.getContextPath()%>/admin/delSales?idSale=<%=objSales.getIdNhanVien()%>" onClick="return confirm('Do you want to delete all device belong to this id?')"><img
 												src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
-												Xóa</a></td>
+												Xóa</a> &nbsp;||&nbsp; <a
+											href="<%=request.getContextPath()%>/admin/showSetCalendar?idSale=<%=objSales.getIdNhanVien()%>" ><i class="fa fa-calendar" aria-hidden="true"></i>
+												Lịch</a></td>
 									</tr>
 
 								<%				}
