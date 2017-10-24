@@ -4,18 +4,25 @@ import java.sql.Date;
 
 public class TinTuc {
 	
+	private int idTinTuc;
 	private String tieuDe;
 	private String noiDung;
 	private String quote;
 	private String hinhAnh;
 	private Date ngayDangTin;
 	
-	public TinTuc(String tieuDe, String noiDung, String quote, String hinhAnh, Date ngayDangTin){
+	public TinTuc(int idTinTuc, String tieuDe, String noiDung, String quote, String hinhAnh, Date ngayDangTin){
+		this.idTinTuc = idTinTuc;
 		this.tieuDe = tieuDe;
 		this.noiDung = noiDung;
 		this.quote = quote;
 		this.hinhAnh = hinhAnh;
 		this.ngayDangTin = ngayDangTin;
+	}
+	
+	
+	public void setIdTinTuc(int idTinTuc){
+		this.idTinTuc = idTinTuc;
 	}
 	
 	
@@ -41,6 +48,11 @@ public class TinTuc {
 	
 	public void setNgayDangTin(Date ngayDangTin){
 		this.ngayDangTin = ngayDangTin;
+	}
+	
+	
+	public int getIdTinTuc(){
+		return this.idTinTuc;
 	}
 	
 	

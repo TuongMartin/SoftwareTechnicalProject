@@ -172,17 +172,17 @@
 
 						<li><a href="#">Pages</a>
 							<ul>
-								<li><a href="blog.html">Blog</a>
+								<li><a href="ShowTinTuc">Blog</a>
 									<ul>
-										<li><a href="blog.html">Blog</a></li>
+										<li><a href="ShowTinTuc">Blog</a></li>
 										<li><a href="blog-post.html">Blog Post</a></li>
 									</ul>
 								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="pricing-tables.html">Pricing Tables</a></li>
-								<li><a href="typography.html">Typography</a></li>
-								<li><a href="icons.html">Icons</a></li>
+								<li><a href="contact.jsp">Contact</a></li>
+								<li><a href="elements.jsp">Elements</a></li>
+								<li><a href="pricing-tables.jsp">Pricing Tables</a></li>
+								<li><a href="typography.jsp">Typography</a></li>
+								<li><a href="icons.jsp">Icons</a></li>
 							</ul>
 						</li>
 

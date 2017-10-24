@@ -17,7 +17,9 @@ public class TinTucDAO {
 	private static final String SELECT_LIST_TIN_TUC_EACH_PAGE = "select * from tintuc limit ?, ?";
 	private static final String COUNT_RECORD_TIN_TUC = "select count(*) as countTinTuc from tintuc";
 	private static final String SEARCH_TIN_TUC = "select * from tintuc where tieude like ";
+	private static final String SELECT_RECORD_BY_ID = "select * from tintuc where idtintuc = ";
 	
+	private static final String ID_TIN_TUC = "idtintuc";
 	private static final String TIEU_DE = "tieude";
 	private static final String NOI_DUNG = "noidung";
 	private static final String QUOTE = "quote";
@@ -47,7 +49,9 @@ public class TinTucDAO {
 			rs = st.executeQuery(SELECT_ALL_RECORD_TABLE_TIN_TUC);
 			
 			while(rs.next()) {
-				TinTuc objTinTuc = new TinTuc(rs.getString(TIEU_DE), 
+				TinTuc objTinTuc = new TinTuc(
+						rs.getInt(ID_TIN_TUC),
+						rs.getString(TIEU_DE), 
 						rs.getString(NOI_DUNG),
 						rs.getString(QUOTE),
 						rs.getString(HINH_ANH),
@@ -89,7 +93,9 @@ public class TinTucDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				TinTuc objTinTuc = new TinTuc(rs.getString(TIEU_DE), 
+				TinTuc objTinTuc = new TinTuc(
+						rs.getInt(ID_TIN_TUC),
+						rs.getString(TIEU_DE), 
 						rs.getString(NOI_DUNG), 
 						rs.getString(QUOTE), 
 						rs.getString(HINH_ANH), 
@@ -153,7 +159,9 @@ public class TinTucDAO {
 			
 			while(rs.next())
 			{
-				TinTuc objTinTuc = new TinTuc(rs.getString(TIEU_DE), 
+				TinTuc objTinTuc = new TinTuc(
+						rs.getInt(ID_TIN_TUC),
+						rs.getString(TIEU_DE), 
 						rs.getString(NOI_DUNG), 
 						rs.getString(QUOTE),
 						rs.getString(HINH_ANH),
@@ -172,7 +180,50 @@ public class TinTucDAO {
 		{
 			try 
 			{
-				ps.close();
+				st.close();
+				conn.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public TinTuc getItemTinTuc(String idTinTuc){
+		
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		TinTuc objTinTuc = null;
+
+		try 
+		{
+			st = conn.createStatement();
+			rs = st.executeQuery(SELECT_RECORD_BY_ID + idTinTuc);
+			
+			while(rs.next())
+			{
+				objTinTuc = new TinTuc(
+						rs.getInt(ID_TIN_TUC),
+						rs.getString(TIEU_DE), 
+						rs.getString(NOI_DUNG), 
+						rs.getString(QUOTE),
+						rs.getString(HINH_ANH),
+						rs.getDate(NGAY_DANG_TIN));
+			}
+			
+			return objTinTuc;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+		finally
+		{
+			try 
+			{
+				st.close();
 				conn.close();
 			} 
 			catch (SQLException e) 

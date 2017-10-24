@@ -1,6 +1,13 @@
+<%@page import="model.dao.TinTucDAO"%>
+<%@page import="model.bean.TinTuc"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/blog-post.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:19:04 GMT -->
+<%@page import="model.bean.TinTuc"%>
 <head>
 
 <!-- Basic Page Needs
@@ -254,45 +261,51 @@
 
 
 			<!-- Blog Post -->
-			<div class="blog-post single-post">
+				<%
+				TinTuc objTinTuc = (TinTuc)request.getAttribute("objTinTuc");
 				
-				<!-- Img -->
-				<img class="post-img" src="/public/images/blog-post-02a.jpg" alt="">
-
+				if(objTinTuc != null)
+				{
+				%>
+					<div class="blog-post single-post">
 				
-				<!-- Content -->
-				<div class="post-content">
-					<h3>Bedroom Colors You'll Never Regret</h3>
+						<!-- Img -->
+						<img class="post-img" src="<%= objTinTuc.getHinhAnh() %>" alt="">
 
-					<ul class="post-meta">
-						<li>Novemer 9, 2016</li>
-						<li><a href="#">5 Comments</a></li>
-					</ul>
+						<!-- Content -->
+						<div class="post-content">
+							<h3><%= objTinTuc.getTieuDe() %></h3>
 
-					<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae, tempus sed augue. Curabitur quis lectus quis augue dapibus facilisis. Vivamus tincidunt orci est, in vehicula nisi eleifend ut. Vestibulum sagittis varius orci vitae.</p>
+							<ul class="post-meta">
+								<li><%= objTinTuc.getNgayDangTin() %></li>
+								<li><a href="#">5 Comments</a></li>
+							</ul>
 
-					<div class="post-quote">
-						<span class="icon"></span>
-						<blockquote>
-							Mauris aliquet ultricies ante, non faucibus ante gravida sed. Sed ultrices pellentesque purus, vulputate volutpat ipsum hendrerit sed neque sed sapien rutrum.
-						</blockquote>
+							<div class="post-quote">
+								<span class="icon"></span>
+								<blockquote>
+									<%= objTinTuc.getQuote() %>	
+								</blockquote>
+							</div>
+
+							<p><%= objTinTuc.getNoiDung() %></p>
+				<%	
+				}
+				%>
+				
+
+							<!-- Share Buttons -->
+							<ul class="share-buttons margin-top-40 margin-bottom-0">
+								<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
+								<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
+								<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
+								<li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li>
+							</ul>
+							<div class="clearfix"></div>
+
+						</div>
 					</div>
-
-					<p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Cras suscipit, quam vitae adipiscing faucibus, risus nibh laoreet odio, a porttitor metus eros ut enim. Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.</p>
-					<p>Phasellus enim magna, varius et commodo ut, ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo. In libero urna, venenatis sit amet ornare non, suscipit nec risus. Sed consequat justo non mauris pretium at tempor justo sodales. Quisque tincidunt laoreet malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer vitae ante enim. Fusce sed elit est. Suspendisse sit amet mauris in quam pretium faucibus et aliquam odio. </p>
-
-
-					<!-- Share Buttons -->
-					<ul class="share-buttons margin-top-40 margin-bottom-0">
-						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
-						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
-						<li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li>
-					</ul>
-					<div class="clearfix"></div>
-
-				</div>
-			</div>
+			
 			<!-- Blog Post / End -->
 
 
@@ -646,7 +659,7 @@
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+				<div class="copyrights">Â© 2016 Findeo. All Rights Reserved.</div>
 			</div>
 		</div>
 

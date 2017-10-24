@@ -86,5 +86,23 @@
     <servlet-name>NhanVienShowNhatKyTuVan</servlet-name>
     <url-pattern>/NhanVien/NhatKyTuVan</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowTinTuc</servlet-name>
+    <servlet-class>controller.ShowTinTuc</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowTinTuc</servlet-name>
+    <url-pattern>/blog</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ChiTietTinTucController</servlet-name>
+    <servlet-class>controller.ChiTietTinTucController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChiTietTinTucController</servlet-name>
+    <url-pattern>/blog-post</url-pattern>
+  </servlet-mapping>
 
 </web-app>
