@@ -44,6 +44,7 @@ public class AdminEditTinTuc extends HttpServlet{
 		String urlHinhAnh = new String(request.getParameter("UrlHinhAnh").getBytes("ISO-8859-1"),"UTF-8");
 		
 		int idLoaiTinTuc = Integer.parseInt(id);
+		int idTinTuc = Integer.parseInt(request.getParameter("idTT").toString());
 		
 		Date date = new Date();
 		java.sql.Date ngayDangTinTuc = new java.sql.Date(date.getTime());
@@ -66,7 +67,7 @@ public class AdminEditTinTuc extends HttpServlet{
 		}
 		else
 		{
-			TinTuc objTinTuc = new TinTuc(0, tieuDe, noiDung, quote, id, urlHinhAnh, ngayDangTinTuc);
+			TinTuc objTinTuc = new TinTuc(idTinTuc, tieuDe, noiDung, quote, id, urlHinhAnh, ngayDangTinTuc);
 			
 			if(tinTucDAO.checkEditTinTuc(objTinTuc, idLoaiTinTuc))
 			{
@@ -79,7 +80,7 @@ public class AdminEditTinTuc extends HttpServlet{
 		}
 		
 		request.setAttribute("messageStr", messageStr);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/Article/articles.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/AdminShowManageTinTuc");
 		dispatcher.forward(request, response);
 	}
 }

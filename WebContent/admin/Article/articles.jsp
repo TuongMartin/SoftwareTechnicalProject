@@ -36,6 +36,11 @@
 					<div class="card">
 						<div class="header">
 							<h4 class="title">Danh Sách Tin Tức</h4>
+							
+							<% if(request.getAttribute("messageStr") != null){ %>
+							<p class="category success">${messageStr}</p>
+							<% } %>
+							
 							<a href="<%=request.getContextPath()%>/addTinTuc"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
@@ -68,7 +73,8 @@
 											href="<%=request.getContextPath()%>/ShowEditTT?id=<%= obj.getIdTinTuc() %>"><img
 												src="<%=request.getContextPath()%>/templates/admin/img/edit.gif" alt="" />
 												Sửa</a> &nbsp;||&nbsp; <a
-											href="<%=request.getContextPath()%>/admin/user/del"><img
+											href="<%=request.getContextPath()%>/DelTT?id=<%= obj.getIdTinTuc() %>" onClick="return confirm('Do you want to delete this item')">
+											<img
 												src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
 												Xóa</a></td>
 										</tr>

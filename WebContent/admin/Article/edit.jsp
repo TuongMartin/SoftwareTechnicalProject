@@ -36,12 +36,12 @@
 							<h4 class="title">Thêm Tin Tức</h4>
 						</div>
 						<div class="content">
-							<form action="${pageContext.request.contextPath}/EditTT" method="post">
 							<%
 							TinTuc objTinTuc = (TinTuc)request.getAttribute("objTinTuc");
 							if(objTinTuc != null)
 							{
 							%>
+							<form action="${pageContext.request.contextPath}/EditTT?idTT=<%= objTinTuc.getIdTinTuc() %>" method="post">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">

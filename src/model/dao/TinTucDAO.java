@@ -21,6 +21,7 @@ public class TinTucDAO {
 	private static final String INSERT_TIN_TUC = "INSERT INTO tintuc(tieude, noidung, quote, idphanloaitintuc, hinhanh, ngaydangtin) VALUES(?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE_TIN_TUC = "UPDATE tintuc SET tieude = ?, noidung = ?, quote = ?, idphanloaitintuc = ?, hinhanh = ?, ngaydangtin = ? WHERE idtintuc = ?";
 	private static final String SELECT_ID_LOAI_TIN_TUC = "select idphanloaitintuc from tintuc where idtintuc = ";
+	private static final String DEL_TIN_TUC = "DELETE FROM tintuc where idtintuc = ?";
 	
 	private static final String ID_TIN_TUC = "idtintuc";
 	private static final String TIEU_DE = "tieude";
@@ -348,5 +349,37 @@ public class TinTucDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	
+	public boolean checkDelItemTinTuc(int idTinTuc) {
+		
+		conn = connectionLibraryMySQL.getConnectMySQL();
+	
+		try 
+		{
+			ps = conn.prepareStatement(DEL_TIN_TUC);
+			ps.setInt(1, idTinTuc);
+			ps.executeUpdate();
+			return true;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			return false;
+		} 
+		finally 
+		{
+			try 
+			{
+				ps.close();
+				conn.close();
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

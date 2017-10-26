@@ -136,9 +136,10 @@
     <servlet-name>AdminEditTinTuc</servlet-name>
     <servlet-class>controller.AdminEditTinTuc</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminEditTinTuc</servlet-name>
-    <url-pattern>/admin/Article/articles</url-pattern>
-  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminDelTinTuc</servlet-name>
+    <servlet-class>controller.AdminDelTinTuc</servlet-class>
+  </servlet>
   
 </web-app>
