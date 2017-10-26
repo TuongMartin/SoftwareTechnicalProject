@@ -96,7 +96,7 @@
     <url-pattern>/blog</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
     <servlet-name>ChiTietTinTucController</servlet-name>
     <servlet-class>controller.ChiTietTinTucController</servlet-class>
   </servlet>
@@ -104,5 +104,41 @@
     <servlet-name>ChiTietTinTucController</servlet-name>
     <url-pattern>/blog-post</url-pattern>
   </servlet-mapping>
-
+  
+  <servlet>
+    <servlet-name>AdminManageArticle</servlet-name>
+    <servlet-class>controller.AdminManageArticle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManageArticle</servlet-name>
+    <url-pattern>/admin/Article/articles</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminAddTinTuc</servlet-name>
+    <servlet-class>controller.AdminAddTinTuc</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAddTinTuc</servlet-name>
+    <url-pattern>/admin/Article/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminShowEditTinTuc</servlet-name>
+    <servlet-class>controller.AdminShowEditTinTuc</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowEditTinTuc</servlet-name>
+    <url-pattern>/admin/Article/edit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminEditTinTuc</servlet-name>
+    <servlet-class>controller.AdminEditTinTuc</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEditTinTuc</servlet-name>
+    <url-pattern>/admin/Article/articles</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

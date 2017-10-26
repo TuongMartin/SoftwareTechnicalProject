@@ -8,14 +8,16 @@ public class TinTuc {
 	private String tieuDe;
 	private String noiDung;
 	private String quote;
+	private String loaiTinTuc;
 	private String hinhAnh;
 	private Date ngayDangTin;
 	
-	public TinTuc(int idTinTuc, String tieuDe, String noiDung, String quote, String hinhAnh, Date ngayDangTin){
+	public TinTuc(int idTinTuc, String tieuDe, String noiDung, String quote, String loaiTinTuc , String hinhAnh, Date ngayDangTin){
 		this.idTinTuc = idTinTuc;
 		this.tieuDe = tieuDe;
 		this.noiDung = noiDung;
 		this.quote = quote;
+		this.loaiTinTuc = loaiTinTuc;
 		this.hinhAnh = hinhAnh;
 		this.ngayDangTin = ngayDangTin;
 	}
@@ -46,6 +48,11 @@ public class TinTuc {
 	}
 	
 	
+	public void setLoaiTinTuc(String loaiTinTuc){
+		this.loaiTinTuc = loaiTinTuc;
+	}
+	
+	
 	public void setNgayDangTin(Date ngayDangTin){
 		this.ngayDangTin = ngayDangTin;
 	}
@@ -68,6 +75,11 @@ public class TinTuc {
 	
 	public String getQuote(){
 		return this.quote;
+	}
+	
+	
+	public String getLoaiTinTuc(){
+		return this.loaiTinTuc;
 	}
 	
 	

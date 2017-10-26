@@ -42,6 +42,11 @@
                         <p>Danh sách người dùng</p>
                     </a>
                 </li>
+                <li>
+                	<a href = "<%= request.getContextPath()%>/AdminShowManageTinTuc">
+                		<i class = "ti-user"></i>
+                		<p>Danh sách tin tức</p>
+                	</a>
             </ul>
     	</div>
     </div>
