@@ -59,6 +59,12 @@
 										case 5:%>
 										<p class="category alert alert-warning">Không tìm thấy</p>
 										<%break;
+										case 6:%>
+										<p class="category alert alert-warning">Lỗi khi thêm mới Agenda</p>
+										<%break;
+										case 7:%>
+										<p class="category alert alert-warning">Lỗi khi thêm mới ItemAgenda</p>
+										<%break;
 										
 									}
 									

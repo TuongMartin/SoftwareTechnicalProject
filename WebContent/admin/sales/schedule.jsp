@@ -1,4 +1,3 @@
-<%@page import="model.bean.SchoolClass"%>
 <%@page import="model.bean.ChucVu"%>
 <%@page import="model.dao.ChucVuDAO"%>
 <%@page import="model.bean.NhanVien"%>
@@ -109,7 +108,7 @@
 						</div>
 				            <div class="content table-responsive table-full-width">
 								<div class="table-responsive">    
-									<TABLE border="1" cellspacing="0" class="table table-bordered" id="makeEditable">
+									<TABLE border="1" cellspacing="0" class="table table-bordered">
 										<TBODY>
 											<TR>
 												<TH align="center" valign="middle" width="80"></TH>
@@ -137,21 +136,15 @@
 														</c:choose>
 													</TD>
 													<c:forEach begin="0" end="6" step="1" var="day">
-														<TD align="center" valign="middle" id = "id" width="100">
+														<TD align="center" valign="middle" width="100">
 														
 														<c:if test="${agendaItemSale ne null }">
 															<c:forEach items="${agendaItemSale}" var="item">
-																<c:if test="${item.startTime <= time && item.endTime >= time && item.day == day}">
-																	<c:out value="${item.title}" />
+																<c:if test="${item.startTime == time && item.day == day}">
+																	<div id ="active${item.idItemAgenda}" onclick="return editInline(${item.idItemAgenda},${item.idAgenda});"><span style = "color: black;" class="btn"><c:out value="${item.title}" /></span></div>
 																</c:if>
 															</c:forEach>
 														</c:if>
-														
-															<c:forEach items="${schoolschedule.classes}" var="clazz">
-																<c:if test="${clazz.startTime <= time && clazz.endTime >= time && clazz.day == day}">
-																	<c:out value="${clazz.title}" />
-																</c:if>
-															</c:forEach>
 														</TD>
 													</c:forEach>
 												</TR>
@@ -160,6 +153,28 @@
 									</TABLE>
 								</div>
 							</div>
+							<script type="text/javascript">
+											function editInline(idItemAgenda,idAgenda){
+												if (confirm("Do you want to delete it?")){
+													$.ajax({
+														url: '<%=request.getContextPath()%>/admin/activeSchedule',
+														type: 'POST',
+														cache: false, 
+														data: {
+															idItemAgenda: idItemAgenda,
+															idAgenda: idAgenda,
+														},
+														success: function(data){
+															$("#active"+idItemAgenda).html(data);
+														},
+														error: function (){
+															alert("Có lỗi trong quá trình xử lý");
+														}
+													});
+													return false;
+												}
+											}
+									</script>
 							<%}%>
 					</div>
 				</div>

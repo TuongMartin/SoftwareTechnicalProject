@@ -2,26 +2,24 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.dao.AgendaDAO;
-import model.dao.SalesDAO;
+import model.dao.ItemAgendaDAO;
 
 /**
- * Servlet implementation class AdminSetCalendarSales
+ * Servlet implementation class AdminManageSales
  */
-public class AdminShowSetCalendarSales extends HttpServlet {
+public class AjaxActiveScheduleByAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminShowSetCalendarSales() {
+    public AjaxActiveScheduleByAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,17 +35,25 @@ public class AdminShowSetCalendarSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idSale = Integer.parseInt(request.getParameter("idSale"));
-		SalesDAO salesDAO = new SalesDAO();
-		HttpSession session = request.getSession();
-		session.setAttribute("objSales", salesDAO.getItemSale(idSale));
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
 		
+		int idItemAgenda = Integer.parseInt(request.getParameter("idItemAgenda"));
+		int idAgenda = Integer.parseInt(request.getParameter("idAgenda"));
+		
+		ItemAgendaDAO itemAgendaDAO = new ItemAgendaDAO();
 		AgendaDAO agendaDAO = new AgendaDAO();
-		session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
 		
+		itemAgendaDAO.delItemAgenda(idItemAgenda);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
-		rd.forward(request, response);
+		//check list of ItemAgenda is null
+		//So deleting Agenda
+		if(itemAgendaDAO.getListItemAgenda(idAgenda)!=null) {
+			if(itemAgendaDAO.getListItemAgenda(idAgenda).size() == 0) {
+				agendaDAO.delAgenda(idAgenda);
+			}
+		}
+		
 	}
 
 }

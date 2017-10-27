@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.SchoolClass;
-import model.bean.SchoolSchedule;
-import model.dao.ScheduleDAO;
+import model.bean.Agenda;
+import model.bean.ItemAgenda;
+import model.dao.AgendaDAO;
+import model.dao.ItemAgendaDAO;
 
 /**
  * Servlet implementation class ScheduleServlet
@@ -42,16 +43,15 @@ public class AdminSetCalendarSales extends HttpServlet {
 			throws ServletException, IOException {
 		int idSales = Integer.parseInt(request.getParameter("idSales"));
 		String title = request.getParameter("title");
-		int starttime = Integer.parseInt(request.getParameter("starttime"));
-		int endtime = Integer.parseInt(request.getParameter("endtime"));
+		int startTime = Integer.parseInt(request.getParameter("starttime"));
+		int endTime = Integer.parseInt(request.getParameter("endtime"));
 		String[] days = request.getParameterValues("day");
 		
-		ScheduleDAO scheduleDAO = new ScheduleDAO();
+		//ScheduleDAO scheduleDAO = new ScheduleDAO();
 		
-		SchoolSchedule schedule = (SchoolSchedule) request.getSession(true).getAttribute("schoolschedule");
-		if (schedule == null) {
-			schedule = new SchoolSchedule();
-		}
+		AgendaDAO agendaDAO = new AgendaDAO();
+		ItemAgendaDAO itemAgendaDAO = new ItemAgendaDAO();
+		
 		if (days != null) {
 			for (int i = 0; i < days.length; i++) {
 				String dayString = days[i];
@@ -70,13 +70,21 @@ public class AdminSetCalendarSales extends HttpServlet {
 					day = 5;
 				else
 					day = 6;
-
-				SchoolClass clazz = new SchoolClass(0,title, starttime, endtime, day,idSales);
-				schedule.addClass(clazz);
-				scheduleDAO.addItemSchedule(clazz);
+				
+				Agenda objAgenda = new Agenda(0, day, idSales);
+				if(!agendaDAO.addAgenda(objAgenda)) {
+					response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=6");
+				}
+				
+				for(int j = 0 ; j <(endTime - startTime) ; j++) {
+					ItemAgenda objItem = new ItemAgenda(agendaDAO.getNewAgenda(), objAgenda.getDay(), idSales, 0, title, (startTime + j), (startTime + j + 1));
+					if(!itemAgendaDAO.addItemAgenda(objItem)) {
+						response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=7");
+					}
+				}
 			}
 		}
-		request.getSession().setAttribute("schoolschedule", schedule);
+		request.getSession().setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSales));
 		getServletContext().getRequestDispatcher("/admin/sales/schedule.jsp").forward(request, response);
 	}
 
