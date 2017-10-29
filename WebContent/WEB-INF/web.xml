@@ -146,5 +146,20 @@
     <servlet-name>SearchTinTuc</servlet-name>
     <servlet-class>controller.SearchTinTuc</servlet-class>
   </servlet>
-  
+  <servlet>
+    <servlet-name>Controllercanho</servlet-name>
+    <servlet-class>controller.Controllercanho</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controllercanho</servlet-name>
+    <url-pattern>/thanhvien/canhos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Controllerkhachhang</servlet-name>
+    <servlet-class>controller.Controllerkhachhang</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controllerkhachhang</servlet-name>
+    <url-pattern>/thanhvien/khachhang</url-pattern>
+  </servlet-mapping>
 </web-app>

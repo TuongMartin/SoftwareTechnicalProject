@@ -367,7 +367,6 @@
 			</div>
 			<!-- Widget / End -->
 
-
 			<!-- Widget -->
 			<div class="widget">
 				<h3>Got any questions?</h3>
