@@ -99,7 +99,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<%
+											<%/*
 												ChucVuDAO chucVuDAO = new ChucVuDAO();
 												if (chucVuDAO.getListChucVu() != null) {
 													ArrayList<ChucVu> list = (ArrayList<ChucVu>) chucVuDAO.getListChucVu();
@@ -117,7 +117,7 @@
 											</select>
 											<%
 												}
-												}
+												}*/
 											%>
 										</div>
 									</div>

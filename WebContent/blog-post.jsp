@@ -19,6 +19,7 @@
 <!-- CSS
 ================================================== -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/search.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
 
 </head>
@@ -333,55 +334,42 @@
 			</div>
 
 
-			<!-- Related Posts -->
+			<!-- new Posts -->
 			<div class="clearfix"></div>
-			<h4 class="headline margin-top-25">Related Posts</h4>
+			<h4 class="headline margin-top-25">Bài Đăng Mới</h4>
 			<div class="row">
-				<div class="col-md-6">
-
+			<%
+			ArrayList<TinTuc> listNewItems = (ArrayList<TinTuc>)request.getAttribute("listNewItems");
+			if (listNewItems != null && listNewItems.size() > 0)
+			{
+				for(TinTuc obj : listNewItems)
+				{
+			%>
+					<div class="col-md-6">
 					<!-- Blog Post -->
 					<div class="blog-post">
 						
 						<!-- Img -->
-						<a href="#" class="post-img">
-							<img src="/public/images/blog-post-02.jpg" alt="">
+						<a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>" class="post-img">
+							<img src="<%= obj.getHinhAnh() %>" alt="">
 						</a>
 						
 						<!-- Content -->
 						<div class="post-content">
-							<h3><a href="#">Bedroom Colors You'll Never Regret</a></h3>
-							<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
+							<h3><a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>"><%= obj.getTieuDe() %></a></h3>
+							<p><%= obj.getQuote().substring(0, 150) + "..." %></p>
 
-							<a href="#" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+							<a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
 						</div>
 
 					</div>
 					<!-- Blog Post / End -->
-
-				</div>
-
-				<div class="col-md-6">
-
-					<!-- Blog Post -->
-					<div class="blog-post">
-						
-						<!-- Img -->
-						<a href="#" class="post-img">
-							<img src="/public/images/blog-post-03.jpg" alt="">
-						</a>
-						
-						<!-- Content -->
-						<div class="post-content">
-							<h3><a href="#">What to Do a Year Before Buying Apartment</a></h3>
-							<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
-
-							<a href="#" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
-						</div>
-
 					</div>
-					<!-- Blog Post / End -->
-
-				</div>
+			<%		
+				}
+			}
+			%>
+				
 			</div>
 			<!-- Related Posts / End -->
 
@@ -501,9 +489,10 @@
 			<!-- Widget -->
 			<div class="widget">
 				<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
-				<div class="search-blog-input">
-					<div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" value=""/></div>
-				</div>
+				<form class="form-wrapper cf" action="${pageContext.request.contextPath}/SearchTT">
+					<input type="text" name="search" placeholder="Search here..." required> 
+					<button type="submit">Search</button>
+				</form>
 				<div class="clearfix"></div>
 			</div>
 			<!-- Widget / End -->
@@ -523,53 +512,34 @@
 			<!-- Widget -->
 			<div class="widget">
 
-				<h3>Popular Posts</h3>
+				<h3>Bài Đăng Liên Quan</h3>
 				<ul class="widget-tabs">
-
-					<!-- Post #1 -->
-					<li>
-						<div class="widget-content">
-								<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="/public/images/blog-widget-03.jpg" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">What to Do a Year Before Buying Apartment </a></h5>
-								<span>October 26, 2016</span>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</li>
-					
-					<!-- Post #2 -->
-					<li>
+				
+				<%
+				ArrayList<TinTuc> listRelatedItems = (ArrayList<TinTuc>)request.getAttribute("listRelatedItems");
+				if(listRelatedItems != null && listRelatedItems.size() > 0)
+				{
+					for(TinTuc obj : listRelatedItems)
+					{
+				%>
+						<!-- Post #1 -->
+						<li>
 						<div class="widget-content">
 							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="/public/images/blog-widget-02.jpg" alt=""></a>
+								<a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>"><img src="<%= obj.getHinhAnh() %>" alt=""></a>
 							</div>
 							
 							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">Bedroom Colors You'll Never Regret</a></h5>
-								<span>November 9, 2016</span>
+								<h5><a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>"><%= obj.getTieuDe() %></a></h5>
+								<span><%= obj.getNgayDangTin() %></span>
 							</div>
 							<div class="clearfix"></div>
 						</div>
-					</li>
-					
-					<!-- Post #3 -->
-					<li>
-						<div class="widget-content">
-							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="/public/images/blog-widget-01.jpg" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">8 Tips to Help You Finding New Home</a></h5>
-								<span>November 12, 2016</span>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</li>
+						</li>
+				<%		
+					}
+				}
+				%>
 
 				</ul>
 

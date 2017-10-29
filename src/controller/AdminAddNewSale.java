@@ -50,7 +50,7 @@ public class AdminAddNewSale extends HttpServlet {
 		if(salesDAO.getItemSale(idSale) != null) {
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=3");
 		}else {
-			String hoten = new String(request.getParameter("hoten").getBytes("ISO-8859-1"),"UTF-8");
+			/*String hoten = new String(request.getParameter("hoten").getBytes("ISO-8859-1"),"UTF-8");
 			String ngaysinh = new String(request.getParameter("ngaysinh"));
 			
 			int cmnd = Integer.parseInt(request.getParameter("CMND"));
@@ -59,7 +59,7 @@ public class AdminAddNewSale extends HttpServlet {
 			String sdt = new String(request.getParameter("sdt"));
 			int idChucVu = Integer.parseInt(request.getParameter("chucvu"));
 			String username = new String(request.getParameter("username").getBytes("ISO-8859-1"),"UTF-8");
-			String password = new String(request.getParameter("password"));
+			String password = new String(request.getParameter("password"));*/
 			String picture = "";
 			
 			response.setContentType("text/html;charset=UTF-8");
@@ -77,6 +77,7 @@ public class AdminAddNewSale extends HttpServlet {
 					picture = RenameFileLibrary.renameFile(fileName);
 					
 					try {
+						
 						out = new FileOutputStream(new File(path + File.separator
 								+ picture));
 						filecontent = filePart.getInputStream();
@@ -101,12 +102,12 @@ public class AdminAddNewSale extends HttpServlet {
 					picture = "";
 				}
 			
-			NhanVien objNhanVien = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, username, password, idChucVu, null, picture);
+			/*NhanVien objNhanVien = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, username, password, idChucVu, null, picture);
 			if(salesDAO.addItemSale(objNhanVien)) {
 				response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=2");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=0");
-			}
+			}*/
 		}
 		
 	}

@@ -1,9 +1,7 @@
 <%@page import="model.bean.TinTuc"%>
 <%@page import="model.bean.TuVan"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
 <%@include file="/templates/admin/inc/leftbar.jsp"%>
 <div class="main-panel">
@@ -41,7 +39,7 @@
 							<p class="category success">${messageStr}</p>
 							<% } %>
 							
-							<a href="<%=request.getContextPath()%>/addTinTuc"
+							<a href="<%=request.getContextPath()%>/admin/addTinTuc"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
 						</div>
@@ -60,11 +58,13 @@
 								ArrayList <TinTuc> listTinTuc = (ArrayList<TinTuc>)request.getAttribute("listArticle");
 								if(listTinTuc != null && listTinTuc.size() > 0)
 								{
+									int index = 1;
+									
 									for(TinTuc obj : listTinTuc)
 									{
 								%>
 										<tr>
-										<td>1</td>
+										<td><%= index %></td>
 										<td><a
 											href="<%=request.getContextPath()%>/ShowEditTT?id=<%= obj.getIdTinTuc() %>"><%= obj.getTieuDe() %></a></td>
 										<td><%= obj.getLoaiTinTuc() %></td>
@@ -78,7 +78,8 @@
 												src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
 												Xóa</a></td>
 										</tr>
-								<%		
+								<%
+										index++;
 									}
 								}
 								%>

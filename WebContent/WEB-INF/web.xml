@@ -120,7 +120,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminAddTinTuc</servlet-name>
-    <url-pattern>/admin/Article/add</url-pattern>
+    <url-pattern>/admin/addTinTuc</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -140,6 +140,11 @@
   <servlet>
     <servlet-name>AdminDelTinTuc</servlet-name>
     <servlet-class>controller.AdminDelTinTuc</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>SearchTinTuc</servlet-name>
+    <servlet-class>controller.SearchTinTuc</servlet-class>
   </servlet>
   
 </web-app>

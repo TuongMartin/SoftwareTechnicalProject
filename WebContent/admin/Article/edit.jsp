@@ -41,7 +41,8 @@
 							if(objTinTuc != null)
 							{
 							%>
-							<form action="${pageContext.request.contextPath}/EditTT?idTT=<%= objTinTuc.getIdTinTuc() %>" method="post">
+							<form action="${pageContext.request.contextPath}/EditTT?idTT=<%= objTinTuc.getIdTinTuc() %>" 
+								method="post" enctype="multipart/form-data">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
@@ -90,9 +91,12 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label>URL Hình Ảnh</label> <input type="text" name="UrlHinhAnh"
-												class="form-control border-input"
-												value="<%= objTinTuc.getHinhAnh() %>">	
+											<label>Hình ảnh</label>
+											<p></p> 
+											<img src="<%= objTinTuc.getHinhAnh() %>" width="800px" height="500px" alt="">
+											<p></p> 
+											<input type="file" name="UrlHinhAnh"
+												class="form-control" placeholder="Đổi ảnh" />	
 										</div>
 									</div>
 								</div>

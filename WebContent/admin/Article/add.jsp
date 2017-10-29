@@ -38,11 +38,13 @@
 							<% } %>
 						</div>
 						<div class="content">
-							<form action="${pageContext.request.contextPath}/addTinTuc" method="post">
+							<form action="${pageContext.request.contextPath}/admin/addTinTuc" 
+								method="post" enctype="multipart/form-data" id="addTinTuc" >
+							
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label>Tiêu Đề</label> <input type="text" name="TieuDe"
+											<label>Tiêu Đề</label> <input type="text" name="tieude"
 												class="form-control border-input" placeholder="Tiêu Đề"
 												value="">	
 										</div>
@@ -72,11 +74,10 @@
 								</div>
 								
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-6">
 										<div class="form-group">
-											<label>URL Hình Ảnh</label> <input type="text" name="UrlHinhAnh"
-												class="form-control border-input" placeholder="Nhập Url Hình Ảnh"
-												value="">	
+											<label>Hình ảnh</label> <input type="file" name="UrlHinhAnh"
+												class="form-control" placeholder="Chọn ảnh" />
 										</div>
 									</div>
 								</div>

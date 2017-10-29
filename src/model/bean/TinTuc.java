@@ -11,8 +11,9 @@ public class TinTuc {
 	private String loaiTinTuc;
 	private String hinhAnh;
 	private Date ngayDangTin;
+	private int luotView;
 	
-	public TinTuc(int idTinTuc, String tieuDe, String noiDung, String quote, String loaiTinTuc , String hinhAnh, Date ngayDangTin){
+	public TinTuc(int idTinTuc, String tieuDe, String noiDung, String quote, String loaiTinTuc , String hinhAnh, Date ngayDangTin, int luotView){
 		this.idTinTuc = idTinTuc;
 		this.tieuDe = tieuDe;
 		this.noiDung = noiDung;
@@ -20,6 +21,7 @@ public class TinTuc {
 		this.loaiTinTuc = loaiTinTuc;
 		this.hinhAnh = hinhAnh;
 		this.ngayDangTin = ngayDangTin;
+		this.luotView = luotView;
 	}
 	
 	
@@ -58,6 +60,11 @@ public class TinTuc {
 	}
 	
 	
+	public void setLuotView(int luotView){
+		this.luotView = luotView;
+	}
+	
+	
 	public int getIdTinTuc(){
 		return this.idTinTuc;
 	}
@@ -90,5 +97,10 @@ public class TinTuc {
 	
 	public Date getNgayDangTin(){
 		return this.ngayDangTin;
+	}
+	
+	
+	public int getLuotView(){
+		return this.luotView;
 	}
 }

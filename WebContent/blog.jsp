@@ -17,6 +17,7 @@
 <!-- CSS
 ================================================== -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/search.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
 
 </head>
@@ -358,9 +359,10 @@
 			<!-- Widget -->
 			<div class="widget">
 				<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
-				<div class="search-blog-input">
-					<div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" value=""/></div>
-				</div>
+				<form class="form-wrapper cf" action="${pageContext.request.contextPath}/SearchTT">
+					<input type="text" name="search" placeholder="Search here..." required> 
+					<button type="submit">Search</button>
+				</form>
 				<div class="clearfix"></div>
 			</div>
 			<!-- Widget / End -->
@@ -380,53 +382,39 @@
 			<!-- Widget -->
 			<div class="widget">
 
-				<h3>Popular Posts</h3>
+				<h3>Bài Viết Phổ Biến</h3>
 				<ul class="widget-tabs">
-
+				<%
+				ArrayList<TinTuc> listPopular = (ArrayList<TinTuc>) request.getAttribute("listPopular");
+				if(listPopular != null && listPopular.size() > 0)
+				{
+					for(TinTuc objTinTuc : listPopular)
+					{
+				%>
 					<!-- Post #1 -->
 					<li>
 						<div class="widget-content">
 								<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="images/blog-widget-03.jpg" alt=""></a>
+								<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= objTinTuc.getIdTinTuc() %>">
+									<img src="<%= objTinTuc.getHinhAnh() %>" alt="">
+								</a>
 							</div>
 							
 							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">What to Do a Year Before Buying Apartment </a></h5>
-								<span>October 26, 2016</span>
+								<h5>
+									<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= objTinTuc.getIdTinTuc() %>">
+										<%= objTinTuc.getTieuDe() %>
+									</a>
+								</h5>
+								<span><%= objTinTuc.getNgayDangTin() %></span>
 							</div>
 							<div class="clearfix"></div>
 						</div>
 					</li>
-					
-					<!-- Post #2 -->
-					<li>
-						<div class="widget-content">
-							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="images/blog-widget-02.jpg" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">Bedroom Colors You'll Never Regret</a></h5>
-								<span>November 9, 2016</span>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</li>
-					
-					<!-- Post #3 -->
-					<li>
-						<div class="widget-content">
-							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="images/blog-widget-01.jpg" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">8 Tips to Help You Finding New Home</a></h5>
-								<span>November 12, 2016</span>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</li>
+				<%		
+					}
+				}
+				%>
 
 				</ul>
 
