@@ -1,70 +1,115 @@
 package model.bean;
 
-public class Khachhang {
-	private int IdKH;
-	private String TenKH;
-	private String DiaChiKH;
-	private String SDTKH;
-	private String EmailKH;
-	private int IdLoaiKH;
-	private String TenLoaiKH;
-	private int IdTinDang;
-	public Khachhang(int IdKH,String TenKH,String DiaChiKH,String SDTKH,String EmailKH,int IdLoaiKH,String TenLoaiKH,int IdTinDang){
-		this.IdKH = IdKH;
-		this.TenKH = TenKH;
-		this.DiaChiKH = DiaChiKH;
-		this.SDTKH = SDTKH;
-		this.EmailKH = EmailKH;
-		this.IdLoaiKH = IdLoaiKH;
-		this.TenLoaiKH = TenLoaiKH;
-		this.IdTinDang = IdTinDang;
+
+public class KhachHang {
+	private int id;
+	private String tenKhachHang;
+	private String diaChi;
+	private String queQuan;
+	private String CMND;
+	private String ngaySinh;
+	private String soDienThoai;
+	private String email;
+	private String matKhau;
+	private String avatar;
+	private int status;
+	private String token;
+	private String comfirm_at;
+	public int getId() {
+		return id;
 	}
-	public int getIdKH() {
-		return IdKH;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public void setIdKH(int idKH) {
-		IdKH = idKH;
+	public String getComfirm_at() {
+		return comfirm_at;
 	}
-	public String getDiaChiKH() {
-		return DiaChiKH;
+	public void setComfirm_at(String comfirm_at) {
+		this.comfirm_at = comfirm_at;
 	}
-	public void setDiaChiKH(String diaChiKH) {
-		DiaChiKH = diaChiKH;
+	public String getTenKhachHang() {
+		return tenKhachHang;
 	}
-	public String getTenKH() {
-		return TenKH;
+	public void setTenKhachHang(String tenKhachHang) {
+		this.tenKhachHang = tenKhachHang;
 	}
-	public void setTenKH(String tenKH) {
-		TenKH = tenKH;
+	public String getDiaChi() {
+		return diaChi;
 	}
-	public String getSDTKH() {
-		return SDTKH;
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
 	}
-	public void setSDTKH(String sDTKH) {
-		SDTKH = sDTKH;
+	public String getQueQuan() {
+		return queQuan;
 	}
-	public String getEmailKH() {
-		return EmailKH;
+	public void setQueQuan(String queQuan) {
+		this.queQuan = queQuan;
 	}
-	public void setEmailKH(String emailKH) {
-		EmailKH = emailKH;
+	public String getCMND() {
+		return CMND;
 	}
-	public int getIdLoaiKH() {
-		return IdLoaiKH;
+	public void setCMND(String cMND) {
+		CMND = cMND;
 	}
-	public void setIdLoaiKH(int idLoaiKH) {
-		IdLoaiKH = idLoaiKH;
+	public String getNgaySinh() {
+		return ngaySinh;
 	}
-	public String getTenLoaiKH() {
-		return TenLoaiKH;
+	public void setNgaySinh(String ngaySinh) {
+		this.ngaySinh = ngaySinh;
 	}
-	public void setTenLoaiKH(String tenLoaiKH) {
-		TenLoaiKH = tenLoaiKH;
+	public String getSoDienThoai() {
+		return soDienThoai;
 	}
-	public int getIdTinDang() {
-		return IdTinDang;
+	public void setSoDienThoai(String soDienThoai) {
+		this.soDienThoai = soDienThoai;
 	}
-	public void setIdTinDang(int idTinDang) {
-		IdTinDang = idTinDang;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMatKhau() {
+		return matKhau;
+	}
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public KhachHang(int id, String tenKhachHang, String diaChi,
+			String queQuan, String cMND, String ngaySinh, String soDienThoai,
+			String email, String matKhau, String avatar, int status,
+			String token, String comfirm_at) {
+		super();
+		this.id = id;
+		this.tenKhachHang = tenKhachHang;
+		this.diaChi = diaChi;
+		this.queQuan = queQuan;
+		CMND = cMND;
+		this.ngaySinh = ngaySinh;
+		this.soDienThoai = soDienThoai;
+		this.email = email;
+		this.matKhau = matKhau;
+		this.avatar = avatar;
+		this.status = status;
+		this.token = token;
+		this.comfirm_at = comfirm_at;
 	}
 }

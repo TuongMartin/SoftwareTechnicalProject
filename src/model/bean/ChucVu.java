@@ -1,28 +1,25 @@
 package model.bean;
 
-public class Chucvu {
-	private int IdChucVu;
-	private String TenChucVu;
-	
-	public Chucvu(int IdChucVu,String TenChucVu){
-		this.IdChucVu = IdChucVu;
-		this.TenChucVu = TenChucVu;
-	}
-
+public class ChucVu {
+	private int idChucVu;
+	private String tenChucVu;
 	public int getIdChucVu() {
-		return IdChucVu;
+		return idChucVu;
 	}
-
 	public void setIdChucVu(int idChucVu) {
-		IdChucVu = idChucVu;
+		this.idChucVu = idChucVu;
 	}
-
 	public String getTenChucVu() {
-		return TenChucVu;
+		return tenChucVu;
 	}
-
 	public void setTenChucVu(String tenChucVu) {
-		TenChucVu = tenChucVu;
+		this.tenChucVu = tenChucVu;
 	}
+	public ChucVu() {}
+	public ChucVu(int idChucVu, String tenChucVu) {
+		this.idChucVu = idChucVu;
+		this.tenChucVu = tenChucVu;
+	}
+	
 	
 }

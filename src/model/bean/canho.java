@@ -1,186 +1,225 @@
 package model.bean;
 
-import java.sql.Date;
-
-public class canho {
-	private int IdTinDang;
-	private String TieuDe;
-	private String DiaChiTD;
-	private int IdLoaiTD;
-	private String TenLoaiTinDang;
-	private String BanDo;
-	private String MaTienIch;
-	private double Gia;
-	private int DienTich; 
-	private String HuongNha;
-	private String HuongBanCong;
-	private int SoPhongNgu;
-	private int SoToilet;
-	private String NoiThat;
-	private int MatTien;
-	private int SoTang;
-	private Date NgayDang;
-	private Date NgayHetHan;
-	private int IdNhanVien;
-	private String TenNhanVien;
-	private int IdTrangThai;
-	private String TrangThaiTinDang;
-	public canho(int IdTinDang,String TieuDe,String DiaChiTD,int IdLoaiTD,String TenLoaiTinDang,String BanDo,String MaTienIch,double Gia,int DienTich,
-			String HuongNha,String HuongBanCong,int SoPhongNgu,int SoToilet,String NoiThat,int MatTien,int SoTang,Date NgayDang,
-			Date NgayHetHan,int IdNhanVien,String TenNhanVien,int IdTrangThai,String TrangThaiTinDang){
-		this.IdTinDang = IdTinDang;
-		this.TieuDe = TieuDe;
-		this.DiaChiTD = DiaChiTD;
-		this.IdLoaiTD = IdLoaiTD;
-		this.TenLoaiTinDang = TenLoaiTinDang;
-		this.BanDo = BanDo;
-		this.MaTienIch = MaTienIch;
-		this.Gia = Gia;
-		this.DienTich = DienTich;
-		this.HuongNha = HuongNha;
-		this.HuongBanCong = HuongBanCong;
-		this.SoPhongNgu = SoPhongNgu;
-		this.SoToilet = SoToilet;
-		this.NoiThat = NoiThat;
-		this.MatTien = MatTien;
-		this.SoTang = SoTang;
-		this.NgayDang = NgayDang;
-		this.NgayHetHan = NgayHetHan;
-		this.IdNhanVien = IdNhanVien;
-		this.TenNhanVien = TenNhanVien;
-		this.IdTrangThai = IdTrangThai;
-		this.TrangThaiTinDang = TrangThaiTinDang;
+public class CanHo {
+	private int id;
+	private String ten;
+	private String diachi;
+	private int dientich;
+	private int giatien;
+	private int sophong;
+	private int sophongngu;
+	private int sophongtam;
+	private String mota;
+	private int tuoi;
+	private String parking;
+	private String cooling;
+	private String heating;
+	private String sewer;
+	private String water;
+	private int phongtap;
+	private int nhakho;
+	private int idnhanvien;
+	private String tennhanvien;
+	private int trangthai;
+	private String ngaydang;
+	private int idtheloai;
+	private String tentheloai;
+	private int kichHoat;
+	private int idkhuvuc;
+	private String tenkhuvuc;
+	
+	public int getIdkhuvuc() {
+		return idkhuvuc;
 	}
-	public int getIdTinDang() {
-		return IdTinDang;
+	public void setIdkhuvuc(int idkhuvuc) {
+		this.idkhuvuc = idkhuvuc;
 	}
-	public void setIdTinDang(int idTinDang) {
-		IdTinDang = idTinDang;
+	public String getTenkhuvuc() {
+		return tenkhuvuc;
 	}
-	public String getTieuDe() {
-		return TieuDe;
+	public void setTenkhuvuc(String tenkhuvuc) {
+		this.tenkhuvuc = tenkhuvuc;
 	}
-	public void setTieuDe(String tieuDe) {
-		TieuDe = tieuDe;
+	public int getKichHoat() {
+		return kichHoat;
 	}
-	public String getDiaChiTD() {
-		return DiaChiTD;
+	public void setKichHoat(int kichHoat) {
+		this.kichHoat = kichHoat;
 	}
-	public void setDiaChiTD(String diaChiTD) {
-		DiaChiTD = diaChiTD;
+	public int getId() {
+		return id;
 	}
-	public int getIdLoaiTD() {
-		return IdLoaiTD;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public void setIdLoaiTD(int idLoaiTD) {
-		IdLoaiTD = idLoaiTD;
+	public String getTen() {
+		return ten;
 	}
-	public String getBanDo() {
-		return BanDo;
+	public void setTen(String ten) {
+		this.ten = ten;
 	}
-	public void setBanDo(String banDo) {
-		BanDo = banDo;
+	public String getDiachi() {
+		return diachi;
 	}
-	public double getGia() {
-		return Gia;
+	public void setDiachi(String diachi) {
+		this.diachi = diachi;
 	}
-	public void setGia(double gia) {
-		Gia = gia;
+	public int getDientich() {
+		return dientich;
 	}
-	public String getMaTienIch() {
-		return MaTienIch;
+	public void setDientich(int dientich) {
+		this.dientich = dientich;
 	}
-	public void setMaTienIch(String maTienIch) {
-		MaTienIch = maTienIch;
+	public int getGiatien() {
+		return giatien;
 	}
-	public int getDienTich() {
-		return DienTich;
+	public void setGiatien(int giatien) {
+		this.giatien = giatien;
 	}
-	public void setDienTich(int dienTich) {
-		DienTich = dienTich;
+	public int getSophong() {
+		return sophong;
 	}
-	public String getHuongNha() {
-		return HuongNha;
+	public void setSophong(int sophong) {
+		this.sophong = sophong;
 	}
-	public void setHuongNha(String huongNha) {
-		HuongNha = huongNha;
+	public String getTennhanvien() {
+		return tennhanvien;
 	}
-	public int getSoPhongNgu() {
-		return SoPhongNgu;
+	public void setTennhanvien(String tennhanvien) {
+		this.tennhanvien = tennhanvien;
 	}
-	public void setSoPhongNgu(int soPhongNgu) {
-		SoPhongNgu = soPhongNgu;
+	public String getTentheloai() {
+		return tentheloai;
 	}
-	public String getHuongBanCong() {
-		return HuongBanCong;
+	public void setTentheloai(String tentheloai) {
+		this.tentheloai = tentheloai;
 	}
-	public void setHuongBanCong(String huongBanCong) {
-		HuongBanCong = huongBanCong;
+	public int getSophongngu() {
+		return sophongngu;
 	}
-	public int getSoToilet() {
-		return SoToilet;
+	public void setSophongngu(int sophongngu) {
+		this.sophongngu = sophongngu;
 	}
-	public void setSoToilet(int soToilet) {
-		SoToilet = soToilet;
+	public int getSophongtam() {
+		return sophongtam;
 	}
-	public String getNoiThat() {
-		return NoiThat;
+	public void setSophongtam(int sophongtam) {
+		this.sophongtam = sophongtam;
 	}
-	public void setNoiThat(String noiThat) {
-		NoiThat = noiThat;
+	public String getMota() {
+		return mota;
 	}
-	public int getMatTien() {
-		return MatTien;
+	public void setMota(String mota) {
+		this.mota = mota;
 	}
-	public void setMatTien(int matTien) {
-		MatTien = matTien;
+	public int getTuoi() {
+		return tuoi;
 	}
-	public int getSoTang() {
-		return SoTang;
+	public void setTuoi(int tuoi) {
+		this.tuoi = tuoi;
 	}
-	public void setSoTang(int soTang) {
-		SoTang = soTang;
+	public String getParking() {
+		return parking;
 	}
-	public Date getNgayDang() {
-		return NgayDang;
+	public void setParking(String parking) {
+		this.parking = parking;
 	}
-	public void setNgayDang(Date ngayDang) {
-		NgayDang = ngayDang;
+	public String getCooling() {
+		return cooling;
 	}
-	public Date getNgayHetHan() {
-		return NgayHetHan;
+	public void setCooling(String cooling) {
+		this.cooling = cooling;
 	}
-	public void setNgayHetHan(Date ngayHetHan) {
-		NgayHetHan = ngayHetHan;
+	public String getHeating() {
+		return heating;
 	}
-	public int getIdNhanVien() {
-		return IdNhanVien;
+	public void setHeating(String heating) {
+		this.heating = heating;
 	}
-	public void setIdNhanVien(int idNhanVien) {
-		IdNhanVien = idNhanVien;
+	public String getSewer() {
+		return sewer;
 	}
-	public int getIdTrangThai() {
-		return IdTrangThai;
+	public void setSewer(String sewer) {
+		this.sewer = sewer;
 	}
-	public void setIdTrangThai(int idTrangThai) {
-		IdTrangThai = idTrangThai;
+	public String getWater() {
+		return water;
 	}
-	public String getTenNhanVien() {
-		return TenNhanVien;
+	public void setWater(String water) {
+		this.water = water;
 	}
-	public void setTenNhanVien(String tenNhanVien) {
-		TenNhanVien = tenNhanVien;
+	public int getPhongtap() {
+		return phongtap;
 	}
-	public String getTrangThaiTinDang() {
-		return TrangThaiTinDang;
+	public void setPhongtap(int phongtap) {
+		this.phongtap = phongtap;
 	}
-	public void setTrangThaiTinDang(String trangThaiTinDang) {
-		TrangThaiTinDang = trangThaiTinDang;
+	public int getNhakho() {
+		return nhakho;
 	}
-	public String getTenLoaiTinDang() {
-		return TenLoaiTinDang;
+	public void setNhakho(int nhakho) {
+		this.nhakho = nhakho;
 	}
-	public void setTenLoaiTinDang(String tenLoaiTinDang) {
-		TenLoaiTinDang = tenLoaiTinDang;
+	public int getIdnhanvien() {
+		return idnhanvien;
+	}
+	public void setIdnhanvien(int idnhanvien) {
+		this.idnhanvien = idnhanvien;
+	}
+	public int getTrangthai() {
+		return trangthai;
+	}
+	public void setTrangthai(int trangthai) {
+		this.trangthai = trangthai;
+	}
+	public String getNgaydang() {
+		return ngaydang;
+	}
+	public void setNgaydang(String ngaydang) {
+		this.ngaydang = ngaydang;
+	}
+	public int getIdtheloai() {
+		return idtheloai;
+	}
+	public void setIdtheloai(int idtheloai) {
+		this.idtheloai = idtheloai;
+	}
+	public CanHo(int id, String ten, String diachi, int dientich, int giatien,
+			int sophong, int sophongngu, int sophongtam, String mota, int tuoi,
+			String parking, String cooling, String heating, String sewer,
+			String water, int phongtap, int nhakho, int idnhanvien,
+			String tennhanvien, int trangthai, String ngaydang, int idtheloai,
+			String tentheloai, int kichHoat, int idkhuvuc, String tenkhuvuc) {
+		super();
+		this.id = id;
+		this.ten = ten;
+		this.diachi = diachi;
+		this.dientich = dientich;
+		this.giatien = giatien;
+		this.sophong = sophong;
+		this.sophongngu = sophongngu;
+		this.sophongtam = sophongtam;
+		this.mota = mota;
+		this.tuoi = tuoi;
+		this.parking = parking;
+		this.cooling = cooling;
+		this.heating = heating;
+		this.sewer = sewer;
+		this.water = water;
+		this.phongtap = phongtap;
+		this.nhakho = nhakho;
+		this.idnhanvien = idnhanvien;
+		this.tennhanvien = tennhanvien;
+		this.trangthai = trangthai;
+		this.ngaydang = ngaydang;
+		this.idtheloai = idtheloai;
+		this.tentheloai = tentheloai;
+		this.kichHoat = kichHoat;
+		this.idkhuvuc = idkhuvuc;
+		this.tenkhuvuc = tenkhuvuc;
+	}
+	public CanHo(int kichHoat) {
+		super();
+		this.kichHoat = kichHoat;
 	}
 }
