@@ -357,7 +357,7 @@
 						<!-- Content -->
 						<div class="post-content">
 							<h3><a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>"><%= obj.getTieuDe() %></a></h3>
-							<p><%= obj.getQuote().substring(0, 150) + "..." %></p>
+							<p><%= obj.getQuote() + "..." %></p>
 
 							<a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
 						</div>
