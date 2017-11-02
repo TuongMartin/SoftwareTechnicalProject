@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.bean.canho;
-import model.dao.modelcanho;
+import model.bean.CanHo;
+import model.dao.ApartmentDAO;
 
 /**
  * Servlet implementation class Controllercanho
@@ -44,7 +44,7 @@ public class Controllercanho extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		int maxitem = 20;
-		modelcanho model = new modelcanho();
+		ApartmentDAO model = new ApartmentDAO();
 		if(request.getParameter("key")!=null||request.getParameter("Timkiem")!=null){
 			String str="";
 			if(request.getParameter("keysearch")!=null){
@@ -64,7 +64,7 @@ public class Controllercanho extends HttpServlet {
 				currentpage = 1;
 			}
 			int startpage = (currentpage - 1)*maxitem;	
-			ArrayList<canho> canhos = model.searchcanho(1,startpage,maxitem,str);	
+			ArrayList<CanHo> canhos = model.searchcanho(1,startpage,maxitem,str);	
 			request.setAttribute("numberpage", numberpage);
 			request.setAttribute("canhos", canhos);
 			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");
@@ -81,7 +81,7 @@ public class Controllercanho extends HttpServlet {
 				currentpage = 1;
 			}
 			int startpage = (currentpage - 1)*maxitem;			
-			ArrayList<canho> canhos = model.getcanhosbyidnv(1,startpage,maxitem);	
+			ArrayList<CanHo> canhos = model.getcanhosbyidnv(1,startpage,maxitem);	
 			System.out.println(canhos.size());
 			request.setAttribute("numberpage", numberpage);
 			request.setAttribute("canhos", canhos);

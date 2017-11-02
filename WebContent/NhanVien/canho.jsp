@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.bean.canho" %>
+<%@page import="model.bean.CanHo" %>
 <%@include file="/templates/admin/inc/header.jsp"%>
 <%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
 <div class="main-panel">
@@ -52,16 +52,16 @@
 								</thead>
 								<tbody>
 									<%
-										ArrayList<canho> canhos = (ArrayList<canho>)request.getAttribute("canhos");
+										ArrayList<CanHo> canhos = (ArrayList<CanHo>)request.getAttribute("canhos");
 										int numberpage= (Integer)request.getAttribute("numberpage");								
 										if(canhos.size()!=0)
-										for(canho currentcanho:canhos){
+										for(CanHo currentcanho:canhos){
 											
 									%>
 										<tr>
 											<td><%=canhos.indexOf(currentcanho)+1 %></td>
-											<td><%=currentcanho.getTieuDe() %></td>
-											<td><%=currentcanho.getTrangThaiTinDang() %></td>
+											<td><%=currentcanho.getTen() %></td>
+											<td><%=(currentcanho.getTrangthai()==1?"Chưa bán":"Đã bán") %></td>
 											<td><a>xem...</a></td>
 										</tr>
 									<% 		

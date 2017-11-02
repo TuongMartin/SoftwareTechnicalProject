@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.Khachhang;
-import model.dao.Modelkhachhang;
+import model.bean.KhachHang;
+import model.dao.CustomersDAO;
 
 
 
@@ -44,7 +44,7 @@ public class Controllerkhachhang extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Modelkhachhang model = new Modelkhachhang();
+		CustomersDAO model = new CustomersDAO();
 		int maxitem = 20;
 		
 		if(request.getParameter("key")!=null||request.getParameter("Timkiem")!=null){
