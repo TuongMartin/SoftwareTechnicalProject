@@ -43,10 +43,10 @@ public class AdminManageSales extends HttpServlet {
 		int row_count = 2;
 		int sum_page = (int) Math.ceil((float)sum_news/row_count);
 		request.setAttribute("sum_page", sum_page);
-		
 		if(request.getParameter("p")!=null){
 			page_curent = Integer.parseInt(request.getParameter("p"));
 		}
+		
 		request.setAttribute("page_current", page_curent);
 		int offset = (page_curent -1)*row_count;
 		request.setAttribute("listSales", salesDAO.getItemPagition(offset,row_count));

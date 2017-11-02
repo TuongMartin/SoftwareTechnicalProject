@@ -154,7 +154,6 @@ public class SalesDAO {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 	
 	public int countItem() {

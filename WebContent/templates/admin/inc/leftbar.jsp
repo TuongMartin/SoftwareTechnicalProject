@@ -19,6 +19,24 @@
 			
             <ul class="nav">
             	<li>
+                    <a href="<%=request.getContextPath()%>/admin/category-real-estate">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Quản lý thể loại BĐS</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin/area-real-estate">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Quản lý khu vực BĐS</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%=request.getContextPath()%>/admin/manageApartments">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Quản lý bất động sản</p>
+                    </a>
+                </li>
+            	<li>
                     <a href="<%=request.getContextPath()%>/admin/cat">
                         <i class="ti-map"></i>
                         <p>Danh mục bạn bè</p>
