@@ -41,7 +41,6 @@
     <servlet-name>AdminShowAddNewSales</servlet-name>
     <url-pattern>/admin/show-addSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminAddNewSale</servlet-name>
     <servlet-class>controller.AdminAddNewSale</servlet-class>
@@ -50,7 +49,6 @@
     <servlet-name>AdminAddNewSale</servlet-name>
     <url-pattern>/admin/addSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminDelSales</servlet-name>
     <servlet-class>controller.AdminDelSales</servlet-class>
@@ -59,7 +57,6 @@
     <servlet-name>AdminDelSales</servlet-name>
     <url-pattern>/admin/delSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminSearchSale</servlet-name>
     <servlet-class>controller.AdminSearchSale</servlet-class>
@@ -67,5 +64,173 @@
   <servlet-mapping>
     <servlet-name>AdminSearchSale</servlet-name>
     <url-pattern>/admin/search</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicRegisterNewCustomer</servlet-name>
+    <servlet-class>controller.PublicRegisterNewCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicRegisterNewCustomer</servlet-name>
+    <url-pattern>/public/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicConfirmNewCustomer</servlet-name>
+    <servlet-class>controller.PublicConfirmNewCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicConfirmNewCustomer</servlet-name>
+    <url-pattern>/public/confirm-account</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminManageCustomers</servlet-name>
+    <servlet-class>controller.AdminManageCustomers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManageCustomers</servlet-name>
+    <url-pattern>/admin/manageCustomers</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminActiveCustomer</servlet-name>
+    <servlet-class>controller.AdminActiveCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminActiveCustomer</servlet-name>
+    <url-pattern>/customer/active</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicEditCustomer</servlet-name>
+    <servlet-class>controller.PublicEditCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicEditCustomer</servlet-name>
+    <url-pattern>/public/my-profile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDelCustomer</servlet-name>
+    <servlet-class>controller.AdminDelCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelCustomer</servlet-name>
+    <url-pattern>/admin/delCustomer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminManageCategoryRealEstate</servlet-name>
+    <servlet-class>controller.AdminManageCategoryRealEstate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManageCategoryRealEstate</servlet-name>
+    <url-pattern>/admin/category-real-estate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminAddNewRealState</servlet-name>
+    <servlet-class>controller.AdminAddNewRealState</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAddNewRealState</servlet-name>
+    <url-pattern>/admin/addRealEstate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminEditRealState</servlet-name>
+    <servlet-class>controller.AdminEditRealState</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEditRealState</servlet-name>
+    <url-pattern>/admin/editRealEstate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDelRealEstate</servlet-name>
+    <servlet-class>controller.AdminDelRealEstate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelRealEstate</servlet-name>
+    <url-pattern>/admin/delRealEstate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminManageAreaRealEstate</servlet-name>
+    <servlet-class>controller.AdminManageAreaRealEstate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManageAreaRealEstate</servlet-name>
+    <url-pattern>/admin/area-real-estate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminAddNewAreaRealState</servlet-name>
+    <servlet-class>controller.AdminAddNewAreaRealState</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAddNewAreaRealState</servlet-name>
+    <url-pattern>/admin/addAreaRealEstate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminEditAreaRealState</servlet-name>
+    <servlet-class>controller.AdminEditAreaRealState</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEditAreaRealState</servlet-name>
+    <url-pattern>/admin/editAreaRealEstate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDelAreaRealEstate</servlet-name>
+    <servlet-class>controller.AdminDelAreaRealEstate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelAreaRealEstate</servlet-name>
+    <url-pattern>/admin/delAreaRealEstate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminManageApartment</servlet-name>
+    <servlet-class>controller.AdminManageApartment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManageApartment</servlet-name>
+    <url-pattern>/admin/manageApartments</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminAddNewApartment</servlet-name>
+    <servlet-class>controller.AdminAddNewApartment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAddNewApartment</servlet-name>
+    <url-pattern>/admin/addApartment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminActiveApartment</servlet-name>
+    <servlet-class>controller.AdminActiveApartment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminActiveApartment</servlet-name>
+    <url-pattern>/apartment/active</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminEditApartment</servlet-name>
+    <servlet-class>controller.AdminEditApartment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEditApartment</servlet-name>
+    <url-pattern>/admin/editApartment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDelApartment</servlet-name>
+    <servlet-class>controller.AdminDelApartment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelApartment</servlet-name>
+    <url-pattern>/admin/delApartment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicLoginCustomer</servlet-name>
+    <servlet-class>controller.PublicLoginCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicLoginCustomer</servlet-name>
+    <url-pattern>/public/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicIndex</servlet-name>
+    <servlet-class>controller.PublicIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicIndex</servlet-name>
+    <url-pattern>/public/home</url-pattern>
   </servlet-mapping>
 </web-app>

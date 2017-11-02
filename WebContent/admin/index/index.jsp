@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
 <%@include file="/templates/admin/inc/leftbar.jsp"%>
-
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
