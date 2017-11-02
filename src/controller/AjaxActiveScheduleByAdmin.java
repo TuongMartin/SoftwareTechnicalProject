@@ -2,25 +2,24 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import library.CheckPassTheWeeks;
-import model.dao.SalesDAO;
+import model.dao.AgendaDAO;
+import model.dao.ItemAgendaDAO;
 
 /**
  * Servlet implementation class AdminManageSales
  */
-public class AdminManageSales extends HttpServlet {
+public class AjaxActiveScheduleByAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminManageSales() {
+    public AjaxActiveScheduleByAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,23 +35,25 @@ public class AdminManageSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CheckPassTheWeeks.check();
-		int page_curent = 1;
-		SalesDAO salesDAO = new SalesDAO();
-		int sum_news = salesDAO.countItem();
-		int row_count = 2;
-		int sum_page = (int) Math.ceil((float)sum_news/row_count);
-		request.setAttribute("sum_page", sum_page);
-		if(request.getParameter("p")!=null){
-			page_curent = Integer.parseInt(request.getParameter("p"));
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		
+		int idItemAgenda = Integer.parseInt(request.getParameter("idItemAgenda"));
+		int idAgenda = Integer.parseInt(request.getParameter("idAgenda"));
+		
+		ItemAgendaDAO itemAgendaDAO = new ItemAgendaDAO();
+		AgendaDAO agendaDAO = new AgendaDAO();
+		
+		itemAgendaDAO.delItemAgenda(idItemAgenda);
+		
+		//check list of ItemAgenda is null
+		//So deleting Agenda
+		if(itemAgendaDAO.getListItemAgenda(idAgenda)!=null) {
+			if(itemAgendaDAO.getListItemAgenda(idAgenda).size() == 0) {
+				agendaDAO.delAgenda(idAgenda);
+			}
 		}
 		
-		request.setAttribute("page_current", page_curent);
-		int offset = (page_curent -1)*row_count;
-		request.setAttribute("listSales", salesDAO.getItemPagition(offset,row_count));
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp");
-		rd.forward(request, response);
 	}
 
 }

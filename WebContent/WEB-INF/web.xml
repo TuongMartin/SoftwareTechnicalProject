@@ -66,6 +66,36 @@
     <url-pattern>/admin/search</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>AdminShowSetCalendarSales</servlet-name>
+    <servlet-class>controller.AdminShowSetCalendarSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowSetCalendarSales</servlet-name>
+    <url-pattern>/admin/showSetCalendar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminSetCalendarSales</servlet-name>
+    <servlet-class>controller.AdminSetCalendarSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSetCalendarSales</servlet-name>
+    <url-pattern>/admin/schedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AjaxActiveScheduleByAdmin</servlet-name>
+    <servlet-class>controller.AjaxActiveScheduleByAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxActiveScheduleByAdmin</servlet-name>
+    <url-pattern>/admin/activeSchedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDelItemAgenda</servlet-name>
+    <servlet-class>controller.AdminDelItemAgenda</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelItemAgenda</servlet-name>
+    <url-pattern>/admin/deleteItemAgenda</url-pattern>
     <servlet-name>PublicRegisterNewCustomer</servlet-name>
     <servlet-class>controller.PublicRegisterNewCustomer</servlet-class>
   </servlet>

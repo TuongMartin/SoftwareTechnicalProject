@@ -7,20 +7,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import library.CheckPassTheWeeks;
+import model.dao.AgendaDAO;
 import model.dao.SalesDAO;
 
 /**
- * Servlet implementation class AdminManageSales
+ * Servlet implementation class AdminSetCalendarSales
  */
-public class AdminManageSales extends HttpServlet {
+public class AdminShowSetCalendarSales extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminManageSales() {
+    public AdminShowSetCalendarSales() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,22 +37,16 @@ public class AdminManageSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CheckPassTheWeeks.check();
-		int page_curent = 1;
+		int idSale = Integer.parseInt(request.getParameter("idSale"));
 		SalesDAO salesDAO = new SalesDAO();
-		int sum_news = salesDAO.countItem();
-		int row_count = 2;
-		int sum_page = (int) Math.ceil((float)sum_news/row_count);
-		request.setAttribute("sum_page", sum_page);
-		if(request.getParameter("p")!=null){
-			page_curent = Integer.parseInt(request.getParameter("p"));
-		}
+		HttpSession session = request.getSession();
+		session.setAttribute("objSales", salesDAO.getItemSale(idSale));
 		
-		request.setAttribute("page_current", page_curent);
-		int offset = (page_curent -1)*row_count;
-		request.setAttribute("listSales", salesDAO.getItemPagition(offset,row_count));
+		AgendaDAO agendaDAO = new AgendaDAO();
+		session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
 		rd.forward(request, response);
 	}
 
