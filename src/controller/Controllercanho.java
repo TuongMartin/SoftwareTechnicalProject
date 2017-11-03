@@ -82,7 +82,6 @@ public class Controllercanho extends HttpServlet {
 			}
 			int startpage = (currentpage - 1)*maxitem;			
 			ArrayList<CanHo> canhos = model.getcanhosbyidnv(1,startpage,maxitem);	
-			System.out.println(canhos.size());
 			request.setAttribute("numberpage", numberpage);
 			request.setAttribute("canhos", canhos);
 			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");

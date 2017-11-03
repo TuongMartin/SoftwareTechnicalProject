@@ -33,6 +33,8 @@ public class ApartmentDAO {
 			if(rs.next()){
 				number = rs.getInt("number");
 			}
+			ps.close();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,9 +53,11 @@ public class ApartmentDAO {
 			ps.setInt(3, maxitem);
 			rs=ps.executeQuery();
 			while(rs.next()){
-				CanHo objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getString("tenCanHo"), rs.getString("diaChi"), rs.getInt("dienTich"), rs.getInt("giaTien"), rs.getInt("totalRooms"), rs.getInt("bedRooms"), rs.getInt("bathRooms"), rs.getString("moTa"), rs.getInt("buildingAge"), rs.getString("parking"), rs.getString("cooling"), rs.getString("heating"), rs.getString("sewer"), rs.getString("water"), rs.getInt("exerciseRoom"), rs.getInt("storageRoom"), rs.getInt("n.idNhanVien"), rs.getString("tenNV"), rs.getInt("trangThai"), rs.getString("ngayDang"), rs.getInt("l.idTheLoai"), rs.getString("tenTL"), rs.getInt("kichHoat"), rs.getInt("k.idKhuVuc"), rs.getString("tenKV"));
+				CanHo objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getString("tenCanHo"), rs.getString("diaChi"), rs.getInt("dienTich"), rs.getInt("giaTien"), rs.getInt("totalRooms"), rs.getInt("bedRooms"), rs.getInt("bathRooms"), rs.getString("moTa"), rs.getInt("buildingAge"), rs.getString("parking"), rs.getString("cooling"), rs.getString("heating"), rs.getString("sewer"), rs.getString("water"), rs.getInt("exerciseRoom"), rs.getInt("storageRoom"), rs.getInt("idNhanVien"), rs.getString("TenNhanVien"), rs.getInt("trangThai"), rs.getString("ngayDang"), rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getInt("kichHoat"), rs.getInt("idKhuVuc"), "");
 				canhos.add(objCanHo);
 			}
+			ps.close();
+			conn.close();
 			return canhos;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -73,9 +77,11 @@ public class ApartmentDAO {
 			ps.setInt(3, maxitem);
 			rs=ps.executeQuery();
 			while(rs.next()){
-				CanHo objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getString("tenCanHo"), rs.getString("diaChi"), rs.getInt("dienTich"), rs.getInt("giaTien"), rs.getInt("totalRooms"), rs.getInt("bedRooms"), rs.getInt("bathRooms"), rs.getString("moTa"), rs.getInt("buildingAge"), rs.getString("parking"), rs.getString("cooling"), rs.getString("heating"), rs.getString("sewer"), rs.getString("water"), rs.getInt("exerciseRoom"), rs.getInt("storageRoom"), rs.getInt("n.idNhanVien"), rs.getString("tenNV"), rs.getInt("trangThai"), rs.getString("ngayDang"), rs.getInt("l.idTheLoai"), rs.getString("tenTL"), rs.getInt("kichHoat"), rs.getInt("k.idKhuVuc"), rs.getString("tenKV"));
+				CanHo objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getString("tenCanHo"), rs.getString("diaChi"), rs.getInt("dienTich"), rs.getInt("giaTien"), rs.getInt("totalRooms"), rs.getInt("bedRooms"), rs.getInt("bathRooms"), rs.getString("moTa"), rs.getInt("buildingAge"), rs.getString("parking"), rs.getString("cooling"), rs.getString("heating"), rs.getString("sewer"), rs.getString("water"), rs.getInt("exerciseRoom"), rs.getInt("storageRoom"), rs.getInt("idNhanVien"), rs.getString("TenNhanVien"), rs.getInt("trangThai"), rs.getString("ngayDang"), rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getInt("kichHoat"), rs.getInt("idKhuVuc"), "");				
 				canhos.add(objCanHo);
 			}
+			ps.close();
+			conn.close();
 			return canhos;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -95,6 +101,8 @@ public class ApartmentDAO {
 			if(rs.next()){
 				number = rs.getInt("number");
 			}
+			ps.close();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

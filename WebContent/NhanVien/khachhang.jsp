@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.bean.Khachhang" %>
+<%@page import="model.bean.KhachHang" %>
 <%@include file="/templates/admin/inc/header.jsp"%>
 <%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
 <div class="main-panel">
@@ -33,6 +33,7 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="header">
+						<br>
 							<h4 class="title">Danh sách khách hàng</h4>
 							<form action="" method="post">
 								<input type="submit" name="Timkiem" value="Tìm kiếm" class="btn btn-primary"></input>
@@ -51,18 +52,18 @@
 								</thead>
 								<tbody>
 									<%
-										ArrayList<Khachhang> khachhangs = (ArrayList<Khachhang>)request.getAttribute("khachhangs");									
+										ArrayList<KhachHang> khachhangs = (ArrayList<KhachHang>)request.getAttribute("khachhangs");									
 										int numberpage = (Integer)request.getAttribute("numberpage");	
 										if(khachhangs.size()!=0)
-										for(Khachhang curentkhachhang:khachhangs){
+										for(KhachHang curentkhachhang:khachhangs){
 									%>
 										<tr>
 											<td><%=khachhangs.indexOf(curentkhachhang)+1 %></td>
-											<td><%=curentkhachhang.getTenKH() %></td>
-											<td><%=curentkhachhang.getDiaChiKH() %></td>
-											<td><%=curentkhachhang.getSDTKH() %></td>
-											<td><%=curentkhachhang.getEmailKH() %></td>
-											<td><a>xem...</a></td>
+											<td><%=curentkhachhang.getTenKhachHang() %></td>
+											<td><%=curentkhachhang.getDiaChi() %></td>
+											<td><%=curentkhachhang.getSoDienThoai() %></td>
+											<td><%=curentkhachhang.getEmail() %></td>
+											<td><a href="<%=curentkhachhang.getIdTinDang()%>">xem...</a></td>
 										</tr>
 									<% 		
 										}

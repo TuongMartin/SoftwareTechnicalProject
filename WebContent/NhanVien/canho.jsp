@@ -34,8 +34,9 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Danh sách căn hộ</h4>
 							
+							<h4 class="title">Danh sách căn hộ</h4>
+							<br>
 							<form action="" method="post">
 								<input type="submit" name="Timkiem" value="Tìm kiếm" class="btn btn-primary"></input>
 								<input type="text" name="keysearch">
@@ -46,7 +47,8 @@
 							<table class="table table-striped">
 								<thead>
 									<th>STT</th>
-									<th>Tiêu đề</th>
+									<th>Tên căn hộ</th>
+									<th>Phân loại</th>
 									<th>Trạng thái</th>
 									<th>Chi tiết</th>
 								</thead>
@@ -61,6 +63,7 @@
 										<tr>
 											<td><%=canhos.indexOf(currentcanho)+1 %></td>
 											<td><%=currentcanho.getTen() %></td>
+											<td><%=currentcanho.getTentheloai() %></td>
 											<td><%=(currentcanho.getTrangthai()==1?"Chưa bán":"Đã bán") %></td>
 											<td><a>xem...</a></td>
 										</tr>

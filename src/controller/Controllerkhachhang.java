@@ -66,7 +66,7 @@ public class Controllerkhachhang extends HttpServlet {
 				currentpage = 1;
 			}
 			int startpage = (currentpage - 1)*maxitem;	
-			ArrayList<Khachhang> khachhangs = model.searchkhachhang(1,startpage,maxitem,str);	
+			ArrayList<KhachHang> khachhangs = model.searchkhachhang(1,startpage,maxitem,str);	
 			request.setAttribute("numberpage", numberpage);
 			request.setAttribute("khachhangs", khachhangs);
 			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp");
@@ -82,7 +82,7 @@ public class Controllerkhachhang extends HttpServlet {
 				currentpage = 1;
 			}
 			int startpage = (currentpage - 1)*maxitem;			
-			ArrayList<Khachhang> khachhangs = model.getkhachhangs(1,startpage,maxitem);		
+			ArrayList<KhachHang> khachhangs = model.getkhachhangs(1,startpage,maxitem);		
 			request.setAttribute("numberpage", numberpage);
 			request.setAttribute("khachhangs", khachhangs);
 			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp");
