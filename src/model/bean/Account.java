@@ -4,8 +4,8 @@ public class Account {
 	private int id;
 	private String username;
 	private String password;
-	private int idroler;
-	private String quyenhan;
+	private int idrole;
+	private String role;
 	private int IdNhanVien;
 	private String TenNhanVien;
 	
@@ -30,11 +30,11 @@ public class Account {
 		this.password = password;
 	}
 	
-	public int getIdroler() {
-		return idroler;
+	public int getIdrole() {
+		return idrole;
 	}
-	public void setIdroler(int idroler) {
-		this.idroler = idroler;
+	public void setIdrole(int idrole) {
+		this.idrole = idrole;
 	}
 	
 	public int getIdNhanVien() {
@@ -51,19 +51,19 @@ public class Account {
 		TenNhanVien = tenNhanVien;
 	}
 	
-	public Account(int id,String username,String password,int idroler,String quyenhan,int IdNhanVien,String TenNhanVien){
+	public Account(int id,String username,String password,int idrole,String role,int IdNhanVien,String TenNhanVien){
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.idroler = idroler;
-		this.quyenhan = quyenhan;
+		this.idrole = idrole;
+		this.role = role;
 		this.IdNhanVien = IdNhanVien;
 		this.TenNhanVien = TenNhanVien;
 	}
-	public String getQuyenhan() {
-		return quyenhan;
+	public String getrole() {
+		return role;
 	}
-	public void setQuyenhan(String quyenhan) {
-		this.quyenhan = quyenhan;
+	public void setrole(String role) {
+		this.role = role;
 	}
 }
