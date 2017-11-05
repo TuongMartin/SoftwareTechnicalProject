@@ -1,21 +1,33 @@
 package controller;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+=======
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+>>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import library.BCrypt;
+<<<<<<< HEAD
 import model.bean.Account;
 import model.bean.KhachHang;
 import model.dao.AccountDAO;
 import model.dao.CustomersDAO;
 import model.dao.SalesDAO;
+=======
+import model.bean.KhachHang;
+import model.dao.CustomersDAO;
+>>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 
 
 /**
@@ -47,12 +59,16 @@ public class PublicLoginCustomer extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CustomersDAO customerDAO = new CustomersDAO();
+<<<<<<< HEAD
 		AccountDAO accountDAO = new AccountDAO();
+=======
+>>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 		HttpSession session = request.getSession();
 		
 		if(request.getParameter("submit") != null ){
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
+<<<<<<< HEAD
 			boolean check = false;
 			Account obj = null;
 			
@@ -87,6 +103,21 @@ public class PublicLoginCustomer extends HttpServlet {
 				else{
 					response.sendRedirect(request.getContextPath() + "/public/login?msg=6");
 				}
+=======
+			KhachHang objKH = customerDAO.login(email);
+			if(objKH != null && BCrypt.checkpw(password, objKH.getMatKhau()) && objKH.getStatus() == 1){
+				//đăng nhập đúng
+				//TẠO SESSION
+				session.setAttribute("sObjKH", objKH);
+				//chuyển hướng
+				response.sendRedirect(request.getContextPath() + "/public/home");
+			}
+			else if(objKH != null && objKH.getStatus() == 0){
+				response.sendRedirect(request.getContextPath() + "/public/login?msg=5");
+			}
+			else{
+				response.sendRedirect(request.getContextPath() + "/public/login?msg=6");
+>>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 			}
 		}
 		else{

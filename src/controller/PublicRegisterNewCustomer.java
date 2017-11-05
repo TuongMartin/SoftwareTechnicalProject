@@ -6,6 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+<<<<<<< HEAD
+=======
+import java.security.SecureRandom;
+>>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,13 +19,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+<<<<<<< HEAD
+=======
+import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
+
+>>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 import library.BCrypt;
 import library.FileNameLibrary;
 import library.RandomStringGenerator;
 import library.RenameFileLibrary;
 import library.SendMail;
 import model.bean.KhachHang;
+<<<<<<< HEAD
 import model.dao.CustomersDAO;
+=======
+import model.bean.NhanVien;
+import model.dao.CustomersDAO;
+import model.dao.SalesDAO;
+>>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 
 /**
  * Servlet implementation class AdminAddNewSale
