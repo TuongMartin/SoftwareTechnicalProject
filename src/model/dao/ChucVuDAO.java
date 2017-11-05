@@ -57,7 +57,7 @@ public class ChucVuDAO {
 			ps.setInt(1, idNhanVien);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"), rs.getString("SDT"), rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
+				objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

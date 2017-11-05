@@ -143,7 +143,7 @@
 									%>
 									<tr>
 										<td><%=objSales.getIdNhanVien() %></td>
-										<td><a href="edit.html"><%=objSales.getTenNhanVien()%></a></td>
+										<td><a href="<%=request.getContextPath()%>/admin/show-editSales?idSales=<%=objSales.getIdNhanVien() %>"><%=objSales.getTenNhanVien()%></a></td>
 										<td><img
 											src="<%=request.getContextPath()%>/files/<%=objSales.getAvatar()%>" alt=""
 											width="100px" height="100px" /></td>

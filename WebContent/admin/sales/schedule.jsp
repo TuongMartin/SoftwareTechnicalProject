@@ -120,18 +120,18 @@
 												<TH align="center" valign="middle" class="bg-success text-white">Friday</TH>
 												<TH align="center" valign="middle" class="bg-info text-white">Saturday</TH>
 											</TR>
-											<c:forEach begin="8" end="22" step="1" var="time">
+											<c:forEach begin="8" end="21" step="1" var="time">
 												<TR>
 													<TD align="center" valign="middle" width="80">
 													   <c:choose>
 															<c:when test="${time == 12}">
-																<c:out value="${time}" />:00pm
+																<c:out value="${time}" />:00pm - <c:out value="${time + 1}" />:00pm
 															</c:when>
 															<c:when test="${time > 12}">
-																<c:out value="${time - 12}" />:00pm
+																<c:out value="${time - 12}" />:00pm - <c:out value="${time + 1 - 12}" />:00pm
 															</c:when>
 															<c:otherwise>
-																<c:out value="${time}" />:00am
+																<c:out value="${time}" />:00am - <c:out value="${time + 1}" />:00am
 															</c:otherwise>
 														</c:choose>
 													</TD>

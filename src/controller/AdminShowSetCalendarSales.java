@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import library.CheckLoginLibrary;
 import model.dao.AgendaDAO;
 import model.dao.SalesDAO;
 
@@ -37,6 +38,9 @@ public class AdminShowSetCalendarSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		int idSale = Integer.parseInt(request.getParameter("idSale"));
 		SalesDAO salesDAO = new SalesDAO();
 		HttpSession session = request.getSession();
