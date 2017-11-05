@@ -83,7 +83,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="images/logo.png" alt=""></a>
+					<a href="index-2.html"><img src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt=""></a>
 				</div>
 
 
@@ -110,9 +110,9 @@
 							<ul>
 								<li><a href="#">List Layout</a>
 									<ul>
-										<li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
-										<li><a href="listings-list-with-map.html">With Map</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
+										<li><a href="listings-list-with-sidebar.jsp">With Sidebar</a></li>
+										<li><a href="listings-list-with-map.jsp">With Map</a></li>
+										<li><a href="listings-list-full-width.jsp">Full Width</a></li>
 									</ul>
 								</li>
 								<li><a href="#">Grid Layout</a>
@@ -257,7 +257,7 @@
 				<!-- Agent Widget -->
 				<div class="agent-widget">
 					<div class="agent-title">
-						<div class="agent-photo"><img src="images/agent-avatar.jpg" alt="" /></div>
+						<div class="agent-photo"><img src="<%=request.getContextPath()%>/templates/public/images/agent-avatar.jpg" alt="" /></div>
 						<div class="agent-details">
 							<h4><a href="#">Jennie Wilson</a></h4>
 							<span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
@@ -265,21 +265,22 @@
 						<div class="clearfix"></div>
 					</div>
 
-					<input type="text" placeholder="Your Email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">
+					<!--<input type="text" placeholder="Your Email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">
 					<input type="text" placeholder="Your Phone">
 					<textarea>I'm interested in this property [ID 123456] and I'd like to know more details.</textarea>
+					-->
 					<button class="button fullwidth margin-top-5">Send Message</button>
 				</div>
 				<!-- Agent Widget / End -->
 
 				<!-- Slider -->
 				<div class="property-slider no-arrows">
-					<a href="images/single-property-01.jpg" data-background-image="images/single-property-01.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-02.jpg" data-background-image="images/single-property-02.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-03.jpg" data-background-image="images/single-property-03.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-04.jpg" data-background-image="images/single-property-04.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-05.jpg" data-background-image="images/single-property-05.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-06.jpg" data-background-image="images/single-property-06.jpg" class="item mfp-gallery"></a>
+					<a href="images/single-property-01.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" class="item mfp-gallery"></a>
+					<a href="images/single-property-02.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" class="item mfp-gallery"></a>
+					<a href="images/single-property-03.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" class="item mfp-gallery"></a>
+					<a href="images/single-property-04.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" class="item mfp-gallery"></a>
+					<a href="images/single-property-05.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" class="item mfp-gallery"></a>
+					<a href="images/single-property-06.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" class="item mfp-gallery"></a>
 				</div>
 				<!-- Slider / End -->
 
@@ -288,12 +289,12 @@
 
 			<!-- Slider Thumbs -->
 			<div class="property-slider-nav">
-				<div class="item"><img src="images/single-property-01.jpg" alt=""></div>
-				<div class="item"><img src="images/single-property-02.jpg" alt=""></div>
-				<div class="item"><img src="images/single-property-03.jpg" alt=""></div>
-				<div class="item"><img src="images/single-property-04.jpg" alt=""></div>
-				<div class="item"><img src="images/single-property-05.jpg" alt=""></div>
-				<div class="item"><img src="images/single-property-06.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" alt=""></div>
 			</div>
 
 		</div>
@@ -393,7 +394,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<img src="images/listing-03.jpg" alt="">
+							<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
 
 						</a>
 						
@@ -442,7 +443,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<div><img src="images/listing-04.jpg" alt=""></div>
+							<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04.jpg" alt=""></div>
 
 						</a>
 						
@@ -490,7 +491,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<img src="images/listing-05.jpg" alt="">
+							<img src="<%=request.getContextPath()%>/templates/public/images/listing-05.jpg" alt="">
 						</a>
 						
 						<div class="listing-content">
@@ -570,7 +571,7 @@
 										</ul>
 									</div>
 
-									<img src="images/listing-01.jpg" alt="">
+									<img src="<%=request.getContextPath()%>/templates/public/images/listing-01.jpg" alt="">
 								</a>
 
 							</div>
@@ -599,7 +600,7 @@
 										</ul>
 									</div>
 
-									<img src="images/listing-02.jpg" alt="">
+									<img src="<%=request.getContextPath()%>/templates/public/images/listing-02.jpg" alt="">
 								</a>
 
 							</div>
@@ -628,7 +629,7 @@
 										</ul>
 									</div>
 
-									<img src="images/listing-03.jpg" alt="">
+									<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
 								</a>
 
 							</div>
@@ -873,7 +874,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="images/logo.png" alt="">
+				<img class="footer-logo" src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt="">
 				<br><br>
 				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
 			</div>
@@ -937,28 +938,28 @@
 
 <!-- Scripts
 ================================================== -->
-<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/jquery.jpanelmenu.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/masonry.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/chosen.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/slick.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery.jpanelmenu.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/masonry.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/custom.js"></script>
 
 <!-- Maps -->
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script type="text/javascript" src="scripts/infobox.min.js"></script>
-<script type="text/javascript" src="scripts/markerclusterer.js"></script>
-<script type="text/javascript" src="scripts/maps.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/infobox.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/markerclusterer.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/maps.js"></script>
 
 
 <!-- Style Switcher
 ================================================== -->
-<script src="scripts/switcher.js"></script>
+<script src="<%=request.getContextPath()%>/templates/public/scripts/switcher.js"></script>
 
 <div id="style-switcher">
 	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>
