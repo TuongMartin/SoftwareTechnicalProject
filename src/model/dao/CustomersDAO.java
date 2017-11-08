@@ -115,4 +115,23 @@ public class CustomersDAO {
 		}
 		return khachhangs;
 	}
+	
+	public boolean danhgiakhachhang(int id,int idloaikh) {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "update khachhang set IdLoaiKH=? where idKhachHang=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idloaikh);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+			ps.close();
+			conn.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }

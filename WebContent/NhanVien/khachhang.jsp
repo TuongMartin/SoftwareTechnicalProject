@@ -1,3 +1,4 @@
+<%@page import="model.bean.LoaiKhachHang"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
@@ -35,6 +36,22 @@
 						<div class="header">
 						<br>
 							<h4 class="title">Danh sách khách hàng</h4>
+							<br/>
+							<%
+							if(request.getParameter("msg")!=null) {
+								int msg = Integer.parseInt(request.getParameter("msg"));
+								switch (msg) {
+									case 1 : 
+										out.print("<span style = 'color:red;font-weight:bold'>Đánh giá thành công</span>");
+										break;
+									case 2 : 
+										out.print("<span style = 'color:red;font-weight:bold'>Đánh giá không thành công</span>");
+										break;									
+								}
+							}
+							
+							%>
+							<br/>
 							<form action="" method="post">
 								<input type="submit" name="Timkiem" value="Tìm kiếm" class="btn btn-primary"></input>
 								<input type="text" name="keysearch">
@@ -48,10 +65,12 @@
 									<th>Địa chỉ</th>
 									<th>SDT</th>
 									<th>Email</th>
+									<th>Đánh giá</th>
 									<th>Căn hộ mua</th>
 								</thead>
 								<tbody>
 									<%
+										ArrayList<LoaiKhachHang> loaikhachhangs = (ArrayList<LoaiKhachHang>)request.getAttribute("loaikhachhangs");
 										ArrayList<KhachHang> khachhangs = (ArrayList<KhachHang>)request.getAttribute("khachhangs");									
 										int numberpage = (Integer)request.getAttribute("numberpage");	
 										if(khachhangs.size()!=0)
@@ -63,6 +82,27 @@
 											<td><%=curentkhachhang.getDiaChi() %></td>
 											<td><%=curentkhachhang.getSoDienThoai() %></td>
 											<td><%=curentkhachhang.getEmail() %></td>
+											<td>
+												<form action="<%=request.getContextPath()%>/thanhvien/Evaluatekhachhang?id=<%=curentkhachhang.getId()%>" method="post">
+													<select name="danhgia">
+														<%
+															String selected="";
+															
+															for(int i=0;i<loaikhachhangs.size();i++){
+																if(curentkhachhang.getIdLoaiKH()==loaikhachhangs.get(i).getIdLoaiKH()){
+																	selected = "selected";
+																}else{
+																	selected="";
+																}
+														%>
+															<option <%=selected %> value="<%=loaikhachhangs.get(i).getIdLoaiKH()%>"><%=loaikhachhangs.get(i).getTenLoaiKH() %></option>
+														<% 														
+															}
+														%>
+													</select>
+													<input type="submit" name="submit" value="update">
+												</form>
+											</td>
 											<td><a href="<%=curentkhachhang.getIdTinDang()%>">xem...</a></td>
 										</tr>
 									<% 		

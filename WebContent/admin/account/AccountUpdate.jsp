@@ -99,10 +99,16 @@
 											<label>Quyền hạn</label> 
 											<select name="idroler"" class="form-control border-input">
 												<%
+													String selected="";
 													if(roles.size()!=0)
-													for(int i=0;i<roles.size();i++){														
+													for(int i=0;i<roles.size();i++){	
+														if(ojAccount.getIdrole()==roles.get(i).getIdrole()){
+															selected="selected";
+														}else{
+															selected="";
+														}
 												%>
-													<option value="<%=roles.get(i).getIdrole()%>"><%=roles.get(i).getRole() %></option>
+													<option <%=selected %> value="<%=roles.get(i).getIdrole()%>"><%=roles.get(i).getRole() %></option>
 												<%
 													}
 												%>	
