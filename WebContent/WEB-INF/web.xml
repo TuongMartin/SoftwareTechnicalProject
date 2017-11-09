@@ -41,7 +41,6 @@
     <servlet-name>AdminShowAddNewSales</servlet-name>
     <url-pattern>/admin/show-addSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminAddNewSale</servlet-name>
     <servlet-class>controller.AdminAddNewSale</servlet-class>
@@ -50,7 +49,6 @@
     <servlet-name>AdminAddNewSale</servlet-name>
     <url-pattern>/admin/addSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminDelSales</servlet-name>
     <servlet-class>controller.AdminDelSales</servlet-class>
@@ -59,7 +57,6 @@
     <servlet-name>AdminDelSales</servlet-name>
     <url-pattern>/admin/delSales</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminSearchSale</servlet-name>
     <servlet-class>controller.AdminSearchSale</servlet-class>
@@ -68,7 +65,6 @@
     <servlet-name>AdminSearchSale</servlet-name>
     <url-pattern>/admin/search</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>NhanVienAddNhatKyTuVan</servlet-name>
     <servlet-class>controller.NhanVienAddNhatKyTuVan</servlet-class>
@@ -77,7 +73,6 @@
     <servlet-name>NhanVienAddNhatKyTuVan</servlet-name>
     <url-pattern>/NhanVien/AddNhatKyTuVan</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>NhanVienShowNhatKyTuVan</servlet-name>
     <servlet-class>controller.NhanVienShowNhatKyTuVan</servlet-class>
@@ -86,7 +81,6 @@
     <servlet-name>NhanVienShowNhatKyTuVan</servlet-name>
     <url-pattern>/NhanVien/NhatKyTuVan</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ShowTinTuc</servlet-name>
     <servlet-class>controller.ShowTinTuc</servlet-class>
@@ -95,7 +89,6 @@
     <servlet-name>ShowTinTuc</servlet-name>
     <url-pattern>/blog</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ChiTietTinTucController</servlet-name>
     <servlet-class>controller.ChiTietTinTucController</servlet-class>
@@ -104,7 +97,6 @@
     <servlet-name>ChiTietTinTucController</servlet-name>
     <url-pattern>/blog-post</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminManageArticle</servlet-name>
     <servlet-class>controller.AdminManageArticle</servlet-class>
@@ -113,7 +105,6 @@
     <servlet-name>AdminManageArticle</servlet-name>
     <url-pattern>/admin/Article/articles</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminAddTinTuc</servlet-name>
     <servlet-class>controller.AdminAddTinTuc</servlet-class>
@@ -122,7 +113,6 @@
     <servlet-name>AdminAddTinTuc</servlet-name>
     <url-pattern>/admin/addTinTuc</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminShowEditTinTuc</servlet-name>
     <servlet-class>controller.AdminShowEditTinTuc</servlet-class>
@@ -131,35 +121,36 @@
     <servlet-name>AdminShowEditTinTuc</servlet-name>
     <url-pattern>/admin/Article/edit</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminEditTinTuc</servlet-name>
     <servlet-class>controller.AdminEditTinTuc</servlet-class>
   </servlet>
-  
   <servlet>
     <servlet-name>AdminDelTinTuc</servlet-name>
     <servlet-class>controller.AdminDelTinTuc</servlet-class>
   </servlet>
-  
   <servlet>
     <servlet-name>SearchTinTuc</servlet-name>
     <servlet-class>controller.SearchTinTuc</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Controllercanho</servlet-name>
-    <servlet-class>controller.Controllercanho</servlet-class>
+    <servlet-name>ShowApartmentDetail</servlet-name>
+    <servlet-class>controller.ShowApartmentDetail</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Controllercanho</servlet-name>
-    <url-pattern>/thanhvien/canhos</url-pattern>
+    <servlet-name>ShowApartmentDetail</servlet-name>
+    <url-pattern>/chitietcanho</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>Controllerkhachhang</servlet-name>
-    <servlet-class>controller.Controllerkhachhang</servlet-class>
+    <servlet-name>SearchBDS</servlet-name>
+    <servlet-class>controller.SearchBDS</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>Controllerkhachhang</servlet-name>
-    <url-pattern>/thanhvien/khachhang</url-pattern>
-  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminSearchTinTuc</servlet-name>
+    <servlet-class>controller.AdminSearchTinTuc</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NhanVienSearchNhatKyTuVan</servlet-name>
+    <servlet-class>controller.NhanVienSearchNhatKyTuVan</servlet-class>
+  </servlet>
 </web-app>

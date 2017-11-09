@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/single-property-page-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.bean.CanHo"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
 
 <!-- Basic Page Needs
@@ -213,7 +216,11 @@
 <div class="clearfix"></div>
 <!-- Header Container / End -->
 
-
+<%
+CanHo objCanHo = (CanHo)request.getAttribute("objCanHo");
+if(objCanHo != null)
+{
+%>
 
 <!-- Titlebar
 ================================================== -->
@@ -224,17 +231,17 @@
 				
 				<a href="listings-list-with-sidebar.html" class="back-to-listings"></a>
 				<div class="property-title">
-					<h2>Selway Apartments <span class="property-badge">For Sale</span></h2>
+					<h2><%= objCanHo.getTen() + " " + objCanHo.getTentheloai() %><span class="property-badge">For Sale</span></h2>
 					<span>
 						<a href="#location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
-							7843 Durham Avenue, MD
+							<%= objCanHo.getDiachi() %>
 						</a>
 					</span>
 				</div>
 
 				<div class="property-pricing">
-					<div>$420,000</div>
+					<div><%= objCanHo.getGiatien() + " $" %></div>
 					<div class="sub-price">$770 / sq ft</div>
 				</div>
 
@@ -259,7 +266,7 @@
 					<div class="agent-title">
 						<div class="agent-photo"><img src="<%=request.getContextPath()%>/templates/public/images/agent-avatar.jpg" alt="" /></div>
 						<div class="agent-details">
-							<h4><a href="#">Jennie Wilson</a></h4>
+							<h4><a href="#"><%= objCanHo.getTennhanvien() %></a></h4>
 							<span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
 						</div>
 						<div class="clearfix"></div>
@@ -269,7 +276,7 @@
 					<input type="text" placeholder="Your Phone">
 					<textarea>I'm interested in this property [ID 123456] and I'd like to know more details.</textarea>
 					-->
-					<button class="button fullwidth margin-top-5">Send Message</button>
+					<button class="button fullwidth margin-top-5">Đăng Ký Mua</button>
 				</div>
 				<!-- Agent Widget / End -->
 
@@ -311,42 +318,31 @@
 
 				<!-- Main Features -->
 				<ul class="property-main-features">
-					<li>Area <span>1450 sq ft</span></li>
-					<li>Rooms <span>4</span></li>
-					<li>Bedrooms <span>2</span></li>
-					<li>Bathrooms <span>1</span></li>
+					<li>Area <span><%= objCanHo.getTenkhuvuc() %></span></li>
+					<li>Rooms <span><%= objCanHo.getSophong() %></span></li>
+					<li>Bedrooms <span><%= objCanHo.getSophongngu() %></span></li>
+					<li>Bathrooms <span><%= objCanHo.getSophongtam() %></span></li>
 				</ul>
 
 
 				<!-- Description -->
 				<h3 class="desc-headline">Description</h3>
 				<div class="show-more">
-					<p>
-						Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus. Sed fermentum, lorem vitae efficitur imperdiet, neque velit tristique turpis, et iaculis mi tortor finibus turpis. 
-					</p>
-
-					<p>
-						 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.
-					</p>
-
-					<p>
-						Nam mattis lobortis felis eu blandit. Morbi tellus ligula, interdum sit amet ipsum et, viverra hendrerit lectus. Nunc efficitur sem vel est laoreet, sed bibendum eros viverra. Vestibulum finibus, ligula sed euismod tincidunt, lacus libero lobortis ligula, sit amet molestie ipsum purus ut tortor. Nunc varius, dui et sollicitudin facilisis, erat felis imperdiet felis, et iaculis dui magna vitae diam. Donec mattis diam nisl, quis ullamcorper enim malesuada non. Curabitur lobortis eu mauris nec vestibulum. Nam efficitur, ex ac semper malesuada, nisi odio consequat dui, hendrerit vulputate odio dui vitae massa. Aliquam tortor urna, tincidunt ut euismod quis, semper vel ipsum. Ut non vestibulum mauris. Morbi euismod, felis non hendrerit viverra, nunc sapien bibendum ligula, eget vehicula nunc dolor eu ex. Quisque in semper odio. Donec auctor blandit ligula. Integer id lectus non nibh vulputate efficitur quis at arcu.
-					</p>
-
+					<%= objCanHo.getMota() %>
 					<a href="#" class="show-more-button">Show More <i class="fa fa-angle-down"></i></a>
 				</div>
 
 				<!-- Details -->
 				<h3 class="desc-headline">Details</h3>
 				<ul class="property-features margin-top-0">
-					<li>Building Age: <span>2 Years</span></li>
-					<li>Parking: <span>Attached Garage</span></li>
-					<li>Cooling: <span>Central Cooling</span></li>
-					<li>Heating: <span>Forced Air, Gas</span></li>
-					<li>Sewer: <span>Public/City</span></li>
-					<li>Water: <span>City</span></li>
-					<li>Exercise Room: <span>Yes</span></li>
-					<li>Storage Room: <span>Yes</span></li>
+					<li>Building Age: <span><%= objCanHo.getTuoi() %></span></li>
+					<li>Parking: <span><%= objCanHo.getParking() %></span></li>
+					<li>Cooling: <span><%= objCanHo.getCooling() %></span></li>
+					<li>Heating: <span><%= objCanHo.getHeating() %></span></li>
+					<li>Sewer: <span><%= objCanHo.getSewer() %></span></li>
+					<li>Water: <span><%= objCanHo.getWater() %></span></li>
+					<li>Exercise Room: <span><%= objCanHo.getPhongtap() %></span></li>
+					<li>Storage Room: <span><%= objCanHo.getNhakho() %></span></li>
 				</ul>
 
 
@@ -367,7 +363,7 @@
 				<!-- Location -->
 				<h3 class="desc-headline no-border" id="location">Location</h3>
 				<div id="propertyMap-container">
-					<div id="propertyMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
+					<div id="propertyMap" data-latitude="40.7427837" data-longitude="73.11445617675781"></div>
 					<a href="#" id="streetView">Street View</a>
 				</div>
 
@@ -379,11 +375,19 @@
 
 				<div class="layout-switcher hidden"><a href="#" class="list"><i class="fa fa-th-list"></i></a></div>
 				<div class="listings-container list-layout">
+				
+				<%
+				ArrayList<CanHo> listSimilar = (ArrayList<CanHo>) request.getAttribute("listSimilar");
+				if(listSimilar != null)
+				{
+					for(CanHo objSimilar : listSimilar)
+					{
+				%>
 
 					<!-- Listing Item -->
 					<div class="listing-item">
 
-						<a href="#" class="listing-img-container">
+						<a href="<%=request.getContextPath()%>/chitietcanho?canho=<%= objSimilar.getId() %>" class="listing-img-container">
 
 							<div class="listing-badges">
 								<span>For Rent</span>
@@ -401,25 +405,25 @@
 						<div class="listing-content">
 
 							<div class="listing-title">
-								<h4><a href="#">Meridian Villas</a></h4>
+								<h4><a href="<%=request.getContextPath()%>/chitietcanho?canho=<%= objSimilar.getId() %>"><%= objSimilar.getTen() %></a></h4>
 								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
 									<i class="fa fa-map-marker"></i>
-									778 Country St. Panama City, FL
+									<%= objSimilar.getDiachi() %>
 								</a>
 
-								<a href="#" class="details button border">Details</a>
+								<a href="<%=request.getContextPath()%>/chitietcanho?canho=<%= objSimilar.getId() %>" class="details button border">Details</a>
 							</div>
 
 							<ul class="listing-details">
 								<li>1450 sq ft</li>
-								<li>1 Bedroom</li>
-								<li>2 Rooms</li>
-								<li>2 Rooms</li>
+								<li><%= objSimilar.getSophongngu() %> Bedroom</li>
+								<li><%= objSimilar.getSophongtam() %> Rooms</li>
+								<li><%= objSimilar.getNhakho() %> Rooms</li>
 							</ul>
 
 							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> Chester Miller</a>
-								<span><i class="fa fa-calendar-o"></i> 4 days ago</span>
+								<a href="#"><i class="fa fa-user"></i><%= objSimilar.getTennhanvien() %></a>
+								<span><i class="fa fa-calendar-o"></i>4 days ago</span>
 							</div>
 
 						</div>
@@ -427,102 +431,12 @@
 
 					</div>
 					<!-- Listing Item / End -->
-
-
-					<!-- Listing Item -->
-					<div class="listing-item">
-
-						<a href="#" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-price">$420,000 <i>$770 / sq ft</i></span>
-								<span class="like-icon"></span>
-							</div>
-
-							<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04.jpg" alt=""></div>
-
-						</a>
-						
-						<div class="listing-content">
-
-							<div class="listing-title">
-								<h4><a href="#">Selway Apartments</a></h4>
-								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-									<i class="fa fa-map-marker"></i>
-									33 William St. Northbrook, IL
-								</a>
-
-								<a href="#" class="details button border">Details</a>
-							</div>
-
-							<ul class="listing-details">
-								<li>540 sq ft</li>
-								<li>1 Bedroom</li>
-								<li>3 Rooms</li>
-								<li>2 Bathroom</li>
-							</ul>
-
-							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> Kristen Berry</a>
-								<span><i class="fa fa-calendar-o"></i> 3 days ago</span>
-							</div>
-
-						</div>
-						<!-- Listing Item / End -->
-
-					</div>
-					<!-- Listing Item / End -->
-
-
-					<!-- Listing Item -->
-					<div class="listing-item">
-
-						<a href="#" class="listing-img-container">
-							<div class="listing-badges">
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-price">$535,000 <i>$640 / sq ft</i></span>
-								<span class="like-icon"></span>
-							</div>
-
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-05.jpg" alt="">
-						</a>
-						
-						<div class="listing-content">
-
-							<div class="listing-title">
-								<h4><a href="#">Oak Tree Villas</a></h4>
-								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-									<i class="fa fa-map-marker"></i>
-									71 Lower River Dr. Bronx, NY
-								</a>
-
-								<a href="#" class="details button border">Details</a>
-							</div>
-
-							<ul class="listing-details">
-								<li>350 sq ft</li>
-								<li>1 Bedroom</li>
-								<li>2 Rooms</li>
-								<li>1 Bathroom</li>
-							</ul>
-
-							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> Mabel Gagnon</a>
-								<span><i class="fa fa-calendar-o"></i> 4 days ago</span>
-							</div>
-
-						</div>
-						<!-- Listing Item / End -->
-
-					</div>
-					<!-- Listing Item / End -->
+					
+				<%		
+					}
+				}
+				%>	
+					
 
 				</div>
 				<!-- Similar Listings Container / End -->
@@ -546,9 +460,17 @@
 
 				<!-- Widget -->
 				<div class="widget">
-					<h3 class="margin-bottom-35">Featured Properties</h3>
-
+					<h3 class="margin-bottom-35">Bất Động Sản Đặc Sắc</h3>
 					<div class="listing-carousel outer">
+					
+					<%
+					ArrayList<CanHo> listFeaturead = (ArrayList<CanHo>) request.getAttribute("listFeaturead");
+					if(listFeaturead != null)
+					{
+						for(CanHo objFeaturead : listFeaturead)
+						{
+					%>
+				
 						<!-- Item -->
 						<div class="item">
 							<div class="listing-item compact">
@@ -556,18 +478,17 @@
 								<a href="#" class="listing-img-container">
 
 									<div class="listing-badges">
-										<span class="featured">Featured</span>
+										<span class="featured">Đặc Sắc</span>
 										<span>For Sale</span>
 									</div>
 
 									<div class="listing-img-content">
-										<span class="listing-compact-title">Eagle Apartments <i>$275,000</i></span>
-
+									<span class="listing-compact-title"><%= objFeaturead.getTen() + " " + objFeaturead.getTentheloai() %><i><%= objFeaturead.getGiatien() %></i></span>
 										<ul class="listing-hidden-content">
-											<li>Area <span>530 sq ft</span></li>
-											<li>Rooms <span>3</span></li>
-											<li>Beds <span>1</span></li>
-											<li>Baths <span>1</span></li>
+											<li>Area <span><%= objFeaturead.getTenkhuvuc() %></span></li>
+											<li>Rooms <span><%= objFeaturead.getSophong() %></span></li>
+											<li>Beds <span><%= objFeaturead.getSophongngu() %></span></li>
+											<li>Baths <span><%= objFeaturead.getSophongtam() %></span></li>
 										</ul>
 									</div>
 
@@ -577,64 +498,11 @@
 							</div>
 						</div>
 						<!-- Item / End -->
-
-						<!-- Item -->
-						<div class="item">
-							<div class="listing-item compact">
-
-								<a href="#" class="listing-img-container">
-
-									<div class="listing-badges">
-										<span class="featured">Featured</span>
-										<span>For Sale</span>
-									</div>
-
-									<div class="listing-img-content">
-										<span class="listing-compact-title">Selway Apartments <i>$245,000</i></span>
-
-										<ul class="listing-hidden-content">
-											<li>Area <span>530 sq ft</span></li>
-											<li>Rooms <span>3</span></li>
-											<li>Beds <span>1</span></li>
-											<li>Baths <span>1</span></li>
-										</ul>
-									</div>
-
-									<img src="<%=request.getContextPath()%>/templates/public/images/listing-02.jpg" alt="">
-								</a>
-
-							</div>
-						</div>
-						<!-- Item / End -->
-
-						<!-- Item -->
-						<div class="item">
-							<div class="listing-item compact">
-
-								<a href="#" class="listing-img-container">
-
-									<div class="listing-badges">
-										<span class="featured">Featured</span>
-										<span>For Sale</span>
-									</div>
-
-									<div class="listing-img-content">
-										<span class="listing-compact-title">Oak Tree Villas <i>$325,000</i></span>
-
-										<ul class="listing-hidden-content">
-											<li>Area <span>530 sq ft</span></li>
-											<li>Rooms <span>3</span></li>
-											<li>Beds <span>1</span></li>
-											<li>Baths <span>1</span></li>
-										</ul>
-									</div>
-
-									<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
-								</a>
-
-							</div>
-						</div>
-						<!-- Item / End -->
+					
+					<%		
+						}
+					}
+					%>
 					</div>
 
 				</div>
@@ -643,13 +511,13 @@
 				<!-- Widget -->
 				<div class="widget margin-bottom-40">
 					<h3 class="margin-top-0 margin-bottom-35">Find New Home</h3>
-
+					<form action="${pageContext.request.contextPath}/SearchBDS" method="post">
 					<!-- Row -->
 					<div class="row with-forms">
 						<!-- Status -->
 						<div class="col-md-12">
-							<select data-placeholder="Any Status" class="chosen-select-no-single" >
-								<option>Any Status</option>	
+							<select data-placeholder="Any Status" class="chosen-select-no-single" name="status">
+								<option>Any</option>	
 								<option>For Sale</option>
 								<option>For Rent</option>
 							</select>
@@ -662,8 +530,8 @@
 					<div class="row with-forms">
 						<!-- Type -->
 						<div class="col-md-12">
-							<select data-placeholder="Any Type" class="chosen-select-no-single" >
-								<option>Any Type</option>	
+							<select data-placeholder="Any Type" class="chosen-select-no-single" name="typeBDS">
+								<option>Any</option>	
 								<option>Apartments</option>
 								<option>Houses</option>
 								<option>Commercial</option>
@@ -674,75 +542,12 @@
 					</div>
 					<!-- Row / End -->
 
-
-					<!-- Row -->
-					<div class="row with-forms">
-						<!-- States -->
-						<div class="col-md-12">
-							<select data-placeholder="All States" class="chosen-select" >
-								<option>All States</option>	
-								<option>Alabama</option>
-								<option>Alaska</option>
-								<option>Arizona</option>
-								<option>Arkansas</option>
-								<option>California</option>
-								<option>Colorado</option>
-								<option>Connecticut</option>
-								<option>Delaware</option>
-								<option>Florida</option>
-								<option>Georgia</option>
-								<option>Hawaii</option>
-								<option>Idaho</option>
-								<option>Illinois</option>
-								<option>Indiana</option>
-								<option>Iowa</option>
-								<option>Kansas</option>
-								<option>Kentucky</option>
-								<option>Louisiana</option>
-								<option>Maine</option>
-								<option>Maryland</option>
-								<option>Massachusetts</option>
-								<option>Michigan</option>
-								<option>Minnesota</option>
-								<option>Mississippi</option>
-								<option>Missouri</option>
-								<option>Montana</option>
-								<option>Nebraska</option>
-								<option>Nevada</option>
-								<option>New Hampshire</option>
-								<option>New Jersey</option>
-								<option>New Mexico</option>
-								<option>New York</option>
-								<option>North Carolina</option>
-								<option>North Dakota</option>
-								<option>Ohio</option>
-								<option>Oklahoma</option>
-								<option>Oregon</option>
-								<option>Pennsylvania</option>
-								<option>Rhode Island</option>
-								<option>South Carolina</option>
-								<option>South Dakota</option>
-								<option>Tennessee</option>
-								<option>Texas</option>
-								<option>Utah</option>
-								<option>Vermont</option>
-								<option>Virginia</option>
-								<option>Washington</option>
-								<option>West Virginia</option>
-								<option>Wisconsin</option>
-								<option>Wyoming</option>
-							</select>
-						</div>
-					</div>
-					<!-- Row / End -->
-
-
 					<!-- Row -->
 					<div class="row with-forms">
 						<!-- Cities -->
 						<div class="col-md-12">
-							<select data-placeholder="All Cities" class="chosen-select" >
-								<option>All Cities</option>
+							<select data-placeholder="All Cities" class="chosen-select" name="khuvuc">
+								<option>Any</option>
 								<option>New York</option>
 								<option>Los Angeles</option>
 								<option>Chicago</option>
@@ -765,12 +570,12 @@
 
 					<!-- Row -->
 					<div class="row with-forms">
-
+					
 						<!-- Min Area -->
 						<div class="col-md-6">
-							<select data-placeholder="Beds" class="chosen-select-no-single" >
+							<select data-placeholder="Beds" class="chosen-select-no-single" name="beds" >
 								<option label="blank"></option>	
-								<option>Beds (Any)</option>	
+								<option>Any</option>	
 								<option>1</option>
 								<option>2</option>
 								<option>3</option>
@@ -781,9 +586,9 @@
 
 						<!-- Max Area -->
 						<div class="col-md-6">
-							<select data-placeholder="Baths" class="chosen-select-no-single" >
+							<select data-placeholder="Baths" class="chosen-select-no-single" name="baths">
 								<option label="blank"></option>	
-								<option>Baths (Any)</option>	
+								<option>Any</option>	
 								<option>1</option>
 								<option>2</option>
 								<option>3</option>
@@ -817,19 +622,19 @@
 
 					<!-- More Search Options -->
 					<a href="#" class="more-search-options-trigger margin-bottom-10 margin-top-30" data-open-title="Additional Features" data-close-title="Additional Features"></a>
-
+					
 					<div class="more-search-options relative">
 
 						<!-- Checkboxes -->
 						<div class="checkboxes one-in-row margin-bottom-10">
 					
-							<input id="check-2" type="checkbox" name="check">
+							<input id="check-2" type="checkbox" name="check" value="Air Conditioning">
 							<label for="check-2">Air Conditioning</label>
 
-							<input id="check-3" type="checkbox" name="check">
+							<input id="check-3" type="checkbox" name="check" value="Swimming Pool">
 							<label for="check-3">Swimming Pool</label>
 
-							<input id="check-4" type="checkbox" name="check" >
+							<input id="check-4" type="checkbox" name="check" value="Central Heating">
 							<label for="check-4">Central Heating</label>
 
 							<input id="check-5" type="checkbox" name="check">
@@ -850,8 +655,9 @@
 
 					</div>
 					<!-- More Search Options / End -->
-
-					<button class="button fullwidth margin-top-30">Search</button>
+					
+					<button type="submit" class="button fullwidth margin-top-30" name="search">Search</button>
+					</form>
 
 
 				</div>
@@ -864,6 +670,9 @@
 	</div>
 </div>
 
+<%	
+}
+%>
 
 <!-- Footer
 ================================================== -->
@@ -922,7 +731,7 @@
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+				<div class="copyrights">Â© 2016 Findeo. All Rights Reserved.</div>
 			</div>
 		</div>
 

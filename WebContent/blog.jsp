@@ -301,7 +301,7 @@
 				<nav class="pagination">
 				<ul>
 			<%
-			if(request.getAttribute("sumPage") != null)
+			if(request.getAttribute("sumPage") != null && request.getAttribute("search") == null)
 			{
 				String active = "";
 				int sumPage = (Integer) request.getAttribute("sumPage");
@@ -342,6 +342,48 @@
 				</ul>
 				</nav>		
 			<%	
+			}
+			else if(request.getAttribute("sumPage") != null && request.getAttribute("search") != null)
+			{
+				String active = "";
+				int sumPage = (Integer) request.getAttribute("sumPage");
+				int currentPage = (Integer) request.getAttribute("currentPage");
+				for(int i = 1 ; i <= sumPage ; i++)
+				{
+					if(currentPage == i)
+					{
+						active = "class = 'current'";
+					}
+					else
+					{
+						active = "";
+					}
+			%>
+					<li><a <%=active%> href="<%=request.getContextPath() %>/SearchTT?search=<%= request.getAttribute("search") %>&page=<%=i%>" title="" class="current-page"><%=i%></a></li>
+				<%
+				}
+				%>
+				</ul>
+				</nav>
+				<nav class="pagination-next-prev">
+				<ul>
+				<%
+				if(currentPage - 1 > 0)
+				{
+				%>
+					<li><a href="<%=request.getContextPath() %>/SearchTT?search=<%=request.getAttribute("search")%>&page=<%=currentPage - 1%>" class="prev">Previous</a></li>
+				<%	
+				}
+				if(currentPage + 1 <= sumPage)
+				{
+				%>
+					<li><a href="<%=request.getContextPath() %>/SearchTT?search=<%=request.getAttribute("search")%>&page=<%=currentPage + 1%>" class="next">Next</a></li>
+				<%	
+				}
+				%>
+				</ul>
+				</nav>		
+			<%
 			}
 			%>
 			</div>
