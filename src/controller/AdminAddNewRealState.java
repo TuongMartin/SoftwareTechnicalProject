@@ -1,6 +1,5 @@
 package controller;
 
-<<<<<<< HEAD
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,29 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import library.CheckLoginLibrary;
 import model.bean.TheLoaiBDS;
 import model.dao.RealEstateDAO;
-=======
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-
-import library.FileNameLibrary;
-import library.RenameFileLibrary;
-import model.bean.NhanVien;
-import model.bean.TheLoaiBDS;
-import model.dao.RealEstateDAO;
-import model.dao.SalesDAO;
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 
 /**
  * Servlet implementation class AdminAddNewSale
@@ -61,12 +37,9 @@ public class AdminAddNewRealState extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
 		if(!CheckLoginLibrary.isLogin(request, response)) {
 			return;
 		}
-=======
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 		RealEstateDAO realestateDAO = new RealEstateDAO();
 		if(request.getParameter("submit") != null) {
 			String theloai = new String(request.getParameter("realestate").getBytes("ISO-8859-1"),"UTF-8");

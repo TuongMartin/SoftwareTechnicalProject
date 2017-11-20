@@ -15,22 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-<<<<<<< HEAD
 import library.CheckLoginLibrary;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.KhuVucBDS;
 import model.dao.AreaDAO;
-=======
-import library.FileNameLibrary;
-import library.RenameFileLibrary;
-import model.bean.KhuVucBDS;
-import model.bean.NhanVien;
-import model.bean.TheLoaiBDS;
-import model.dao.AreaDAO;
-import model.dao.RealEstateDAO;
-import model.dao.SalesDAO;
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 
 /**
  * Servlet implementation class AdminAddNewSale
@@ -58,12 +47,9 @@ public class AdminAddNewAreaRealState extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
 		if(!CheckLoginLibrary.isLogin(request, response)) {
 			return;
 		}
-=======
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 		AreaDAO areaDAO = new AreaDAO();
 		if(request.getParameter("submit") != null) {
 			String khuvuc = new String(request.getParameter("area").getBytes("ISO-8859-1"),"UTF-8");

@@ -1,15 +1,7 @@
 package controller;
 
 import java.io.File;
-<<<<<<< HEAD
 import java.io.IOException;
-=======
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -25,15 +17,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-<<<<<<< HEAD
 import library.CheckLoginLibrary;
 import model.bean.CanHo;
-=======
-import library.FileNameLibrary;
-import library.RenameFileLibrary;
-import model.bean.CanHo;
-import model.bean.NhanVien;
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 import model.dao.ApartmentDAO;
 import model.dao.AreaDAO;
 import model.dao.RealEstateDAO;
@@ -65,12 +50,9 @@ public class AdminAddNewApartment extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
 		if(!CheckLoginLibrary.isLogin(request, response)) {
 			return;
 		}
-=======
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		RealEstateDAO realEstateDAO = new RealEstateDAO();
 		SalesDAO saleDAO = new SalesDAO();

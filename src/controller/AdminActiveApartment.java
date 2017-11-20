@@ -3,24 +3,13 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-<<<<<<< HEAD
-=======
-import javax.servlet.annotation.WebServlet;
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
 import library.CheckLoginLibrary;
 import model.bean.CanHo;
 import model.dao.ApartmentDAO;
-=======
-import model.bean.CanHo;
-import model.bean.KhachHang;
-import model.dao.ApartmentDAO;
-import model.dao.CustomersDAO;
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 
 /**
  * Servlet implementation class AdminActiveCustomer
@@ -49,12 +38,9 @@ public class AdminActiveApartment extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
 		if(!CheckLoginLibrary.isLogin(request, response)) {
 			return;
 		}
-=======
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");

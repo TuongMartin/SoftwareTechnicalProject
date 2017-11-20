@@ -96,11 +96,8 @@
   <servlet-mapping>
     <servlet-name>AdminDelItemAgenda</servlet-name>
     <url-pattern>/admin/deleteItemAgenda</url-pattern>
-<<<<<<< HEAD
   </servlet-mapping>  
   <servlet>
-=======
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
     <servlet-name>PublicRegisterNewCustomer</servlet-name>
     <servlet-class>controller.PublicRegisterNewCustomer</servlet-class>
   </servlet>
@@ -267,7 +264,6 @@
   <servlet-mapping>
     <servlet-name>PublicIndex</servlet-name>
     <url-pattern>/public/home</url-pattern>
-<<<<<<< HEAD
   </servlet-mapping>
    <servlet>
     <servlet-name>AdminShowAccount</servlet-name>
@@ -300,7 +296,5 @@
   <servlet-mapping>
     <servlet-name>AdminEditAccount</servlet-name>
     <url-pattern>/admin/updateaccount</url-pattern>
-=======
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
   </servlet-mapping>
 </web-app>

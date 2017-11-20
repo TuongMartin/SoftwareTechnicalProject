@@ -120,6 +120,9 @@ public class AdminEditSales extends HttpServlet {
 		
 		NhanVien objSale = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, idChucVu, null, picture, 0);
 		if(salesDAO.editSale(objSale) && accountDAO.updateAccount(idSale, hashed)) {
+			NhanVien objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
+			objNhanVien.setAvatar(picture);
+			request.getSession().setAttribute("userInfo", objNhanVien);
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=1");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=0");

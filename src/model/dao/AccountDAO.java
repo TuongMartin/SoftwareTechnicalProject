@@ -115,6 +115,26 @@ public class AccountDAO {
 		return current;
 	}
 	
+	public Account getAccountByIdSale(int idNhanVien){
+		Account current=null;
+		conn = connDB.getConnectMySQL();
+		String sql = "select * from account inner join role on account.idrole=role.idrole where account.IdNhanVien=?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, idNhanVien);
+			rs = pst.executeQuery();
+			if(rs.next()){
+				current = new Account(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getInt("idrole"),rs.getString("role"),rs.getInt("IdNhanVien"),"");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return current;
+	}
+	
+	
+	
 	public boolean addaccount(Account account){
 		conn = connDB.getConnectMySQL();
 		String sql = "insert into account (username,password,idrole) values (?,?,?)";
@@ -209,24 +229,6 @@ public class AccountDAO {
 		return true;
 	}
 	
-//	public Account getItemAccount(String username, String password){
-//		Account obj = null;
-//		conn = connDB.getConnectMySQL();
-//		String sql = "select * from account inner join role on account.idrole=role.idrole where account.username=? and account.password = ?";
-//		try {
-//			pst = conn.prepareStatement(sql);
-//			pst.setString(1, username);
-//			pst.setString(2, password);
-//			rs = pst.executeQuery();
-//			if(rs.next()){
-//				obj = new Account(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getInt("idrole"),rs.getString("role"),rs.getInt("IdNhanVien"),"");
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return current;
-//	}
 	
 	public ArrayList<Account> getlist(){
 		conn = connDB.getConnectMySQL();

@@ -1,6 +1,5 @@
 package controller;
 
-<<<<<<< HEAD
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -9,34 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.CustomersDAO;
-=======
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.security.SecureRandom;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-
-import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
-
-import library.FileNameLibrary;
-import library.RandomStringGenerator;
-import library.RenameFileLibrary;
-import library.SendMail;
-import model.bean.KhachHang;
-import model.bean.NhanVien;
-import model.dao.CustomersDAO;
-import model.dao.SalesDAO;
->>>>>>> 3af2159341ba1c25e1bca406cf3fa48e2f2b7380
 
 /**
  * Servlet implementation class AdminAddNewSale
