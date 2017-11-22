@@ -20,7 +20,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://vinenter.edu.vn"> <i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Wellcome</p>
 					</a></li>
 				</ul>
 

@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+<%@include file="/templates/admin/inc/leftbar.jsp"%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -18,9 +18,8 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
-							class="ti-settings"></i>
-							<p>Settings</p>
+					<li><a href="http://vinenter.edu.vn"> 
+							<p>Wellcome</p>
 					</a></li>
 				</ul>
 

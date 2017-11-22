@@ -14,13 +14,12 @@
 						class="icon-bar bar1"></span> <span class="icon-bar bar2"></span>
 					<span class="icon-bar bar3"></span>
 				</button>
-				<a class="navbar-brand" href="/admin">Trang quản lý</a>
+				<a class="navbar-brand" href="/admin">Trang nhân viên</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
-							class="ti-settings"></i>
-							<p>Settings</p>
+					<li><a href="http://vinenter.edu.vn"> 
+							<p>Wellcome</p><p>thoát</p>
 					</a></li>
 				</ul>
 
