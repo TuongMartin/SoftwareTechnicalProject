@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.dao.ApartmentDAO;
 import model.dao.AreaDAO;
 import model.dao.CustomersDAO;
 import model.dao.RealEstateDAO;
@@ -42,7 +43,9 @@ public class AdminDelAreaRealEstate extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int aid = Integer.parseInt(request.getParameter("id"));
 		AreaDAO areaDAO = new AreaDAO();
+		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		if(areaDAO.delItemAreaRealEstate(aid)) {
+			apartmentDAO.delApartmentByIDArea(aid);
 			response.sendRedirect(request.getContextPath() + "/admin/area-real-estate?msg=3");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/admin/area-real-estate?msg=0");

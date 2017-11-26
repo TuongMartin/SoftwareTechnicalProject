@@ -51,7 +51,7 @@ public class AdminManageCategoryRealEstate extends HttpServlet {
 		int offset = (page_curent -1)*row_count;
 		request.setAttribute("listTheLoai", realestateDAO.getItemPagition(offset,row_count));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/realestate/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/realestate/index.jsp?actived=1");
 		rd.forward(request, response);
 	}
 

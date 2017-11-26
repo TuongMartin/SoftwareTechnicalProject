@@ -55,7 +55,7 @@ public class AdminEditAreaRealState extends HttpServlet {
 		KhuVucBDS objKhuVucUpdate = areaDAO.getItemAreaRealEstateById(aid);
 		if(request.getParameter("submit") != null) {
 			String khuvuc = new String(request.getParameter("area").getBytes("ISO-8859-1"),"UTF-8");
-			if(areaDAO.getItemAreaRealEstatebyName(khuvuc) != null) {
+			if(areaDAO.getItemAreaRealEstatebyNameEdit(khuvuc, aid) != null) {
 				response.sendRedirect(request.getContextPath() + "/admin/editAreaRealEstate?id=" + aid + "&msg=2");
 			}
 			else {
@@ -89,7 +89,7 @@ public class AdminEditAreaRealState extends HttpServlet {
 						while ((read = filecontent.read(bytes)) != -1) {
 							out.write(bytes, 0, read);
 						}
-						System.out.println("Upload thành công");
+//						System.out.println("Upload thành công");
 					} catch (FileNotFoundException fne) {
 						System.err.println("Có lỗi trong quá trình xử lý");
 						fne.printStackTrace();
@@ -115,7 +115,7 @@ public class AdminEditAreaRealState extends HttpServlet {
 		}
 		else {
 			request.setAttribute("objKhuVucUpdate", objKhuVucUpdate);
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/area/edit.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/area/edit.jsp?actived=2");
 			rd.forward(request, response);
 		}
 	}

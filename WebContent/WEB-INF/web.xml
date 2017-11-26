@@ -66,6 +66,54 @@
     <url-pattern>/admin/search</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>AdminSearchApartment</servlet-name>
+    <servlet-class>controller.AdminSearchApartment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSearchApartment</servlet-name>
+    <url-pattern>/admin/searchApartment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminSearchCustomer</servlet-name>
+    <servlet-class>controller.AdminSearchCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSearchCustomer</servlet-name>
+    <url-pattern>/admin/searchCustomer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminShowSetCalendarSales</servlet-name>
+    <servlet-class>controller.AdminShowSetCalendarSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowSetCalendarSales</servlet-name>
+    <url-pattern>/admin/showSetCalendar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminSetCalendarSales</servlet-name>
+    <servlet-class>controller.AdminSetCalendarSales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSetCalendarSales</servlet-name>
+    <url-pattern>/admin/schedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AjaxActiveScheduleByAdmin</servlet-name>
+    <servlet-class>controller.AjaxActiveScheduleByAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxActiveScheduleByAdmin</servlet-name>
+    <url-pattern>/admin/activeSchedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDelItemAgenda</servlet-name>
+    <servlet-class>controller.AdminDelItemAgenda</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelItemAgenda</servlet-name>
+    <url-pattern>/admin/deleteItemAgenda</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>PublicRegisterNewCustomer</servlet-name>
     <servlet-class>controller.PublicRegisterNewCustomer</servlet-class>
   </servlet>
@@ -226,11 +274,75 @@
     <url-pattern>/public/login</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>PublicLogoutCustomer</servlet-name>
+    <servlet-class>controller.PublicLogoutCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicLogoutCustomer</servlet-name>
+    <url-pattern>/public/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>PublicIndex</servlet-name>
     <servlet-class>controller.PublicIndex</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PublicIndex</servlet-name>
     <url-pattern>/public/home</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicResetPasswordCustomer</servlet-name>
+    <servlet-class>controller.PublicResetPasswordCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicResetPasswordCustomer</servlet-name>
+    <url-pattern>/public/reset-password</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PublicResetPasswordConfirmCustomer</servlet-name>
+    <servlet-class>controller.PublicResetPasswordConfirmCustomer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PublicResetPasswordConfirmCustomer</servlet-name>
+    <url-pattern>/public/reset-password-confirm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminManageFeatures</servlet-name>
+    <servlet-class>controller.AdminManageFeatures</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManageFeatures</servlet-name>
+    <url-pattern>/admin/feature-apartment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminEditFeature</servlet-name>
+    <servlet-class>controller.AdminEditFeature</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEditFeature</servlet-name>
+    <url-pattern>/admin/editFeature</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDelFeature</servlet-name>
+    <servlet-class>controller.AdminDelFeature</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDelFeature</servlet-name>
+    <url-pattern>/admin/delFeature</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminAddNewFeature</servlet-name>
+    <servlet-class>controller.AdminAddNewFeature</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAddNewFeature</servlet-name>
+    <url-pattern>/admin/addFeature</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminUploadImageApartment</servlet-name>
+    <servlet-class>controller.AdminUploadImageApartment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminUploadImageApartment</servlet-name>
+    <url-pattern>/admin/uploadImageApartment</url-pattern>
   </servlet-mapping>
 </web-app>

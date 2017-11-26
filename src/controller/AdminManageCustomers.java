@@ -50,7 +50,7 @@ public class AdminManageCustomers extends HttpServlet {
 		int offset = (page_curent -1)*row_count;
 		request.setAttribute("listCustomers", customerDAO.getItemPagition(offset,row_count));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/customers/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/customers/index.jsp?actived=4");
 		rd.forward(request, response);
 	}
 

@@ -44,17 +44,20 @@
 										case 1 :%>
 											<p class="category success">Xóa khách hàng thành công!</p>
 											<%break;
+										case 5:%>
+											<p class="category alert alert-warning">Không tìm thấy</p>
+											<%break;
 									}
 									
 								}
 							
 							%>
-							<form action="<%=request.getContextPath() %>/admin/search" method="post">
+							<form action="<%=request.getContextPath() %>/admin/searchCustomer" method="post">
 								<div class="row">
 									<div class="col-md-1">
 										<div class="form-group">
 											<input type="text" name="idCustomer"
-												class="form-control border-input" value="" placeholder="ID Customers">
+												class="form-control border-input" value="" placeholder="ID khách hàng">
 										</div>
 									</div>
 									<div class="col-md-4">
@@ -72,12 +75,7 @@
 										</div>
 									</div>
 								</div>
-
 							</form>
-
-							<a href="<%=request.getContextPath()%>/admin/show-addSales"
-								class="addtop"><img
-								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
 						</div>
 						<div class="content table-responsive table-full-width">
 							<table class="table table-striped">

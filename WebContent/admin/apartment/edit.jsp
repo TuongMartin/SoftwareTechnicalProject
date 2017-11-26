@@ -1,3 +1,5 @@
+<%@page import="com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array"%>
+<%@page import="model.bean.TienIch"%>
 <%@page import="model.bean.CanHo"%>
 <%@page import="model.bean.KhuVucBDS"%>
 <%@page import="model.bean.NhanVien"%>
@@ -184,7 +186,7 @@
 								</div>
 
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<div class="form-group">
 											<label>Thể loại</label> <select name="theloai"
 												class="form-control border-input">
@@ -206,7 +208,7 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<div class="form-group">
 											<label>Khu vực</label> <select name="khuvuc"
 												class="form-control border-input">
@@ -228,7 +230,7 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<div class="form-group">
 											<label>Nhân viên phụ trách</label> <select name="nhanvien"
 												class="form-control border-input">
@@ -251,6 +253,46 @@
 										</div>
 									</div>
 								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Tiện ích</label>
+										</div>
+									</div>
+								</div>
+								<%
+								ArrayList<TienIch> listTienIchCanHo = (ArrayList<TienIch>)request.getAttribute("listTienIchCanHo");
+									ArrayList<TienIch> listTienIch = (ArrayList<TienIch>)request.getAttribute("listTienIch");
+									int row = (int)Math.ceil((float)listTienIch.size() / 4);
+									int k = 0;
+									for(int i = 0; i < row; i++) {
+								%>
+										<div class="row">
+										<%
+											for(int j = k; j < listTienIch.size(); j++) {
+												String checked = "";
+												for(TienIch objTienIchCanHo : listTienIchCanHo) {
+													if(listTienIch.get(j).getIdTienIch() == objTienIchCanHo.getIdTienIch()) {
+														checked = "checked";
+														break;
+													}
+												}
+										%>
+												<div class="col-md-3">
+													<div class="form-group form-control">
+														<label class="checkbox-inline"><input <%=checked %> name="tienich" type="checkbox" value="<%=listTienIch.get(j).getIdTienIch() %>"><%=listTienIch.get(j).getTenTienIch() %></label>
+													</div>
+												</div>
+										<%
+												k++;
+												if(k % 4 == 0) break;
+											}
+										%>
+										</div>
+								<%
+										
+									}
+								%>
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">

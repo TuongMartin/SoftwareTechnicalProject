@@ -23,6 +23,8 @@
 <link
 	href="<%=request.getContextPath()%>/templates/admin/css/bootstrap.min.css"
 	rel="stylesheet" />
+<!-- Bootstrap core JS     -->
+<script src="<%=request.getContextPath()%>/templates/admin/js/bootstrap.min.js"></script>  
 
 <!-- Animation library for notifications   -->
 <link
@@ -60,7 +62,6 @@
  <script src="<%=request.getContextPath()%>/templates/admin/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script src="<%=request.getContextPath()%>/templates/admin/js/jquery.validate.js" type="text/javascript"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/ckeditor/ckeditor.js" ></script>
-    
 </head>
 <body>
 

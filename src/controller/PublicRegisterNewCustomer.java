@@ -117,7 +117,7 @@ public class PublicRegisterNewCustomer extends HttpServlet {
 					SendMail mail = new SendMail();
 					String content = "<html>"
 									+ "<body>" 
-									+ "<h3>You have successfully registered your account, please click on the link to confirm your account</h3><br>"
+									+ "<h3>You have successfully registered your account, please click on the link to confirm your account!</h3><br>"
 									+ "<a href=" + "http://localhost:8080/SoftwareTechnicalProject/public/confirm-account?email=" + objCustomer.getEmail() +"&token=" + objCustomer.getToken() + ">" + objCustomer.getToken() +"</a><br>"
 									+ "</body>"
 									+ "</html>";

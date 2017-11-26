@@ -50,23 +50,31 @@ public class PublicLoginCustomer extends HttpServlet {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			KhachHang objKH = customerDAO.login(email);
-			if(objKH != null && BCrypt.checkpw(password, objKH.getMatKhau()) && objKH.getStatus() == 1){
+			if(objKH != null && BCrypt.checkpw(password, objKH.getMatKhau()) && objKH.getStatus() == 1 && objKH.getComfirm_at() != null){
 				//đăng nhập đúng
 				//TẠO SESSION
-				session.setAttribute("sObjKH", objKH);
+				session.setAttribute("sObjKHId", objKH.getId());
 				//chuyển hướng
 				response.sendRedirect(request.getContextPath() + "/public/home");
 			}
 			else if(objKH != null && objKH.getStatus() == 0){
 				response.sendRedirect(request.getContextPath() + "/public/login?msg=5");
 			}
+			else if(objKH != null && objKH.getComfirm_at() == null) {
+				response.sendRedirect(request.getContextPath() + "/public/login?msg=4");
+			}
 			else{
 				response.sendRedirect(request.getContextPath() + "/public/login?msg=6");
 			}
 		}
 		else{
-			RequestDispatcher rd = request.getRequestDispatcher("/login-register.jsp");
-			rd.forward(request, response);
+			if(session.getAttribute("sObjKHId") != null) {
+				response.sendRedirect(request.getContextPath() + "/public/home");
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("/login-register.jsp");
+				rd.forward(request, response);
+			}
 		}
 	}
 

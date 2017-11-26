@@ -103,7 +103,7 @@ public class AdminAddNewAreaRealState extends HttpServlet {
 			}
 		}
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/area/add.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/area/add.jsp?actived=2");
 			rd.forward(request, response);
 		}
 	}

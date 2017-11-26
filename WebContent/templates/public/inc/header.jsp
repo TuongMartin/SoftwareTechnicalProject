@@ -1,3 +1,9 @@
+<%@page import="model.dao.RealEstateDAO"%>
+<%@page import="model.bean.TheLoaiBDS"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array"%>
+<%@page import="model.dao.CustomersDAO"%>
+<%@page import="model.bean.KhachHang"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,17 +47,6 @@
 				<ul class="top-bar-menu">
 					<li><i class="fa fa-phone"></i> (123) 123-456 </li>
 					<li><i class="fa fa-envelope"></i> <a href="#"><span class="__cf_email__" data-cfemail="bdd2dbdbd4ded8fdd8c5dcd0cdd1d893ded2d0">[email&#160;protected]</span></a></li>
-					<li>
-						<div class="top-bar-dropdown">
-							<span>Dropdown Menu</span>
-							<ul class="options">
-								<li><div class="arrow"></div></li>
-								<li><a href="#">Nice First Link</a></li>
-								<li><a href="#">Second Link With Long Title</a></li>
-								<li><a href="#">Third Link</a></li>
-							</ul>
-						</div>
-					</li>
 				</ul>
 
 			</div>
@@ -87,7 +82,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt=""></a>
+					<a href="<%=request.getContextPath() %>/public/home"><img src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt=""></a>
 				</div>
 
 
@@ -101,39 +96,19 @@
 				<nav id="navigation" class="style-1">
 					<ul id="responsive">
 
-						<li><a href="#">Home</a>
-							<ul>
-								<li><a href="index-2.html">Home 1</a></li>
-								<li><a href="index-3.html">Home 2</a></li>
-								<li><a href="index-4.html">Home 3</a></li>
-								<li><a href="index-5.html">Home 4</a></li>
-							</ul>
-						</li>
+						<li><a href="<%=request.getContextPath() %>/public/home">Home</a></li>
 
-						<li><a href="#">Listings</a>
+						<li><a href="#">Listings Apartment</a>
 							<ul>
-								<li><a href="#">List Layout</a>
-									<ul>
-										<li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
-										<li><a href="listings-list-with-map.html">With Map</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Grid Layout</a>
-									<ul>
-										<li><a href="listings-grid-standard-with-sidebar.html">Standard With Sidebar</a></li>
-										<li><a href="listings-grid-compact-with-sidebar.html">Compact With Sidebar</a></li>
-										<li><a href="listings-grid-with-map.html">With Map</a></li>
-										<li><a href="listings-grid-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Half Map</a>
-									<ul>
-										<li><a href="listings-half-map-list.html">List Layout</a></li>
-										<li><a href="listings-half-map-grid-standard.html">Grid Standard Layout</a></li>
-										<li><a href="listings-half-map-grid-compact.html">Grid Compact Layout</a></li>
-									</ul>
-								</li>
+							<%
+								RealEstateDAO realEstateDA0 = new RealEstateDAO();
+								ArrayList<TheLoaiBDS> listRealEstate = (ArrayList<TheLoaiBDS>)realEstateDA0.getItem();
+								for(TheLoaiBDS objTheLoai : listRealEstate) {
+							%>
+								<li><a href="listings-list-with-sidebar.html"><%=objTheLoai.getTen() %></a></li>
+							<%
+								}
+							%>
 							</ul>
 						</li>
 
@@ -202,8 +177,23 @@
 			<div class="right-side">
 				<!-- Header Widget -->
 				<div class="header-widget">
-					<a href="login-register.html" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-					<a href="submit-property.html" class="button border">Submit Property</a>
+				<%
+					CustomersDAO customerDAO = new CustomersDAO();
+					if(session.getAttribute("sObjKHId") == null) {
+						
+				%>
+						<a href="<%=request.getContextPath() %>/public/login" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+				<%
+					}
+					else {
+						KhachHang objKH = customerDAO.getItemCustomerById((Integer)session.getAttribute("sObjKHId"));
+				%>
+						<a href="<%=request.getContextPath() %>/public/my-profile?id=<%=objKH.getId() %>" class="sign-in">Hello <%=objKH.getTenKhachHang() %></a>
+				<%
+					}
+				%>
+					
+					<a href="<%=request.getContextPath() %>/public/logout" class="button border">Logout</a>
 				</div>
 				<!-- Header Widget / End -->
 			</div>

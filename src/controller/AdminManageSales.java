@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckPassTheWeeks;
 import model.dao.SalesDAO;
 
 /**
@@ -35,6 +36,7 @@ public class AdminManageSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CheckPassTheWeeks.check();
 		int page_curent = 1;
 		SalesDAO salesDAO = new SalesDAO();
 		int sum_news = salesDAO.countItem();
@@ -49,7 +51,7 @@ public class AdminManageSales extends HttpServlet {
 		int offset = (page_curent -1)*row_count;
 		request.setAttribute("listSales", salesDAO.getItemPagition(offset,row_count));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp?actived=5");
 		rd.forward(request, response);
 	}
 

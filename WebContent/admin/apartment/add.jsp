@@ -1,3 +1,4 @@
+<%@page import="model.bean.TienIch"%>
 <%@page import="model.bean.KhuVucBDS"%>
 <%@page import="model.bean.NhanVien"%>
 <%@page import="model.bean.TheLoaiBDS"%>
@@ -38,8 +39,7 @@
 							<h4 class="title">Thêm thông tin</h4>
 						</div>
 						<div class="content">
-							<form action=""
-								method="post" enctype="multipart/form-data" id="addApartment">
+							<form action="<%=request.getContextPath() %>/admin/addApartment" method="post" enctype="multipart/form-data" id="addApartment" name="addApartment">
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
@@ -209,6 +209,38 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
+											<label>Tiện ích</label>
+										</div>
+									</div>
+								</div>
+								<%
+									ArrayList<TienIch> listTienIch = (ArrayList<TienIch>)request.getAttribute("listTienIch");
+									int row = (int)Math.ceil((float)listTienIch.size() / 4);
+									int k = 0;
+									for(int i = 0; i < row; i++) {
+								%>
+										<div class="row">
+										<%
+											for(int j = k; j < listTienIch.size(); j++) {
+										%>
+												<div class="col-md-3">
+													<div class="form-group form-control">
+														<label class="checkbox-inline"><input name="tienich" type="checkbox" value="<%=listTienIch.get(j).getIdTienIch() %>"><%=listTienIch.get(j).getTenTienIch() %></label>
+													</div>
+												</div>
+										<%
+												k++;
+												if(k % 4 == 0) break;
+											}
+										%>
+										</div>
+								<%
+										
+									}
+								%>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
 											<label>Mô tả</label> <textarea name="mota"
 												class="form-control border-input ckeditor">
 											</textarea>
@@ -220,8 +252,8 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<label>Hình ảnh</label> <input type="file" name="file"
-												class="form-control" placeholder="Chọn ảnh" />
+											<label>Hình ảnh</label> <input name="file" type="file" id="file"
+												class="form-control" placeholder="Chọn ảnh"/>
 										</div>
 									</div>
 								</div>

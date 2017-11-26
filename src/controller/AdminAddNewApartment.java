@@ -16,6 +16,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -27,6 +28,9 @@ import model.bean.CanHo;
 import model.bean.NhanVien;
 import model.dao.ApartmentDAO;
 import model.dao.AreaDAO;
+import model.dao.FeatureApartmentDAO;
+import model.dao.FeatureDAO;
+import model.dao.ImageDAO;
 import model.dao.RealEstateDAO;
 import model.dao.SalesDAO;
 
@@ -35,7 +39,7 @@ import model.dao.SalesDAO;
  */
 @MultipartConfig
 public class AdminAddNewApartment extends HttpServlet {
-	private final String UPLOAD_DIRECTORY = "C:/uploads";
+	private final String UPLOAD_DIRECTORY = "D:/abc";
 	private static final long serialVersionUID = 1L;
     /**
      * @see HttpServlet#HttpServlet()
@@ -60,7 +64,11 @@ public class AdminAddNewApartment extends HttpServlet {
 		RealEstateDAO realEstateDAO = new RealEstateDAO();
 		SalesDAO saleDAO = new SalesDAO();
 		AreaDAO areDAO = new AreaDAO();
+		FeatureDAO featureDAO = new FeatureDAO();
+		FeatureApartmentDAO feature_apartmentDAO = new FeatureApartmentDAO();
+		ImageDAO imageDAO = new ImageDAO();
 		if(request.getParameter("submit") != null) {
+			String[] tienich = request.getParameterValues("tienich");
 			String ten = new String(request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
 			String diachi = new String(request.getParameter("address").getBytes("ISO-8859-1"),"UTF-8");
 			int dientich = Integer.parseInt(request.getParameter("area"));
@@ -80,31 +88,76 @@ public class AdminAddNewApartment extends HttpServlet {
 			int nhanvien = Integer.parseInt(request.getParameter("nhanvien"));
 			int khuvuc = Integer.parseInt(request.getParameter("khuvuc"));
 			String mota = new String(request.getParameter("mota").getBytes("ISO-8859-1"),"UTF-8");
+			String hinhanh = "";
 			
+//			final String path = request.getServletContext().getRealPath("files");
+//			File dirUrl = new File(path);
+//			if(!dirUrl.exists()){
+//				dirUrl.mkdir();//tự động tạo file
+//			}
+//			
+//			if(ServletFileUpload.isMultipartContent(request)) {
+//				try {
+//					System.out.println("1");
+//					List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+//					System.out.println("2");
+//					System.out.println(multiparts.size());
+//					for(FileItem item : multiparts) {
+//						System.out.println("abc");
+//						if(!item.isFormField()) {
+//							System.out.println("def");
+//							String name = new File(item.getName()).getName();
+//							item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
+//						}
+//					}
+//					System.out.println("3");
+//					System.out.println("File upload successfully!");
+//				}
+//				catch (Exception e) {
+//					System.out.println("File upload failed due to " + e);
+//				}
+//			}
+//			else {
+//				System.out.println("Sorry this servlet only handles file upload request!");
+//			}
+			
+			response.setContentType("text/html;charset=UTF-8");
 			final String path = request.getServletContext().getRealPath("files");
+			final Part filePart = request.getPart("file");
+			final String fileName = FileNameLibrary.getFileName(filePart);
+			
 			File dirUrl = new File(path);
 			if(!dirUrl.exists()){
 				dirUrl.mkdir();//tự động tạo file
 			}
-			
-			if(ServletFileUpload.isMultipartContent(request)) {
+			if(!"".equals(fileName)){
+				OutputStream out = null;
+				InputStream filecontent = null;
+				hinhanh = RenameFileLibrary.renameFile(fileName);
+				
 				try {
-					System.out.println("1");
-					List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-					System.out.println("2");
-					System.out.println(multiparts);
-					for(FileItem item : multiparts) {
-						System.out.println("3");
-						if(!item.isFormField()) {
-							String name = new File(item.getName()).getName();
-							item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
-						}
-						System.out.println("4");
+					out = new FileOutputStream(new File(path + File.separator
+							+ hinhanh));
+					filecontent = filePart.getInputStream();
+					int read = 0;
+					final byte[] bytes = new byte[1024];
+					while ((read = filecontent.read(bytes)) != -1) {
+						out.write(bytes, 0, read);
 					}
-				} catch(Exception e) {
-					System.out.println("error");
-					e.printStackTrace();
+					System.out.println("Upload thành công");
+				} catch (FileNotFoundException fne) {
+					System.err.println("Có lỗi trong quá trình xử lý");
+					fne.printStackTrace();
+				} finally {
+					if (out != null) {
+						out.close();
+					}
+					if (filecontent != null) {
+						filecontent.close();
+					}
 				}
+			}else{
+				hinhanh = "";
 			}
 			
 			Date date = new Date();
@@ -113,62 +166,24 @@ public class AdminAddNewApartment extends HttpServlet {
 			
 			CanHo objCanHo = new CanHo(0, ten, diachi, dientich, giatien, sophong, phongngu, phongtam, mota, namtuoi, parking, cooling, heating, sewer, water, exerciseRoom, storageRoom, nhanvien, "", 0, ngaydang, theloai, "", 0, khuvuc, "");
 			if(apartmentDAO.addItemApartment(objCanHo)) {
+				if(!"".equals(hinhanh)){
+					imageDAO.addItemImage(hinhanh);
+				}
+				if(tienich != null) {
+					feature_apartmentDAO.addFeatureApartment(tienich);
+				}
 				response.sendRedirect(request.getContextPath() + "/admin/manageApartments?msg=1");
 			}
 			else {
 				response.sendRedirect(request.getContextPath() + "/admin/manageApartments?msg=0");
 			}
-//			response.setContentType("text/html;charset=UTF-8");
-//			final String path = request.getServletContext().getRealPath("files");
-//			final Part filePart = request.getPart("hinhanh");
-//			final String fileName = FileNameLibrary.getFileName(filePart);
-//			
-//			File dirUrl = new File(path);
-//			if(!dirUrl.exists()){
-//				dirUrl.mkdir();//tự động tạo file
-//			}
-//				if(!"".equals(fileName)){
-//					OutputStream out = null;
-//					InputStream filecontent = null;
-//					picture = RenameFileLibrary.renameFile(fileName);
-//					
-//					try {
-//						out = new FileOutputStream(new File(path + File.separator
-//								+ picture));
-//						filecontent = filePart.getInputStream();
-//						int read = 0;
-//						final byte[] bytes = new byte[1024];
-//						while ((read = filecontent.read(bytes)) != -1) {
-//							out.write(bytes, 0, read);
-//						}
-//						System.out.println("Upload thành công");
-//					} catch (FileNotFoundException fne) {
-//						System.err.println("Có lỗi trong quá trình xử lý");
-//						fne.printStackTrace();
-//					} finally {
-//						if (out != null) {
-//							out.close();
-//						}
-//						if (filecontent != null) {
-//							filecontent.close();
-//						}
-//					}
-//				}else{
-//					picture = "";
-//				}
-//			
-//			NhanVien objNhanVien = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, username, password, idChucVu, null, picture);
-//			if(salesDAO.addItemSale(objNhanVien)) {
-//				response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=2");
-//			} else {
-//				response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=0");
-//			}
 		}
 		else {
+			request.setAttribute("listTienIch", featureDAO.getItem());
 			request.setAttribute("listKhuVuc", areDAO.getItem());
 			request.setAttribute("listNhanVien", saleDAO.getListUser());
 			request.setAttribute("listTheLoai", realEstateDAO.getItem());
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/apartment/add.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/apartment/add.jsp?actived=3");
 			rd.forward(request, response);
 		}
 		
