@@ -19,13 +19,13 @@
 			
             <ul class="nav">
             	<li>
-                    <a href="<%=request.getContextPath()%>/NhanVien/DanhSachCanHo.jsp">
+                    <a href="<%=request.getContextPath()%>/thanhvien/canhos">
                         <i class="ti-map"></i>
                         <p>Danh Sách Căn Hộ</p>
                     </a>
                 </li>
             	 <li class="active">
-                    <a href="<%=request.getContextPath()%>/admin">
+                    <a href="<%=request.getContextPath()%>/thanhvien/khachhang">
                         <i class="ti-view-list-alt"></i>
                         <p>Danh Sách Khách Hàng</p>
                     </a>
@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/admin/user">
+                    <a href="<%=request.getContextPath()%>/admin/showSetCalendar">
                         <i class="ti-user"></i>
                         <p>Lịch Làm Việc</p>
                     </a>
