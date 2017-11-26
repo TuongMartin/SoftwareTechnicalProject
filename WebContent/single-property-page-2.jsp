@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/single-property-page-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
+<%@page import="model.bean.Image"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.bean.CanHo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -242,7 +243,7 @@ if(objCanHo != null)
 
 				<div class="property-pricing">
 					<div><%= objCanHo.getGiatien() + " $" %></div>
-					<div class="sub-price">$770 / sq ft</div>
+					<div class="sub-price">$<%= objCanHo.getGiatien() / objCanHo.getDientich() %> / sq ft</div>
 				</div>
 
 
@@ -280,14 +281,16 @@ if(objCanHo != null)
 				</div>
 				<!-- Agent Widget / End -->
 
+				<%
+				ArrayList<Image> listImage = (ArrayList<Image>) request.getAttribute("listImage");
+				if(listImage != null && listImage.size() > 0)
+				{
+					for(Image objImage : listImage)
+					{
+				%>
 				<!-- Slider -->
 				<div class="property-slider no-arrows">
-					<a href="images/single-property-01.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-02.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-03.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-04.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-05.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" class="item mfp-gallery"></a>
-					<a href="images/single-property-06.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" class="item mfp-gallery"></a>
+					<a href="<%= objImage.getHinhAnh() %>" data-background-image="<%= objImage.getHinhAnh() %>" class="item mfp-gallery"></a>
 				</div>
 				<!-- Slider / End -->
 
@@ -296,13 +299,12 @@ if(objCanHo != null)
 
 			<!-- Slider Thumbs -->
 			<div class="property-slider-nav">
-				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" alt=""></div>
-				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" alt=""></div>
-				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" alt=""></div>
-				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" alt=""></div>
-				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" alt=""></div>
-				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" alt=""></div>
+				<div class="item"><img src="<%= objImage.getHinhAnh() %>" alt=""></div>
 			</div>
+				<%
+					}
+				}
+				%>
 
 		</div>
 	</div>
@@ -394,7 +396,7 @@ if(objCanHo != null)
 							</div>
 
 							<div class="listing-img-content">
-								<span class="listing-price">$1700 <i>monthly</i></span>
+								<span class="listing-price">$<%= objSimilar.getGiatien() %> <i>monthly</i></span>
 								<span class="like-icon"></span>
 							</div>
 
@@ -415,7 +417,7 @@ if(objCanHo != null)
 							</div>
 
 							<ul class="listing-details">
-								<li>1450 sq ft</li>
+								<li>$<%= objSimilar.getGiatien() / objSimilar.getDientich() %> sq ft</li>
 								<li><%= objSimilar.getSophongngu() %> Bedroom</li>
 								<li><%= objSimilar.getSophongtam() %> Rooms</li>
 								<li><%= objSimilar.getNhakho() %> Rooms</li>
