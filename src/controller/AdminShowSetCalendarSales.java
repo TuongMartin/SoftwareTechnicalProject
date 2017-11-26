@@ -57,7 +57,7 @@ public class AdminShowSetCalendarSales extends HttpServlet {
 					AgendaDAO agendaDAO = new AgendaDAO();
 					session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
 
-					RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp?actived=4");
+					RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
 					rd.forward(request, response);
 				}else {
 					response.sendRedirect(request.getContextPath() + "/admin/trang-chu");
@@ -69,7 +69,7 @@ public class AdminShowSetCalendarSales extends HttpServlet {
 				AgendaDAO agendaDAO = new AgendaDAO();
 				session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
 
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp?actived=4");
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
 				rd.forward(request, response);
 			}
 
