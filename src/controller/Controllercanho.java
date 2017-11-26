@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -9,21 +11,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import library.CheckLoginLibrary;
-import model.bean.Account;
-import model.dao.AccountDAO;
+import javax.servlet.http.HttpSession;
+
+import model.bean.CanHo;
+import model.dao.ApartmentDAO;
 
 /**
- * Servlet implementation class AdminShowAccount
+ * Servlet implementation class Controllercanho
  */
-@WebServlet("/AdminShowAccount")
-public class AdminShowAccount extends HttpServlet {
+@WebServlet("/Controllercanho")
+public class Controllercanho extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminShowAccount() {
+    public Controllercanho() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +34,17 @@ public class AdminShowAccount extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(!CheckLoginLibrary.isLogin(request, response)) {
-			return;
-		}
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		int maxitem = 20;
-		AccountDAO model = new AccountDAO();
+		ApartmentDAO model = new ApartmentDAO();
 		if(request.getParameter("key")!=null||request.getParameter("Timkiem")!=null){
 			String str="";
 			if(request.getParameter("keysearch")!=null){
@@ -55,8 +54,8 @@ public class AdminShowAccount extends HttpServlet {
 					str = new String(request.getParameter("key").getBytes("ISO-8859-1"),"UTF-8");
 				}
 			}
-			int soAccount = model.numsearch(str);
-			int numberpage= (int)Math.ceil((float)soAccount/maxitem);
+			int socanho = model.numbercanhosearch(1,str);
+			int numberpage= (int)Math.ceil((float)socanho/maxitem);
 			int currentpage;
 			if(request.getParameter("page")!=null){
 				currentpage = Integer.parseInt(request.getParameter("page"));
@@ -65,15 +64,15 @@ public class AdminShowAccount extends HttpServlet {
 				currentpage = 1;
 			}
 			int startpage = (currentpage - 1)*maxitem;	
-			ArrayList<Account> Accounts = model.getlistsearch(str, startpage, maxitem);	
+			ArrayList<CanHo> canhos = model.searchcanho(1,startpage,maxitem,str);	
 			request.setAttribute("numberpage", numberpage);
-			request.setAttribute("Accounts", Accounts);
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountIndex.jsp");
+			request.setAttribute("canhos", canhos);
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");
 			rd.forward(request, response);
 					
 		}else{				
-			int soAccount = model.numAccount();
-			int numberpage= (int)Math.ceil((float)soAccount/maxitem);
+			int socanho = model.numbercanho(1);
+			int numberpage= (int)Math.ceil((float)socanho/maxitem);
 			int currentpage;
 			if(request.getParameter("page")!=null){
 				currentpage = Integer.parseInt(request.getParameter("page"));
@@ -82,10 +81,10 @@ public class AdminShowAccount extends HttpServlet {
 				currentpage = 1;
 			}
 			int startpage = (currentpage - 1)*maxitem;			
-			ArrayList<Account> Accounts = model.getlist(startpage, maxitem);	
+			ArrayList<CanHo> canhos = model.getcanhosbyidnv(1,startpage,maxitem);	
 			request.setAttribute("numberpage", numberpage);
-			request.setAttribute("Accounts", Accounts);
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountIndex.jsp");
+			request.setAttribute("canhos", canhos);
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");
 			rd.forward(request, response);
 		}
 	}

@@ -1,6 +1,7 @@
-<%@page import="model.bean.Account"%>
+
 <%@page import="model.bean.Role"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.bean.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
@@ -18,9 +19,8 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
-							class="ti-settings"></i>
-							<p>Settings</p>
+					<li><a>
+							<p>Wellcome</p>
 					</a></li>
 				</ul>
 
@@ -99,10 +99,16 @@
 											<label>Quyền hạn</label> 
 											<select name="idroler"" class="form-control border-input">
 												<%
+													String selected="";
 													if(roles.size()!=0)
-													for(int i=0;i<roles.size();i++){														
+													for(int i=0;i<roles.size();i++){	
+														if(ojAccount.getIdrole()==roles.get(i).getIdrole()){
+															selected="selected";
+														}else{
+															selected="";
+														}
 												%>
-													<option value="<%=roles.get(i).item()%>"><%=roles.get(i).getRole() %></option>
+													<option <%=selected %> value="<%=roles.get(i).getIdrole()%>"><%=roles.get(i).getRole() %></option>
 												<%
 													}
 												%>	

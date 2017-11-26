@@ -80,7 +80,7 @@ public class AccountDAO {
 	public ArrayList<Account> getlistsearch(String str,int startitem,int maxitem){
 		conn = connDB.getConnectMySQL();
 		ArrayList<Account> accounts= new ArrayList<Account>();
-		String sql = "select * from account left join nhanvien on account.IdNhanVien=nhanvien.IdNhanVien join role on account.idrole=role.idrole where username like '%"+str+"%' limit ?,?";
+		String sql = "select * from account left join nhanvien on account.id=nhanvien.idAccount join role on account.idrole=role.idrole where username like '%"+str+"%' limit ?,?";
 		try{
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, startitem);
@@ -115,6 +115,7 @@ public class AccountDAO {
 		return current;
 	}
 	
+
 	public Account getAccountByIdSale(int idNhanVien){
 		Account current=null;
 		conn = connDB.getConnectMySQL();
@@ -132,9 +133,7 @@ public class AccountDAO {
 		}
 		return current;
 	}
-	
-	
-	
+
 	public boolean addaccount(Account account){
 		conn = connDB.getConnectMySQL();
 		String sql = "insert into account (username,password,idrole) values (?,?,?)";
@@ -199,6 +198,7 @@ public class AccountDAO {
 		return true;
 	}
 	
+
 	public boolean updateAccount(int idSale ,String password) {
 		conn = connDB.getConnectMySQL();
 		String sql = "UPDATE account SET password=? WHERE idNhanVien=?";
@@ -213,7 +213,7 @@ public class AccountDAO {
 		}		
 		return true;
 	}
-	
+
 	public boolean updateRole(int id,int idrole) {
 		conn = connDB.getConnectMySQL();
 		String sql = "UPDATE account SET idrole=? WHERE id=?";
@@ -228,8 +228,7 @@ public class AccountDAO {
 		}		
 		return true;
 	}
-	
-	
+
 	public ArrayList<Account> getlist(){
 		conn = connDB.getConnectMySQL();
 		ArrayList<Account> listAccounts= new ArrayList<Account>();

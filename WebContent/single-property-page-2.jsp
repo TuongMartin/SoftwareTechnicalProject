@@ -1,6 +1,8 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp"%>
+
 <!-- Titlebar
 ================================================== -->
 <div id="titlebar" class="property-titlebar margin-bottom-0">
