@@ -53,15 +53,16 @@
 	rel="stylesheet">
 
 <!-- hover -->
-<link
-	href="<%=request.getContextPath()%>/templates/admin/hover/reset.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/templates/admin/hover/ihover.css"
-	rel="stylesheet" />
- <script src="<%=request.getContextPath()%>/templates/admin/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="<%=request.getContextPath()%>/templates/admin/js/jquery.validate.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/ckeditor/ckeditor.js" ></script>
+
+<link href="<%=request.getContextPath()%>/templates/admin/hover/reset.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/NhanVien/css/dialog.css" />
+<link href="<%=request.getContextPath()%>/templates/admin/hover/ihover.css" rel="stylesheet" />
+<script src="<%=request.getContextPath()%>/templates/admin/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/templates/admin/js/jquery.validate.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/NhanVien/js/dialog.js"></script> 
+ <script type="text/javascript" src="<%=request.getContextPath() %>/ckeditor/ckeditor.js" ></script>
+
 </head>
 <body>
 

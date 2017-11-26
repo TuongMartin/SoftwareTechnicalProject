@@ -22,10 +22,10 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import library.CheckLoginLibrary;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.CanHo;
-import model.bean.NhanVien;
 import model.dao.ApartmentDAO;
 import model.dao.AreaDAO;
 import model.dao.FeatureApartmentDAO;
@@ -60,6 +60,9 @@ public class AdminAddNewApartment extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		RealEstateDAO realEstateDAO = new RealEstateDAO();
 		SalesDAO saleDAO = new SalesDAO();
@@ -144,7 +147,7 @@ public class AdminAddNewApartment extends HttpServlet {
 					while ((read = filecontent.read(bytes)) != -1) {
 						out.write(bytes, 0, read);
 					}
-					System.out.println("Upload thành công");
+//					System.out.println("Upload thành công");
 				} catch (FileNotFoundException fne) {
 					System.err.println("Có lỗi trong quá trình xử lý");
 					fne.printStackTrace();

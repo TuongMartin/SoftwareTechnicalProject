@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.security.SecureRandom;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,17 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
-
 import library.BCrypt;
 import library.FileNameLibrary;
 import library.RandomStringGenerator;
 import library.RenameFileLibrary;
 import library.SendMail;
 import model.bean.KhachHang;
-import model.bean.NhanVien;
 import model.dao.CustomersDAO;
-import model.dao.SalesDAO;
 
 /**
  * Servlet implementation class AdminAddNewSale

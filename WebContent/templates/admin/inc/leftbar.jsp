@@ -1,3 +1,5 @@
+<%@page import="model.bean.NhanVien"%>
+<%@page import="model.dao.SalesDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="sidebar" data-background-color="white" data-active-color="danger">
     	<div class="sidebar-wrapper">
@@ -7,7 +9,24 @@
 			    <!-- normal -->
 			    <div class="ih-item circle effect1"><a href="#">
 			        <div class="spinner"></div>
-			        <div class="img"><img src="<%=request.getContextPath()%>/templates/admin/img/Taylor-Swift.jpg" alt="img"></div>
+			        <div class="img">
+			        <%
+			        	if(request.getSession().getAttribute("userInfo") != null){ 
+			        		NhanVien objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
+			        		if(!"".equals(objNhanVien.getAvatar())) {
+			        	%>
+			        			<img src="<%=request.getContextPath()%>/files/<%=objNhanVien.getAvatar()%>" alt="img">
+			        	<%		
+			        		} else {
+			        	%>
+			        			<img src="<%=request.getContextPath()%>/templates/admin/img/avatar-default.jpg" alt="img">
+			        	<%
+			        		}
+			        	%>
+			        		
+			        	<%}
+			        %>
+			       	</div>
 			        <div class="info">
 			          <div class="info-back">
 			            <h3>AdminCP</h3>
@@ -17,7 +36,7 @@
 			    <!-- end normal -->
             </div>
             <%
-				String active1 = "", active2 = "", active3 = "", active4 = "", active5 = "", active6 = "";
+				String active1 = "", active2 = "", active3 = "", active4 = "", active5 = "", active6 = "", active7 = "";
             	int actived = 0;
             	if(request.getParameter("actived") != null) {
             		actived = Integer.parseInt(request.getParameter("actived"));
@@ -39,6 +58,9 @@
             	}
             	else if(actived == 6) {
             		active6 = "active";
+            	}
+            	else if(actived == 7) {
+            		active7 = "active";
             	}
             %>
             <ul class="nav">
@@ -77,11 +99,10 @@
                         <i class="ti-user"></i>
                         <p>Danh sách nhân viên</p>
                     </a>
-                </li>
-                <li>
-                    <a href="<%=request.getContextPath()%>/admin/users">
+                <li class="<%=active7 %>">
+                    <a href="<%=request.getContextPath()%>/admin/accounts">
                         <i class="ti-user"></i>
-                        <p>Danh sách người dùng</p>
+                        <p>Quản lý tài khoản</p>
                     </a>
                 </li>
             </ul>

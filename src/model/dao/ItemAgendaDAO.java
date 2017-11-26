@@ -98,14 +98,13 @@ public class ItemAgendaDAO {
 		String sql = "DELETE FROM itemagenda";
 		try {
 			st = conn.createStatement();
-			rs = st.executeQuery(sql);
+			st.executeUpdate(sql);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		} finally {
 			try {
-				ps.close();
 				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();

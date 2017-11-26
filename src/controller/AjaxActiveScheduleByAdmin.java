@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckLoginLibrary;
 import model.dao.AgendaDAO;
 import model.dao.ItemAgendaDAO;
 
@@ -35,6 +36,9 @@ public class AjaxActiveScheduleByAdmin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		

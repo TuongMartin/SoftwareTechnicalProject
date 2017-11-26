@@ -23,6 +23,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import library.CheckLoginLibrary;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.CanHo;
@@ -62,6 +63,9 @@ public class AdminEditApartment extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		RealEstateDAO realEstateDAO = new RealEstateDAO();
 		SalesDAO saleDAO = new SalesDAO();

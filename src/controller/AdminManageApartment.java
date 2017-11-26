@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckLoginLibrary;
 import model.dao.ApartmentDAO;
-import model.dao.CustomersDAO;
-import model.dao.SalesDAO;
 
 /**
  * Servlet implementation class AdminManageSales
@@ -37,6 +36,9 @@ public class AdminManageApartment extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		int page_curent = 1;
 		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		int sum_news = apartmentDAO.countItem();
