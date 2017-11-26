@@ -80,6 +80,8 @@
   <servlet-mapping>
     <servlet-name>AdminSearchCustomer</servlet-name>
     <url-pattern>/admin/searchCustomer</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>NhanVienAddNhatKyTuVan</servlet-name>
     <servlet-class>controller.NhanVienAddNhatKyTuVan</servlet-class>
   </servlet>
@@ -426,6 +428,7 @@
   <servlet-mapping>
     <servlet-name>AdminUploadImageApartment</servlet-name>
     <url-pattern>/admin/uploadImageApartment</url-pattern>
+  </servlet-mapping>
    <servlet>
     <servlet-name>AdminShowAccount</servlet-name>
     <servlet-class>controller.AdminShowAccount</servlet-class>

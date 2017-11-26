@@ -65,19 +65,19 @@ public class AdminAddAccount extends HttpServlet {
 			Account tam = new Account(1,username,hashed,idrole,"",0,"");
 			
 			if(modelAccount.checkusername(username)){
-				response.sendRedirect(request.getContextPath() + "/admin/addaccount?msg=1");
+				response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=4");
 				return;
 			}else{
 				if(modelAccount.addaccount(tam)) {
-					response.sendRedirect(request.getContextPath() + "/admin/addaccount?msg=2");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=5");
 					return;
 				}else {
-					response.sendRedirect(request.getContextPath() + "/admin/addaccount?msg=3");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=6");
 					return;
 				}			
 			}			
 		}else{
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountAdd.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountAdd.jsp?active=7");
 			rd.forward(request, response);
 		}
 		

@@ -20,7 +20,7 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a>
-							<p>Wellcome</p>
+							<p>Welcome</p>
 					</a></li>
 				</ul>
 
@@ -35,20 +35,6 @@
 					<div class="card">
 						<div class="header">
 							<h4 class="title">Thêm thông tin</h4>
-							<%
-							if(request.getParameter("msg")!=null) {
-								int msg = Integer.parseInt(request.getParameter("msg"));
-								switch (msg) {
-									case 1 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Sửa thành công</span>");
-										break;
-									case 2 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Sửa không thành công</span>");
-										break;									
-								}
-							}
-							
-							%>
 						</div>
 						<div class="content">
 								<%
@@ -71,7 +57,7 @@
 										<div class="form-group">
 											<label>Password</label> <input type="password"
 												name="password" id="password" class="form-control border-input"
-												value="<%=ojAccount.getPassword() %>" disabled>
+												value="" disabled>
 										</div>
 									</div>
 								</div>
@@ -80,7 +66,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label>Xác nhận Password</label> <input type="password" name="repassword" id="repassword"
-												class="form-control border-input" value="<%=ojAccount.getPassword() %>" disabled>
+												class="form-control border-input" value="" disabled>
 										</div>
 									</div>
 								</div>

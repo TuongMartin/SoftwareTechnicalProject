@@ -57,16 +57,13 @@ public class AdminEditAccount extends HttpServlet {
 		if(request.getParameter("id")!=null) {
 			id=Integer.parseInt(request.getParameter("id"));
 		}
-		
 		Account ojAccount = modelAccount.getAccountById(id);
 	
 		request.setAttribute("roles", roles);
 		request.setAttribute("ojAccount", ojAccount);
 		
 		if(request.getParameter("submit")!=null){
-			
 			int idrole = Integer.parseInt(request.getParameter("idroler"));
-			
 			if(request.getParameter("password")!=null) {
 				
 				String password = request.getParameter("password");
@@ -74,24 +71,24 @@ public class AdminEditAccount extends HttpServlet {
 				
 				
 				if(modelAccount.updateAccount(id, hashed, idrole)) {
-					response.sendRedirect(request.getContextPath() + "/admin/updateaccount?id="+id+"&&msg=1");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=7");
 					return;
 				}else {
-					response.sendRedirect(request.getContextPath() + "/admin/updateaccount?id="+id+"&&msg=2");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?&msg=8");
 					return;
 				}		
 			}else {
 				if(modelAccount.updateRole(id, idrole)) {
-					response.sendRedirect(request.getContextPath() + "/admin/updateaccount?id="+id+"&&msg=1");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=7");
 					return;
 				}else {
-					response.sendRedirect(request.getContextPath() + "/admin/updateaccount?id="+id+"&&msg=2");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?&msg=8");
 					return;
 				}		
 			}
 						
 		}else{
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountUpdate.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountUpdate.jsp?active=7");
 			rd.forward(request, response);
 		}
 	}

@@ -13,8 +13,17 @@
 			        <%
 			        	if(request.getSession().getAttribute("userInfo") != null){ 
 			        		NhanVien objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
+			        		if(!"".equals(objNhanVien.getAvatar())) {
 			        	%>
-			        		<img src="<%=request.getContextPath()%>/files/<%=objNhanVien.getAvatar()%>" alt="img">
+			        			<img src="<%=request.getContextPath()%>/files/<%=objNhanVien.getAvatar()%>" alt="img">
+			        	<%		
+			        		} else {
+			        	%>
+			        			<img src="<%=request.getContextPath()%>/templates/admin/img/avatar-default.jpg" alt="img">
+			        	<%
+			        		}
+			        	%>
+			        		
 			        	<%}
 			        %>
 			       	</div>
@@ -27,7 +36,7 @@
 			    <!-- end normal -->
             </div>
             <%
-				String active1 = "", active2 = "", active3 = "", active4 = "", active5 = "", active6 = "";
+				String active1 = "", active2 = "", active3 = "", active4 = "", active5 = "", active6 = "", active7 = "";
             	int actived = 0;
             	if(request.getParameter("actived") != null) {
             		actived = Integer.parseInt(request.getParameter("actived"));
@@ -49,6 +58,9 @@
             	}
             	else if(actived == 6) {
             		active6 = "active";
+            	}
+            	else if(actived == 7) {
+            		active7 = "active";
             	}
             %>
             <ul class="nav">
@@ -86,16 +98,11 @@
                     <a href="<%=request.getContextPath()%>/admin/manageSales">
                         <i class="ti-user"></i>
                         <p>Danh sách nhân viên</p>
-                <li>
-                    <a href="<%=request.getContextPath()%>/admin/accounts">
-                        <i class="ti-panel"></i>
-                        <p>Quản lý tài khoản</p>
                     </a>
-                </li>
-                <li>
-                    <a href="<%=request.getContextPath()%>/admin/users">
+                <li class="<%=active7 %>">
+                    <a href="<%=request.getContextPath()%>/admin/accounts">
                         <i class="ti-user"></i>
-                        <p>Danh sách người dùng</p>
+                        <p>Quản lý tài khoản</p>
                     </a>
                 </li>
             </ul>

@@ -141,9 +141,6 @@ public class CustomersDAO {
 		
 		return false;
 	}
-}
-
-	}
 	
 	public KhachHang getItemCustomerByEmail(String email) {
 		conn = connectionLibraryMySQL.getConnectMySQL();

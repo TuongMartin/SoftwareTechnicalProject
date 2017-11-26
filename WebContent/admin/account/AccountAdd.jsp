@@ -35,23 +35,6 @@
 					<div class="card">
 						<div class="header">
 							<h4 class="title">Thêm thông tin</h4>
-							<%
-							if(request.getParameter("msg")!=null) {
-								int msg = Integer.parseInt(request.getParameter("msg"));
-								switch (msg) {
-									case 1 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Username đã tồn tại</span>");
-										break;
-									case 2 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Thêm thành công</span>");
-										break;
-									case 3 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Thêm không thành công</span>");
-										break;
-								}
-							}
-							
-							%>
 						</div>
 						<div class="content">
 							<form action="" method="post" id="accountform">

@@ -1,7 +1,11 @@
 package controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +23,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import library.CheckLoginLibrary;
+import library.FileNameLibrary;
+import library.RenameFileLibrary;
 import model.bean.CanHo;
 import model.dao.ApartmentDAO;
 import model.dao.AreaDAO;

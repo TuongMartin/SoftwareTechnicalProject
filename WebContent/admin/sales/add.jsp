@@ -163,7 +163,7 @@
 													if(listRole.size()!=0)
 													for(Role item : listRole){														
 												%>
-													<option value="<%=item.item()%>"><%=item.getRole() %></option>
+													<option value="<%=item.getIdrole()%>"><%=item.getRole() %></option>
 												<%
 													}
 												%>	

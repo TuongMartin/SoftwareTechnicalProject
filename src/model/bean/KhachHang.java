@@ -113,6 +113,24 @@ public class KhachHang {
 			String queQuan, String cMND, String ngaySinh, String soDienThoai,
 			String email, String matKhau, String avatar, int status,
 			String token, String comfirm_at,int IdLoaiKH,String TenLoaiKH,int IdTinDang) {
+		super();
+		this.id = id;
+		this.tenKhachHang = tenKhachHang;
+		this.diaChi = diaChi;
+		this.queQuan = queQuan;
+		CMND = cMND;
+		this.ngaySinh = ngaySinh;
+		this.soDienThoai = soDienThoai;
+		this.email = email;
+		this.matKhau = matKhau;
+		this.avatar = avatar;
+		this.status = status;
+		this.token = token;
+		this.comfirm_at = comfirm_at;
+		this.IdLoaiKH = IdLoaiKH;
+		this.TenLoaiKH = TenLoaiKH;
+		this.IdTinDang = IdTinDang;
+	}
 	public KhachHang(int id, String tenKhachHang, String diaChi,
 			String queQuan, String cMND, String ngaySinh, String soDienThoai,
 			String email, String matKhau, String avatar, int status,
@@ -131,9 +149,6 @@ public class KhachHang {
 		this.status = status;
 		this.token = token;
 		this.comfirm_at = comfirm_at;
-		this.IdLoaiKH = IdLoaiKH;
-		this.TenLoaiKH = TenLoaiKH;
-		this.IdTinDang = IdTinDang;
 	}
 	public int getIdTinDang() {
 		return IdTinDang;
