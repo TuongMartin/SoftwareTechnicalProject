@@ -18,8 +18,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> 
-							<p>Wellcome</p>
+					<li><a href="http://vinenter.edu.vn"> <i
+							class="ti-settings"></i>
+							<p>Settings</p>
 					</a></li>
 				</ul>
 

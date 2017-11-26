@@ -14,9 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import library.BCrypt;
+import library.CheckLoginLibrary;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
+import model.bean.Account;
 import model.bean.NhanVien;
+import model.dao.AccountDAO;
 import model.dao.SalesDAO;
 
 /**
@@ -45,7 +49,11 @@ public class AdminAddNewSale extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		SalesDAO salesDAO = new SalesDAO();
+		AccountDAO accountDAO = new AccountDAO();
 		int idSale = Integer.parseInt(request.getParameter("id"));
 		if(salesDAO.getItemSale(idSale) != null) {
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=3");
@@ -58,8 +66,13 @@ public class AdminAddNewSale extends HttpServlet {
 			String diachi = new String(request.getParameter("diachi").getBytes("ISO-8859-1"),"UTF-8");
 			String sdt = new String(request.getParameter("sdt"));
 			int idChucVu = Integer.parseInt(request.getParameter("chucvu"));
+			
+			//add new account
 			String username = new String(request.getParameter("username").getBytes("ISO-8859-1"),"UTF-8");
-			String password = new String(request.getParameter("password"));*/
+			String password = BCrypt.hashpw(new String(request.getParameter("password")), BCrypt.gensalt());
+			int idrole = Integer.parseInt(request.getParameter("idrole"));
+			Account objAccount = new Account(0, username, password, idrole, null, idSale, hoten);
+			accountDAO.addaccount(objAccount);
 			String picture = "";
 			
 			response.setContentType("text/html;charset=UTF-8");
@@ -101,8 +114,8 @@ public class AdminAddNewSale extends HttpServlet {
 				}else{
 					picture = "";
 				}
-			
-			/*NhanVien objNhanVien = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, username, password, idChucVu, null, picture);
+		
+			NhanVien objNhanVien = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, idChucVu, null, picture, accountDAO.getAccountNew().getId());
 			if(salesDAO.addItemSale(objNhanVien)) {
 				response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=2");
 			} else {

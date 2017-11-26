@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import library.BCrypt;
+import library.CheckLoginLibrary;
 import model.bean.Account;
 import model.bean.Role;
 import model.dao.AccountDAO;
@@ -44,6 +45,9 @@ public class AdminAddAccount extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		// TODO Auto-generated method stub
 		RoleDAO model = new RoleDAO();
 		AccountDAO modelAccount = new AccountDAO();

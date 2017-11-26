@@ -1,5 +1,6 @@
 package model.bean;
 
+import java.util.Date;
 
 public class KhachHang {
 	private int id;
@@ -112,6 +113,10 @@ public class KhachHang {
 			String queQuan, String cMND, String ngaySinh, String soDienThoai,
 			String email, String matKhau, String avatar, int status,
 			String token, String comfirm_at,int IdLoaiKH,String TenLoaiKH,int IdTinDang) {
+	public KhachHang(int id, String tenKhachHang, String diaChi,
+			String queQuan, String cMND, String ngaySinh, String soDienThoai,
+			String email, String matKhau, String avatar, int status,
+			String token, String comfirm_at) {
 		super();
 		this.id = id;
 		this.tenKhachHang = tenKhachHang;

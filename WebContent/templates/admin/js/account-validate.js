@@ -25,6 +25,7 @@ $(document).ready(function(){
 			},
 			password: {
 				required: "Độ dài password 8-30",
+
 				minlength: "Chiều dài password phải từ 8 ký tự trở lên",
 				maxlength: "Chiều dài password phải nhỏ hơn 30 ký tự"
 			},

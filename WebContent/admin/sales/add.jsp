@@ -1,3 +1,5 @@
+<%@page import="model.bean.Role"%>
+<%@page import="model.dao.RoleDAO"%>
 <%@page import="model.bean.ChucVu"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.dao.ChucVuDAO"%>
@@ -149,7 +151,27 @@
 										</div>
 									</div>
 								</div>
-
+								
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Cấp bậc:</label> 
+											<select name="idrole">
+												<%
+													RoleDAO roleDAO = new RoleDAO();
+													ArrayList<Role> listRole = roleDAO.roles();
+													if(listRole.size()!=0)
+													for(Role item : listRole){														
+												%>
+													<option value="<%=item.item()%>"><%=item.getRole() %></option>
+												<%
+													}
+												%>	
+											</select>
+										</div>
+									</div>
+								</div>
+								
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
