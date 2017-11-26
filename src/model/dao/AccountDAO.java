@@ -80,7 +80,7 @@ public class AccountDAO {
 	public ArrayList<Account> getlistsearch(String str,int startitem,int maxitem){
 		conn = connDB.getConnectMySQL();
 		ArrayList<Account> accounts= new ArrayList<Account>();
-		String sql = "select * from account left join nhanvien on account.IdNhanVien=nhanvien.IdNhanVien join role on account.idrole=role.idrole where username like '%"+str+"%' limit ?,?";
+		String sql = "select * from account left join nhanvien on account.id=nhanvien.idAccount join role on account.idrole=role.idrole where username like '%"+str+"%' limit ?,?";
 		try{
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, startitem);
