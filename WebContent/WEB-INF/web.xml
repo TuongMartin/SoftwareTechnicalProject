@@ -344,5 +344,36 @@
   <servlet-mapping>
     <servlet-name>AdminUploadImageApartment</servlet-name>
     <url-pattern>/admin/uploadImageApartment</url-pattern>
+   <servlet>
+    <servlet-name>AdminShowAccount</servlet-name>
+    <servlet-class>controller.AdminShowAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminShowAccount</servlet-name>
+    <url-pattern>/admin/accounts</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminAddAccount</servlet-name>
+    <servlet-class>controller.AdminAddAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAddAccount</servlet-name>
+    <url-pattern>/admin/addaccount</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDeleteAccount</servlet-name>
+    <servlet-class>controller.AdminDeleteAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDeleteAccount</servlet-name>
+    <url-pattern>/admin/deleteaccount</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminEditAccount</servlet-name>
+    <servlet-class>controller.AdminEditAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEditAccount</servlet-name>
+    <url-pattern>/admin/updateaccount</url-pattern>
   </servlet-mapping>
 </web-app>

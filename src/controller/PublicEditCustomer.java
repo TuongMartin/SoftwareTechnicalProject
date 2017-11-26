@@ -19,9 +19,7 @@ import library.BCrypt;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.KhachHang;
-import model.bean.NhanVien;
 import model.dao.CustomersDAO;
-import model.dao.SalesDAO;
 
 /**
  * Servlet implementation class AdminManageSales

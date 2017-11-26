@@ -57,7 +57,7 @@ public class ScheduleDAO {
 			ps.setInt(1, idNhanVien);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"), rs.getString("SDT"), rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
+				objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,7 +72,7 @@ public class ScheduleDAO {
 		return objSale;
 	}
 	
-	public boolean editSale(NhanVien objSale) {
+	public boolean editSale(NhanVien objSale, String pass) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		String sql = "UPDATE nhanvien SET TenNhanVien = ?,DiaChi = ?,QueQuan = ?,CMND = ?,NgaySinh = ?,SDT = ?,MatKhau = ?,IdChucVu= ?,avatar = ? WHERE IdNhanVien = ?";
 		
@@ -84,7 +84,7 @@ public class ScheduleDAO {
 			ps.setInt(4, objSale.getCMND());
 			ps.setString(5, objSale.getNgaySinh());
 			ps.setString(6, objSale.getSDT());
-			ps.setString(7, objSale.getMatKhau());
+			ps.setString(7, pass);
 			ps.setInt(8, objSale.getIdChucVu());
 			ps.setString(9, objSale.getAvatar());
 			ps.setInt(10, objSale.getIdNhanVien());
@@ -190,7 +190,7 @@ public class ScheduleDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
+				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
 				list.add(objSale);
 			}
 			return list;
@@ -224,7 +224,7 @@ public class ScheduleDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
+				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
 				list.add(objSale);
 			}
 			return list;

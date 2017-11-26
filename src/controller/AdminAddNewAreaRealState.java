@@ -15,14 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import library.CheckLoginLibrary;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.KhuVucBDS;
-import model.bean.NhanVien;
-import model.bean.TheLoaiBDS;
 import model.dao.AreaDAO;
-import model.dao.RealEstateDAO;
-import model.dao.SalesDAO;
 
 /**
  * Servlet implementation class AdminAddNewSale
@@ -50,6 +47,9 @@ public class AdminAddNewAreaRealState extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		AreaDAO areaDAO = new AreaDAO();
 		if(request.getParameter("submit") != null) {
 			String khuvuc = new String(request.getParameter("area").getBytes("ISO-8859-1"),"UTF-8");

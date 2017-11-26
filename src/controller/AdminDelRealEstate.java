@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -9,10 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckLoginLibrary;
 import model.dao.ApartmentDAO;
-import model.dao.CustomersDAO;
 import model.dao.RealEstateDAO;
-import model.dao.SalesDAO;
 
 /**
  * Servlet implementation class AdminManageSales
@@ -40,6 +38,9 @@ public class AdminDelRealEstate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		int rid = Integer.parseInt(request.getParameter("id"));
 		RealEstateDAO realestateDAO = new RealEstateDAO();
 		ApartmentDAO apartmentDAO = new ApartmentDAO();

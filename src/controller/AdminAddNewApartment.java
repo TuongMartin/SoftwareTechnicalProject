@@ -1,11 +1,7 @@
 package controller;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -22,10 +18,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import library.FileNameLibrary;
-import library.RenameFileLibrary;
+import library.CheckLoginLibrary;
 import model.bean.CanHo;
-import model.bean.NhanVien;
 import model.dao.ApartmentDAO;
 import model.dao.AreaDAO;
 import model.dao.FeatureApartmentDAO;
@@ -60,6 +54,9 @@ public class AdminAddNewApartment extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		RealEstateDAO realEstateDAO = new RealEstateDAO();
 		SalesDAO saleDAO = new SalesDAO();

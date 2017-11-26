@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import library.CheckLoginLibrary;
+import library.CheckRankLibrary;
+import model.bean.Account;
 import model.dao.AgendaDAO;
 import model.dao.SalesDAO;
 
@@ -34,20 +37,45 @@ public class AdminShowSetCalendarSales extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idSale = Integer.parseInt(request.getParameter("idSale"));
-		SalesDAO salesDAO = new SalesDAO();
-		HttpSession session = request.getSession();
-		session.setAttribute("objSales", salesDAO.getItemSale(idSale));
-		
-		AgendaDAO agendaDAO = new AgendaDAO();
-		session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
-		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
-		rd.forward(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
+		try {
+			int idSale = Integer.parseInt(request.getParameter("idSale"));
+			HttpSession session = request.getSession();
+			if(!CheckRankLibrary.isAdmin(request, response)) {
+				Account objUser = (Account) session.getAttribute("objUser");
+				if(objUser.getIdNhanVien() == idSale) {
+					SalesDAO salesDAO = new SalesDAO();
+					session.setAttribute("objSales", salesDAO.getItemSale(idSale));
+
+					AgendaDAO agendaDAO = new AgendaDAO();
+					session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
+
+					RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
+					rd.forward(request, response);
+				}else {
+					response.sendRedirect(request.getContextPath() + "/admin/trang-chu");
+				}
+			}else {
+				SalesDAO salesDAO = new SalesDAO();
+				session.setAttribute("objSales", salesDAO.getItemSale(idSale));
+
+				AgendaDAO agendaDAO = new AgendaDAO();
+				session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
+
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
+				rd.forward(request, response);
+			}
+
+		} catch (NumberFormatException ne) {
+			response.sendRedirect(request.getContextPath() + "/admin/trang-chu");
+		}
 	}
 
 }

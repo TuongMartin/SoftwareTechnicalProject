@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckLoginLibrary;
 import model.bean.Agenda;
 import model.bean.ItemAgenda;
 import model.dao.AgendaDAO;
@@ -41,8 +42,11 @@ public class AdminSetCalendarSales extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		int idSales = Integer.parseInt(request.getParameter("idSales"));
-		String title = request.getParameter("title");
+		String title = new String(request.getParameter("title").getBytes("ISO-8859-1"),"UTF-8");
 		int startTime = Integer.parseInt(request.getParameter("starttime"));
 		int endTime = Integer.parseInt(request.getParameter("endtime"));
 		String[] days = request.getParameterValues("day");
