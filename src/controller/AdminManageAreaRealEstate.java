@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckLoginLibrary;
 import model.dao.AreaDAO;
-import model.dao.CustomersDAO;
-import model.dao.RealEstateDAO;
-import model.dao.SalesDAO;
 
 /**
  * Servlet implementation class AdminManageSales
@@ -38,6 +36,9 @@ public class AdminManageAreaRealEstate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		int page_curent = 1;
 		AreaDAO areaDAO = new AreaDAO();
 		int sum_news = areaDAO.countItem();

@@ -10,9 +10,9 @@ public class CheckPassTheWeeks {
 		Date objDate = new Date();
 		if(objDate.getDay() == 6) {
 			AgendaDAO agendaDAO = new AgendaDAO();
-			agendaDAO.delAgenda();
 			ItemAgendaDAO itemAgendaDAO = new ItemAgendaDAO();
 			itemAgendaDAO.delItemAgenda();
+			agendaDAO.delAgenda();
 		}
 	}
 }

@@ -77,7 +77,7 @@
 						<form method="post" class="login">
 		
 							<p class="form-row form-row-wide">
-								<label for="username">Email:
+								<label for="username">Email/Username:
 									<i class="im im-icon-Male"></i>
 									<input type="text" class="input-text" name="email" id="email" value="" />
 								</label>

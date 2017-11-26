@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import library.BCrypt;
+import library.CheckLoginLibrary;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.NhanVien;
+import model.dao.AccountDAO;
 import model.dao.SalesDAO;
 
 /**
@@ -46,6 +48,9 @@ public class AdminEditSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		int idSale = Integer.parseInt(request.getParameter("idSale"));
 		String hoten = new String(request.getParameter("hoten").getBytes("ISO-8859-1"),"UTF-8");
 		String ngaysinh = new String(request.getParameter("ngaysinh"));
@@ -61,6 +66,7 @@ public class AdminEditSales extends HttpServlet {
 		
 		String picture = "";
 		SalesDAO salesDAO = new SalesDAO();
+		AccountDAO accountDAO = new AccountDAO();
 		
 		response.setContentType("text/html;charset=UTF-8");
 		final String path = request.getServletContext().getRealPath("files");
@@ -112,8 +118,11 @@ public class AdminEditSales extends HttpServlet {
 			picture = salesDAO.getItemSale(idSale).getAvatar();
 		}
 		
-		NhanVien objSale = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, "", hashed, idChucVu, "", picture);
-		if(salesDAO.editSale(objSale)) {
+		NhanVien objSale = new NhanVien(idSale, hoten, diachi, quequan, cmnd, ngaysinh, sdt, idChucVu, null, picture, 0);
+		if(salesDAO.editSale(objSale) && accountDAO.updateAccount(idSale, hashed)) {
+			NhanVien objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
+			objNhanVien.setAvatar(picture);
+			request.getSession().setAttribute("userInfo", objNhanVien);
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=1");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=0");

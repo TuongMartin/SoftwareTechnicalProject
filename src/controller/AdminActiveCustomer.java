@@ -3,11 +3,11 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckLoginLibrary;
 import model.bean.KhachHang;
 import model.dao.CustomersDAO;
 
@@ -38,6 +38,9 @@ public class AdminActiveCustomer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");

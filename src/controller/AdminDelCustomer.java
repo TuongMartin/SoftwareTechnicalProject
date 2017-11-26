@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import library.CheckLoginLibrary;
 import model.dao.CustomersDAO;
-import model.dao.SalesDAO;
 
 /**
  * Servlet implementation class AdminManageSales
@@ -38,6 +38,9 @@ public class AdminDelCustomer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
 		int idCustomer = Integer.parseInt(request.getParameter("id"));
 		CustomersDAO customerDAO = new CustomersDAO();
 		final String path = request.getServletContext().getRealPath("files");
