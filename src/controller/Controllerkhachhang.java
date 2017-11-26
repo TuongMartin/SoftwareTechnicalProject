@@ -9,9 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import library.CheckLoginLibrary;
 import model.bean.KhachHang;
 import model.bean.LoaiKhachHang;
+import model.bean.NhanVien;
 import model.dao.CustomersDAO;
 import model.dao.LoaiKhachHangDAO;
 
@@ -46,7 +49,19 @@ public class Controllerkhachhang extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int maxitem = 20;
+		if(!CheckLoginLibrary.isLogin(request, response)) {
+			return;
+		}
+		HttpSession session = request.getSession();
+		
+		int idNhanVien = 0;
+		
+		if(session.getAttribute("userInfo")!=null){
+    		NhanVien objNhanVien = (NhanVien) session.getAttribute("userInfo");	
+    		idNhanVien = objNhanVien.getIdNhanVien();
+		}
+		
+		int maxitem = 5;
 		
 		CustomersDAO model = new CustomersDAO();
 		LoaiKhachHangDAO modelloaiKH = new LoaiKhachHangDAO();
@@ -66,7 +81,7 @@ public class Controllerkhachhang extends HttpServlet {
 				}
 			}
 			
-			int sokhachhang = model.searchkhcount(1,str);
+			int sokhachhang = model.searchkhcount(idNhanVien,str);
 			int numberpage= (int)Math.ceil((float)sokhachhang/maxitem);
 			int currentpage;
 			
@@ -78,15 +93,16 @@ public class Controllerkhachhang extends HttpServlet {
 			}
 			
 			int startpage = (currentpage - 1)*maxitem;	
-			ArrayList<KhachHang> khachhangs = model.searchkhachhang(1,startpage,maxitem,str);
+			ArrayList<KhachHang> khachhangs = model.searchkhachhang(idNhanVien,startpage,maxitem,str);
 			
 			request.setAttribute("numberpage", numberpage);
+			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("khachhangs", khachhangs);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp?actived=2");
 			rd.forward(request, response);					
 		}else{				
-			int sokhachhang = model.numkhachhang(1);
+			int sokhachhang = model.numkhachhang(idNhanVien);
 			int numberpage= (int)Math.ceil((float)sokhachhang/maxitem);
 			int currentpage;
 			
@@ -98,12 +114,13 @@ public class Controllerkhachhang extends HttpServlet {
 			}
 			
 			int startpage = (currentpage - 1)*maxitem;			
-			ArrayList<KhachHang> khachhangs = model.getkhachhangs(1,startpage,maxitem);	
+			ArrayList<KhachHang> khachhangs = model.getkhachhangs(idNhanVien,startpage,maxitem);	
 			
 			request.setAttribute("numberpage", numberpage);
+			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("khachhangs", khachhangs);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp?actived=2");
 			rd.forward(request, response);
 		}
 	}

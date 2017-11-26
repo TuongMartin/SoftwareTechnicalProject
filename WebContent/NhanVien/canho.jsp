@@ -32,15 +32,24 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<div class="header">
-							
+						<div class="header">							
 							<h4 class="title">Danh sách căn hộ</h4>
-							<br>
 							<form action="" method="post">
-								<input type="submit" name="Timkiem" value="Tìm kiếm" class="btn btn-primary"></input>
-								<input type="text" name="keysearch">
+								<div class="row">									
+									<div class="col-md-4">
+										<div class="form-group">
+											<input type="text" name="keysearch"
+												class="form-control border-input" placeholder="Tên căn hộ">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<input type="submit" name="Timkiem" value="Tìm kiếm"
+												class="is" /> 
+										</div>
+									</div>
+								</div>
 							</form>
-							
 						</div>
 						<div class="content table-responsive table-full-width">
 							<table class="table table-striped">
@@ -54,17 +63,20 @@
 								<tbody>
 									<%
 										ArrayList<CanHo> canhos = (ArrayList<CanHo>)request.getAttribute("canhos");
-										int numberpage= (Integer)request.getAttribute("numberpage");								
+									
+										int currentpage = (Integer)request.getAttribute("currentpage");
+										int numberpage= (Integer)request.getAttribute("numberpage");
+										
 										if(canhos.size()!=0)
 										for(CanHo currentcanho:canhos){
 											
 									%>
 										<tr>
-											<td><%=canhos.indexOf(currentcanho)+1 %></td>
+											<td><%=canhos.indexOf(currentcanho)+1+(currentpage-1)*5 %></td>
 											<td><%=currentcanho.getTen() %></td>
 											<td><%=currentcanho.getTentheloai() %></td>
-											<td><%=(currentcanho.getTrangthai()==1?"Chưa bán":"Đã bán") %></td>
-											<td><a>xem...</a></td>
+											<td><%=(currentcanho.getTrangthai()==0?"Chưa bán":"Đã bán") %></td>
+											<td><a href="<%=request.getContextPath()%>/chitietcanho?canho=<%=currentcanho.getId()%>">xem...</a></td>
 										</tr>
 									<% 		
 										}
@@ -73,10 +85,12 @@
 									
 								</tbody>
 							</table>
-							<div class="numofpage">
-								Trang
-								<%
-									String str="";
+						
+								<div class="text-center">
+								<ul class="pagination">					
+									<%
+									String str="";	
+									String active = "";
 									if(request.getParameter("keysearch")!=null){
 										str = request.getParameter("keysearch");
 									}else{
@@ -87,19 +101,27 @@
 									
 									if(str!=""){									
 										for(int i=1;i<numberpage+1;i++){
+											if(currentpage==i) {
+												active = "class = 'current'";
+											}
+											
 											%>
-												<a href="<%=request.getContextPath()%>/thanhvien/canhos?key=<%=str%>&&page=<%=i%>" class="linkpage"><%=i %></a>
+												<li><a <%=active%> href="<%=request.getContextPath()%>/thanhvien/canhos?key=<%=str%>&&page=<%=i%>" title=""><%=i %></a></li>							
 											<% 		
 										}
 									}else{
 									
-										for(int i=1;i<numberpage+1;i++){
+										for(int i=1;i<numberpage+1;i++){	
+											if(currentpage==i) {
+												active = "class = 'current'";
+											}
 									%>
-										<a href="<%=request.getContextPath()%>/thanhvien/canhos?page=<%=i%>" class="linkpage"><%=i %></a>
+										<li><a <%=active%> href="<%=request.getContextPath()%>/thanhvien/canhos?page=<%=i%>" title=""><%=i %></a></li>
 									<% 		
 										}
 									}	
 								%>
+								</ul>
 							</div>
 						</div>
 					</div>
