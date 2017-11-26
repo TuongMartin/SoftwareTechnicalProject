@@ -141,7 +141,7 @@
 									
 									if(str!=""){									
 										for(int i=1;i<numberpage+1;i++){
-											if(numberpage==i) {
+											if(currentpage==i) {
 												active = "class = 'current'";
 											}
 											
@@ -152,7 +152,7 @@
 									}else{
 									
 										for(int i=1;i<numberpage+1;i++){	
-											if(numberpage==i) {
+											if(currentpage==i) {
 												active = "class = 'current'";
 											}
 									%>
