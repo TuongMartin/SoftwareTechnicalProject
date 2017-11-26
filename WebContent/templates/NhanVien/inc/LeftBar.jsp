@@ -1,3 +1,4 @@
+
 <%@page import="model.bean.NhanVien"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="sidebar" data-background-color="white" data-active-color="danger">
@@ -54,6 +55,7 @@
             </div>
 			
             <ul class="nav">
+
             	<li class="<%=active1 %>">
                     <a href="<%=request.getContextPath()%>/thanhvien/canhos">
                         <i class="ti-map"></i>

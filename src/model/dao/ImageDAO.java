@@ -134,6 +134,32 @@ public class ImageDAO {
 		return obj;
 	}
 	
+	public ArrayList<Image> getListItemImageForApartmentNewly(int idCanHo) {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		ArrayList<Image> list = new ArrayList<>();
+		String sql = "SELECT * FROM " + table + " WHERE idCanHo = ? LIMIT 2";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idCanHo);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Image obj = new Image(rs.getInt("idHinhAnh"), rs.getString("hinhAnh"), rs.getInt("idCanHo"));
+				list.add(obj);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
 	public ArrayList<Image> getListItemImage(int idCanHo) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<Image> list = new ArrayList<>();

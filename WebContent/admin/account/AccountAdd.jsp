@@ -104,8 +104,6 @@
 										</div>
 									</div>
 								</div>
-
-								
 								<p id="checkpassword"></p>
 								<div class="text-center">
 									<input type="submit" name="submit" class="btn btn-info btn-fill btn-wd"

@@ -478,4 +478,32 @@ public class ApartmentDAO {
 			}
 		}
 	}
+	
+	public ArrayList<CanHo> getItemApartmentNewLy() {
+		// TODO Auto-generated method stub
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "SELECT *,n.TenNhanVien as tenNV,l.tenTheLoai as tenTL,k.tenKhuVuc as tenKV FROM " + table + " as c INNER JOIN nhanvien as n ON n.IdNhanVien = c.idNhanVien INNER JOIN loaitindang as l ON l.idTheLoai = c.idTheLoai INNER JOIN khuvuc as k ON k.idKhuVuc = c.idKhuVuc WHERE kichHoat = 1 ORDER BY c.idTinDang DESC LIMIT 3";
+		ArrayList<CanHo> list = new ArrayList<>();
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				CanHo objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getString("tenCanHo"), rs.getString("diaChi"), rs.getInt("dienTich"), rs.getInt("giaTien"), rs.getInt("totalRooms"), rs.getInt("bedRooms"), rs.getInt("bathRooms"), rs.getString("moTa"), rs.getInt("buildingAge"), rs.getString("parking"), rs.getString("cooling"), rs.getString("heating"), rs.getString("sewer"), rs.getString("water"), rs.getInt("exerciseRoom"), rs.getInt("storageRoom"), rs.getInt("n.idNhanVien"), rs.getString("tenNV"), rs.getInt("trangThai"), rs.getString("ngayDang"), rs.getInt("l.idTheLoai"), rs.getString("tenTL"), rs.getInt("kichHoat"), rs.getInt("k.idKhuVuc"), rs.getString("tenKV"));
+				list.add(objCanHo);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 }

@@ -241,4 +241,24 @@ public class AreaDAO {
 		}
 		return null;
 	}
+	
+	public ArrayList<KhuVucBDS> getItemPublic() {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "SELECT *, count(idTinDang) as countBDS FROM " + table + " LEFT JOIN tindang ON tindang.idKhuVuc = khuvuc.idKhuVuc GROUP BY khuvuc.idKhuVuc";
+		ArrayList<KhuVucBDS> listKhuVuc = new ArrayList<>();
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				KhuVucBDS objKhuVuc = new KhuVucBDS(rs.getInt("idKhuVuc"), rs.getString("tenKhuVuc"), rs.getString("image"), rs.getInt("countBDS"));
+//				KhuVucBDS objKhuVuc = new KhuVucBDS(rs.getInt("idKhuVuc"), rs.getString("tenKhuVuc"), rs.getString("image"));
+				listKhuVuc.add(objKhuVuc);
+			}
+			return listKhuVuc;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

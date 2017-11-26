@@ -147,7 +147,7 @@ public class AdminAddNewApartment extends HttpServlet {
 					while ((read = filecontent.read(bytes)) != -1) {
 						out.write(bytes, 0, read);
 					}
-					System.out.println("Upload thành công");
+//					System.out.println("Upload thành công");
 				} catch (FileNotFoundException fne) {
 					System.err.println("Có lỗi trong quá trình xử lý");
 					fne.printStackTrace();

@@ -1,4 +1,8 @@
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="model.bean.Image"%>
+<%@page import="model.bean.CanHo"%>
+<%@page import="model.bean.KhuVucBDS"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp"%>
@@ -210,260 +214,60 @@
 		<!-- Carousel -->
 		<div class="col-md-12">
 			<div class="carousel">
-				
-				<!-- Listing Item -->
-					<div class="carousel-item">
-					<div class="listing-item">
-
-						<a href="single-property-page-1.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-price">$275,000 <i>$520 / sq ft</i></span>
-								<span class="like-icon tooltip"></span>
-							</div>
-
-							<div class="listing-carousel">
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-01.jpg" alt=""></div>
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-01b.jpg" alt=""></div>
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-01c.jpg" alt=""></div>
-							</div>
-
-						</a>
-						
-						<div class="listing-content">
-
-							<div class="listing-title">
-								<h4><a href="single-property-page-1.html">Eagle Apartments</a></h4>
-								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-									<i class="fa fa-map-marker"></i>
-									9364 School St. Lynchburg, NY
+				<%
+					ArrayList<CanHo> listApartmentNewly = (ArrayList<CanHo>)request.getAttribute("listApartmentNewly");
+					ArrayList<ArrayList<Image>> listImageApartmentNewly = (ArrayList<ArrayList<Image>>)request.getAttribute("listImageApartmentNewly");
+					for(int i = 0; i < listApartmentNewly.size(); i++) {
+				%>
+						<!-- Listing Item -->
+						<div class="carousel-item">
+							<div class="listing-item">
+								<a href="single-property-page-3.html" class="listing-img-container">
+									<div class="listing-img-content">
+									<%
+										DecimalFormat formatter = new DecimalFormat("###,###,###");
+										String giatien = formatter.format(listApartmentNewly.get(i).getGiatien());
+									%>
+										<span class="listing-price">$<%=giatien %> <i>$<%=(listApartmentNewly.get(i).getGiatien() / listApartmentNewly.get(i).getDientich()) %> / sq ft</i></span>
+										<span class="like-icon"></span>
+									</div>
+									<div class="listing-carousel">
+										<%
+											for(Image objImage : listImageApartmentNewly.get(i)) {
+										%>
+												<div><img style="width: 333px;height: 254px" src="<%=request.getContextPath()%>/files/<%=objImage.getHinhAnh() %>" alt=""></div>		
+										<%
+											}
+										%>
+									</div>
 								</a>
+								<div class="listing-content">
+									<div class="listing-title">
+										<h4><a href="single-property-page-3.html"><%=listApartmentNewly.get(i).getTen() %></a></h4>
+										<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
+											<i class="fa fa-map-marker"></i>
+											<%=listApartmentNewly.get(i).getDiachi() %>
+										</a>
+									</div>
+									<ul class="listing-features">
+										<li>Area <span><%=listApartmentNewly.get(i).getDientich() %> sq ft</span></li>
+										<li>Bedrooms <span><%=listApartmentNewly.get(i).getSophongngu() %></span></li>
+										<li>Bathrooms <span><%=listApartmentNewly.get(i).getSophongtam() %></span></li>
+									</ul>
+									<div class="listing-footer">
+										<a href="#"><i class="fa fa-user"></i> <%=listApartmentNewly.get(i).getTennhanvien() %></a>
+										<span><i class="fa fa-calendar-o"></i> 3 days ago</span>
+									</div>
+								</div>
 							</div>
-
-							<ul class="listing-features">
-								<li>Area <span>530 sq ft</span></li>
-								<li>Bedrooms <span>2</span></li>
-								<li>Bathrooms <span>1</span></li>
-							</ul>
-
-							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> David Strozier</a>
-								<span><i class="fa fa-calendar-o"></i> 1 day ago</span>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item">
-
-						<a href="single-property-page-2.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span>For Rent</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-price">$900 <i>monthly</i></span>
-								<span class="like-icon"></span>
-							</div>
-
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-02.jpg" alt="">
-
-						</a>
-						
-						<div class="listing-content">
-
-							<div class="listing-title">
-								<h4><a href="single-property-page-2.html">Serene Uptown</a></h4>
-								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-									<i class="fa fa-map-marker"></i>
-									6 Bishop Ave. Perkasie, PA
-								</a>
-							</div>
-
-							<ul class="listing-features">
-								<li>Area <span>440 sq ft</span></li>
-								<li>Bedrooms <span>2</span></li>
-								<li>Bathrooms <span>1</span></li>
-							</ul>
-
-							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> Harriette Clark</a>
-								<span><i class="fa fa-calendar-o"></i> 2 days ago</span>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item">
-
-
-						<a href="single-property-page-1.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span class="featured">Featured</span>
-								<span>For Rent</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-price">$1700 <i>monthly</i></span>
-								<span class="like-icon"></span>
-							</div>
-
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
-
-						</a>
-						
-						<div class="listing-content">
-
-							<div class="listing-title">
-								<h4><a href="single-property-page-1.html">Meridian Villas</a></h4>
-								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-									<i class="fa fa-map-marker"></i>
-									778 Country St. Panama City, FL
-								</a>
-							</div>
-
-							<ul class="listing-features">
-								<li>Area <span>1450 sq ft</span></li>
-								<li>Bedrooms <span>2</span></li>
-								<li>Bathrooms <span>3</span></li>
-							</ul>
-
-							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> Chester Miller</a>
-								<span><i class="fa fa-calendar-o"></i> 4 days ago</span>
-							</div>
-
 						</div>
 						<!-- Listing Item / End -->
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item">
-
-
-						<a href="single-property-page-3.html" class="listing-img-container">
-
-							<div class="listing-badges">
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-price">$420,000 <i>$770 / sq ft</i></span>
-								<span class="like-icon"></span>
-							</div>
-
-							<div class="listing-carousel">
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04.jpg" alt=""></div>
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04b.jpg" alt=""></div>
-							</div>
-
-						</a>
-						
-						<div class="listing-content">
-
-							<div class="listing-title">
-								<h4><a href="single-property-page-3.html">Selway Apartments</a></h4>
-								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-									<i class="fa fa-map-marker"></i>
-									33 William St. Northbrook, IL
-								</a>
-							</div>
-
-							<ul class="listing-features">
-								<li>Area <span>540 sq ft</span></li>
-								<li>Bedrooms <span>2</span></li>
-								<li>Bathrooms <span>2</span></li>
-							</ul>
-
-							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> Kristen Berry</a>
-								<span><i class="fa fa-calendar-o"></i> 3 days ago</span>
-							</div>
-
-						</div>
-						<!-- Listing Item / End -->
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-
-				<!-- Listing Item -->
-				<div class="carousel-item">
-					<div class="listing-item">
-
-
-						<a href="single-property-page-1.html" class="listing-img-container">
-							<div class="listing-badges">
-								<span>For Sale</span>
-							</div>
-
-							<div class="listing-img-content">
-								<span class="listing-price">$535,000 <i>$640 / sq ft</i></span>
-								<span class="like-icon"></span>
-							</div>
-
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-05.jpg" alt="">
-						</a>
-						
-						<div class="listing-content">
-
-							<div class="listing-title">
-								<h4><a href="single-property-page-1.html">Oak Tree Villas</a></h4>
-								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-									<i class="fa fa-map-marker"></i>
-									71 Lower River Dr. Bronx, NY
-								</a>
-							</div>
-
-							<ul class="listing-features">
-								<li>Area <span>350 sq ft</span></li>
-								<li>Bedrooms <span>2</span></li>
-								<li>Bathrooms <span>1</span></li>
-							</ul>
-
-							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> Mabel Gagnon</a>
-								<span><i class="fa fa-calendar-o"></i> 4 days ago</span>
-							</div>
-
-						</div>
-						<!-- Listing Item / End -->
-
-					</div>
-				</div>
-				<!-- Listing Item / End -->
-
-
-
+				<%
+					}
+				%>
 			</div>
 		</div>
 		<!-- Carousel / End -->
-
 	</div>
 </div>
 
@@ -477,77 +281,36 @@
 	
 	<!-- Content -->
 	<div class="container">
-		<div class="row">
-
-			<div class="col-md-3 col-sm-6">
-				<!-- Icon Box -->
-				<div class="icon-box-1">
-
-					<div class="icon-container">
-						<i class="im im-icon-Office"></i>
-						<div class="icon-links">
-							<a href="listings-grid-standard-with-sidebar.html">For Sale</a>
-							<a href="listings-grid-standard-with-sidebar.html">For Rent</a>
+		<%
+			ArrayList<TheLoaiBDS> listRealEstates = (ArrayList<TheLoaiBDS>)request.getAttribute("listRealEstate");
+			int row = (int)Math.ceil((float)listRealEstate.size() / 4);
+			int k = 0;
+			for(int i = 0; i < row; i++) {
+		%>
+				<div class="row">
+				<%
+					for(int j = k; j < listRealEstate.size(); j++) {
+				%>
+					<div class="col-md-3 col-sm-6">
+						<!-- Icon Box -->
+						<div class="icon-box-1">
+							<a href="<%=request.getContextPath() %>/listapartment?idTheLoai=<%=listRealEstate.get(j).getId() %>">
+								<div class="icon-container" style="background-color: #F7F7F7">
+									<img style="border-radius: 50%" src="<%=request.getContextPath() %>/files/<%=listRealEstate.get(j).getImage() %>">
+								</div>
+							</a>
+							<h3><%=listRealEstate.get(j).getTen() %></h3>
 						</div>
 					</div>
-
-					<h3>Apartments</h3>
-					<p>Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim donec vel lectus vel felis.</p>
+				<%
+						k++;
+						if(k % 4 == 0) break;
+					}
+				%>
 				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<!-- Icon Box -->
-				<div class="icon-box-1">
-
-					<div class="icon-container">
-						<i class="im im-icon-Home-2"></i>
-						<div class="icon-links">
-							<a href="listings-grid-standard-with-sidebar.html">For Sale</a>
-							<a href="listings-grid-standard-with-sidebar.html">For Rent</a>
-						</div>
-					</div>
-
-					<h3>Houses</h3>
-					<p>Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim donec vel lectus vel felis.</p>
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<!-- Icon Box -->
-				<div class="icon-box-1">
-
-					<div class="icon-container">
-						<i class="im im-icon-Car-3"></i>
-						<div class="icon-links">
-							<a href="listings-grid-standard-with-sidebar.html">For Sale</a>
-							<a href="listings-grid-standard-with-sidebar.html">For Rent</a>
-						</div>
-					</div>
-
-					<h3>Garages</h3>
-					<p>Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim donec vel lectus vel felis.</p>
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<!-- Icon Box -->
-				<div class="icon-box-1">
-
-					<div class="icon-container">
-						<i class="im im-icon-Clothing-Store"></i>
-						<div class="icon-links">
-							<a href="listings-grid-standard-with-sidebar.html">For Sale</a>
-							<a href="listings-grid-standard-with-sidebar.html">For Rent</a>
-						</div>
-					</div>
-
-					<h3>Commercial</h3>
-					<p>Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim donec vel lectus vel felis.</p>
-				</div>
-			</div>
-
-		</div>
+		<%
+			}
+		%>
 	</div>
 </section>
 <!-- Fullwidth Section / End -->
@@ -560,61 +323,31 @@
 		<div class="col-md-12">
 			<h3 class="headline centered margin-bottom-35 margin-top-10">Most Popular Places <span>Properties In Most Popular Places</span></h3>
 		</div>
-		
-		<div class="col-md-4">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-01.jpg">
-
-				<!-- Badge -->
-				<div class="listing-badges">
-					<span class="featured">Featured</span>
-				</div>
-
-				<div class="img-box-content visible">
-					<h4>New York </h4>
-					<span>14 Properties</span>
-				</div>
-			</a>
-
-		</div>	
-			
-		<div class="col-md-8">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-02.jpg">
-				<div class="img-box-content visible">
-					<h4>Los Angeles</h4>
-					<span>24 Properties</span>
-				</div>
-			</a>
-
-		</div>	
-
-		<div class="col-md-8">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-03.jpg">
-				<div class="img-box-content visible">
-					<h4>San Francisco </h4>
-					<span>12 Properties</span>
-				</div>
-			</a>
-
-		</div>	
-			
-		<div class="col-md-4">
-
-			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-04.jpg">
-				<div class="img-box-content visible">
-					<h4>Miami</h4>
-					<span>9 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
+		<%
+			ArrayList<KhuVucBDS> listAreas = (ArrayList<KhuVucBDS>)request.getAttribute("listAreas");
+			int i = 1;
+			for(KhuVucBDS objKV : listAreas) {
+				int j = 0;
+				if(i % 4 == 1 || i % 4 == 0) {
+					j = 4;
+				}else {
+					j = 8;
+				}
+				i++;
+		%>
+					<div class="col-md-<%=j %>">
+						<!-- Image Box -->
+						<a href="<%=request.getContextPath() %>/listapartment?idKhuVuc=<%=objKV.getId() %>" class="img-box" data-background-image="<%=request.getContextPath()%>/files/<%=objKV.getImage() %>">
+							<!-- Badge -->
+							<div class="img-box-content visible">
+								<h4><%=objKV.getTen() %> </h4>
+								<span><%=objKV.getCountBDS() %> Properties</span>
+							</div>
+						</a>
+					</div>	
+		<%
+			}
+		%>
 	</div>
 </div>
 <!-- Container / End -->
