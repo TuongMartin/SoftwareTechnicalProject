@@ -50,8 +50,7 @@ public class NhanVienShowNhatKyTuVan extends HttpServlet{
 		request.setAttribute("listNoiDung", tuVan.getListNoiDungTuVanEachPage(offset,rowItemEachPage));
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/NhatKyTuVan.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/NhatKyTuVan.jsp?actived=3");
 		rd.forward(request, response);
 	}
 }
-

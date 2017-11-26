@@ -1,4 +1,3 @@
-
 <%@page import="model.bean.Role"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.bean.Account"%>
@@ -34,7 +33,7 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Thêm thông tin</h4>
+							<h4 class="title">Cập nhật tài khoản</h4>
 						</div>
 						<div class="content">
 								<%

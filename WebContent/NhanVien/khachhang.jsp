@@ -5,6 +5,8 @@
 <%@page import="model.bean.KhachHang" %>
 <%@include file="/templates/admin/inc/header.jsp"%>
 <%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+<%@page import="model.bean.Account"%>
+<%@page import="javax.xml.bind.ParseConversionEvent"%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -35,7 +37,6 @@
 						<div class="header">
 						<br>
 							<h4 class="title">Danh sách khách hàng</h4>
-							<br/>
 							<%
 							if(request.getParameter("msg")!=null) {
 								int msg = Integer.parseInt(request.getParameter("msg"));
@@ -49,13 +50,24 @@
 								}
 							}
 							
-							%>
-							<br/>
+							%>					
 							<form action="" method="post">
-								<input type="submit" name="Timkiem" value="Tìm kiếm" class="btn btn-primary"></input>
-								<input type="text" name="keysearch">
+								<div class="row">									
+									<div class="col-md-4">
+										<div class="form-group">
+											<input type="text" name="keysearch"
+												class="form-control border-input" placeholder="Tên khách hàng">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<input type="submit" name="Timkiem" value="Tìm kiếm"
+												class="is" /> 
+										</div>
+									</div>
+								</div>
+
 							</form>
-						</div>
 						<div class="content table-responsive table-full-width">
 							<table class="table table-striped">
 								<thead>
@@ -70,13 +82,16 @@
 								<tbody>
 									<%
 										ArrayList<LoaiKhachHang> loaikhachhangs = (ArrayList<LoaiKhachHang>)request.getAttribute("loaikhachhangs");
-										ArrayList<KhachHang> khachhangs = (ArrayList<KhachHang>)request.getAttribute("khachhangs");									
-										int numberpage = (Integer)request.getAttribute("numberpage");	
+										ArrayList<KhachHang> khachhangs = (ArrayList<KhachHang>)request.getAttribute("khachhangs");	
+										
+										int currentpage = (Integer)request.getAttribute("currentpage");
+										int numberpage = (Integer)request.getAttribute("numberpage");
+										
 										if(khachhangs.size()!=0)
 										for(KhachHang curentkhachhang:khachhangs){
 									%>
 										<tr>
-											<td><%=khachhangs.indexOf(curentkhachhang)+1 %></td>
+											<td><%=khachhangs.indexOf(curentkhachhang)+1+(currentpage-1)*5 %></td>
 											<td><%=curentkhachhang.getTenKhachHang() %></td>
 											<td><%=curentkhachhang.getDiaChi() %></td>
 											<td><%=curentkhachhang.getSoDienThoai() %></td>
@@ -102,7 +117,7 @@
 													<input type="submit" name="submit" value="update">
 												</form>
 											</td>
-											<td><a href="<%=curentkhachhang.getIdTinDang()%>">xem...</a></td>
+											<td><a href="<%=request.getContextPath()%>/chitietcanho?canho=<%=curentkhachhang.getIdTinDang()%>">xem...</a></td>
 										</tr>
 									<% 		
 										}
@@ -111,10 +126,11 @@
 									
 								</tbody>
 							</table>
-							<div class="numofpage">
-								Trang
-								<%
-									String str="";									
+							<div class="text-center">
+								<ul class="pagination">					
+									<%
+									String str="";	
+									String active = "";
 									if(request.getParameter("keysearch")!=null){
 										str = request.getParameter("keysearch");
 									}else{
@@ -125,20 +141,28 @@
 									
 									if(str!=""){									
 										for(int i=1;i<numberpage+1;i++){
+											if(currentpage==i) {
+												active = "class = 'current'";
+											}
+											
 											%>
-												<a href="<%=request.getContextPath()%>/thanhvien/khachhang?key=<%=str%>&&page=<%=i%>" class="linkpage"><%=i %></a>
+												<li><a <%=active%> href="<%=request.getContextPath()%>/thanhvien/khachhang?key=<%=str%>&&page=<%=i%>" title=""><%=i %></a></li>							
 											<% 		
 										}
 									}else{
 									
-										for(int i=1;i<numberpage+1;i++){
+										for(int i=1;i<numberpage+1;i++){	
+											if(currentpage==i) {
+												active = "class = 'current'";
+											}
 									%>
-										<a href="<%=request.getContextPath()%>/thanhvien/khachhang?page=<%=i%>" class="linkpage"><%=i %></a>
+										<li><a <%=active%> href="<%=request.getContextPath()%>/thanhvien/khachhang?page=<%=i%>" title=""><%=i %></a></li>
 									<% 		
 										}
 									}	
 								%>
-						</div>
+								</ul>
+							</div>		
 					</div>
 				</div>
 
