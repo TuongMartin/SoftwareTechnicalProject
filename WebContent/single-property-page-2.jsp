@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/single-property-page-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
+<%@page import="model.bean.TienIch"%>
 <%@page import="model.bean.Image"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.bean.CanHo"%>
@@ -288,9 +289,10 @@ if(objCanHo != null)
 					for(Image objImage : listImage)
 					{
 				%>
+
 				<!-- Slider -->
 				<div class="property-slider no-arrows">
-					<a href="<%= objImage.getHinhAnh() %>" data-background-image="<%= objImage.getHinhAnh() %>" class="item mfp-gallery"></a>
+					<a href="<%=request.getContextPath() %>/files/<%= objImage.getHinhAnh() %>" data-background-image="<%=request.getContextPath() %>/files/<%= objImage.getHinhAnh() %>" class="item mfp-gallery"></a>
 				</div>
 				<!-- Slider / End -->
 
@@ -299,7 +301,7 @@ if(objCanHo != null)
 
 			<!-- Slider Thumbs -->
 			<div class="property-slider-nav">
-				<div class="item"><img src="<%= objImage.getHinhAnh() %>" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath() %>/files/<%= objImage.getHinhAnh() %>" alt=""></div>
 			</div>
 				<%
 					}
@@ -351,14 +353,18 @@ if(objCanHo != null)
 				<!-- Features -->
 				<h3 class="desc-headline">Features</h3>
 				<ul class="property-features checkboxes margin-top-0">
-					<li>Air Conditioning</li>
-					<li>Swimming Pool</li>
-					<li>Central Heating</li>
-					<li>Laundry Room</li>
-					<li>Gym</li>
-					<li>Alarm</li>
-					<li>Window Covering</li>
-					<li>Internet</li>
+				<%
+				ArrayList<TienIch> listTienIch = (ArrayList<TienIch>) request.getAttribute("listTienIch");
+				if(listTienIch != null)
+				{
+					for(TienIch obj : listTienIch)
+					{
+				%>
+				<li><%= obj.getTenTienIch() %></li>
+				<%		
+					}
+				}
+				%>
 				</ul>
 
 
@@ -380,6 +386,7 @@ if(objCanHo != null)
 				
 				<%
 				ArrayList<CanHo> listSimilar = (ArrayList<CanHo>) request.getAttribute("listSimilar");
+				ArrayList<Image> listImageOfListSimilar = (ArrayList<Image>) request.getAttribute("listImageOfListSimilar");
 				if(listSimilar != null)
 				{
 					for(CanHo objSimilar : listSimilar)
@@ -399,8 +406,21 @@ if(objCanHo != null)
 								<span class="listing-price">$<%= objSimilar.getGiatien() %> <i>monthly</i></span>
 								<span class="like-icon"></span>
 							</div>
-
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
+							
+							<%
+							if(listImageOfListSimilar != null)
+							{
+								for(Image obj : listImageOfListSimilar)
+								{
+									if(obj.getIdCanHo() == objSimilar.getId())
+									{
+							%>
+							<img src="<%=request.getContextPath() %>/files/<%= obj.getHinhAnh() %>" alt="">
+							<%		
+									}
+								}
+							}
+							%>
 
 						</a>
 						
@@ -467,6 +487,8 @@ if(objCanHo != null)
 					
 					<%
 					ArrayList<CanHo> listFeaturead = (ArrayList<CanHo>) request.getAttribute("listFeaturead");
+					ArrayList<Image> listImageOfListFeaturead = (ArrayList<Image>) request.getAttribute("listImageOfListFeaturead");
+					
 					if(listFeaturead != null)
 					{
 						for(CanHo objFeaturead : listFeaturead)
@@ -494,7 +516,21 @@ if(objCanHo != null)
 										</ul>
 									</div>
 
-									<img src="<%=request.getContextPath()%>/templates/public/images/listing-01.jpg" alt="">
+									<%
+							if(listImageOfListFeaturead != null)
+							{
+								for(Image obj : listImageOfListFeaturead)
+								{
+									if(obj.getIdCanHo() == objFeaturead.getId())
+									{
+							%>
+							<img src="<%=request.getContextPath() %>/files/<%= obj.getHinhAnh() %>" alt="">
+							<%		
+									}
+								}
+							}
+							%>
+									
 								</a>
 
 							</div>
@@ -514,19 +550,6 @@ if(objCanHo != null)
 				<div class="widget margin-bottom-40">
 					<h3 class="margin-top-0 margin-bottom-35">Find New Home</h3>
 					<form action="${pageContext.request.contextPath}/SearchBDS" method="post">
-					<!-- Row -->
-					<div class="row with-forms">
-						<!-- Status -->
-						<div class="col-md-12">
-							<select data-placeholder="Any Status" class="chosen-select-no-single" name="status">
-								<option>Any</option>	
-								<option>For Sale</option>
-								<option>For Rent</option>
-							</select>
-						</div>
-					</div>
-					<!-- Row / End -->
-
 
 					<!-- Row -->
 					<div class="row with-forms">
@@ -604,60 +627,6 @@ if(objCanHo != null)
 
 					<br>
 
-					<!-- Area Range -->
-					<div class="range-slider">
-						<label>Area Range</label>
-						<div id="area-range" data-min="0" data-max="1500" data-unit="sq ft"></div>
-						<div class="clearfix"></div>
-					</div>
-
-					<br>
-					
-					<!-- Price Range -->
-					<div class="range-slider">
-						<label>Price Range</label>
-						<div id="price-range" data-min="0" data-max="400000" data-unit="$"></div>
-						<div class="clearfix"></div>
-					</div>
-
-
-
-					<!-- More Search Options -->
-					<a href="#" class="more-search-options-trigger margin-bottom-10 margin-top-30" data-open-title="Additional Features" data-close-title="Additional Features"></a>
-					
-					<div class="more-search-options relative">
-
-						<!-- Checkboxes -->
-						<div class="checkboxes one-in-row margin-bottom-10">
-					
-							<input id="check-2" type="checkbox" name="check" value="Air Conditioning">
-							<label for="check-2">Air Conditioning</label>
-
-							<input id="check-3" type="checkbox" name="check" value="Swimming Pool">
-							<label for="check-3">Swimming Pool</label>
-
-							<input id="check-4" type="checkbox" name="check" value="Central Heating">
-							<label for="check-4">Central Heating</label>
-
-							<input id="check-5" type="checkbox" name="check">
-							<label for="check-5">Laundry Room</label>	
-
-
-							<input id="check-6" type="checkbox" name="check">
-							<label for="check-6">Gym</label>
-
-							<input id="check-7" type="checkbox" name="check">
-							<label for="check-7">Alarm</label>
-
-							<input id="check-8" type="checkbox" name="check">
-							<label for="check-8">Window Covering</label>
-					
-						</div>
-						<!-- Checkboxes / End -->
-
-					</div>
-					<!-- More Search Options / End -->
-					
 					<button type="submit" class="button fullwidth margin-top-30" name="search">Search</button>
 					</form>
 

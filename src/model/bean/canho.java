@@ -222,4 +222,10 @@ public class CanHo {
 		super();
 		this.kichHoat = kichHoat;
 	}
+	
+	public CanHo(int idCanHo, int kichHoat) {
+		super();
+		this.id = idCanHo;
+		this.kichHoat = kichHoat;
+	}
 }
