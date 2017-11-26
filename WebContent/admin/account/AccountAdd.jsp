@@ -1,5 +1,6 @@
 <%@page import="model.bean.Role"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.bean.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
@@ -19,7 +20,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://vinenter.edu.vn"> <i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Wellcome</p>
 					</a></li>
 				</ul>
 
@@ -96,7 +97,7 @@
 													if(roles.size()!=0)
 													for(int i=0;i<roles.size();i++){														
 												%>
-													<option value="<%=roles.get(i).item()%>"><%=roles.get(i).getRole() %></option>
+													<option value="<%=roles.get(i).getIdrole()%>"><%=roles.get(i).getRole() %></option>
 												<%
 													}
 												%>	

@@ -24,12 +24,13 @@ $(document).ready(function(){
 				maxlength: "Chiều dài tên đăng nhập phải nhỏ hơn 30 ký tự"
 			},
 			password: {
-				required: "Độ dài username 8-30",
+				required: "Độ dài password 8-30",
+
 				minlength: "Chiều dài password phải từ 8 ký tự trở lên",
 				maxlength: "Chiều dài password phải nhỏ hơn 30 ký tự"
 			},
 			repassword: {
-				required: "Độ dài username 8-30",
+				required: "Độ dài password 8-30",
 				minlength: "Chiều dài password phải từ 8 ký tự trở lên",
 				maxlength: "Chiều dài password phải nhỏ hơn 30 ký tự"
 			}
