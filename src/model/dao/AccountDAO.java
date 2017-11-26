@@ -42,7 +42,7 @@ public class AccountDAO {
 	public ArrayList<Account> getlist(int offset, int row_count){
 		conn = connDB.getConnectMySQL();
 		ArrayList<Account> accounts= new ArrayList<Account>();
-		String sql = "select * from account inner join nhanvien on account.IdNhanVien=nhanvien.IdNhanVien join role on account.idrole=role.idrole limit ?,?";
+		String sql = "select * from account left join nhanvien on account.IdNhanVien=nhanvien.IdNhanVien join role on account.idrole=role.idrole limit ?,?";
 		try{
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, offset);
@@ -116,13 +116,12 @@ public class AccountDAO {
 
 	public boolean addaccount(Account account){
 		conn = connDB.getConnectMySQL();
-		String sql = "insert into account (username,password,idrole,IdNhanVien) values (?,?,?,?)";
+		String sql = "insert into account (username,password,idrole) values (?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, account.getUsername());
 			pst.setString(2, account.getPassword());
 			pst.setInt(3, account.getId());
-			pst.setInt(4, account.getIdNhanVien());
 			pst.executeUpdate();
 			
 		} catch (SQLException e) {

@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import library.CheckLoginLibrary;
 import model.bean.CanHo;
-import model.bean.NhanVien;
 import model.dao.ApartmentDAO;
 
 /**
@@ -44,22 +42,9 @@ public class Controllercanho extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		if(!CheckLoginLibrary.isLogin(request, response)) {
-			return;
-		}
-		HttpSession session = request.getSession();
-		
-		int idNhanVien = 0;
-		
-		if(session.getAttribute("userInfo")!=null){
-    		NhanVien objNhanVien = (NhanVien) session.getAttribute("userInfo");	
-    		idNhanVien = objNhanVien.getIdNhanVien();
-		}
-		
-		int maxitem = 5;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		int maxitem = 20;
 		ApartmentDAO model = new ApartmentDAO();
-		
 		if(request.getParameter("key")!=null||request.getParameter("Timkiem")!=null){
 			String str="";
 			if(request.getParameter("keysearch")!=null){
@@ -69,32 +54,26 @@ public class Controllercanho extends HttpServlet {
 					str = new String(request.getParameter("key").getBytes("ISO-8859-1"),"UTF-8");
 				}
 			}
-			int socanho = model.numbercanhosearch(idNhanVien,str);
+			int socanho = model.numbercanhosearch(1,str);
 			int numberpage= (int)Math.ceil((float)socanho/maxitem);
 			int currentpage;
-			
 			if(request.getParameter("page")!=null){
 				currentpage = Integer.parseInt(request.getParameter("page"));
 				currentpage = (currentpage<=numberpage)?currentpage:1;											
 			}else{
 				currentpage = 1;
 			}
-			
 			int startpage = (currentpage - 1)*maxitem;	
-			ArrayList<CanHo> canhos = model.searchcanho(idNhanVien,startpage,maxitem,str);
-			
+			ArrayList<CanHo> canhos = model.searchcanho(1,startpage,maxitem,str);	
 			request.setAttribute("numberpage", numberpage);
-			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("canhos", canhos);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp?actived=1");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");
 			rd.forward(request, response);
 					
 		}else{				
-			int socanho = model.numbercanho(idNhanVien);
+			int socanho = model.numbercanho(1);
 			int numberpage= (int)Math.ceil((float)socanho/maxitem);
 			int currentpage;
-			
 			if(request.getParameter("page")!=null){
 				currentpage = Integer.parseInt(request.getParameter("page"));
 				currentpage = (currentpage<=numberpage)?currentpage:1;											
@@ -102,13 +81,10 @@ public class Controllercanho extends HttpServlet {
 				currentpage = 1;
 			}
 			int startpage = (currentpage - 1)*maxitem;			
-			ArrayList<CanHo> canhos = model.getcanhosbyidnv(idNhanVien,startpage,maxitem);	
-			
+			ArrayList<CanHo> canhos = model.getcanhosbyidnv(1,startpage,maxitem);	
 			request.setAttribute("numberpage", numberpage);
-			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("canhos", canhos);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp?actived=1");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");
 			rd.forward(request, response);
 		}
 	}
