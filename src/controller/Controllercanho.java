@@ -87,7 +87,7 @@ public class Controllercanho extends HttpServlet {
 			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("canhos", canhos);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp?actived=1");
 			rd.forward(request, response);
 					
 		}else{				
@@ -108,7 +108,7 @@ public class Controllercanho extends HttpServlet {
 			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("canhos", canhos);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/canho.jsp?actived=1");
 			rd.forward(request, response);
 		}
 	}

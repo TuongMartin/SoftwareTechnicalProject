@@ -99,7 +99,7 @@ public class Controllerkhachhang extends HttpServlet {
 			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("khachhangs", khachhangs);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp?actived=2");
 			rd.forward(request, response);					
 		}else{				
 			int sokhachhang = model.numkhachhang(idNhanVien);
@@ -120,7 +120,7 @@ public class Controllerkhachhang extends HttpServlet {
 			request.setAttribute("currentpage", currentpage);
 			request.setAttribute("khachhangs", khachhangs);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/khachhang.jsp?actived=2");
 			rd.forward(request, response);
 		}
 	}
