@@ -4,23 +4,28 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import library.CheckLoginLibrary;
-import model.dao.AreaDAO;
+import library.BCrypt;
+import model.bean.KhachHang;
+import model.dao.CustomersDAO;
+
 
 /**
- * Servlet implementation class AdminManageSales
+ * Servlet implementation class ControllerAdminLogin
  */
-public class AdminManageAreaRealEstate extends HttpServlet {
+//@WebServlet("/ControllerAdminLogin")
+public class PublicLogoutCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminManageAreaRealEstate() {
+    public PublicLogoutCustomer() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,6 +34,7 @@ public class AdminManageAreaRealEstate extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -36,25 +42,12 @@ public class AdminManageAreaRealEstate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(!CheckLoginLibrary.isLogin(request, response)) {
-			return;
-		}
-		int page_curent = 1;
-		AreaDAO areaDAO = new AreaDAO();
-		int sum_news = areaDAO.countItem();
-		int row_count = 2;
-		int sum_page = (int) Math.ceil((float)sum_news/row_count);
-		request.setAttribute("sum_page", sum_page);
-		if(request.getParameter("p")!=null){
-			page_curent = Integer.parseInt(request.getParameter("p"));
-		}
-		
-		request.setAttribute("page_current", page_curent);
-		int offset = (page_curent -1)*row_count;
-		request.setAttribute("listKhuVuc", areaDAO.getItemPagition(offset,row_count));
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/area/index.jsp?actived=2");
-		rd.forward(request, response);
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.removeAttribute("sObjKHId");
+		//chuyển hướng
+		response.sendRedirect(request.getContextPath() + "/public/home");
+		return;
 	}
 
 }

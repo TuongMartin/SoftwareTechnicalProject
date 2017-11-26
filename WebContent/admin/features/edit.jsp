@@ -1,4 +1,4 @@
-<%@page import="model.bean.TheLoaiBDS"%>
+<%@page import="model.bean.TienIch"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -40,7 +40,7 @@
 								int msg = Integer.parseInt(request.getParameter("msg"));
 								switch (msg){
 									case 2 :%>
-										<p class="category success">Tên thể loại đã tồn tại!</p>
+										<p class="category success">Tên tính năng đã tồn tại!</p>
 										<%break;
 								}
 								
@@ -49,29 +49,21 @@
 						%>
 						<div class="content">
 						<%
-							TheLoaiBDS objTheLoaiUpdate = (TheLoaiBDS)request.getAttribute("objTheLoaiUpdate");
+							TienIch objTienIchUpdate = (TienIch)request.getAttribute("objTienIchUpdate");
 						%>
-							<form action="" method="post" id="addRealEstate" enctype="multipart/form-data">
+							<form action="" method="post" id="editFeature" enctype="multipart/form-data">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label>Tên thể loại</label> <input type="text" name="realestate"
-												class="form-control border-input" placeholder="Tên thể loại"
-												value="<%=objTheLoaiUpdate.getTen() %>">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label>Hình ảnh</label> <input type="file" name="image"
-												class="form-control" placeholder="Chọn ảnh" />
+											<label>Tên tính năng</label> <input type="text" name="tienich"
+												class="form-control border-input" placeholder="Tên tính năng"
+												value="<%=objTienIchUpdate.getTenTienIch() %>">
 										</div>
 									</div>
 								</div>
 								<div class="text-center">
 									<input type="submit" class="btn btn-info btn-fill btn-wd" name="submit" value="Thực hiện"/>
-									<a href="<%=request.getContextPath() %>/admin/category-real-estate" class="btn btn-success btn-fill btn-wd">Quay lại</a>
+									<a href="<%=request.getContextPath() %>/admin/feature-apartment" class="btn btn-success btn-fill btn-wd">Quay lại</a>
 								</div>
 								<div class="clearfix"></div>
 							</form>
@@ -81,16 +73,16 @@
 				
 				<script type="text/javascript">
 					$(document).ready(function() {
-						$("#addRealEstate").validate({
+						$("#editFeature").validate({
 							rules : {
-								realestate : {
+								tienich : {
 									required : true,
 									maxlength : 50,
 								},
 							},
 							messages : {
-								realestate : {
-									required : "<span style='color:red'>Tên thể loại không được để trống!</span>",
+								tienich : {
+									required : "<span style='color:red'>Tên tính năng không được để trống!</span>",
 									maxlength : "<span style='color:red'>Tối đa 50 kí tự!</span>",
 								}
 							},

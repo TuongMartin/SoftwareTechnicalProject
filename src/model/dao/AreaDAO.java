@@ -104,7 +104,33 @@ public class AreaDAO {
 		}
 		return objKhuVuc;
 	}
-
+	
+	public Object getItemAreaRealEstatebyNameEdit(String khuvuc, int id) {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		KhuVucBDS objKhuVuc = null;
+		String sql = "SELECT * FROM " + table  + " WHERE tenKhuVuc = ? AND idKhuVuc NOT IN (?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, khuvuc);
+			ps.setInt(2, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				objKhuVuc = new KhuVucBDS(rs.getInt("idKhuVuc"), rs.getString("tenKhuVuc"), rs.getString("image"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return objKhuVuc;
+	}
+	
 	public boolean addItemAreaRealEstate(KhuVucBDS objKhuVuc) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		String sql = "INSERT INTO " + table + "(tenKhuVuc,image) VALUES(?,?)";

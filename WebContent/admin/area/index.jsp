@@ -35,7 +35,7 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Danh sách thể loại</h4>
+							<h4 class="title">Danh sách khu vực</h4>
 							<%
 								if(request.getParameter("msg") != null){
 									int msg = Integer.parseInt(request.getParameter("msg"));
@@ -57,32 +57,6 @@
 								}
 							
 							%>
-							<form action="<%=request.getContextPath() %>/admin/search" method="post">
-								<div class="row">
-									<div class="col-md-1">
-										<div class="form-group">
-											<input type="text" name="idCustomer"
-												class="form-control border-input" value="" placeholder="ID Customers">
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<input type="text" name="full_name"
-												class="form-control border-input" placeholder="Họ tên"
-												value="">
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<input type="submit" name="search" value="Tìm kiếm"
-												class="is" /> <input type="submit" name="reset"
-												value="Hủy tìm kiếm" class="is" />
-										</div>
-									</div>
-								</div>
-
-							</form>
-
 							<a href="<%=request.getContextPath()%>/admin/addAreaRealEstate"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>

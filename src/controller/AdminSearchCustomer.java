@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import library.CheckLoginLibrary;
+import library.RegularExpression;
 import model.dao.CustomersDAO;
 
 /**
- * Servlet implementation class AdminManageSales
+ * Servlet implementation class AdminAddNewSale
  */
-public class AdminManageCustomers extends HttpServlet {
+public class AdminSearchCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminManageCustomers() {
+    public AdminSearchCustomer() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,25 +36,26 @@ public class AdminManageCustomers extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(!CheckLoginLibrary.isLogin(request, response)) {
-			return;
-		}
-		int page_curent = 1;
 		CustomersDAO customerDAO = new CustomersDAO();
-		int sum_news = customerDAO.countItem();
-		int row_count = 2;
-		int sum_page = (int) Math.ceil((float)sum_news/row_count);
-		request.setAttribute("sum_page", sum_page);
-		if(request.getParameter("p")!=null){
-			page_curent = Integer.parseInt(request.getParameter("p"));
+		int idKH = 0;
+		if(request.getParameter("idCustomer") != null) {
+			if(RegularExpression.checkNumber(request.getParameter("idCustomer"))) {
+				idKH = Integer.parseInt(request.getParameter("idCustomer"));
+			}
+		}
+		String tenKH = new String(request.getParameter("full_name").getBytes("ISO-8859-1"),"UTF-8");
+		if(idKH != 0 || !"".equals(tenKH)) {
+			if(customerDAO.searchCustomer(idKH, tenKH) != null) {
+				request.setAttribute("listCustomers", customerDAO.searchCustomer(idKH, tenKH));
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/customers/index.jsp?actived=4");
+				rd.forward(request, response);
+			}else {
+				response.sendRedirect(request.getContextPath() + "/admin/manageCustomers?msg=5");
+			}
+		}else {
+			response.sendRedirect(request.getContextPath() + "/admin/manageCustomers");
 		}
 		
-		request.setAttribute("page_current", page_curent);
-		int offset = (page_curent -1)*row_count;
-		request.setAttribute("listCustomers", customerDAO.getItemPagition(offset,row_count));
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/customers/index.jsp?actived=4");
-		rd.forward(request, response);
 	}
 
 }

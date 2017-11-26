@@ -15,23 +15,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import library.BCrypt;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
-import model.bean.KhachHang;
-import model.dao.CustomersDAO;
+import model.dao.ImageDAO;
 
 /**
- * Servlet implementation class AdminManageSales
+ * Servlet implementation class AdminAddNewSale
  */
 @MultipartConfig
-public class PublicEditCustomer extends HttpServlet {
+public class AdminUploadImageApartment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PublicEditCustomer() {
+    public AdminUploadImageApartment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,55 +45,34 @@ public class PublicEditCustomer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomersDAO customerDAO = new CustomersDAO();
-		int	cid = Integer.parseInt(request.getParameter("id"));
-		KhachHang objCustomerUpdate = customerDAO.getItemCustomerById(cid);
-		if(request.getParameter("editCustomer") != null) {
-			String hoten = new String(request.getParameter("full_name").getBytes("ISO-8859-1"),"UTF-8");
-			String ngaysinh = request.getParameter("birthday");
-			String quequan = new String(request.getParameter("home_town").getBytes("ISO-8859-1"),"UTF-8");
-			String diachi = new String(request.getParameter("address").getBytes("ISO-8859-1"),"UTF-8");
-			String sdt = request.getParameter("phone");
-			String hashed = "";
-			if(!"".equals(request.getParameter("password"))) {
-				String password = new String(request.getParameter("password").getBytes("ISO-8859-1"),"UTF-8"); 
-				hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-			}
-			else {
-				hashed = objCustomerUpdate.getMatKhau();
-			}
-			
-			String picture = "";
+		ImageDAO imageDAO = new ImageDAO();
+		int aid = Integer.parseInt(request.getParameter("id"));
+		if(request.getParameter("submit") != null) {
+			String hinhanh = "";
+			response.setContentType("text/html;charset=UTF-8");
 			final String path = request.getServletContext().getRealPath("files");
-			final Part filePart = request.getPart("avatar");
+			final Part filePart = request.getPart("file");
 			final String fileName = FileNameLibrary.getFileName(filePart);
+			
 			File dirUrl = new File(path);
 			if(!dirUrl.exists()){
 				dirUrl.mkdir();//tự động tạo file
 			}
-			
 			if(!"".equals(fileName)){
 				OutputStream out = null;
 				InputStream filecontent = null;
-				picture = RenameFileLibrary.renameFile(fileName);
-				
-				String picture_old = customerDAO.getItemCustomerById(cid).getAvatar();
-				if(!"".equals(picture_old)){
-					String urlDel = path + File.separator + picture_old;
-					File delFile = new File(urlDel);
-					delFile.delete();
-				}
+				hinhanh = RenameFileLibrary.renameFile(fileName);
 				
 				try {
 					out = new FileOutputStream(new File(path + File.separator
-							+ picture));
+							+ hinhanh));
 					filecontent = filePart.getInputStream();
 					int read = 0;
 					final byte[] bytes = new byte[1024];
 					while ((read = filecontent.read(bytes)) != -1) {
 						out.write(bytes, 0, read);
 					}
-					System.out.println("Upload thành công");
+//					System.out.println("Upload thành công");
 				} catch (FileNotFoundException fne) {
 					System.err.println("Có lỗi trong quá trình xử lý");
 					fne.printStackTrace();
@@ -108,19 +85,21 @@ public class PublicEditCustomer extends HttpServlet {
 					}
 				}
 			}else{
-				picture = customerDAO.getItemCustomerById(cid).getAvatar();
+				hinhanh = "";
 			}
-			
-			KhachHang objCustomer = new KhachHang(cid, hoten, diachi, quequan, "", ngaysinh, sdt, "", hashed, picture, 0, "", "");
-			if(customerDAO.editCustomer(objCustomer)) {
-				response.sendRedirect(request.getContextPath() + "/public/my-profile?id=" + cid + "&msg=1");
+			if ("".equals(hinhanh)) {
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/apartment/upload-image.jsp?actived=3&msg=2&id=" + aid);
+				rd.forward(request, response);
 			} else {
-				response.sendRedirect(request.getContextPath() + "/public/my-profile?id=" + cid + "&msg=0");
+				if(imageDAO.uploadImageApartment(hinhanh, aid)) {
+					response.sendRedirect(request.getContextPath() + "/admin/uploadImageApartment?msg=1&id=" + aid);
+				}else {
+					response.sendRedirect(request.getContextPath() + "/admin/uploadImageApartment?msg=0&id=" + aid);
+				}
 			}
 		}
 		else {
-			request.setAttribute("objCustomerUpdate", objCustomerUpdate);
-			RequestDispatcher rd = request.getRequestDispatcher("/my-profile.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/apartment/upload-image.jsp?actived=3");
 			rd.forward(request, response);
 		}
 	}

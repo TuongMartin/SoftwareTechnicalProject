@@ -5,12 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Date;
 
 import library.BCrypt;
 import library.ConnectionLibraryMySQL;
+import model.bean.CanHo;
 import model.bean.KhachHang;
 import model.bean.NhanVien;
 
@@ -274,10 +276,13 @@ public class CustomersDAO {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		int result = 0;
 		String sql = "UPDATE khachhang SET confirm_at = ? WHERE email = ?";
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+		String ngayconfirm = sdf.format(date);
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(2, email);
-			ps.setString(1, new Date().toString());
+			ps.setString(1, ngayconfirm);
 			ps.executeUpdate();
 			result = 1;
 		} catch (SQLException e) {
@@ -414,6 +419,72 @@ public class CustomersDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public int resetPassword(String email, String password) {
+		// TODO Auto-generated method stub
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "UPDATE " + table + " SET matKhau = ? WHERE email = ?";
+		int result = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, password);
+			ps.setString(2, email);
+			ps.executeUpdate();
+			result = 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public ArrayList<KhachHang> searchCustomer(int idKH, String tenKH) {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		ArrayList<KhachHang> list = new ArrayList<>();
+		String sql = "";
+		if(tenKH.trim().equals("")) {
+			sql = "SELECT * FROM " + table + " WHERE idKhachHang = ?";
+		}else if(idKH == 0) {
+			sql = "SELECT * FROM " + table + " WHERE tenKhachHang LIKE '%"+ tenKH +"%' ORDER BY idKhachHang DESC";
+		}else {
+			sql = "SELECT * FROM " + table + " WHERE idKhachHang = ? AND tenKhachHang LIKE '%"+ tenKH +"%' ORDER BY idKhachHang DESC";
+		}
+		try {
+			ps = conn.prepareStatement(sql);
+			if(idKH != 0){
+				ps.setInt(1, idKH);
+			}
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				KhachHang objKH = new KhachHang(rs.getInt("idKhachHang"), rs.getString("tenKhachHang"), rs.getString("diaChi"), rs.getString("queQuan"), rs.getString("cMND"), rs.getString("ngaySinh"), rs.getString("soDienThoai"), rs.getString("email"), rs.getString("matKhau"), rs.getString("avatar"), rs.getInt("status"), rs.getString("token"), rs.getString("confirm_at"));
+				list.add(objKH);
+			}
+			if(list.size() > 0) {
+				return list;
+			}else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally{
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
 

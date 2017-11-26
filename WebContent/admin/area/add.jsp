@@ -39,7 +39,7 @@
 									int msg = Integer.parseInt(request.getParameter("msg"));
 									switch (msg){
 										case 2 :%>
-											<p class="category success">Tên thể loại đã tồn tại!</p>
+											<p class="category success">Tên khu vực đã tồn tại!</p>
 											<%break;
 									}
 									
@@ -51,7 +51,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label>Tên thể loại</label> <input type="text" name="area"
+											<label>Tên khu vực</label> <input type="text" name="area"
 												class="form-control border-input" placeholder="Tên khu vức"
 												value="">
 										</div>

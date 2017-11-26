@@ -55,7 +55,7 @@ public class AdminManageSales extends HttpServlet {
 		int offset = (page_curent -1)*row_count;
 		request.setAttribute("listSales", salesDAO.getItemPagition(offset,row_count));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/index.jsp?actived=5");
 		rd.forward(request, response);
 	}
 

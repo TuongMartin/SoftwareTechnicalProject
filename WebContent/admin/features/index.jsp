@@ -1,3 +1,4 @@
+<%@page import="model.bean.TienIch"%>
 <%@page import="model.bean.TheLoaiBDS"%>
 <%@page import="model.bean.KhachHang"%>
 <%@page import="java.util.ArrayList"%>
@@ -34,7 +35,7 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Danh sách thể loại</h4>
+							<h4 class="title">Danh sách tính năng</h4>
 							<%
 								if(request.getParameter("msg") != null){
 									int msg = Integer.parseInt(request.getParameter("msg"));
@@ -43,20 +44,20 @@
 											<p class="category alert alert-danger">Có lỗi trong quá trình thực hiện!</p>
 											<%break;
 										case 1 :%>
-											<p class="category success">Thêm thể loại thành công!</p>
+											<p class="category success">Thêm tính nắng thành công!</p>
 											<%break;
 										case 2 :%>
-											<p class="category success">Sửa thể loại thành công!</p>
+											<p class="category success">Sửa tính năng thành công!</p>
 											<%break;
 										case 3 :%>
-											<p class="category success">Xóa thể loại thành công!</p>
+											<p class="category success">Xóa tính năng thành công!</p>
 											<%break;
 									}
 									
 								}
 							
 							%>
-							<a href="<%=request.getContextPath()%>/admin/addRealEstate"
+							<a href="<%=request.getContextPath()%>/admin/addFeature"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
 						</div>
@@ -64,26 +65,22 @@
 							<table class="table table-striped">
 								<thead>
 									<th>ID</th>
-									<th>Thể loại</th>
-									<th>Hình ảnh</th>
+									<th>Tính năng</th>
 									<th>Chức năng</th>
 								</thead>
 								<tbody>
 								<%
-									ArrayList<TheLoaiBDS> listTheLoai = (ArrayList<TheLoaiBDS>)request.getAttribute("listTheLoai");
-									for(TheLoaiBDS objTheLoai : listTheLoai) {
+									ArrayList<TienIch> listTienIch = (ArrayList<TienIch>)request.getAttribute("listTienIch");
+									for(TienIch objTienIch : listTienIch) {
 								%>
 										<tr>
-											<td><%=objTheLoai.getId() %></td>
-											<td><a href="<%=request.getContextPath() %>/admin/editRealEstate?id=<%=objTheLoai.getId()%>"><%=objTheLoai.getTen() %></a></td>
-											<td>
-												<img style="width:100px;height:100px;" src="<%=request.getContextPath() %>/files/<%=objTheLoai.getImage()%>" >
-											</td>
+											<td><%=objTienIch.getIdTienIch() %></td>
+											<td><a href="<%=request.getContextPath() %>/admin/editFeature?id=<%=objTienIch.getIdTienIch()%>"><%=objTienIch.getTenTienIch() %></a></td>
 											<td><a
-												href="<%=request.getContextPath()%>/admin/editRealEstate?id=<%=objTheLoai.getId() %>"><img
+												href="<%=request.getContextPath()%>/admin/editFeature?id=<%=objTienIch.getIdTienIch() %>"><img
 													src="<%=request.getContextPath()%>/templates/admin/img/edit.gif" alt="" />
 													Sửa</a> &nbsp;||&nbsp; <a
-												href="<%=request.getContextPath() %>/admin/delRealEstate?id=<%=objTheLoai.getId() %>" onClick="return confirm('Do you want to delete all device belong to this id?')"><img
+												href="<%=request.getContextPath() %>/admin/delFeature?id=<%=objTienIch.getIdTienIch() %>" onClick="return confirm('Do you want to delete all device belong to this id?')"><img
 													src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
 													Xóa</a></td>
 										</tr>
@@ -107,7 +104,7 @@
 											}else{
 												active = "";
 											}%>
-											<li><a <%=active%> href="<%=request.getContextPath() %>/admin/category-real-estate?p=<%=i%>" title=""><%=i%></a></li>
+											<li><a <%=active%> href="<%=request.getContextPath() %>/admin/feature-apartment?p=<%=i%>" title=""><%=i%></a></li>
 										<%}
 									}
 								%>

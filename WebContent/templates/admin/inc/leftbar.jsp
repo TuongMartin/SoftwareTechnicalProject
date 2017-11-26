@@ -26,38 +26,66 @@
 			        </div></a></div>
 			    <!-- end normal -->
             </div>
-			
+            <%
+				String active1 = "", active2 = "", active3 = "", active4 = "", active5 = "", active6 = "";
+            	int actived = 0;
+            	if(request.getParameter("actived") != null) {
+            		actived = Integer.parseInt(request.getParameter("actived"));
+            	}
+            	if(actived == 1) {
+            		active1 = "active";
+            	}
+            	else if(actived == 2) {
+            		active2 = "active";
+            	}
+            	else if(actived == 3) {
+            		active3 = "active";
+            	}
+            	else if(actived == 4) {
+            		active4 = "active";
+            	}
+            	else if(actived == 5) {
+            		active5 = "active";
+            	}
+            	else if(actived == 6) {
+            		active6 = "active";
+            	}
+            %>
             <ul class="nav">
-            	<li>
+            	<li class="<%=active1 %>">
                     <a href="<%=request.getContextPath()%>/admin/category-real-estate">
                         <i class="ti-view-list-alt"></i>
                         <p>Quản lý thể loại BĐS</p>
                     </a>
                 </li>
-                <li>
+                <li class="<%=active2 %>">
                     <a href="<%=request.getContextPath()%>/admin/area-real-estate">
                         <i class="ti-view-list-alt"></i>
                         <p>Quản lý khu vực BĐS</p>
                     </a>
                 </li>
-                <li>
-                    <a href="<%=request.getContextPath()%>/admin/manageApartments">
+                <li class="<%=active6 %>">
+                    <a href="<%=request.getContextPath()%>/admin/feature-apartment">
                         <i class="ti-view-list-alt"></i>
+                        <p>Quản lý tính năng BĐS</p>
+                    </a>
+                </li>
+                <li class="<%=active3 %>">
+                    <a href="<%=request.getContextPath()%>/admin/manageApartments">
+                        <i class="ti-panel"></i>
                         <p>Quản lý bất động sản</p>
                     </a>
                 </li>
-            	<li>
-                    <a href="<%=request.getContextPath()%>/admin/cat">
-                        <i class="ti-map"></i>
-                        <p>Danh mục bạn bè</p>
+                <li class="<%=active4 %>">
+                    <a href="<%=request.getContextPath()%>/admin/manageCustomers">
+                        <i class="ti-user"></i>
+                        <p>Danh sách khách hàng</p>
                     </a>
                 </li>
-            	 <li class="active">
+                <li class="<%=active5 %>">
                     <a href="<%=request.getContextPath()%>/admin/manageSales">
-                        <i class="ti-view-list-alt"></i>
+                        <i class="ti-user"></i>
                         <p>Danh sách nhân viên</p>
-                    </a>
-                </li>
                 <li>
                     <a href="<%=request.getContextPath()%>/admin/accounts">
                         <i class="ti-panel"></i>
@@ -65,7 +93,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<%=request.getContextPath()%>/admin/user">
+                    <a href="<%=request.getContextPath()%>/admin/users">
                         <i class="ti-user"></i>
                         <p>Danh sách người dùng</p>
                     </a>
