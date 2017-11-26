@@ -1,3 +1,4 @@
+<%@page import="model.bean.NhanVien"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="sidebar" data-background-color="white" data-active-color="danger">
     	<div class="sidebar-wrapper">
@@ -7,7 +8,14 @@
 			    <!-- normal -->
 			    <div class="ih-item circle effect1"><a href="#">
 			        <div class="spinner"></div>
-			        <div class="img"><img src="<%=request.getContextPath()%>/templates/admin/img/Taylor-Swift.jpg" alt="img"></div>
+			        <%
+			        	if(session.getAttribute("userInfo")!=null){
+			        		NhanVien objNhanVien = (NhanVien) session.getAttribute("userInfo");			    
+			        %>
+			        <div class="img"><img src="<%=request.getContextPath()%>/files/<%=objNhanVien.getAvatar() %>" alt="img"></div>
+			        <%
+			        	}
+			        %>
 			        <div class="info">
 			          <div class="info-back">
 			            <h3>Nhân Viên</h3>
