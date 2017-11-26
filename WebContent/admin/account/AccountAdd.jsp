@@ -34,13 +34,12 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Thêm tài khoản</h4>
+							<h4 class="title">Thêm thông tin</h4>
 						</div>
 						<div class="content">
 							<form action="" method="post" id="accountform">
 								<%
 									ArrayList<Role> roles = (ArrayList<Role>)request.getAttribute("roles");
-									ArrayList<NhanVien> nhanviens = (ArrayList<NhanVien>)request.getAttribute("nhanviens");
 								%>
 								<div class="row">
 									<div class="col-md-12">
@@ -71,27 +70,12 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label>Tên nhân viên</label> 
-											<select name="idNhanVien" class="form-control border-input">
-												<%
-													if(nhanviens.size()!=0)
-													for(int i=0;i<nhanviens.size();i++){														
-												%>
-													<option value="<%=nhanviens.get(i).getIdNhanVien()%>"><%=nhanviens.get(i).getTenNhanVien() %></option>
-												<%
-													}
-												%>	
-											</select>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
 											<label>Quyền hạn</label> 
-											<select name="idroler" class="form-control border-input">
+											<select name="idroler">
 												<%
 													if(roles.size()!=0)
 													for(int i=0;i<roles.size();i++){														

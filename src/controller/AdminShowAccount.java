@@ -49,7 +49,7 @@ public class AdminShowAccount extends HttpServlet {
 		int page_curent = 1;
 		AccountDAO model = new AccountDAO();
 		int soAccount = model.numAccount();
-		int row_count = 5;
+		int row_count = 2;
 		int sum_page = (int) Math.ceil((float)soAccount/row_count);
 		request.setAttribute("sum_page", sum_page);
 		if(request.getParameter("p")!=null){

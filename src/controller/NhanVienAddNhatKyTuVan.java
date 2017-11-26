@@ -27,7 +27,7 @@ public class NhanVienAddNhatKyTuVan extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/NhanVien/AddNhatKyTuVan.jsp?actived=3");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/NhanVien/AddNhatKyTuVan.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -77,7 +77,8 @@ public class NhanVienAddNhatKyTuVan extends HttpServlet{
 		}
 		
 		request.setAttribute("messageStr", messageStr);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/NhanVien/AddNhatKyTuVan.jsp?actived=3");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/NhanVien/AddNhatKyTuVan.jsp");
 		dispatcher.forward(request, response);
 	}
 }
+
