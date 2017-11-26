@@ -7,6 +7,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp"%>
 
+
 <!-- Banner
 ================================================== -->
 <div class="parallax" data-background="<%=request.getContextPath()%>/templates/public/images/home-parallax.jpg" data-color="#36383e" data-color-opacity="0.45" data-img-width="2500" data-img-height="1600">
