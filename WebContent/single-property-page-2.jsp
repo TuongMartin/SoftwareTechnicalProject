@@ -391,6 +391,7 @@ if(objCanHo != null)
 				{
 					for(CanHo objSimilar : listSimilar)
 					{
+						//asdasdasdasdasdasdasdasdasdasdasd
 				%>
 
 					<!-- Listing Item -->
