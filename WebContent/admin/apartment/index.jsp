@@ -1,3 +1,6 @@
+<%@page import="library.CheckRankLibrary"%>
+<%@page import="model.bean.Image"%>
+<%@page import="model.dao.ImageDAO"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.bean.CanHo"%>
@@ -6,7 +9,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -20,9 +30,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"> <i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -36,7 +46,7 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Danh sách khách hàng</h4>
+							<h4 class="title">Danh sách căn hộ</h4>
 							<%
 								if(request.getParameter("msg") != null){
 									int msg = Integer.parseInt(request.getParameter("msg"));
@@ -53,23 +63,26 @@
 										case 3 :%>
 											<p class="category success">Xóa căn hộ thành công!</p>
 											<%break;
+										case 5:%>
+											<p class="category alert alert-warning">Không tìm thấy</p>
+											<%break;
 									}
 									
 								}
 							
 							%>
-							<form action="<%=request.getContextPath() %>/admin/search" method="post">
+							<form action="<%=request.getContextPath() %>/admin/searchApartment" method="post">
 								<div class="row">
 									<div class="col-md-1">
 										<div class="form-group">
-											<input type="text" name="idCustomer"
-												class="form-control border-input" value="" placeholder="ID Customers">
+											<input type="text" name="idCanHo"
+												class="form-control border-input" value="" placeholder="ID căn hộ">
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
-											<input type="text" name="full_name"
-												class="form-control border-input" placeholder="Họ tên"
+											<input type="text" name="tenCanHo"
+												class="form-control border-input" placeholder="Tên căn hộ"
 												value="">
 										</div>
 									</div>
@@ -93,6 +106,7 @@
 								<thead>
 									<th>ID</th>
 									<th>Tên căn hộ</th>
+									<th>Hình ảnh</th>
 									<th>Địa chỉ</th>
 									<th>Nhân viên</th>
 									<th>Thể loại</th>
@@ -104,13 +118,29 @@
 								</thead>
 								<tbody>
 								<%	
+									ImageDAO imageDAO = new ImageDAO();
 									ArrayList<CanHo> listApartments = (ArrayList<CanHo>)request.getAttribute("listApartments");
 									if(listApartments.size() > 0 ){
 										for(CanHo objApartment : listApartments){
+											Image objImage = imageDAO.getItemImage(objApartment.getId());
 								%>
 											<tr>
 												<td><%=objApartment.getId() %></td>
 												<td><a href=""><%=objApartment.getTen() %></a></td>
+												<td>
+												<%
+													if(objImage != null) {
+												%>
+														<img style="width: 100px;height: 100px" src="<%=request.getContextPath() %>/files/<%=objImage.getHinhAnh()%>">
+												<%
+													}else {
+												%>
+														<img style="width: 100px;height: 100px" src="<%=request.getContextPath() %>/templates/admin/img/default.png">	
+												<%
+													}
+												%>
+													
+												</td>
 												<td><%=objApartment.getDiachi() %></td>
 												<td><%=objApartment.getTennhanvien() %></td>
 												<td><%=objApartment.getTentheloai() %></td>
@@ -155,7 +185,10 @@
 														Sửa</a> &nbsp;||&nbsp; <a
 													href="<%=request.getContextPath() %>/admin/delApartment?id=<%=objApartment.getId() %>" onClick="return confirm('Do you want to delete all device belong to this id?')"><img
 														src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
-														Xóa</a></td>
+														Xóa</a>&nbsp;||&nbsp; <a
+													href="<%=request.getContextPath() %>/admin/uploadImageApartment?id=<%=objApartment.getId() %>"><img style="width: 15px;height: 15px"
+														src="<%=request.getContextPath()%>/templates/admin/img/upload.png" alt="" />
+														Upload</a></td></td>
 											</tr>
 								<%		
 										}

@@ -51,13 +51,16 @@
 								<p class="category alert alert-warning" style="color: blue;">Xác nhận tài khoản thành công, bạn có thể đăng nhập!</p>
 								<%break;
 							case 4:%>
-								<p class="category success" style="color: blue;">Token xác nhận đã hết hạn!</p>
+								<p class="category success" style="color: blue;">Token chưa được xác nhận hoặc đã hết hạn!</p>
 								<%break;
 							case 5:%>
 								<p class="category success" style="color: blue;">Tài khoản của bạn đã tạm thời bị khóa!</p>
 								<%break;
 							case 6:%>
 								<p class="category success" style="color: blue;">Email hoặc mật khẩu không chính xác!</p>
+								<%break;
+							case 7:%>
+								<p class="category success" style="color: blue;">Reset password thành công, mời bạn đăng nhập!</p>
 								<%break;
 							
 						}
@@ -74,11 +77,11 @@
 		
 					<!-- Login -->
 					<div class="tab-content" id="tab1" style="display: none;">
-						<form method="post" class="login">
+						<form method="post" class="login" action="<%=request.getContextPath() %>/public/login">
 		
 							<p class="form-row form-row-wide">
-								<label for="username">Email/Username:
-									<i class="im im-icon-Male"></i>
+								<label for="username">Email:
+									<i class="im im-icon-Mail"></i>
 									<input type="text" class="input-text" name="email" id="email" value="" />
 								</label>
 							</p>
@@ -97,7 +100,7 @@
 							</p>
 		
 							<p class="lost_password">
-								<a href="#" >Lost Your Password?</a>
+								<a href="<%=request.getContextPath() %>/public/reset-password" >Lost Your Password?</a>
 							</p>
 							
 						</form>
@@ -106,7 +109,7 @@
 					<!-- Register -->
 					<div class="tab-content" id="tab2" style="display: none;">
 		
-						<form action="" enctype="multipart/form-data" method="post" class="register" id="registerCustomer">
+						<form action="<%=request.getContextPath() %>/public/register" enctype="multipart/form-data" method="post" class="register" id="registerCustomer">
 							<p class="form-row form-row-wide">
 								<label for="email2">Email Address:
 									<i class="im im-icon-Mail"></i>

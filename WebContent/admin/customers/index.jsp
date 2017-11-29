@@ -1,9 +1,17 @@
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.KhachHang"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -17,9 +25,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"> <i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -44,17 +52,20 @@
 										case 1 :%>
 											<p class="category success">Xóa khách hàng thành công!</p>
 											<%break;
+										case 5:%>
+											<p class="category alert alert-warning">Không tìm thấy</p>
+											<%break;
 									}
 									
 								}
 							
 							%>
-							<form action="<%=request.getContextPath() %>/admin/search" method="post">
+							<form action="<%=request.getContextPath() %>/admin/searchCustomer" method="post">
 								<div class="row">
 									<div class="col-md-1">
 										<div class="form-group">
 											<input type="text" name="idCustomer"
-												class="form-control border-input" value="" placeholder="ID Customers">
+												class="form-control border-input" value="" placeholder="ID khách hàng">
 										</div>
 									</div>
 									<div class="col-md-4">
@@ -72,12 +83,7 @@
 										</div>
 									</div>
 								</div>
-
 							</form>
-
-							<a href="<%=request.getContextPath()%>/admin/show-addSales"
-								class="addtop"><img
-								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
 						</div>
 						<div class="content table-responsive table-full-width">
 							<table class="table table-striped">

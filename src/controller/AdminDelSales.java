@@ -53,7 +53,7 @@ public class AdminDelSales extends HttpServlet {
 		if(salesDAO.delItemSale(idSale)) {
 			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=4");
 		} else {
-			response.sendRedirect(request.getContextPath() + "/admphamsan-pham?msg=0");
+			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=0");
 		}
 	}
 

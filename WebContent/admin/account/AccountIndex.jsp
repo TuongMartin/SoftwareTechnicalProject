@@ -1,10 +1,18 @@
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.Account"%>
 <%@page import="javax.xml.bind.ParseConversionEvent"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -18,9 +26,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"> <i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -48,16 +56,25 @@
 										break;
 									case 2 : 
 										out.print("<span style = 'color:red;font-weight:bold'>Xóa không thành công</span>");
-										break;									
+										break;
+									case 4 : 
+										out.print("<span style = 'color:red;font-weight:bold'>Username đã tồn tại</span>");
+										break;
+									case 5 : 
+										out.print("<span style = 'color:red;font-weight:bold'>Thêm thành công</span>");
+										break;
+									case 6 : 
+										out.print("<span style = 'color:red;font-weight:bold'>Thêm không thành công</span>");
+										break;
+									case 7 : 
+										out.print("<span style = 'color:red;font-weight:bold'>Sửa thành công</span>");
+										break;
+									case 8 : 
+										out.print("<span style = 'color:red;font-weight:bold'>Sửa không thành công</span>");
+										break;	
 								}
 							}
 							%>
-							<br/>
-							<form action="" method="post">
-								<input type="submit" name="Timkiem" value="Tìm kiếm" class="btn btn-primary"></input>
-								<input type="text" name="keysearch">
-							</form>
-							
 						</div>
 						<div class="content table-responsive table-full-width">
 							<table class="table table-striped">
@@ -71,7 +88,6 @@
 								<tbody>
 									<%
 										ArrayList<Account> accounts = (ArrayList<Account>)request.getAttribute("Accounts");
-										int numberpage= (Integer)request.getAttribute("numberpage");								
 										if(accounts.size()!=0)
 										for(Account currentAccount:accounts){
 											
@@ -81,7 +97,15 @@
 											<td><%=currentAccount.getTenNhanVien() %></td>
 											<td><%=currentAccount.getUsername() %></td>
 											<td><%=currentAccount.getrole() %>
-											<td><a href="<%=request.getContextPath()%>/admin/deleteaccount?id=<%=currentAccount.getId()%>">Xóa</a>|<a href="<%=request.getContextPath()%>/admin/updateaccount?id=<%=currentAccount.getId()%>">Sửa</a></td>
+											<td>
+												<a
+												href="<%=request.getContextPath()%>/admin/updateaccount?id=<%=currentAccount.getId()%>"><img
+													src="<%=request.getContextPath()%>/templates/admin/img/edit.gif" alt="" />
+													Sửa</a> &nbsp;||&nbsp; <a
+												href="<%=request.getContextPath()%>/admin/deleteaccount?id=<%=currentAccount.getId()%>" onClick="return confirm('Do you want to delete all device belong to this id?')"><img
+													src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
+													Xóa</a></td>
+											</td>
 										</tr>
 									<% 		
 										}
@@ -90,33 +114,24 @@
 									
 								</tbody>
 							</table>
-							<div class="numofpage">
-								Trang
+							<div class="text-center">
+								<ul class="pagination">
 								<%
-									String str="";
-									if(request.getParameter("keysearch")!=null){
-										str = request.getParameter("keysearch");
-									}else{
-										if(request.getParameter("key")!=null){
-											str = request.getParameter("key");
-										}
+									if(request.getAttribute("sum_page") != null){
+										String active = "";
+										int sum_page = (Integer) request.getAttribute("sum_page");
+										int page_current = (Integer) request.getAttribute("page_current");
+										for(int i = 1 ; i <= sum_page ; i++){
+											if(page_current == i){
+												active = "class = 'current'";
+											}else{
+												active = "";
+											}%>
+											<li><a <%=active%> href="<%=request.getContextPath() %>/admin/accounts?p=<%=i%>" title=""><%=i%></a></li>
+										<%}
 									}
-									
-									if(str!=""){									
-										for(int i=1;i<numberpage+1;i++){
-											%>
-												<a href="<%=request.getContextPath()%>/admin/accounts?key=<%=str%>&&page=<%=i%>" class="linkpage"><%=i %></a>
-											<% 		
-										}
-									}else{
-									
-										for(int i=1;i<numberpage+1;i++){
-									%>
-										<a href="<%=request.getContextPath()%>/admin/accounts?page=<%=i%>" class="linkpage"><%=i %></a>
-									<% 		
-										}
-									}	
 								%>
+								</ul>
 							</div>
 						</div>
 					</div>

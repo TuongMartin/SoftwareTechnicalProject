@@ -1,3 +1,4 @@
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.Account"%>
 <%@page import="model.bean.ChucVu"%>
 <%@page import="model.dao.ChucVuDAO"%>
@@ -7,7 +8,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -21,9 +29,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"><i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 

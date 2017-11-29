@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import library.BCrypt;
 import library.CheckLoginLibrary;
 import model.bean.Account;
+import model.bean.NhanVien;
 import model.bean.Role;
 import model.dao.AccountDAO;
 import model.dao.RoleDAO;
+import model.dao.SalesDAO;
 
 
 /**
@@ -51,33 +53,40 @@ public class AdminAddAccount extends HttpServlet {
 		// TODO Auto-generated method stub
 		RoleDAO model = new RoleDAO();
 		AccountDAO modelAccount = new AccountDAO();
+		SalesDAO modelSale = new SalesDAO();
+		
 		ArrayList<Role> roles = new ArrayList<Role>();
+		ArrayList<NhanVien> nhanviens = new ArrayList<NhanVien>();
 
 		roles = model.roles();
+		nhanviens = modelSale.getListUser();
 	
 		request.setAttribute("roles", roles);
+		request.setAttribute("nhanviens", nhanviens);
 		
 		if(request.getParameter("submit")!=null){
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			String hashed = BCrypt.hashpw(password, BCrypt.gensalt(10));
 			int idrole = Integer.parseInt(request.getParameter("idroler"));
-			Account tam = new Account(1,username,hashed,idrole,"",0,"");
+			int idNhanVien = Integer.parseInt(request.getParameter("idNhanVien"));
+			
+			Account tam = new Account(1,username,hashed,idrole,"",idNhanVien,"");
 			
 			if(modelAccount.checkusername(username)){
-				response.sendRedirect(request.getContextPath() + "/admin/addaccount?msg=1");
+				response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=4");
 				return;
 			}else{
 				if(modelAccount.addaccount(tam)) {
-					response.sendRedirect(request.getContextPath() + "/admin/addaccount?msg=2");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=5");
 					return;
 				}else {
-					response.sendRedirect(request.getContextPath() + "/admin/addaccount?msg=3");
+					response.sendRedirect(request.getContextPath() + "/admin/accounts?msg=6");
 					return;
 				}			
 			}			
 		}else{
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountAdd.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/account/AccountAdd.jsp?active=7");
 			rd.forward(request, response);
 		}
 		

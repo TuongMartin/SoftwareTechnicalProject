@@ -40,6 +40,7 @@ public class AdminDeleteAccount extends HttpServlet {
 		if(!CheckLoginLibrary.isLogin(request, response)) {
 			return;
 		}
+
 		// TODO Auto-generated method stub
 		AccountDAO modelAccount = new AccountDAO();
 		if(request.getParameter("id")!=null) {

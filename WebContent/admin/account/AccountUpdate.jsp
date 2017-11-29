@@ -1,10 +1,18 @@
-<%@page import="model.bean.Account"%>
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.Role"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.bean.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -18,9 +26,8 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
-							class="ti-settings"></i>
-							<p>Settings</p>
+					<li><a href="<%=request.getContextPath()%>/admin/logout">
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -34,21 +41,7 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Thêm thông tin</h4>
-							<%
-							if(request.getParameter("msg")!=null) {
-								int msg = Integer.parseInt(request.getParameter("msg"));
-								switch (msg) {
-									case 1 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Sửa thành công</span>");
-										break;
-									case 2 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Sửa không thành công</span>");
-										break;									
-								}
-							}
-							
-							%>
+							<h4 class="title">Cập nhật tài khoản</h4>
 						</div>
 						<div class="content">
 								<%
@@ -71,7 +64,7 @@
 										<div class="form-group">
 											<label>Password</label> <input type="password"
 												name="password" id="password" class="form-control border-input"
-												value="<%=ojAccount.getPassword() %>" disabled>
+												value="" disabled>
 										</div>
 									</div>
 								</div>
@@ -80,7 +73,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label>Xác nhận Password</label> <input type="password" name="repassword" id="repassword"
-												class="form-control border-input" value="<%=ojAccount.getPassword() %>" disabled>
+												class="form-control border-input" value="" disabled>
 										</div>
 									</div>
 								</div>
@@ -99,10 +92,16 @@
 											<label>Quyền hạn</label> 
 											<select name="idroler"" class="form-control border-input">
 												<%
+													String selected="";
 													if(roles.size()!=0)
-													for(int i=0;i<roles.size();i++){														
+													for(int i=0;i<roles.size();i++){	
+														if(ojAccount.getIdrole()==roles.get(i).getIdrole()){
+															selected="selected";
+														}else{
+															selected="";
+														}
 												%>
-													<option value="<%=roles.get(i).item()%>"><%=roles.get(i).getRole() %></option>
+													<option <%=selected %> value="<%=roles.get(i).getIdrole()%>"><%=roles.get(i).getRole() %></option>
 												<%
 													}
 												%>	

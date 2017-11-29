@@ -1,7 +1,5 @@
 package model.bean;
 
-import java.util.Date;
-
 public class KhachHang {
 	private int id;
 	private String tenKhachHang;
@@ -16,6 +14,9 @@ public class KhachHang {
 	private int status;
 	private String token;
 	private String comfirm_at;
+	private int IdLoaiKH;
+	private String TenLoaiKH;
+	private int IdTinDang;
 	public int getId() {
 		return id;
 	}
@@ -94,6 +95,40 @@ public class KhachHang {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	public int getIdLoaiKH() {
+		return IdLoaiKH;
+	}
+	public void setIdLoaiKH(int idLoaiKH) {
+		IdLoaiKH = idLoaiKH;
+	}
+	public String getTenLoaiKH() {
+		return TenLoaiKH;
+	}
+	public void setTenLoaiKH(String tenLoaiKH) {
+		TenLoaiKH = tenLoaiKH;
+	}
+	public KhachHang(int id, String tenKhachHang, String diaChi,
+			String queQuan, String cMND, String ngaySinh, String soDienThoai,
+			String email, String matKhau, String avatar, int status,
+			String token, String comfirm_at,int IdLoaiKH,String TenLoaiKH,int IdTinDang) {
+		super();
+		this.id = id;
+		this.tenKhachHang = tenKhachHang;
+		this.diaChi = diaChi;
+		this.queQuan = queQuan;
+		CMND = cMND;
+		this.ngaySinh = ngaySinh;
+		this.soDienThoai = soDienThoai;
+		this.email = email;
+		this.matKhau = matKhau;
+		this.avatar = avatar;
+		this.status = status;
+		this.token = token;
+		this.comfirm_at = comfirm_at;
+		this.IdLoaiKH = IdLoaiKH;
+		this.TenLoaiKH = TenLoaiKH;
+		this.IdTinDang = IdTinDang;
+	}
 	public KhachHang(int id, String tenKhachHang, String diaChi,
 			String queQuan, String cMND, String ngaySinh, String soDienThoai,
 			String email, String matKhau, String avatar, int status,
@@ -113,4 +148,11 @@ public class KhachHang {
 		this.token = token;
 		this.comfirm_at = comfirm_at;
 	}
+	public int getIdTinDang() {
+		return IdTinDang;
+	}
+	public void setIdTinDang(int idTinDang) {
+		IdTinDang = idTinDang;
+	}
+	
 }

@@ -53,7 +53,7 @@ public class AdminManageApartment extends HttpServlet {
 		int offset = (page_curent -1)*row_count;
 		request.setAttribute("listApartments", apartmentDAO.getItemPagition(offset,row_count));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/apartment/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/apartment/index.jsp?actived=3");
 		rd.forward(request, response);
 	}
 

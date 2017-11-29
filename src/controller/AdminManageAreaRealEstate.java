@@ -53,7 +53,7 @@ public class AdminManageAreaRealEstate extends HttpServlet {
 		int offset = (page_curent -1)*row_count;
 		request.setAttribute("listKhuVuc", areaDAO.getItemPagition(offset,row_count));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/area/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/area/index.jsp?actived=2");
 		rd.forward(request, response);
 	}
 

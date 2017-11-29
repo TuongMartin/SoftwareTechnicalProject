@@ -1,9 +1,18 @@
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.Role"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.bean.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -17,9 +26,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"><i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -33,29 +42,13 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Thêm thông tin</h4>
-							<%
-							if(request.getParameter("msg")!=null) {
-								int msg = Integer.parseInt(request.getParameter("msg"));
-								switch (msg) {
-									case 1 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Username đã tồn tại</span>");
-										break;
-									case 2 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Thêm thành công</span>");
-										break;
-									case 3 : 
-										out.print("<span style = 'color:red;font-weight:bold'>Thêm không thành công</span>");
-										break;
-								}
-							}
-							
-							%>
+							<h4 class="title">Thêm tài khoản</h4>
 						</div>
 						<div class="content">
 							<form action="" method="post" id="accountform">
 								<%
 									ArrayList<Role> roles = (ArrayList<Role>)request.getAttribute("roles");
+									ArrayList<NhanVien> nhanviens = (ArrayList<NhanVien>)request.getAttribute("nhanviens");
 								%>
 								<div class="row">
 									<div class="col-md-12">
@@ -86,17 +79,32 @@
 										</div>
 									</div>
 								</div>
-
+								
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
+											<label>Tên nhân viên</label> 
+											<select name="idNhanVien" class="form-control border-input">
+												<%
+													if(nhanviens.size()!=0)
+													for(int i=0;i<nhanviens.size();i++){														
+												%>
+													<option value="<%=nhanviens.get(i).getIdNhanVien()%>"><%=nhanviens.get(i).getTenNhanVien() %></option>
+												<%
+													}
+												%>	
+											</select>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
 											<label>Quyền hạn</label> 
-											<select name="idroler">
+											<select name="idroler" class="form-control border-input">
 												<%
 													if(roles.size()!=0)
 													for(int i=0;i<roles.size();i++){														
 												%>
-													<option value="<%=roles.get(i).item()%>"><%=roles.get(i).getRole() %></option>
+													<option value="<%=roles.get(i).getIdrole()%>"><%=roles.get(i).getRole() %></option>
 												<%
 													}
 												%>	

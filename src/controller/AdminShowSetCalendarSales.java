@@ -20,21 +20,19 @@ import model.dao.SalesDAO;
  */
 public class AdminShowSetCalendarSales extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AdminShowSetCalendarSales() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public AdminShowSetCalendarSales() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -59,7 +57,7 @@ public class AdminShowSetCalendarSales extends HttpServlet {
 					AgendaDAO agendaDAO = new AgendaDAO();
 					session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
 
-					RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp?actived=4");
 					rd.forward(request, response);
 				}else {
 					response.sendRedirect(request.getContextPath() + "/admin/trang-chu");
@@ -71,7 +69,7 @@ public class AdminShowSetCalendarSales extends HttpServlet {
 				AgendaDAO agendaDAO = new AgendaDAO();
 				session.setAttribute("agendaItemSale", agendaDAO.getListAgendaSale(idSale));
 
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/schedule.jsp?actived=4");
 				rd.forward(request, response);
 			}
 

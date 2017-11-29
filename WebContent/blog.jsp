@@ -1,3 +1,8 @@
+<%@page import="model.dao.TinTucDAO"%>
+<%@page import="model.bean.TinTuc"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:54 GMT -->
@@ -12,6 +17,7 @@
 <!-- CSS
 ================================================== -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/search.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
 
 </head>
@@ -248,101 +254,93 @@
 	<div class="row">
 		<div class="col-md-8">
 
-			<!-- Blog Post -->
-			<div class="blog-post">
+			<% 
+			if(request.getAttribute("listTinTuc") != null)
+			{
+				ArrayList<TinTuc> listTinTuc = (ArrayList<TinTuc>) request.getAttribute("listTinTuc");
+				if(listTinTuc != null && listTinTuc.size() > 0)
+				{
+					for(TinTuc obj : listTinTuc)
+					{
+			%>
+						<!-- Blog Post -->
+						<div class="blog-post">
+							<!-- Img -->
+							<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= obj.getIdTinTuc() %>" class="post-img">
+								<img src="<%= obj.getHinhAnh() %>" alt="">
+							</a>
 				
-				<!-- Img -->
-				<a href="blog-post.html" class="post-img">
-					<img src="<%=request.getContextPath()%>/templates/public/images/blog-post-01a.jpg" alt="">
-				</a>
-				
-				<!-- Content -->
-				<div class="post-content">
-					<h3><a href="blog-post.html">8 Tips to Help You Finding New Home</a></h3>
+							<!-- Content -->
+							<div class="post-content">
+								<h3><a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= obj.getIdTinTuc() %>"><%= obj.getTieuDe() %></a></h3>
 
-					<ul class="post-meta">
-						<li>Novemer 12, 2016</li>
-						<li><a href="#">5 Comments</a></li>
-					</ul>
+								<ul class="post-meta">
+									<li><%= obj.getNgayDangTin() %></li>
+									<li><a href="#">5 Comments</a></li>
+								</ul>
+								<p><%= obj.getQuote() %></p>
 
-					<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae, tempus sed augue. Curabitur quis lectus quis augue dapibus facilisis.</p>
-
-					<a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
-				</div>
-
-			</div>
-			<!-- Blog Post / End -->
+								<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= obj.getIdTinTuc() %>" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+							</div>
 
 
-			<!-- Blog Post -->
-			<div class="blog-post">
-				
-				<!-- Img -->
-				<a href="blog-post.html" class="post-img">
-					<img src="<%=request.getContextPath()%>/templates/public/images/blog-post-02a.jpg" alt="">
-				</a>
-				
-				<!-- Content -->
-				<div class="post-content">
-					<h3><a href="blog-post.html">Bedroom Colors You'll Never Regret</a></h3>
-
-					<ul class="post-meta">
-						<li>November 9, 2016</li>
-						<li><a href="#">5 Comments</a></li>
-					</ul>
-
-					<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae, tempus sed augue. Curabitur quis lectus quis augue dapibus facilisis.</p>
-
-					<a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
-				</div>
-
-			</div>
-			<!-- Blog Post / End -->
-
-
-			<!-- Blog Post -->
-			<div class="blog-post">
-				
-				<!-- Img -->
-				<a href="blog-post.html" class="post-img">
-					<img src="<%=request.getContextPath()%>/templates/public/images/blog-post-03a.jpg" alt="">
-				</a>
-				
-				<!-- Content -->
-				<div class="post-content">
-					<h3><a href="blog-post.html">What to Do a Year Before Buying Apartment</a></h3>
-
-					<ul class="post-meta">
-						<li>October 26, 2016</li>
-						<li><a href="#">3 Comments</a></li>
-					</ul>
-
-					<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae, tempus sed augue. Curabitur quis lectus quis augue dapibus facilisis.</p>
-
-					<a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
-				</div>
-
-			</div>
-			<!-- Blog Post / End -->
-
+						</div>
+						<!-- Blog Post / End -->
+			<%			
+					}
+				}
+			}
+			%>
 
 			<!-- Pagination -->
 			<div class="clearfix"></div>
 			<div class="pagination-container">
 				<nav class="pagination">
-					<ul>
-						<li><a href="#" class="current-page">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-					</ul>
+				<ul>
+			<%
+			if(request.getAttribute("sumPage") != null)
+			{
+				String active = "";
+				int sumPage = (Integer) request.getAttribute("sumPage");
+				int currentPage = (Integer) request.getAttribute("currentPage");
+				for(int i = 1 ; i <= sumPage ; i++)
+				{
+					if(currentPage == i)
+					{
+						active = "class = 'current'";
+					}
+					else
+					{
+						active = "";
+					}
+			%>
+					<li><a <%=active%> href="<%=request.getContextPath() %>/blog?page=<%=i%>" title="" class="current-page"><%=i%></a></li>
+				<%
+				}
+				%>
+				</ul>
 				</nav>
-
 				<nav class="pagination-next-prev">
-					<ul>
-						<li><a href="#" class="prev">Previous</a></li>
-						<li><a href="#" class="next">Next</a></li>
-					</ul>
-				</nav>
+				<ul>
+				<%
+				if(currentPage - 1 > 0)
+				{
+				%>
+					<li><a href="<%=request.getContextPath() %>/blog?page=<%=currentPage - 1%>" class="prev">Previous</a></li>
+				<%	
+				}
+				if(currentPage + 1 <= sumPage)
+				{
+				%>
+					<li><a href="<%=request.getContextPath() %>/blog?page=<%=currentPage + 1%>" class="next">Next</a></li>
+				<%	
+				}
+				%>
+				</ul>
+				</nav>		
+			<%	
+			}
+			%>
 			</div>
 			<div class="clearfix"></div>
 
@@ -358,13 +356,13 @@
 			<!-- Widget -->
 			<div class="widget">
 				<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
-				<div class="search-blog-input">
-					<div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" value=""/></div>
-				</div>
+				<form class="form-wrapper cf" action="${pageContext.request.contextPath}/SearchTT">
+					<input type="text" name="search" placeholder="Search here..." required> 
+					<button type="submit">Search</button>
+				</form>
 				<div class="clearfix"></div>
 			</div>
 			<!-- Widget / End -->
-
 
 			<!-- Widget -->
 			<div class="widget">
@@ -380,53 +378,41 @@
 			<!-- Widget -->
 			<div class="widget">
 
-				<h3>Popular Posts</h3>
+				<h3>Bài Viết Phổ Biến</h3>
 				<ul class="widget-tabs">
-
+				<%
+				ArrayList<TinTuc> listPopular = (ArrayList<TinTuc>) request.getAttribute("listPopular");
+				if(listPopular != null && listPopular.size() > 0)
+				{
+					for(TinTuc objTinTuc : listPopular)
+					{
+				%>
 					<!-- Post #1 -->
 					<li>
 						<div class="widget-content">
 								<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="<%=request.getContextPath()%>/templates/public/images/blog-widget-03.jpg" alt=""></a>
+
+								<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= objTinTuc.getIdTinTuc() %>">
+									<img src="<%= objTinTuc.getHinhAnh() %>" alt="">
+								</a>
+
 							</div>
 							
 							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">What to Do a Year Before Buying Apartment </a></h5>
-								<span>October 26, 2016</span>
+								<h5>
+									<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= objTinTuc.getIdTinTuc() %>">
+										<%= objTinTuc.getTieuDe() %>
+									</a>
+								</h5>
+								<span><%= objTinTuc.getNgayDangTin() %></span>
 							</div>
 							<div class="clearfix"></div>
 						</div>
 					</li>
-					
-					<!-- Post #2 -->
-					<li>
-						<div class="widget-content">
-							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="<%=request.getContextPath()%>/templates/public/images/blog-widget-02.jpg" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">Bedroom Colors You'll Never Regret</a></h5>
-								<span>November 9, 2016</span>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</li>
-					
-					<!-- Post #3 -->
-					<li>
-						<div class="widget-content">
-							<div class="widget-thumb">
-								<a href="blog-full-width-single-post.html"><img src="<%=request.getContextPath()%>/templates/public/images/blog-widget-01.jpg" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="blog-full-width-single-post.html">8 Tips to Help You Finding New Home</a></h5>
-								<span>November 12, 2016</span>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</li>
+				<%		
+					}
+				}
+				%>
 
 				</ul>
 
@@ -516,7 +502,7 @@
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+				<div class="copyrights">Â© 2016 Findeo. All Rights Reserved.</div>
 			</div>
 		</div>
 

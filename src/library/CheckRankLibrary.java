@@ -18,4 +18,15 @@ public class CheckRankLibrary {
 		return true;
 	}
 	
+	public static boolean isSale(HttpServletRequest request,
+			HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		Account objUser = (Account) session.getAttribute("objUser");
+		System.out.println("rank : " + objUser.getrole());
+		if (!"Nhân viên".equalsIgnoreCase(objUser.getrole())) {
+			return false;
+		}
+		return true;
+	}
+	
 }

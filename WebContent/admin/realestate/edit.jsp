@@ -1,9 +1,17 @@
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.TheLoaiBDS"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -17,9 +25,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"><i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -51,13 +59,21 @@
 						<%
 							TheLoaiBDS objTheLoaiUpdate = (TheLoaiBDS)request.getAttribute("objTheLoaiUpdate");
 						%>
-							<form action="" method="post" id="addRealEstate">
+							<form action="" method="post" id="addRealEstate" enctype="multipart/form-data">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
 											<label>Tên thể loại</label> <input type="text" name="realestate"
 												class="form-control border-input" placeholder="Tên thể loại"
 												value="<%=objTheLoaiUpdate.getTen() %>">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Hình ảnh</label> <input type="file" name="image"
+												class="form-control" placeholder="Chọn ảnh" />
 										</div>
 									</div>
 								</div>

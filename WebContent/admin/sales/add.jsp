@@ -1,3 +1,4 @@
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.Role"%>
 <%@page import="model.dao.RoleDAO"%>
 <%@page import="model.bean.ChucVu"%>
@@ -6,7 +7,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -20,9 +28,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"><i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -101,7 +109,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<%
+											<%/*
 												ChucVuDAO chucVuDAO = new ChucVuDAO();
 												if (chucVuDAO.getListChucVu() != null) {
 													ArrayList<ChucVu> list = (ArrayList<ChucVu>) chucVuDAO.getListChucVu();
@@ -119,7 +127,7 @@
 											</select>
 											<%
 												}
-												}
+												}*/
 											%>
 										</div>
 									</div>
@@ -163,7 +171,7 @@
 													if(listRole.size()!=0)
 													for(Role item : listRole){														
 												%>
-													<option value="<%=item.item()%>"><%=item.getRole() %></option>
+													<option value="<%=item.getIdrole()%>"><%=item.getRole() %></option>
 												<%
 													}
 												%>	

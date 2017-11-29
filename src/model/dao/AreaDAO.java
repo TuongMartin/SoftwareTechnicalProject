@@ -6,13 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import library.ConnectionLibraryMySQL;
-import model.bean.KhachHang;
 import model.bean.KhuVucBDS;
-import model.bean.NhanVien;
-import model.bean.TheLoaiBDS;
 
 public class AreaDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;
@@ -104,7 +100,33 @@ public class AreaDAO {
 		}
 		return objKhuVuc;
 	}
-
+	
+	public Object getItemAreaRealEstatebyNameEdit(String khuvuc, int id) {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		KhuVucBDS objKhuVuc = null;
+		String sql = "SELECT * FROM " + table  + " WHERE tenKhuVuc = ? AND idKhuVuc NOT IN (?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, khuvuc);
+			ps.setInt(2, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				objKhuVuc = new KhuVucBDS(rs.getInt("idKhuVuc"), rs.getString("tenKhuVuc"), rs.getString("image"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return objKhuVuc;
+	}
+	
 	public boolean addItemAreaRealEstate(KhuVucBDS objKhuVuc) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		String sql = "INSERT INTO " + table + "(tenKhuVuc,image) VALUES(?,?)";
@@ -206,6 +228,26 @@ public class AreaDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				KhuVucBDS objKhuVuc = new KhuVucBDS(rs.getInt("idKhuVuc"), rs.getString("tenKhuVuc"), rs.getString("image"));
+				listKhuVuc.add(objKhuVuc);
+			}
+			return listKhuVuc;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ArrayList<KhuVucBDS> getItemPublic() {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "SELECT *, count(idTinDang) as countBDS FROM " + table + " LEFT JOIN tindang ON tindang.idKhuVuc = khuvuc.idKhuVuc GROUP BY khuvuc.idKhuVuc";
+		ArrayList<KhuVucBDS> listKhuVuc = new ArrayList<>();
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				KhuVucBDS objKhuVuc = new KhuVucBDS(rs.getInt("idKhuVuc"), rs.getString("tenKhuVuc"), rs.getString("image"), rs.getInt("countBDS"));
+//				KhuVucBDS objKhuVuc = new KhuVucBDS(rs.getInt("idKhuVuc"), rs.getString("tenKhuVuc"), rs.getString("image"));
 				listKhuVuc.add(objKhuVuc);
 			}
 			return listKhuVuc;

@@ -3,8 +3,8 @@ package model.bean;
 public class Role {
 	private int idrole;
 	private String role;
-	
-	public int item() {
+
+	public int getIdrole() {
 		return idrole;
 	}
 	public void setIdrole(int idrole) {

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import library.CheckLoginLibrary;
 import model.dao.ApartmentDAO;
+import model.dao.FeatureApartmentDAO;
+import model.dao.ImageDAO;
 
 /**
  * Servlet implementation class AdminManageSales
@@ -42,7 +44,11 @@ public class AdminDelApartment extends HttpServlet {
 		}
 		int aid = Integer.parseInt(request.getParameter("id"));
 		ApartmentDAO apartmentDAO = new ApartmentDAO();
+		FeatureApartmentDAO feature_apartmentDAO = new FeatureApartmentDAO();
+		ImageDAO imageDAO = new ImageDAO();
 		if(apartmentDAO.delItemApartment(aid)) {
+			imageDAO.delItemImageByIdApartment(aid);
+			feature_apartmentDAO.delItemFeatureByIdApartment(aid);
 			response.sendRedirect(request.getContextPath() + "/admin/manageApartments?msg=3");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/admin/manageApartments?msg=0");

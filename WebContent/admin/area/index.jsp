@@ -1,3 +1,4 @@
+<%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.KhuVucBDS"%>
 <%@page import="model.bean.TheLoaiBDS"%>
 <%@page import="model.bean.KhachHang"%>
@@ -5,7 +6,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
-<%@include file="/templates/admin/inc/leftbar.jsp"%>
+<%
+	if(session.getAttribute("objUser") != null){
+		if(CheckRankLibrary.isAdmin(request, response)) { %>
+			<%@include file="/templates/admin/inc/leftbar.jsp"%>
+		<% }else{ %>
+			<%@include file="/templates/NhanVien/inc/LeftBar.jsp"%>
+		<%}
+	}%>
 <div class="main-panel">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -19,9 +27,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"> <i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -35,7 +43,7 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="header">
-							<h4 class="title">Danh sách thể loại</h4>
+							<h4 class="title">Danh sách khu vực</h4>
 							<%
 								if(request.getParameter("msg") != null){
 									int msg = Integer.parseInt(request.getParameter("msg"));
@@ -57,32 +65,6 @@
 								}
 							
 							%>
-							<form action="<%=request.getContextPath() %>/admin/search" method="post">
-								<div class="row">
-									<div class="col-md-1">
-										<div class="form-group">
-											<input type="text" name="idCustomer"
-												class="form-control border-input" value="" placeholder="ID Customers">
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<input type="text" name="full_name"
-												class="form-control border-input" placeholder="Họ tên"
-												value="">
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<input type="submit" name="search" value="Tìm kiếm"
-												class="is" /> <input type="submit" name="reset"
-												value="Hủy tìm kiếm" class="is" />
-										</div>
-									</div>
-								</div>
-
-							</form>
-
 							<a href="<%=request.getContextPath()%>/admin/addAreaRealEstate"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>

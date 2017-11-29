@@ -39,14 +39,14 @@ public class AccountDAO {
 		return number;
 	}
 	
-	public ArrayList<Account> getlist(int startitem,int maxitem){
+	public ArrayList<Account> getlist(int offset, int row_count){
 		conn = connDB.getConnectMySQL();
 		ArrayList<Account> accounts= new ArrayList<Account>();
-		String sql = "select * from account left join nhanvien on account.IdNhanVien=nhanvien.IdNhanVien join role on account.idrole=role.idrole limit ?,?";
+		String sql = "select * from account inner join nhanvien on account.IdNhanVien=nhanvien.IdNhanVien join role on account.idrole=role.idrole limit ?,?";
 		try{
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, startitem);
-			pst.setInt(2, maxitem);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
 			rs = pst.executeQuery();
 			while(rs.next()){
 				Account current = new Account(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getInt("idrole"),rs.getString("role"),rs.getInt("IdNhanVien"),rs.getString("TenNhanVien"));
@@ -77,26 +77,6 @@ public class AccountDAO {
 		return number;
 	}
 	
-	public ArrayList<Account> getlistsearch(String str,int startitem,int maxitem){
-		conn = connDB.getConnectMySQL();
-		ArrayList<Account> accounts= new ArrayList<Account>();
-		String sql = "select * from account left join nhanvien on account.IdNhanVien=nhanvien.IdNhanVien join role on account.idrole=role.idrole where username like '%"+str+"%' limit ?,?";
-		try{
-			pst = conn.prepareStatement(sql);
-			pst.setInt(1, startitem);
-			pst.setInt(2, maxitem);
-			rs = pst.executeQuery();		
-			while(rs.next()){
-				Account current = new Account(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getInt("idrole"),rs.getString("role"),rs.getInt("IdNhanVien"),rs.getString("TenNhanVien"));
-				accounts.add(current);
-			}
-			conn.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return accounts;
-	}
-	
 	public Account getAccountById(int idaccount){
 		Account current=null;
 		conn = connDB.getConnectMySQL();
@@ -115,6 +95,7 @@ public class AccountDAO {
 		return current;
 	}
 	
+
 	public Account getAccountByIdSale(int idNhanVien){
 		Account current=null;
 		conn = connDB.getConnectMySQL();
@@ -132,17 +113,16 @@ public class AccountDAO {
 		}
 		return current;
 	}
-	
-	
-	
+
 	public boolean addaccount(Account account){
 		conn = connDB.getConnectMySQL();
-		String sql = "insert into account (username,password,idrole) values (?,?,?)";
+		String sql = "insert into account (username,password,idrole,IdNhanVien) values (?,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, account.getUsername());
 			pst.setString(2, account.getPassword());
 			pst.setInt(3, account.getId());
+			pst.setInt(4, account.getIdNhanVien());
 			pst.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -199,6 +179,7 @@ public class AccountDAO {
 		return true;
 	}
 	
+
 	public boolean updateAccount(int idSale ,String password) {
 		conn = connDB.getConnectMySQL();
 		String sql = "UPDATE account SET password=? WHERE idNhanVien=?";
@@ -213,7 +194,7 @@ public class AccountDAO {
 		}		
 		return true;
 	}
-	
+
 	public boolean updateRole(int id,int idrole) {
 		conn = connDB.getConnectMySQL();
 		String sql = "UPDATE account SET idrole=? WHERE id=?";
@@ -228,8 +209,7 @@ public class AccountDAO {
 		}		
 		return true;
 	}
-	
-	
+
 	public ArrayList<Account> getlist(){
 		conn = connDB.getConnectMySQL();
 		ArrayList<Account> listAccounts= new ArrayList<Account>();

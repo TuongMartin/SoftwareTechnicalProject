@@ -6,11 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import library.ConnectionLibraryMySQL;
-import model.bean.KhachHang;
-import model.bean.NhanVien;
 import model.bean.TheLoaiBDS;
 
 public class RealEstateDAO {
@@ -62,7 +59,7 @@ public class RealEstateDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				TheLoaiBDS objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"));
+				TheLoaiBDS objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getString("image"));
 				list.add(objTheLoai);
 			}
 			return list;
@@ -89,7 +86,33 @@ public class RealEstateDAO {
 			ps.setString(1, theloai);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"));
+				objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getString("image"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return objTheLoai;
+	}
+	
+	public Object getItemRealEstatebyNameEdit(String theloai, int id) {
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		TheLoaiBDS objTheLoai = null;
+		String sql = "SELECT * FROM " + table  + " WHERE tenTheLoai = ? AND idTheLoai NOT IN (?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, theloai);
+			ps.setInt(2, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getString("image"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -106,10 +129,11 @@ public class RealEstateDAO {
 
 	public boolean addItemRealEstate(TheLoaiBDS objTheLoai) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
-		String sql = "INSERT INTO " + table + "(tenTheLoai) VALUES(?)";
+		String sql = "INSERT INTO " + table + "(tenTheLoai,image) VALUES(?,?)";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, objTheLoai.getTen());
+			ps.setString(2, objTheLoai.getImage());
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -135,7 +159,7 @@ public class RealEstateDAO {
 			ps.setInt(1, rid);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"));
+				objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getString("image"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -152,12 +176,13 @@ public class RealEstateDAO {
 
 	public boolean editItemRealEstate(TheLoaiBDS objTheLoai) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
-		String sql = "UPDATE " + table + " SET tenTheLoai = ? WHERE idTheLoai = ?";
+		String sql = "UPDATE " + table + " SET tenTheLoai = ?, image = ? WHERE idTheLoai = ?";
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, objTheLoai.getTen());
-			ps.setInt(2, objTheLoai.getId());
+			ps.setString(2, objTheLoai.getImage());
+			ps.setInt(3, objTheLoai.getId());
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -203,7 +228,7 @@ public class RealEstateDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				TheLoaiBDS objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"));
+				TheLoaiBDS objTheLoai = new TheLoaiBDS(rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getString("image"));
 				list.add(objTheLoai);
 			}
 			return list;

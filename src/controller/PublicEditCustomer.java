@@ -48,19 +48,22 @@ public class PublicEditCustomer extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CustomersDAO customerDAO = new CustomersDAO();
-//		int cid = Integer.parseInt(request.getParameter("id"));
-		int cid = 1;
+		int	cid = Integer.parseInt(request.getParameter("id"));
 		KhachHang objCustomerUpdate = customerDAO.getItemCustomerById(cid);
-		
 		if(request.getParameter("editCustomer") != null) {
 			String hoten = new String(request.getParameter("full_name").getBytes("ISO-8859-1"),"UTF-8");
 			String ngaysinh = request.getParameter("birthday");
-			
 			String quequan = new String(request.getParameter("home_town").getBytes("ISO-8859-1"),"UTF-8");
 			String diachi = new String(request.getParameter("address").getBytes("ISO-8859-1"),"UTF-8");
 			String sdt = request.getParameter("phone");
-			String password = new String(request.getParameter("password")); 
-			String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+			String hashed = "";
+			if(!"".equals(request.getParameter("password"))) {
+				String password = new String(request.getParameter("password").getBytes("ISO-8859-1"),"UTF-8"); 
+				hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+			}
+			else {
+				hashed = objCustomerUpdate.getMatKhau();
+			}
 			
 			String picture = "";
 			final String path = request.getServletContext().getRealPath("files");
@@ -110,9 +113,9 @@ public class PublicEditCustomer extends HttpServlet {
 			
 			KhachHang objCustomer = new KhachHang(cid, hoten, diachi, quequan, "", ngaysinh, sdt, "", hashed, picture, 0, "", "");
 			if(customerDAO.editCustomer(objCustomer)) {
-				response.sendRedirect(request.getContextPath() + "/public/my-profile?msg=1");
+				response.sendRedirect(request.getContextPath() + "/public/my-profile?id=" + cid + "&msg=1");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/public/my-profile?msg=0");
+				response.sendRedirect(request.getContextPath() + "/public/my-profile?id=" + cid + "&msg=0");
 			}
 		}
 		else {
