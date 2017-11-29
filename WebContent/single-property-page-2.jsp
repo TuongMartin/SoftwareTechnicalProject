@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/single-property-page-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
@@ -223,6 +224,12 @@ CanHo objCanHo = (CanHo)request.getAttribute("objCanHo");
 if(objCanHo != null)
 {
 %>
+=======
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="/templates/public/inc/header.jsp"%>
+>>>>>>> master
 
 <!-- Titlebar
 ================================================== -->
@@ -292,7 +299,16 @@ if(objCanHo != null)
 
 				<!-- Slider -->
 				<div class="property-slider no-arrows">
+<<<<<<< HEAD
 					<a href="<%=request.getContextPath() %>/files/<%= objImage.getHinhAnh() %>" data-background-image="<%=request.getContextPath() %>/files/<%= objImage.getHinhAnh() %>" class="item mfp-gallery"></a>
+=======
+					<a href="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" class="item mfp-gallery"></a>
+					<a href="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" class="item mfp-gallery"></a>
+					<a href="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" class="item mfp-gallery"></a>
+					<a href="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" class="item mfp-gallery"></a>
+					<a href="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" class="item mfp-gallery"></a>
+					<a href="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" class="item mfp-gallery"></a>
+>>>>>>> master
 				</div>
 				<!-- Slider / End -->
 
@@ -301,7 +317,16 @@ if(objCanHo != null)
 
 			<!-- Slider Thumbs -->
 			<div class="property-slider-nav">
+<<<<<<< HEAD
 				<div class="item"><img src="<%=request.getContextPath() %>/files/<%= objImage.getHinhAnh() %>" alt=""></div>
+=======
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" alt=""></div>
+				<div class="item"><img src="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" alt=""></div>
+>>>>>>> master
 			</div>
 				<%
 					}
@@ -403,7 +428,108 @@ if(objCanHo != null)
 							</div>
 
 							<div class="listing-img-content">
+<<<<<<< HEAD
 								<span class="listing-price">$<%= objSimilar.getGiatien() %> <i>monthly</i></span>
+=======
+								<span class="listing-price">$1700 <i>monthly</i></span>
+								<span class="like-icon"></span>
+							</div>
+
+							<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
+
+						</a>
+						
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a href="#">Meridian Villas</a></h4>
+								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									778 Country St. Panama City, FL
+								</a>
+
+								<a href="#" class="details button border">Details</a>
+							</div>
+
+							<ul class="listing-details">
+								<li>1450 sq ft</li>
+								<li>1 Bedroom</li>
+								<li>2 Rooms</li>
+								<li>2 Rooms</li>
+							</ul>
+
+							<div class="listing-footer">
+								<a href="#"><i class="fa fa-user"></i> Chester Miller</a>
+								<span><i class="fa fa-calendar-o"></i> 4 days ago</span>
+							</div>
+
+						</div>
+						<!-- Listing Item / End -->
+
+					</div>
+					<!-- Listing Item / End -->
+
+
+					<!-- Listing Item -->
+					<div class="listing-item">
+
+						<a href="#" class="listing-img-container">
+
+							<div class="listing-badges">
+								<span>For Sale</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">$420,000 <i>$770 / sq ft</i></span>
+								<span class="like-icon"></span>
+							</div>
+
+							<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04.jpg" alt=""></div>
+
+						</a>
+						
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a href="#">Selway Apartments</a></h4>
+								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									33 William St. Northbrook, IL
+								</a>
+
+								<a href="#" class="details button border">Details</a>
+							</div>
+
+							<ul class="listing-details">
+								<li>540 sq ft</li>
+								<li>1 Bedroom</li>
+								<li>3 Rooms</li>
+								<li>2 Bathroom</li>
+							</ul>
+
+							<div class="listing-footer">
+								<a href="#"><i class="fa fa-user"></i> Kristen Berry</a>
+								<span><i class="fa fa-calendar-o"></i> 3 days ago</span>
+							</div>
+
+						</div>
+						<!-- Listing Item / End -->
+
+					</div>
+					<!-- Listing Item / End -->
+
+
+					<!-- Listing Item -->
+					<div class="listing-item">
+
+						<a href="#" class="listing-img-container">
+							<div class="listing-badges">
+								<span>For Sale</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">$535,000 <i>$640 / sq ft</i></span>
+>>>>>>> master
 								<span class="like-icon"></span>
 							</div>
 							
@@ -422,6 +548,10 @@ if(objCanHo != null)
 							}
 							%>
 
+<<<<<<< HEAD
+=======
+							<img src="<%=request.getContextPath()%>/templates/public/images/listing-05.jpg" alt="">
+>>>>>>> master
 						</a>
 						
 						<div class="listing-content">
@@ -502,7 +632,69 @@ if(objCanHo != null)
 								<a href="#" class="listing-img-container">
 
 									<div class="listing-badges">
+<<<<<<< HEAD
 										<span class="featured">Đặc Sắc</span>
+=======
+										<span class="featured">Featured</span>
+										<span>For Sale</span>
+									</div>
+
+									<div class="listing-img-content">
+										<span class="listing-compact-title">Eagle Apartments <i>$275,000</i></span>
+
+										<ul class="listing-hidden-content">
+											<li>Area <span>530 sq ft</span></li>
+											<li>Rooms <span>3</span></li>
+											<li>Beds <span>1</span></li>
+											<li>Baths <span>1</span></li>
+										</ul>
+									</div>
+
+									<img src="<%=request.getContextPath()%>/templates/public/images/listing-01.jpg" alt="">
+								</a>
+
+							</div>
+						</div>
+						<!-- Item / End -->
+
+						<!-- Item -->
+						<div class="item">
+							<div class="listing-item compact">
+
+								<a href="#" class="listing-img-container">
+
+									<div class="listing-badges">
+										<span class="featured">Featured</span>
+										<span>For Sale</span>
+									</div>
+
+									<div class="listing-img-content">
+										<span class="listing-compact-title">Selway Apartments <i>$245,000</i></span>
+
+										<ul class="listing-hidden-content">
+											<li>Area <span>530 sq ft</span></li>
+											<li>Rooms <span>3</span></li>
+											<li>Beds <span>1</span></li>
+											<li>Baths <span>1</span></li>
+										</ul>
+									</div>
+
+									<img src="<%=request.getContextPath()%>/templates/public/images/listing-02.jpg" alt="">
+								</a>
+
+							</div>
+						</div>
+						<!-- Item / End -->
+
+						<!-- Item -->
+						<div class="item">
+							<div class="listing-item compact">
+
+								<a href="#" class="listing-img-container">
+
+									<div class="listing-badges">
+										<span class="featured">Featured</span>
+>>>>>>> master
 										<span>For Sale</span>
 									</div>
 
@@ -516,6 +708,7 @@ if(objCanHo != null)
 										</ul>
 									</div>
 
+<<<<<<< HEAD
 									<%
 							if(listImageOfListFeaturead != null)
 							{
@@ -531,6 +724,9 @@ if(objCanHo != null)
 							}
 							%>
 									
+=======
+									<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
+>>>>>>> master
 								</a>
 
 							</div>
@@ -645,6 +841,7 @@ if(objCanHo != null)
 }
 %>
 
+<<<<<<< HEAD
 <!-- Footer
 ================================================== -->
 <div class="margin-top-55"></div>
@@ -777,3 +974,6 @@ if(objCanHo != null)
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/single-property-page-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
 </html>
+=======
+<%@include file="/templates/public/inc/footer.jsp"%>
+>>>>>>> master
