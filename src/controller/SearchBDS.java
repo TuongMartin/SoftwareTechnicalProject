@@ -43,26 +43,6 @@ public class SearchBDS extends HttpServlet {
 		String numberBaths = request.getParameter("baths");
 		String typeBDS = request.getParameter("typeBDS");
 		
-		if(numberBeds == "Any" || numberBeds == null)
-		{
-			numberBeds = "";
-		}
-		
-		if(numberBaths == "Any" || numberBaths == null)
-		{
-			numberBaths = "";
-		}
-		
-		if(typeBDS == "Any" || typeBDS == null)
-		{
-			typeBDS = "";
-		}
-		
-		if(tinhHoacThanhPho == "Any" || tinhHoacThanhPho == null)
-		{
-			tinhHoacThanhPho = "";
-		}
-		
 		listSearchBDS = apartmentDAO.getBDSNeedSearch(tinhHoacThanhPho, numberBeds, numberBaths, typeBDS);
 		request.setAttribute("listSearchBDS", listSearchBDS);
 		
