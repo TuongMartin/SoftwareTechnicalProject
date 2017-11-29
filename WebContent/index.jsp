@@ -207,7 +207,11 @@
 ================================================== -->
 <div class="container">
 	<div class="row">
-	
+		<div style="text-align: center;" class="col-md-12 location">
+	      <h4>MAP</h4>
+	      <div style="width: 100%;height: 500px;" id="map">
+	      </div>
+	 	</div>
 		<div class="col-md-12">
 			<h3 class="headline margin-bottom-25 margin-top-65">Newly Added</h3>
 		</div>
@@ -446,6 +450,65 @@
 	</div>
 </a>
 <!-- Flip banner / End -->
-
+	<%
+ 		String address = "Phan Bá Phiến, Sơn Trà, Đà Nẵng";
+ 	%>
+ 	<script type="text/javascript">
+	 	$(document).ready(function() {
+			var geocoder = new google.maps.Geocoder();
+			var address = { 'address': "<%=address %>" };
+			geocoder.geocode(address, function(results, status) {
+				if(status == google.maps.GeocoderStatus.OK) {
+					var latitude = results[0].geometry.location.lat();
+					var longitude = results[0].geometry.location.lng();
+				}
+				var mapCanvas = document.getElementById('map');
+			 	var location = new google.maps.LatLng(latitude, longitude);
+			 	var mapOptions  = {
+		 			center: location,
+		 			zoom: 18,
+		 			panControle: false,
+		 			mapTypeId: google.maps.MapTypeId.ROADMAP
+			 	};
+			 	var markerIcon  = {
+			 		url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+			 		scaledSize: new google.maps.Size(80, 80),
+			 		origin: new google.maps.Point(0, 0),
+			 		anchor: new google.maps.Point(32, 65),
+			 		labelOrigin:  new google.maps.Point(40, 33)
+			 	};
+			 	var map = new google.maps.Map(mapCanvas, mapOptions);
+			 	var markerLabel = 'GO!';
+			 	var marker = new google.maps.Marker({
+			 		position: location,
+			 		draggable: true,
+			 		animation: google.maps.Animation.DROP,
+			 		map: map,
+			 		icon: markerIcon,
+			 		label: {
+			 			text: markerLabel,
+			 			color: "#eb3a44",
+			 			 fontSize: "16px",
+			 			 fontWeight: "bold",
+			 		}
+			 	});
+			 	marker.addListener('click', function() {
+			 		 marker.setAnimation(google.maps.Animation.BOUNCE);
+			 	});
+			 	var contentString = '<div class="info-window" style="border-radius: 50px;">' +
+			 							'<div style="float: left; width: 100%; color: gray; font-size: 16px">' +
+				 							'<span style="display: inline-block">Địa chỉ : ' + address.address + '</span>' +
+			 							'</div>' +
+		 							'</div>';
+		 		var inforWindow = new google.maps.InfoWindow({
+		 			content: contentString,
+		 			maxWidth: 250
+		 		});
+		 		marker.addListener('click', function() {
+		 			inforWindow.open(map, marker);
+		 		})
+			})		 	
+		});
+ 	</script>
 
 <%@include file="/templates/public/inc/footer.jsp"%>
