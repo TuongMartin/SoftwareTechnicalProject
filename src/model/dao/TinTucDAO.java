@@ -18,6 +18,7 @@ public class TinTucDAO {
 	private static final String SELECT_LIST_TIN_TUC_EACH_PAGE = "SELECT tintuc.idtintuc, tintuc.tieude, tintuc.noidung, tintuc.quote, phanloaitintuc.loaitintuc, tintuc.hinhanh, tintuc.ngaydangtin, tintuc.luotview FROM tintuc JOIN phanloaitintuc ON tintuc.idphanloaitintuc = phanloaitintuc.idphanloaitintuc  limit ?, ?";
 	private static final String COUNT_RECORD_TIN_TUC = "SELECT count(*) as countTinTuc from tintuc";
 	private static final String SEARCH_TIN_TUC = "SELECT tintuc.idtintuc, tintuc.tieude, tintuc.noidung, tintuc.quote, phanloaitintuc.loaitintuc, tintuc.hinhanh, tintuc.ngaydangtin, tintuc.luotview FROM tintuc JOIN phanloaitintuc ON tintuc.idphanloaitintuc = phanloaitintuc.idphanloaitintuc  where tieude like ";
+	private static final String COUNT_RECORD_SEARCH_TIN_TUC = "SELECT COUNT(*) AS countTinTucSearch FROM tintuc WHERE tieude LIKE ";
 	private static final String SELECT_RECORD_BY_ID = "SELECT tintuc.idtintuc, tintuc.tieude, tintuc.noidung, tintuc.quote, phanloaitintuc.loaitintuc, tintuc.hinhanh, tintuc.ngaydangtin, tintuc.luotview FROM tintuc JOIN phanloaitintuc ON tintuc.idphanloaitintuc = phanloaitintuc.idphanloaitintuc  where idtintuc = ";
 	private static final String INSERT_TIN_TUC = "INSERT INTO tintuc(tieude, noidung, quote, idphanloaitintuc, hinhanh, ngaydangtin, luotview) VALUES(?, ?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE_TIN_TUC = "UPDATE tintuc SET tieude = ?, noidung = ?, quote = ?, idphanloaitintuc = ?, hinhanh = ?, ngaydangtin = ? WHERE idtintuc = ?";
@@ -163,7 +164,44 @@ public class TinTucDAO {
 	}
 	
 	
-	public ArrayList<TinTuc> searchTinTuc(String tieude) {
+	public Integer countTinTucFind(String tieude) {
+		
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		int count = 0;
+		
+		try 
+		{
+			st = conn.createStatement();
+			rs = st.executeQuery(COUNT_RECORD_SEARCH_TIN_TUC + " '%" + tieude + "%'");
+			
+			while(rs.next())
+			{
+				count = rs.getInt(1);
+			}
+			
+			return count;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+		finally
+		{
+			try 
+			{
+				st.close();
+				conn.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public ArrayList<TinTuc> searchTinTuc(String tieude, int offset, int rowItemEachPage) {
 		
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<TinTuc> list = new ArrayList<>();
@@ -171,7 +209,7 @@ public class TinTucDAO {
 		try 
 		{
 			st = conn.createStatement();
-			rs = st.executeQuery(SEARCH_TIN_TUC + " '%" + tieude + "%'");
+			rs = st.executeQuery(SEARCH_TIN_TUC + " '%" + tieude + "%' LIMIT " + offset + "," + rowItemEachPage);
 			
 			while(rs.next())
 			{

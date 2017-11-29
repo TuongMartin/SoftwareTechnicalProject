@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import model.dao.TinTucDAO;
+import model.dao.ApartmentDAO;
 
 
-@WebServlet(urlPatterns = { "/AdminShowManageTinTuc" })
-public class AdminManageArticle extends HttpServlet{
+@WebServlet("/listapartment")
+public class PublicShowListCanHo extends HttpServlet{
+	
 	
 	private static final long serialVersionUID = 1L;
+
 	
-	
-	public AdminManageArticle(){
+	public PublicShowListCanHo(){
 		super();
 	}
 	
@@ -32,24 +33,25 @@ public class AdminManageArticle extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		TinTucDAO tintuc = new TinTucDAO();
-		
+		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		int currentPage = 1;
-		int sumRecord = tintuc.countRecordTinTuc();
-		int rowItemEachPage = 5;
+		int sumRecord = apartmentDAO.countItem();
+		int rowItemEachPage = 3;
 		int sumPage = (int) Math.ceil((float)sumRecord/rowItemEachPage);
+		
+		request.setAttribute("sumPage", sumPage);
 		
 		if(request.getParameter("page") != null)
 		{
 			currentPage = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		request.setAttribute("sumPage", sumPage);
 		request.setAttribute("currentPage", currentPage);
 		int offset = (currentPage -1) * rowItemEachPage;
-		request.setAttribute("listArticle", tintuc.getListTinTucEachPage(offset,rowItemEachPage));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/Article/articles.jsp");
+		request.setAttribute("listCanHo", apartmentDAO.getItemPagition(offset, rowItemEachPage));
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/listings-list-with-sidebar.jsp");
 		rd.forward(request, response);
 	}
 }

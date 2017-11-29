@@ -150,16 +150,24 @@
     <servlet-class>controller.SearchTinTuc</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Controllercanho</servlet-name>
-    <servlet-class>controller.Controllercanho</servlet-class>
+    <servlet-name>ShowApartmentDetail</servlet-name>
+    <servlet-class>controller.ShowApartmentDetail</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Controllercanho</servlet-name>
-    <url-pattern>/thanhvien/canhos</url-pattern>
+    <servlet-name>ShowApartmentDetail</servlet-name>
+    <url-pattern>/chitietcanho</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>Controllerkhachhang</servlet-name>
-    <servlet-class>controller.Controllerkhachhang</servlet-class>
+    <servlet-name>SearchBDS</servlet-name>
+    <servlet-class>controller.SearchBDS</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminSearchTinTuc</servlet-name>
+    <servlet-class>controller.AdminSearchTinTuc</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NhanVienSearchNhatKyTuVan</servlet-name>
+    <servlet-class>controller.NhanVienSearchNhatKyTuVan</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Controllerkhachhang</servlet-name>

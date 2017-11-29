@@ -7,10 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
-
-
-
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
 import model.bean.Image;
@@ -134,6 +130,7 @@ public class ImageDAO {
 		return obj;
 	}
 	
+
 	public ArrayList<Image> getListItemImageForApartmentNewly(int idCanHo) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<Image> list = new ArrayList<>();
@@ -210,3 +207,4 @@ public class ImageDAO {
 		}
 	}
 }
+

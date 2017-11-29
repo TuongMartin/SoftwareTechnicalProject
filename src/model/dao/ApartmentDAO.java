@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.Array;
 import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,10 +13,11 @@ import java.util.Date;
 
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
+import model.bean.KhachHang;
 import model.bean.KhuVucBDS;
+import model.bean.NhanVien;
 import model.bean.TheLoaiBDS;
-
-
+import model.bean.TinTuc;
 public class ApartmentDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;
 	private Connection conn;
@@ -26,7 +28,7 @@ public class ApartmentDAO {
 	
 	public ApartmentDAO() {
 		this.connectionLibraryMySQL = new ConnectionLibraryMySQL();
-    this.table = "tindang";
+		this.table = "tindang";
 	}
 	
 	public int numbercanho(int idnhanvien){
@@ -389,6 +391,7 @@ public class ApartmentDAO {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 	public CanHo getItemApartmentLatest() {
@@ -439,6 +442,7 @@ public class ApartmentDAO {
 		}
 	}
 	
+
 	public ArrayList<CanHo> searchApartment(int idCanHo, String tenCanHo) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<CanHo> list = new ArrayList<>();
@@ -479,6 +483,7 @@ public class ApartmentDAO {
 		}
 	}
 	
+
 	public ArrayList<CanHo> getItemApartmentNewLy() {
 		// TODO Auto-generated method stub
 		conn = connectionLibraryMySQL.getConnectMySQL();
