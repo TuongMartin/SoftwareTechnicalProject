@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.dao.FeatureDAO;
 
-
 /**
  * Servlet implementation class AdminManageSales
  */

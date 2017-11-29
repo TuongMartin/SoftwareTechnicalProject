@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import library.RegularExpression;
 import model.dao.ApartmentDAO;
-
 /**
  * Servlet implementation class AdminAddNewSale
  */

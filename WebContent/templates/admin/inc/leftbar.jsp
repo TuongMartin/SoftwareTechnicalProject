@@ -36,6 +36,8 @@
 			            <p>Chức vụ</p>
 			          </div>
 			        </div></a></div>
+			        <%}
+			        %>
 			    <!-- end normal -->
             </div>
             <%

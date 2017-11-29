@@ -163,7 +163,6 @@ public class TinTucDAO {
 		return count;
 	}
 	
-	
 	public Integer countTinTucFind(String tieude) {
 		
 		conn = connectionLibraryMySQL.getConnectMySQL();
@@ -199,7 +198,6 @@ public class TinTucDAO {
 			}
 		}
 	}
-	
 	
 	public ArrayList<TinTuc> searchTinTuc(String tieude, int offset, int rowItemEachPage) {
 		conn = connectionLibraryMySQL.getConnectMySQL();

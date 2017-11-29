@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import library.ConnectionLibraryMySQL;
+import com.sun.javafx.geom.transform.GeneralTransform3D;
+
+import library.ConnectionLibraryMySQL;
+import model.bean.NhanVien;
 import model.bean.TuVan;
 
 
@@ -17,6 +22,7 @@ public class TuVanDAO{
 	private static final String INSERT_NHAT_KY_TU_VAN = "insert into nhatkytuvan(idnhanvien, tenkhachhangcantuvan, sdt, noidung, ngaytuvan) values(?, ?, ?, ?, ?)";
 	private static final String COUNT_RECORD_NHAT_KY_TU_VAN = "select count(*) as countRecord from nhatkytuvan";
 	private static final String SELECT_LIST_NOI_DUNG_EACH_PAGE = "select * from nhatkytuvan limit ?, ?";
+
 	private static final String SEARCH_NHAT_KY = "select * from nhatkytuvan where tenkhachhangcantuvan like ";
 	private static final String COUNT_RECORD_SEARCH = "select count(*) from nhatkytuvan where tenkhachhangcantuvan like ";
 	
@@ -173,7 +179,6 @@ public class TuVanDAO{
 			}
 		}
 	}
-	
 	
 	public ArrayList<TuVan> getListSearchNoiDungTuVan(String searchKey, int offset, int numberItemEachPage){
 		

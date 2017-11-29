@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import library.BCrypt;
+import library.SendMail;
 import model.bean.KhachHang;
 import model.dao.CustomersDAO;
 

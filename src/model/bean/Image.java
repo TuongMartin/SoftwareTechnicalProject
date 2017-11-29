@@ -28,5 +28,5 @@ public class Image {
 		this.hinhAnh = hinhAnh;
 		this.idCanHo = idCanHo;
 	}
-	
 }
+
