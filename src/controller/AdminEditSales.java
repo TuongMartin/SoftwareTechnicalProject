@@ -12,10 +12,12 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import library.BCrypt;
 import library.CheckLoginLibrary;
+import library.CheckRankLibrary;
 import library.FileNameLibrary;
 import library.RenameFileLibrary;
 import model.bean.NhanVien;
@@ -67,6 +69,7 @@ public class AdminEditSales extends HttpServlet {
 		String picture = "";
 		SalesDAO salesDAO = new SalesDAO();
 		AccountDAO accountDAO = new AccountDAO();
+		HttpSession session = request.getSession();
 		
 		response.setContentType("text/html;charset=UTF-8");
 		final String path = request.getServletContext().getRealPath("files");
@@ -123,9 +126,17 @@ public class AdminEditSales extends HttpServlet {
 			NhanVien objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
 			objNhanVien.setAvatar(picture);
 			request.getSession().setAttribute("userInfo", objNhanVien);
-			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=1");
+				if(CheckRankLibrary.isAdmin(request, response)) {
+					response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=1");
+				}else {
+					response.sendRedirect(request.getContextPath() + "/admin/show-editSales?idSales=" + idSale);
+				}
 		} else {
-			response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=0");
+			if(CheckRankLibrary.isAdmin(request, response)) {
+				response.sendRedirect(request.getContextPath() + "/admin/manageSales?msg=0");
+			}else {
+				response.sendRedirect(request.getContextPath() + "admin/show-editSales?idSales=" + idSale);
+			}
 		}
 	}
 

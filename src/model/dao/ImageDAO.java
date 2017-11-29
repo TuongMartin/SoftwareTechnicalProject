@@ -7,14 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
-
-
-
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
 import model.bean.Image;
-import model.bean.ItemAgenda;
 
 public class ImageDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;

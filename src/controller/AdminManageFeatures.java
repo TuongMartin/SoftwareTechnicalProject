@@ -8,11 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.AreaDAO;
-import model.dao.CustomersDAO;
 import model.dao.FeatureDAO;
-import model.dao.RealEstateDAO;
-import model.dao.SalesDAO;
+
 
 /**
  * Servlet implementation class AdminManageSales

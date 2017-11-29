@@ -29,5 +29,4 @@ public class Image {
 		this.idCanHo = idCanHo;
 	}
 	
-	
 }

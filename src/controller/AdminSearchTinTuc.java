@@ -1,5 +1,8 @@
 package controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,35 +10,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import model.bean.TinTuc;
 import model.dao.TinTucDAO;
 
-
-@WebServlet(urlPatterns = { "/SearchTT" })
-public class SearchTinTuc extends HttpServlet{
+@WebServlet(urlPatterns = { "/AdminSearchTinTuc" })
+public class AdminSearchTinTuc extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	
-	
-	public SearchTinTuc(){
-		super();
-	}
-	
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	
+    public AdminSearchTinTuc() {
+        super();
+    }
+
+    
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-	
-	
-	@Override
+
+
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		TinTucDAO tinTucDAO = new TinTucDAO();
+    	TinTucDAO tinTucDAO = new TinTucDAO();
 		ArrayList<TinTuc> listSearch = null;
 		String searchKey = new String(request.getParameter("search"));
 		
@@ -47,7 +44,7 @@ public class SearchTinTuc extends HttpServlet{
 		{
 			sumRecordFinded = tinTucDAO.countTinTucFind(searchKey);
 		}
-
+		
 		if(request.getParameter("page") != null)
 		{
 			currentPage = Integer.parseInt(request.getParameter("page"));
@@ -63,11 +60,11 @@ public class SearchTinTuc extends HttpServlet{
 
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sumPage", sumPage);
-		request.setAttribute("listTinTuc", listSearch);
+		request.setAttribute("listArticle", listSearch);
 		request.setAttribute("search", searchKey);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/Article/articles.jsp");
 		rd.forward(request, response);
 	}
-}
 
+}

@@ -1,33 +1,23 @@
 package controller;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import model.dao.ApartmentDAO;
-import model.dao.CustomersDAO;
-import model.dao.FeatureApartmentDAO;
-import model.dao.FeatureDAO;
-import model.dao.RealEstateDAO;
-import model.dao.SalesDAO;
-
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class AdminManageSales
+ * Servlet implementation class ShowAddUserAdminController
  */
-@MultipartConfig
-public class AdminDelFeature extends HttpServlet {
+public class LogoutAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminDelFeature() {
+    public LogoutAdminController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,14 +33,12 @@ public class AdminDelFeature extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int fid = Integer.parseInt(request.getParameter("id"));
-		FeatureDAO featureDAO = new FeatureDAO();
-		FeatureApartmentDAO feature_apartmentDAO = new FeatureApartmentDAO();
-		if(featureDAO.delItemFeature(fid)) {
-			feature_apartmentDAO.delFeatureApartmentByIDFeature(fid);
-			response.sendRedirect(request.getContextPath() + "/admin/feature-apartment?msg=3");
-		} else {
-			response.sendRedirect(request.getContextPath() + "/admin/feature-apartment?msg=0");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("userInfo")!=null || session.getAttribute("objUser")!=null){
+			session.removeAttribute("userInfo");
+			session.removeAttribute("objUser");
+			response.sendRedirect(request.getContextPath() + "/public/login");
+			return;
 		}
 	}
 

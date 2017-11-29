@@ -15,7 +15,6 @@ import model.dao.FeatureApartmentDAO;
 import model.dao.ImageDAO;
 import model.dao.RealEstateDAO;
 import model.dao.SalesDAO;
-
 /**
  * Servlet implementation class AdminManageSales
  */

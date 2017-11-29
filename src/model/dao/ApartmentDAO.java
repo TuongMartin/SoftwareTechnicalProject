@@ -1,6 +1,5 @@
 package model.dao;
 
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,14 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import java.util.Date;
-
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
 import model.bean.KhuVucBDS;
-import model.bean.TheLoaiBDS;
-
-
 public class ApartmentDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;
 	private Connection conn;

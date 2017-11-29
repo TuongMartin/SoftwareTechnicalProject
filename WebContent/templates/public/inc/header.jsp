@@ -1,7 +1,6 @@
 <%@page import="model.dao.RealEstateDAO"%>
 <%@page import="model.bean.TheLoaiBDS"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array"%>
 <%@page import="model.dao.CustomersDAO"%>
 <%@page import="model.bean.KhachHang"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

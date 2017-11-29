@@ -14,13 +14,13 @@
 						class="icon-bar bar1"></span> <span class="icon-bar bar2"></span>
 					<span class="icon-bar bar3"></span>
 				</button>
-				<a class="navbar-brand" href="/nhanvien">Trang Cá Nhân</a>
+				<a class="navbar-brand" href="/nhanvien">Trang nhân viên</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"><i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -36,6 +36,23 @@
 					
 						<div class="header">
 							<h4 class="title">Nhật Ký Tư Vấn</h4>
+							
+							<form action="${pageContext.request.contextPath}/NVSearchNKTV">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" name="search" class="form-control border-input" placeholder="Tìm Theo Tên Khách Hàng Hoặc Số Điện Thoại">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="submit" value="Tìm kiếm" class="is" /> 
+										</div>
+									</div>
+								</div>
+							</form>
+							
+
 							<a href="<%=request.getContextPath()%>/addNK"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
@@ -93,7 +110,7 @@
 							<div class="text-center">
 								<ul class="pagination">
 								<%
-								if(request.getAttribute("sumPage") != null)
+								if(request.getAttribute("sumPage") != null && request.getAttribute("search") == null)
 								{
 									String active = "";
 									int sumPage = (Integer) request.getAttribute("sumPage");
@@ -108,7 +125,26 @@
 										{
 											active = "";
 										}%>
-										<li><a <%=active%> href="<%=request.getContextPath() %>/NhanVien/NhatKyTuVan?page=<%=i%>" title=""><%=i%></a></li>
+										<li><a <%=active%> href="<%=request.getContextPath() %>ShowNKTV?page=<%=i%>" title=""><%=i%></a></li>
+									<%}
+								}
+								else if(request.getAttribute("sumPage") != null && request.getAttribute("search") != null)
+								{
+									String active = "";
+									int sumPage = (Integer) request.getAttribute("sumPage");
+									int currentPage = (Integer) request.getAttribute("currentPage");
+									for(int i = 1 ; i <= sumPage ; i++)
+									{
+										if(currentPage == i)
+										{
+											active = "class = 'current'";
+										}
+										else
+										{
+											active = "";
+										}%>
+										<li><a <%=active%> href="<%=request.getContextPath() %>/NVSearchNKTV?search=<%=request.getAttribute("search")%>&page=<%=i%>" title=""><%=i%></a></li>
+
 									<%}
 								}
 								%>

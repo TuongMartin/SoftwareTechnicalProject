@@ -1,17 +1,13 @@
 package model.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.sun.javafx.geom.transform.GeneralTransform3D;
-
 import library.ConnectionLibraryMySQL;
-import model.bean.NhanVien;
 import model.bean.TuVan;
 
 
@@ -21,6 +17,8 @@ public class TuVanDAO{
 	private static final String INSERT_NHAT_KY_TU_VAN = "insert into nhatkytuvan(idnhanvien, tenkhachhangcantuvan, sdt, noidung, ngaytuvan) values(?, ?, ?, ?, ?)";
 	private static final String COUNT_RECORD_NHAT_KY_TU_VAN = "select count(*) as countRecord from nhatkytuvan";
 	private static final String SELECT_LIST_NOI_DUNG_EACH_PAGE = "select * from nhatkytuvan limit ?, ?";
+	private static final String SEARCH_NHAT_KY = "select * from nhatkytuvan where tenkhachhangcantuvan like ";
+	private static final String COUNT_RECORD_SEARCH = "select count(*) from nhatkytuvan where tenkhachhangcantuvan like ";
 	
 	private static final String ID_NHAN_VIEN = "idnhanvien";
 	private static final String TEN_KHACH_HANG = "tenkhachhangcantuvan";
@@ -171,6 +169,79 @@ public class TuVanDAO{
 			} 
 			catch (SQLException e) 
 			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public ArrayList<TuVan> getListSearchNoiDungTuVan(String searchKey, int offset, int numberItemEachPage){
+		
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		ArrayList<TuVan> list = new ArrayList<>();
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(SEARCH_NHAT_KY + " '%" + searchKey + "%'" + " OR sdt LIKE " + "'%" + searchKey + "%' LIMIT " + offset + "," + numberItemEachPage);
+			
+			while(rs.next()){
+				TuVan objTuVan = new TuVan(rs.getInt(ID_NHAN_VIEN), 
+						rs.getString(TEN_KHACH_HANG), 
+						rs.getString(SDT), 
+						rs.getString(NOI_DUNG), 
+						rs.getDate(NGAY_TU_VAN));
+				list.add(objTuVan);
+			}
+			
+			return list;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+		finally
+		{
+			try 
+			{
+				st.close();
+				conn.close();
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public Integer countNhatDungTuVanFound(String searchKey){
+		
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		int count = 0;
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(COUNT_RECORD_SEARCH + " '%" + searchKey + "%'" + " OR sdt LIKE " + "'%" + searchKey + "%'");
+			
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+			return count;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+		finally
+		{
+			try 
+			{
+				st.close();
+				conn.close();
+			} 
+			catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}

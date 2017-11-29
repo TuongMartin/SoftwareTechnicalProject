@@ -158,7 +158,27 @@
     <url-pattern>/thanhvien/canhos</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>Controllerkhachhang</servlet-name>
+    <servlet-name>ShowApartmentDetail</servlet-name>
+    <servlet-class>controller.ShowApartmentDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowApartmentDetail</servlet-name>
+    <url-pattern>/chitietcanho</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchBDS</servlet-name>
+    <servlet-class>controller.SearchBDS</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminSearchTinTuc</servlet-name>
+    <servlet-class>controller.AdminSearchTinTuc</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NhanVienSearchNhatKyTuVan</servlet-name>
+    <servlet-class>controller.NhanVienSearchNhatKyTuVan</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Controllerkhachhang</servlet-name>
     <servlet-class>controller.Controllerkhachhang</servlet-class>
   </servlet>
   <servlet-mapping>
@@ -468,5 +488,13 @@
   <servlet-mapping>
     <servlet-name>SaleEvaluateCustomer</servlet-name>
     <url-pattern>/thanhvien/Evaluatekhachhang</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutAdminController</servlet-name>
+    <servlet-class>controller.LogoutAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutAdminController</servlet-name>
+    <url-pattern>/admin/logout</url-pattern>
   </servlet-mapping>
 </web-app>

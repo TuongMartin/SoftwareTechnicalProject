@@ -11,9 +11,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/colors/main.css" id="colors">
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
 </head>
 
 <body>

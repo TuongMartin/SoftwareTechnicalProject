@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import model.dao.TuVanDAO;
+import model.dao.ApartmentDAO;
 
 
-@WebServlet(urlPatterns = { "/ShowNKTV" })
-public class NhanVienShowNhatKyTuVan extends HttpServlet{
+@WebServlet("/listapartment")
+public class PublicShowListCanHo extends HttpServlet{
+	
 	
 	private static final long serialVersionUID = 1L;
+
 	
-	
-	public NhanVienShowNhatKyTuVan(){
+	public PublicShowListCanHo(){
 		super();
 	}
 	
@@ -32,10 +33,10 @@ public class NhanVienShowNhatKyTuVan extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		TuVanDAO tuVan = new TuVanDAO();
+		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		int currentPage = 1;
-		int sumRecord = tuVan.countRecordNhatKyTuVan();
-		int rowItemEachPage = 5;
+		int sumRecord = apartmentDAO.countItem();
+		int rowItemEachPage = 3;
 		int sumPage = (int) Math.ceil((float)sumRecord/rowItemEachPage);
 		
 		request.setAttribute("sumPage", sumPage);
@@ -47,10 +48,11 @@ public class NhanVienShowNhatKyTuVan extends HttpServlet{
 		
 		request.setAttribute("currentPage", currentPage);
 		int offset = (currentPage -1) * rowItemEachPage;
-		request.setAttribute("listNoiDung", tuVan.getListNoiDungTuVanEachPage(offset,rowItemEachPage));
 		
+		request.setAttribute("listCanHo", apartmentDAO.getItemPagition(offset, rowItemEachPage));
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/NhatKyTuVan.jsp?actived=3");
+		RequestDispatcher rd = request.getRequestDispatcher("/listings-list-with-sidebar.jsp");
 		rd.forward(request, response);
 	}
 }
+

@@ -1,5 +1,8 @@
 package controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,47 +10,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import model.bean.TinTuc;
+import model.bean.TuVan;
 import model.dao.TinTucDAO;
+import model.dao.TuVanDAO;
 
-
-@WebServlet(urlPatterns = { "/SearchTT" })
-public class SearchTinTuc extends HttpServlet{
+@WebServlet(urlPatterns = { "/NVSearchNKTV" })
+public class NhanVienSearchNhatKyTuVan extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	
-	
-	public SearchTinTuc(){
-		super();
-	}
-	
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	
+    public NhanVienSearchNhatKyTuVan() {
+        super();
+    }
+
+    
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-	
-	
-	@Override
+
+
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		TinTucDAO tinTucDAO = new TinTucDAO();
-		ArrayList<TinTuc> listSearch = null;
+    	TuVanDAO tuVanDAO = new TuVanDAO();
+		ArrayList<TuVan> listSearch = null;
 		String searchKey = new String(request.getParameter("search"));
 		
 		int currentPage = 1;
-		int rowItemEachPage = 3;
+		int rowItemEachPage = 5;
 		int sumRecordFinded = 0;
 
 		if(!searchKey.equals(""))
 		{
-			sumRecordFinded = tinTucDAO.countTinTucFind(searchKey);
+			sumRecordFinded = tuVanDAO.countNhatDungTuVanFound(searchKey);
 		}
-
+		
 		if(request.getParameter("page") != null)
 		{
 			currentPage = Integer.parseInt(request.getParameter("page"));
@@ -58,16 +57,16 @@ public class SearchTinTuc extends HttpServlet{
 		
 		if(!searchKey.equals(""))
 		{
-			listSearch = tinTucDAO.searchTinTuc(searchKey, offset, rowItemEachPage);
+			listSearch = tuVanDAO.getListSearchNoiDungTuVan(searchKey, offset, rowItemEachPage);
 		}
 
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sumPage", sumPage);
-		request.setAttribute("listTinTuc", listSearch);
+		request.setAttribute("listNoiDung", listSearch);
 		request.setAttribute("search", searchKey);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/NhanVien/NhatKyTuVan.jsp");
 		rd.forward(request, response);
 	}
-}
 
+}
