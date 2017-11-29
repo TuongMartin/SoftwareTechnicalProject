@@ -271,4 +271,8 @@ public class FeatureDAO {
 		}
 		return null;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

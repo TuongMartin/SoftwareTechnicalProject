@@ -163,9 +163,22 @@
 									%>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label>Ảnh cũ</label> <img width = "100px" height = "100px" src="<%=request.getContextPath() %>/files/<%=objSale.getAvatar() %>"
+										<%
+											if(!"".equals(objSale.getAvatar())) {
+										%>
+												<label>Ảnh cũ</label> <img width = "100px" height = "100px" src="<%=request.getContextPath() %>/files/<%=objSale.getAvatar() %>"
 												width="120px" alt="" /> Xóa <input type="checkbox"
 												name="delete_picture" value="1" />
+										<%
+											} else {
+										%>
+												<label>Ảnh cũ</label> <img width = "100px" height = "100px" src="<%=request.getContextPath() %>/templates/admin/img/avatar-default.jpg"
+												width="120px" alt="" /> Xóa <input type="checkbox"
+												name="delete_picture" value="1" />
+										<%
+											}
+										%>
+											
 										</div>
 									</div>
 									<%} %>

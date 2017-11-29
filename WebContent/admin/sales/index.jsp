@@ -1,3 +1,4 @@
+<%@page import="model.bean.Account"%>
 <%@page import="model.bean.ChucVu"%>
 <%@page import="model.dao.ChucVuDAO"%>
 <%@page import="model.bean.NhanVien"%>
@@ -58,6 +59,12 @@
 										<%break;
 										case 5:%>
 										<p class="category alert alert-warning">Không tìm thấy</p>
+										<%break;
+										case 6:%>
+										<p class="category alert alert-warning">Lỗi khi thêm mới Agenda</p>
+										<%break;
+										case 7:%>
+										<p class="category alert alert-warning">Lỗi khi thêm mới ItemAgenda</p>
 										<%break;
 										
 									}
@@ -137,7 +144,7 @@
 									%>
 									<tr>
 										<td><%=objSales.getIdNhanVien() %></td>
-										<td><a href="edit.html"><%=objSales.getTenNhanVien()%></a></td>
+										<td><a href="<%=request.getContextPath()%>/admin/show-editSales?idSales=<%=objSales.getIdNhanVien() %>"><%=objSales.getTenNhanVien()%></a></td>
 										<td><img
 											src="<%=request.getContextPath()%>/files/<%=objSales.getAvatar()%>" alt=""
 											width="100px" height="100px" /></td>
@@ -149,7 +156,22 @@
 												Sửa</a> &nbsp;||&nbsp; <a
 											href="<%=request.getContextPath()%>/admin/delSales?idSale=<%=objSales.getIdNhanVien()%>" onClick="return confirm('Do you want to delete all device belong to this id?')"><img
 												src="<%=request.getContextPath()%>/templates/admin/img/del.gif" alt="" />
-												Xóa</a></td>
+												Xóa</a> &nbsp;||&nbsp; 
+												<%
+													if(session.getAttribute("objUser") != null){
+														Account objUser = (Account) session.getAttribute("objUser");
+														if(!"admin".equalsIgnoreCase(objUser.getrole())){
+															if(objSales.getIdNhanVien() == objUser.getIdNhanVien()){
+												%>
+												<a href="<%=request.getContextPath()%>/admin/showSetCalendar?idSale=<%=objSales.getIdNhanVien()%>" ><i class="fa fa-calendar" aria-hidden="true"></i>
+												Lịch</a>
+												<%}
+														}else { %>
+															<a href="<%=request.getContextPath()%>/admin/showSetCalendar?idSale=<%=objSales.getIdNhanVien()%>" ><i class="fa fa-calendar" aria-hidden="true"></i>
+												Lịch</a>
+													<%}
+												} %>
+										</td>
 									</tr>
 
 								<%				}

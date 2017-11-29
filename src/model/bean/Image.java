@@ -30,4 +30,8 @@ public class Image {
 	}
 	
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

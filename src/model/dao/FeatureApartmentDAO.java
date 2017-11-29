@@ -112,4 +112,8 @@ public class FeatureApartmentDAO {
 			}
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

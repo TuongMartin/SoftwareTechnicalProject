@@ -218,11 +218,6 @@ public class CanHo {
 		this.idkhuvuc = idkhuvuc;
 		this.tenkhuvuc = tenkhuvuc;
 	}
-	public CanHo(int kichHoat) {
-		super();
-		this.kichHoat = kichHoat;
-	}
-	
 	public CanHo(int idCanHo, int kichHoat) {
 		super();
 		this.id = idCanHo;
