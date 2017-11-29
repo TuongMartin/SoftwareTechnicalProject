@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import library.CheckLoginLibrary;
 import library.RegularExpression;
 import model.dao.SalesDAO;
 
@@ -37,9 +36,6 @@ public class AdminSearchSale extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(!CheckLoginLibrary.isLogin(request, response)) {
-			return;
-		}
 		SalesDAO salesDAO = new SalesDAO();
 		int idSale = 0;
 		if(request.getParameter("idSale") != null) {

@@ -89,7 +89,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt=""></a>
+					<a href="index-2.html"><img src="images/logo.png" alt=""></a>
 				</div>
 
 
@@ -265,6 +265,7 @@
 			%>
 						<!-- Blog Post -->
 						<div class="blog-post">
+				
 							<!-- Img -->
 							<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= obj.getIdTinTuc() %>" class="post-img">
 								<img src="<%= obj.getHinhAnh() %>" alt="">
@@ -278,11 +279,11 @@
 									<li><%= obj.getNgayDangTin() %></li>
 									<li><a href="#">5 Comments</a></li>
 								</ul>
+
 								<p><%= obj.getQuote() %></p>
 
 								<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= obj.getIdTinTuc() %>" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
 							</div>
-
 
 						</div>
 						<!-- Blog Post / End -->
@@ -291,6 +292,8 @@
 				}
 			}
 			%>
+			
+
 
 			<!-- Pagination -->
 			<div class="clearfix"></div>
@@ -433,11 +436,9 @@
 					<li>
 						<div class="widget-content">
 								<div class="widget-thumb">
-
 								<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= objTinTuc.getIdTinTuc() %>">
 									<img src="<%= objTinTuc.getHinhAnh() %>" alt="">
 								</a>
-
 							</div>
 							
 							<div class="widget-text">
@@ -496,7 +497,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt="">
+				<img class="footer-logo" src="images/logo.png" alt="">
 				<br><br>
 				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
 			</div>
@@ -561,21 +562,21 @@
 <!-- Scripts
 ================================================== -->
 <script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/chosen.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/slick.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/masonry.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery.jpanelmenu.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/custom.js"></script>
+<script type="text/javascript" src="scripts/chosen.min.js"></script>
+<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="scripts/slick.min.js"></script>
+<script type="text/javascript" src="scripts/masonry.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.jpanelmenu.js"></script>
+<script type="text/javascript" src="scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
 
 
 <!-- Style Switcher
 ================================================== -->
-<script src="<%=request.getContextPath()%>/templates/public/scripts/switcher.js"></script>
+<script src="scripts/switcher.js"></script>
 
 <div id="style-switcher">
 	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>

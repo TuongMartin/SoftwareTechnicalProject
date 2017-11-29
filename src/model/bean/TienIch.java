@@ -20,10 +20,5 @@ public class TienIch {
 		this.idTienIch = idTienIch;
 		this.tenTienIch = tenTienIch;
 	}
-<<<<<<< HEAD
 }	
 	
-=======
-	
-}
->>>>>>> master

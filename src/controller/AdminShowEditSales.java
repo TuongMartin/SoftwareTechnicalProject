@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import library.CheckLoginLibrary;
 import model.dao.SalesDAO;
 
 /**
@@ -36,9 +35,6 @@ public class AdminShowEditSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(!CheckLoginLibrary.isLogin(request, response)) {
-			return;
-		}
 		int idSales = Integer.parseInt(request.getParameter("idSales"));
 		SalesDAO salesDAO = new SalesDAO();
 		request.setAttribute("objSale", salesDAO.getItemSale(idSales));

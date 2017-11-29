@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import library.CheckLoginLibrary;
-
 /**
  * Servlet implementation class AdminManageSales
  */
@@ -35,9 +33,6 @@ public class AdminShowAddNewSales extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(!CheckLoginLibrary.isLogin(request, response)) {
-			return;
-		}
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/sales/add.jsp");
 		rd.forward(request, response);
 	}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- Mirrored from www.vasterad.com/themes/findeo/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:17:02 GMT -->
+<!-- Mirrored from www.vasterad.com/themes/findeo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:01 GMT -->
 <head>
 
 <!-- Basic Page Needs
@@ -11,8 +11,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/colors/main.css" id="colors">
 
 </head>
 
@@ -36,7 +36,7 @@
 				<!-- Top bar -->
 				<ul class="top-bar-menu">
 					<li><i class="fa fa-phone"></i> (123) 123-456 </li>
-					<li><i class="fa fa-envelope"></i> <a href="#"><span class="__cf_email__" data-cfemail="c4aba2a2ada7a184a1bca5a9b4a8a1eaa7aba9">[email&#160;protected]</span></a></li>
+					<li><i class="fa fa-envelope"></i> <a href="#"><span class="__cf_email__" data-cfemail="97f8f1f1fef4f2d7f2eff6fae7fbf2b9f4f8fa">[email&#160;protected]</span></a></li>
 					<li>
 						<div class="top-bar-dropdown">
 							<span>Dropdown Menu</span>
@@ -83,7 +83,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt=""></a>
+					<a href="index-2.html"><img src="images/logo.png" alt=""></a>
 				</div>
 
 
@@ -172,17 +172,17 @@
 
 						<li><a href="#">Pages</a>
 							<ul>
-								<li><a href="ShowTinTuc">Blog</a>
+								<li><a href="blog.html">Blog</a>
 									<ul>
-										<li><a href="ShowTinTuc">Blog</a></li>
+										<li><a href="blog.html">Blog</a></li>
 										<li><a href="blog-post.html">Blog Post</a></li>
 									</ul>
 								</li>
-								<li><a href="contact.jsp">Contact</a></li>
-								<li><a href="elements.jsp">Elements</a></li>
-								<li><a href="pricing-tables.jsp">Pricing Tables</a></li>
-								<li><a href="typography.jsp">Typography</a></li>
-								<li><a href="icons.jsp">Icons</a></li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="elements.html">Elements</a></li>
+								<li><a href="pricing-tables.html">Pricing Tables</a></li>
+								<li><a href="typography.html">Typography</a></li>
+								<li><a href="icons.html">Icons</a></li>
 							</ul>
 						</li>
 
@@ -216,7 +216,7 @@
 
 <!-- Banner
 ================================================== -->
-<div class="parallax" data-background="<%=request.getContextPath()%>/templates/public/images/home-parallax.jpg" data-color="#36383e" data-color-opacity="0.45" data-img-width="2500" data-img-height="1600">
+<div class="parallax" data-background="images/home-parallax.jpg" data-color="#36383e" data-color-opacity="0.45" data-img-width="2500" data-img-height="1600">
 	<div class="parallax-content">
 
 		<div class="container">
@@ -439,9 +439,9 @@
 							</div>
 
 							<div class="listing-carousel">
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-01.jpg" alt=""></div>
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-01b.jpg" alt=""></div>
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-01c.jpg" alt=""></div>
+								<div><img src="images/listing-01.jpg" alt=""></div>
+								<div><img src="images/listing-01b.jpg" alt=""></div>
+								<div><img src="images/listing-01c.jpg" alt=""></div>
 							</div>
 
 						</a>
@@ -489,7 +489,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-02.jpg" alt="">
+							<img src="images/listing-02.jpg" alt="">
 
 						</a>
 						
@@ -538,7 +538,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
+							<img src="images/listing-03.jpg" alt="">
 
 						</a>
 						
@@ -588,8 +588,8 @@
 							</div>
 
 							<div class="listing-carousel">
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04.jpg" alt=""></div>
-								<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04b.jpg" alt=""></div>
+								<div><img src="images/listing-04.jpg" alt=""></div>
+								<div><img src="images/listing-04b.jpg" alt=""></div>
 							</div>
 
 						</a>
@@ -638,7 +638,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-05.jpg" alt="">
+							<img src="images/listing-05.jpg" alt="">
 						</a>
 						
 						<div class="listing-content">
@@ -775,7 +775,7 @@
 		<div class="col-md-4">
 
 			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-01.jpg">
+			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-01.jpg">
 
 				<!-- Badge -->
 				<div class="listing-badges">
@@ -793,7 +793,7 @@
 		<div class="col-md-8">
 
 			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-02.jpg">
+			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-02.jpg">
 				<div class="img-box-content visible">
 					<h4>Los Angeles</h4>
 					<span>24 Properties</span>
@@ -805,7 +805,7 @@
 		<div class="col-md-8">
 
 			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-03.jpg">
+			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-03.jpg">
 				<div class="img-box-content visible">
 					<h4>San Francisco </h4>
 					<span>12 Properties</span>
@@ -817,7 +817,7 @@
 		<div class="col-md-4">
 
 			<!-- Image Box -->
-			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="<%=request.getContextPath()%>/templates/public/images/popular-location-04.jpg">
+			<a href="listings-list-with-sidebar.html" class="img-box" data-background-image="images/popular-location-04.jpg">
 				<div class="img-box-content visible">
 					<h4>Miami</h4>
 					<span>9 Properties</span>
@@ -847,7 +847,7 @@
 					
 					<!-- Img -->
 					<a href="blog-post.html" class="post-img">
-						<img src="<%=request.getContextPath()%>/templates/public/images/blog-post-01.jpg" alt="">
+						<img src="images/blog-post-01.jpg" alt="">
 					</a>
 					
 					<!-- Content -->
@@ -870,7 +870,7 @@
 					
 					<!-- Img -->
 					<a href="blog-post.html" class="post-img">
-						<img src="<%=request.getContextPath()%>/templates/public/images/blog-post-02.jpg" alt="">
+						<img src="images/blog-post-02.jpg" alt="">
 					</a>
 					
 					<!-- Content -->
@@ -893,7 +893,7 @@
 					
 					<!-- Img -->
 					<a href="blog-post.html" class="post-img">
-						<img src="<%=request.getContextPath()%>/templates/public/images/blog-post-03.jpg" alt="">
+						<img src="images/blog-post-03.jpg" alt="">
 					</a>
 					
 					<!-- Content -->
@@ -934,7 +934,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt="">
+				<img class="footer-logo" src="images/logo.png" alt="">
 				<br><br>
 				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
 			</div>
@@ -965,7 +965,7 @@
 				<div class="text-widget">
 					<span>12345 Little Lonsdale St, Melbourne</span> <br>
 					Phone: <span>(123) 123-456 </span><br>
-					E-Mail:<span> <a href="#"><span class="__cf_email__" data-cfemail="aac5ccccc3c9cfeacfd2cbc7dac6cf84c9c5c7">[email&#160;protected]</span></a> </span><br>
+					E-Mail:<span> <a href="#"><span class="__cf_email__" data-cfemail="c0afa6a6a9a3a580a5b8a1adb0aca5eea3afad">[email&#160;protected]</span></a> </span><br>
 				</div>
 
 				<ul class="social-icons margin-top-20">
@@ -998,22 +998,22 @@
 
 <!-- Scripts
 ================================================== -->
-<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/chosen.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/slick.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/masonry.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery.jpanelmenu.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/custom.js"></script>
+<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="scripts/chosen.min.js"></script>
+<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="scripts/slick.min.js"></script>
+<script type="text/javascript" src="scripts/masonry.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.jpanelmenu.js"></script>
+<script type="text/javascript" src="scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
 
 
 <!-- Style Switcher
 ================================================== -->
-<script src="<%=request.getContextPath()%>/templates/public/scripts/switcher.js"></script>
+<script src="scripts/switcher.js"></script>
 
 <div id="style-switcher">
 	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>
@@ -1049,5 +1049,5 @@
 
 </body>
 
-<!-- Mirrored from www.vasterad.com/themes/findeo/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:17:57 GMT -->
+<!-- Mirrored from www.vasterad.com/themes/findeo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:01 GMT -->
 </html>

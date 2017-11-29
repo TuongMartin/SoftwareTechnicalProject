@@ -1,7 +1,220 @@
-<%@page import="model.bean.KhachHang"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@include file="/templates/public/inc/header.jsp"%>
+<!DOCTYPE html>
+
+<!-- Mirrored from www.vasterad.com/themes/findeo/my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<title>Findeo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/colors/main.css" id="colors">
+
+</head>
+
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+
+<!-- Header Container
+================================================== -->
+<header id="header-container">
+
+	<!-- Topbar -->
+	<div id="top-bar">
+		<div class="container">
+
+			<!-- Left Side Content -->
+			<div class="left-side">
+
+				<!-- Top bar -->
+				<ul class="top-bar-menu">
+					<li><i class="fa fa-phone"></i> (123) 123-456 </li>
+					<li><i class="fa fa-envelope"></i> <a href="#"><span class="__cf_email__" data-cfemail="d8b7bebeb1bbbd98bda0b9b5a8b4bdf6bbb7b5">[email&#160;protected]</span></a></li>
+					<li>
+						<div class="top-bar-dropdown">
+							<span>Dropdown Menu</span>
+							<ul class="options">
+								<li><div class="arrow"></div></li>
+								<li><a href="#">Nice First Link</a></li>
+								<li><a href="#">Second Link With Long Title</a></li>
+								<li><a href="#">Third Link</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+			<!-- Left Side Content / End -->
+
+
+			<!-- Left Side Content -->
+			<div class="right-side">
+
+				<!-- Social Icons -->
+				<ul class="social-icons">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="pinterest" href="#"><i class="icon-pinterest"></i></a></li>
+				</ul>
+
+			</div>
+			<!-- Left Side Content / End -->
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<!-- Topbar / End -->
+
+
+	<!-- Header -->
+	<div id="header">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+			<div class="left-side">
+				
+				<!-- Logo -->
+				<div id="logo">
+					<a href="index-2.html"><img src="images/logo.png" alt=""></a>
+				</div>
+
+
+				<!-- Mobile Navigation -->
+				<div class="menu-responsive">
+					<i class="fa fa-reorder menu-trigger"></i>
+				</div>
+
+
+				<!-- Main Navigation -->
+				<nav id="navigation" class="style-1">
+					<ul id="responsive">
+
+						<li><a href="#">Home</a>
+							<ul>
+								<li><a href="index-2.html">Home 1</a></li>
+								<li><a href="index-3.html">Home 2</a></li>
+								<li><a href="index-4.html">Home 3</a></li>
+								<li><a href="index-5.html">Home 4</a></li>
+							</ul>
+						</li>
+
+						<li><a href="#">Listings</a>
+							<ul>
+								<li><a href="#">List Layout</a>
+									<ul>
+										<li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
+										<li><a href="listings-list-with-map.html">With Map</a></li>
+										<li><a href="listings-list-full-width.html">Full Width</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Grid Layout</a>
+									<ul>
+										<li><a href="listings-grid-standard-with-sidebar.html">Standard With Sidebar</a></li>
+										<li><a href="listings-grid-compact-with-sidebar.html">Compact With Sidebar</a></li>
+										<li><a href="listings-grid-with-map.html">With Map</a></li>
+										<li><a href="listings-grid-full-width.html">Full Width</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Half Map</a>
+									<ul>
+										<li><a href="listings-half-map-list.html">List Layout</a></li>
+										<li><a href="listings-half-map-grid-standard.html">Grid Standard Layout</a></li>
+										<li><a href="listings-half-map-grid-compact.html">Grid Compact Layout</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+
+						<li><a class="current" href="#">Features</a>
+							<ul>
+								<li><a href="#">Single Properties</a>
+									<ul>
+										<li><a href="single-property-page-1.html">Property Style 1</a></li>
+										<li><a href="single-property-page-2.html">Property Style 2</a></li>
+										<li><a href="single-property-page-3.html">Property Style 3</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Search Styles</a>
+									<ul>
+										<li><a href="index-2.html">Home Search 1</a></li>
+										<li><a href="index-3.html">Home Search 2</a></li>
+										<li><a href="index-4.html">Home Search 3</a></li>
+										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
+										<li><a href="listings-list-with-sidebar.html">Sidebar Search</a></li>
+									</ul>
+								</li>
+								<li><a href="#">My Account</a>
+									<ul>
+										<li><a href="my-profile.html">My Profile</a></li>
+										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
+										<li><a href="my-properties.html">My Properties</a></li>
+										<li><a href="change-password.html">Change Password</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Agents</a>
+									<ul>
+										<li><a href="agents-list.html">Agents List</a></li>
+										<li><a href="agent-page.html">Agent Page</a></li>
+									</ul>
+								</li>
+
+								<li><a href="submit-property.html">Submit Property</a></li>
+							</ul>
+						</li>
+
+						<li><a href="#">Pages</a>
+							<ul>
+								<li><a href="blog.html">Blog</a>
+									<ul>
+										<li><a href="blog.html">Blog</a></li>
+										<li><a href="blog-post.html">Blog Post</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="elements.html">Elements</a></li>
+								<li><a href="pricing-tables.html">Pricing Tables</a></li>
+								<li><a href="typography.html">Typography</a></li>
+								<li><a href="icons.html">Icons</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+			<!-- Left Side Content / End -->
+
+			<!-- Right Side Content / End -->
+			<div class="right-side">
+				<!-- Header Widget -->
+				<div class="header-widget">
+					<a href="login-register.html" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+					<a href="submit-property.html" class="button border">Submit Property</a>
+				</div>
+				<!-- Header Widget / End -->
+			</div>
+			<!-- Right Side Content / End -->
+
+		</div>
+	</div>
+	<!-- Header / End -->
+
+</header>
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+
 <!-- Titlebar
 ================================================== -->
 <div id="titlebar">
@@ -61,69 +274,191 @@
 
 		<div class="col-md-8">
 			<div class="row">
-				<%
-					if(request.getParameter("msg") != null){
-						int msg = Integer.parseInt(request.getParameter("msg"));
-						switch (msg){
-							case 0 :%>
-								<p class="category alert alert-danger" style="color: blue;">Có lỗi trong quá trình!</p>
-								<%break;
-							case 1 :%>
-								<p class="category success" style="color: blue;">Cập nhật thông tin cá nhân thành công!</p>
-								<%break;
-						}
-						
-					}
-				
-				%>
+
+
 				<div class="col-md-8 my-profile">
 					<h4 class="margin-top-0 margin-bottom-30">My Account</h4>
-					<form action="" method="post" enctype="multipart/form-data" id="editCustomer" class="editCustomer">
-						<%
-							KhachHang objCustomerUpdate = (KhachHang)request.getAttribute("objCustomerUpdate");
-						%>
-						<label>Your Email</label>
-						<input value="<%=objCustomerUpdate.getEmail()%>" type="text" disabled="true">
-						
-						<label>Your Password</label>
-						<input value="" type="password" name="password">
-						
-						<label>Confirm Your Password</label>
-						<input value="" type="password" name="confirm_password">
-						
-						<label>Your Name</label>
-						<input value="<%=objCustomerUpdate.getTenKhachHang() %>" type="text" name="full_name">
-	
-						<label>Your Address</label>
-						<input value="<%=objCustomerUpdate.getDiaChi() %>" type="text" name="address">
-	
-						<label>Your Home Town</label>
-						<input value="<%=objCustomerUpdate.getQueQuan() %>" type="text" name="home_town">	
-						
-						<label>Your Birthday</label>
-						<input value="<%=objCustomerUpdate.getNgaySinh() %>" type="date" name="birthday">
-						
-						<label>Phone</label>
-						<input value="<%=objCustomerUpdate.getSoDienThoai() %>" type="text" name="phone">
-						
-						<button type="submit" name="editCustomer" class="button margin-top-20 margin-bottom-20">Save Changes</button>
-					</div>
-	
-					<div class="col-md-4">
-						<!-- Avatar -->
-						<div class="edit-profile-photo">
-							<img src="<%=request.getContextPath() %>/files/<%=objCustomerUpdate.getAvatar() %>" alt="">
-							<div class="change-photo-btn">
-								<div class="photoUpload">
-								    <span><i class="fa fa-upload"></i> Upload Photo</span>
-								    <input type="file" class="upload" name="avatar"/>
-								</div>
+
+					<label>Your Name</label>
+					<input value="Jennie Wilson" type="text">
+
+					<label>Your Title</label>
+					<input value="Agent In New York" type="text">
+
+					<label>Phone</label>
+					<input value="(123) 123-456" type="text">
+
+					<label>Email</label>
+					<input value="jennie@example.com" type="text">
+
+
+					<h4 class="margin-top-50 margin-bottom-25">About Me</h4>
+					<textarea name="about" id="about" cols="30" rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
+				
+
+					<h4 class="margin-top-50 margin-bottom-0">Social</h4>
+
+					<label><i class="fa fa-twitter"></i> Twitter</label>
+					<input value="https://www.twitter.com/" type="text">
+
+					<label><i class="fa fa-facebook-square"></i> Facebook</label>
+					<input value="https://www.facebook.com/" type="text">
+
+					<label><i class="fa fa-google-plus"></i> Google+</label>
+					<input value="https://www.google.com/" type="text">
+
+					<label><i class="fa fa-linkedin"></i> Linkedin</label>
+					<input value="https://www.linkedin.com/" type="text">
+
+
+					<button class="button margin-top-20 margin-bottom-20">Save Changes</button>
+				</div>
+
+				<div class="col-md-4">
+					<!-- Avatar -->
+					<div class="edit-profile-photo">
+						<img src="images/agent-02.jpg" alt="">
+						<div class="change-photo-btn">
+							<div class="photoUpload">
+							    <span><i class="fa fa-upload"></i> Upload Photo</span>
+							    <input type="file" class="upload" />
 							</div>
 						</div>
 					</div>
-				</form>
+
+				</div>
+
+
 			</div>
 		</div>
+
 	</div>
 </div>
-<%@include file="/templates/public/inc/footer.jsp"%>
+
+
+<!-- Footer
+================================================== -->
+<div class="margin-top-55"></div>
+
+<div id="footer" class="sticky-footer">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="images/logo.png" alt="">
+				<br><br>
+				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+			</div>
+
+			<div class="col-md-4 col-sm-6 ">
+				<h4>Helpful Links</h4>
+				<ul class="footer-links">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Sign Up</a></li>
+					<li><a href="#">My Account</a></li>
+					<li><a href="#">Add Property</a></li>
+					<li><a href="#">Pricing</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+
+				<ul class="footer-links">
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Our Agents</a></li>
+					<li><a href="#">How It Works</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>Contact Us</h4>
+				<div class="text-widget">
+					<span>12345 Little Lonsdale St, Melbourne</span> <br>
+					Phone: <span>(123) 123-456 </span><br>
+					E-Mail:<span> <a href="#"><span class="__cf_email__" data-cfemail="305f5656595355705548515d405c551e535f5d">[email&#160;protected]</span></a> </span><br>
+				</div>
+
+				<ul class="social-icons margin-top-20">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+				</ul>
+
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+
+<!-- Scripts
+================================================== -->
+<script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="scripts/chosen.min.js"></script>
+<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="scripts/slick.min.js"></script>
+<script type="text/javascript" src="scripts/masonry.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.jpanelmenu.js"></script>
+<script type="text/javascript" src="scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+
+<!-- Style Switcher
+================================================== -->
+<script src="scripts/switcher.js"></script>
+
+<div id="style-switcher">
+	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>
+	
+	<div>
+		<ul class="colors" id="color1">
+			<li><a href="#" class="blue" title="Blue"></a></li>
+			<li><a href="#" class="green" title="Green"></a></li>
+			<li><a href="#" class="orange" title="Orange"></a></li>
+			<li><a href="#" class="navy" title="Navy"></a></li>
+			<li><a href="#" class="yellow" title="Yellow"></a></li>
+			<li><a href="#" class="peach" title="Peach"></a></li>
+			<li><a href="#" class="beige" title="Beige"></a></li>
+			<li><a href="#" class="purple" title="Purple"></a></li>
+			<li><a href="#" class="celadon" title="Celadon"></a></li>
+			<li><a href="#" class="pink" title="Pink"></a></li>
+			<li><a href="#" class="red" title="Red"></a></li>
+			<li><a href="#" class="brown" title="Brown"></a></li>
+			<li><a href="#" class="cherry" title="Cherry"></a></li>
+			<li><a href="#" class="cyan" title="Cyan"></a></li>
+			<li><a href="#" class="gray" title="Gray"></a></li>
+			<li><a href="#" class="olive" title="Olive"></a></li>
+		</ul>
+	</div>
+		
+</div>
+<!-- Style Switcher / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+
+
+</body>
+
+<!-- Mirrored from www.vasterad.com/themes/findeo/my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
+</html>

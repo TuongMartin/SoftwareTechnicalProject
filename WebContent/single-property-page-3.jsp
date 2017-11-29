@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/single-property-page-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
@@ -215,11 +214,6 @@
 <!-- Header Container / End -->
 
 
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@include file="/templates/public/inc/header.jsp"%>
->>>>>>> master
 
 <!-- Titlebar
 ================================================== -->
@@ -256,12 +250,12 @@
 
 <!-- Slider -->
 <div class="fullwidth-property-slider margin-bottom-50">
-	<a href="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-01.jpg" class="item mfp-gallery"></a>
-	<a href="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-02.jpg" class="item mfp-gallery"></a>
-	<a href="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-03.jpg" class="item mfp-gallery"></a>
-	<a href="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-04.jpg" class="item mfp-gallery"></a>
-	<a href="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-05.jpg" class="item mfp-gallery"></a>
-	<a href="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" data-background-image="<%=request.getContextPath()%>/templates/public/images/single-property-06.jpg" class="item mfp-gallery"></a>
+	<a href="images/single-property-01.jpg" data-background-image="images/single-property-01.jpg" class="item mfp-gallery"></a>
+	<a href="images/single-property-02.jpg" data-background-image="images/single-property-02.jpg" class="item mfp-gallery"></a>
+	<a href="images/single-property-03.jpg" data-background-image="images/single-property-03.jpg" class="item mfp-gallery"></a>
+	<a href="images/single-property-04.jpg" data-background-image="images/single-property-04.jpg" class="item mfp-gallery"></a>
+	<a href="images/single-property-05.jpg" data-background-image="images/single-property-05.jpg" class="item mfp-gallery"></a>
+	<a href="images/single-property-06.jpg" data-background-image="images/single-property-06.jpg" class="item mfp-gallery"></a>
 </div>
 
 
@@ -635,7 +629,6 @@
 	</div>
 </div>
 
-<<<<<<< HEAD
 
 <!-- Footer
 ================================================== -->
@@ -769,6 +762,3 @@
 
 <!-- Mirrored from www.vasterad.com/themes/findeo/single-property-page-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2017 13:18:51 GMT -->
 </html>
-=======
-<%@include file="/templates/public/inc/footer.jsp"%>
->>>>>>> master

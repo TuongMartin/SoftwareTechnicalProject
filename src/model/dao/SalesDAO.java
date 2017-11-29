@@ -29,7 +29,7 @@ public class SalesDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				NhanVien objUser = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
+				NhanVien objUser = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
 				listUser.add(objUser);
 			}
 			return listUser;
@@ -56,7 +56,7 @@ public class SalesDAO {
 			ps.setInt(1, idNhanVien);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),rs.getString("SDT"), rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
+				objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"), rs.getString("SDT"), rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class SalesDAO {
 	
 	public boolean editSale(NhanVien objSale) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
-		String sql = "UPDATE nhanvien SET TenNhanVien = ?,DiaChi = ?,QueQuan = ?,CMND = ?,NgaySinh = ?,SDT = ?,IdChucVu= ?,avatar = ? WHERE IdNhanVien = ?";
+		String sql = "UPDATE nhanvien SET TenNhanVien = ?,DiaChi = ?,QueQuan = ?,CMND = ?,NgaySinh = ?,SDT = ?,MatKhau = ?,IdChucVu= ?,avatar = ? WHERE IdNhanVien = ?";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -83,9 +83,10 @@ public class SalesDAO {
 			ps.setInt(4, objSale.getCMND());
 			ps.setString(5, objSale.getNgaySinh());
 			ps.setString(6, objSale.getSDT());
-			ps.setInt(7, objSale.getIdChucVu());
-			ps.setString(8, objSale.getAvatar());
-			ps.setInt(9, objSale.getIdNhanVien());
+			ps.setString(7, objSale.getMatKhau());
+			ps.setInt(8, objSale.getIdChucVu());
+			ps.setString(9, objSale.getAvatar());
+			ps.setInt(10, objSale.getIdNhanVien());
 			ps.executeUpdate();
 			
 			return true;
@@ -104,7 +105,7 @@ public class SalesDAO {
 	
 	public boolean addItemSale(NhanVien objSale) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
-		String sql = "INSERT INTO NhanVien(IdNhanVien,TenNhanVien,DiaChi,QueQuan,CMND,NgaySinh,SDT,IdChucVu,avatar,idAccount) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO NhanVien(IdNhanVien,TenNhanVien,DiaChi,QueQuan,CMND,NgaySinh,SDT,TenDangNhap,MatKhau,IdChucVu,avatar) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, objSale.getIdNhanVien());
@@ -114,9 +115,10 @@ public class SalesDAO {
 			ps.setInt(5, objSale.getCMND());
 			ps.setString(6, objSale.getNgaySinh());
 			ps.setString(7, objSale.getSDT());
-			ps.setInt(8, objSale.getIdChucVu());
-			ps.setString(9, objSale.getAvatar());
-			ps.setInt(10, objSale.getIdAccount());
+			ps.setString(8, objSale.getTenDangNhap());
+			ps.setString(9, objSale.getMatKhau());
+			ps.setInt(10, objSale.getIdChucVu());
+			ps.setString(11, objSale.getAvatar());
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -152,6 +154,7 @@ public class SalesDAO {
 				e.printStackTrace();
 			}
 		}
+		
 	}
 	
 	public int countItem() {
@@ -192,7 +195,7 @@ public class SalesDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
+				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
 				list.add(objSale);
 			}
 			return list;
@@ -226,7 +229,7 @@ public class SalesDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"),rs.getInt("idAccount"));
+				NhanVien objSale = new NhanVien(rs.getInt("IdNhanVien"), rs.getString("TenNhanVien"), rs.getString("DiaChi"), rs.getString("QueQuan"), rs.getInt("CMND"), rs.getString("NgaySinh"),"", rs.getString("TenDangNhap"), "", rs.getInt("IdChucVu"), rs.getString("TenChucVu"), rs.getString("avatar"));
 				list.add(objSale);
 			}
 			return list;
