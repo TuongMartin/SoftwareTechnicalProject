@@ -12,8 +12,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/colors/main.css" id="colors">
 
 </head>
 
@@ -84,7 +84,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt=""></a>
+					<a href="index-2.html"><img src="images/logo.png" alt=""></a>
 				</div>
 
 
@@ -357,7 +357,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
+							<img src="images/listing-03.jpg" alt="">
 
 						</a>
 						
@@ -406,7 +406,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<div><img src="<%=request.getContextPath()%>/templates/public/images/listing-04.jpg" alt=""></div>
+							<div><img src="images/listing-04.jpg" alt=""></div>
 
 						</a>
 						
@@ -454,7 +454,7 @@
 								<span class="like-icon"></span>
 							</div>
 
-							<img src="<%=request.getContextPath()%>/templates/public/images/listing-05.jpg" alt="">
+							<img src="images/listing-05.jpg" alt="">
 						</a>
 						
 						<div class="listing-content">
@@ -513,7 +513,7 @@
 					<!-- Agent Widget -->
 					<div class="agent-widget">
 						<div class="agent-title">
-							<div class="agent-photo"><img src="<%=request.getContextPath()%>/templates/public/images/agent-avatar.jpg" alt="" /></div>
+							<div class="agent-photo"><img src="images/agent-avatar.jpg" alt="" /></div>
 							<div class="agent-details">
 								<h4><a href="#">Jennie Wilson</a></h4>
 								<span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
@@ -559,7 +559,7 @@
 										</ul>
 									</div>
 
-									<img src="<%=request.getContextPath()%>/templates/public/images/listing-01.jpg" alt="">
+									<img src="images/listing-01.jpg" alt="">
 								</a>
 
 							</div>
@@ -588,7 +588,7 @@
 										</ul>
 									</div>
 
-									<img src="<%=request.getContextPath()%>/templates/public/images/listing-02.jpg" alt="">
+									<img src="images/listing-02.jpg" alt="">
 								</a>
 
 							</div>
@@ -617,7 +617,7 @@
 										</ul>
 									</div>
 
-									<img src="<%=request.getContextPath()%>/templates/public/images/listing-03.jpg" alt="">
+									<img src="images/listing-03.jpg" alt="">
 								</a>
 
 							</div>
@@ -646,7 +646,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt="">
+				<img class="footer-logo" src="images/logo.png" alt="">
 				<br><br>
 				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
 			</div>
