@@ -8,11 +8,10 @@ public class NhanVien {
 	private int CMND;
 	private String ngaySinh;
 	private String SDT;
-	private String tenDangNhap;
-	private String matKhau;
 	private int idChucVu;
 	private String tenChucVu;
 	private String avatar;
+	private int idAccount;
 	
 	public int getIdNhanVien() {
 		return idNhanVien;
@@ -51,18 +50,6 @@ public class NhanVien {
 	public void setNgaySinh(String ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
-	public String getTenDangNhap() {
-		return tenDangNhap;
-	}
-	public void setTenDangNhap(String tenDangNhap) {
-		this.tenDangNhap = tenDangNhap;
-	}
-	public String getMatKhau() {
-		return matKhau;
-	}
-	public void setMatKhau(String matKhau) {
-		this.matKhau = matKhau;
-	}
 	public int getIdChucVu() {
 		return idChucVu;
 	}
@@ -89,9 +76,16 @@ public class NhanVien {
 	public void setSDT(String sDT) {
 		SDT = sDT;
 	}
+	
+	public int getIdAccount() {
+		return idAccount;
+	}
+	public void setIdAccount(int idAccount) {
+		this.idAccount = idAccount;
+	}
 	public NhanVien() {}
 	public NhanVien(int idNhanVien, String tenNhanVien, String diaChi, String queQuan, int cMND, String ngaySinh,
-			String sDT, String tenDangNhap, String matKhau, int idChucVu, String tenChucVu, String avatar) {
+			String sDT, int idChucVu, String tenChucVu, String avatar, int idAccount) {
 		this.idNhanVien = idNhanVien;
 		this.tenNhanVien = tenNhanVien;
 		this.diaChi = diaChi;
@@ -99,11 +93,10 @@ public class NhanVien {
 		CMND = cMND;
 		this.ngaySinh = ngaySinh;
 		SDT = sDT;
-		this.tenDangNhap = tenDangNhap;
-		this.matKhau = matKhau;
 		this.idChucVu = idChucVu;
 		this.tenChucVu = tenChucVu;
 		this.avatar = avatar;
+		this.idAccount = idAccount;
 	}
 	
 	

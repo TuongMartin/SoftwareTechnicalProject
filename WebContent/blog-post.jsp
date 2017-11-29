@@ -91,7 +91,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="/public/images/logo.png" alt=""></a>
+					<a href="index-2.html"><img src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt=""></a>
 				</div>
 
 
@@ -325,7 +325,7 @@
 
 			<!-- About Author -->
 			<div class="about-author">
-				<img src="/public/images/agent-avatar.jpg" alt="" />
+				<img src="<%=request.getContextPath()%>/templates/public/images/agent-avatar.jpg" alt="" />
 				<div class="about-description">
 					<h4>Jennie Wilson</h4>
 					<a href="#"><span class="__cf_email__" data-cfemail="d7bdb2b9b9beb297b2afb6baa7bbb2f9b4b8ba">[email&#160;protected]</span></a>
@@ -364,6 +364,24 @@
 
 					</div>
 					<!-- Blog Post / End -->
+				</div>
+				<div class="col-md-6">
+
+					<!-- Blog Post -->
+					<div class="blog-post">
+						
+						<!-- Img -->
+						<a href="#" class="post-img">
+							<img src="<%=request.getContextPath()%>/templates/public/images/blog-post-03.jpg" alt="">
+						</a>
+						
+						<!-- Content -->
+						<div class="post-content">
+							<h3><a href="#">What to Do a Year Before Buying Apartment</a></h3>
+							<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
+
+							<a href="#" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+						</div>
 					</div>
 			<%		
 				}
@@ -514,7 +532,6 @@
 
 				<h3>Bài Đăng Liên Quan</h3>
 				<ul class="widget-tabs">
-				
 				<%
 				ArrayList<TinTuc> listRelatedItems = (ArrayList<TinTuc>)request.getAttribute("listRelatedItems");
 				if(listRelatedItems != null && listRelatedItems.size() > 0)
@@ -527,6 +544,7 @@
 						<div class="widget-content">
 							<div class="widget-thumb">
 								<a href="${pageContext.request.contextPath}/ShowChiTietTinTuc?idTinTuc=<%= obj.getIdTinTuc() %>"><img src="<%= obj.getHinhAnh() %>" alt=""></a>
+
 							</div>
 							
 							<div class="widget-text">
@@ -581,7 +599,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="/public/images/logo.png" alt="">
+				<img class="footer-logo" src="<%=request.getContextPath()%>/templates/public/images/logo.png" alt="">
 				<br><br>
 				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
 			</div>
@@ -646,21 +664,21 @@
 <!-- Scripts
 ================================================== -->
 <script style="display: none !important;">!function(e,t,r,n,c,a,l){function i(t,r){return r=e.createElement('div'),r.innerHTML='<a href="'+t.replace(/"/g,'&quot;')+'"></a>',r.childNodes[0].getAttribute('href')}function o(e,t,r,n){for(r='',n='0x'+e.substr(t,2)|0,t+=2;t<e.length;t+=2)r+=String.fromCharCode('0x'+e.substr(t,2)^n);return i(r)}try{for(c=e.getElementsByTagName('a'),l='/cdn-cgi/l/email-protection#',n=0;n<c.length;n++)try{(t=(a=c[n]).href.indexOf(l))>-1&&(a.href='mailto:'+o(a.href,t+l.length))}catch(e){}for(c=e.querySelectorAll('.__cf_email__'),n=0;n<c.length;n++)try{(a=c[n]).parentNode.replaceChild(e.createTextNode(o(a.getAttribute('data-cfemail'),0)),a)}catch(e){}}catch(e){}}(document);</script><script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/masonry.min.js"></script>
-<script type="text/javascript" src="scripts/jquery.jpanelmenu.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/chosen.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/slick.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/masonry.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/jquery.jpanelmenu.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/custom.js"></script>
 
 
 <!-- Style Switcher
 ================================================== -->
-<script src="scripts/switcher.js"></script>
+<script src="<%=request.getContextPath()%>/templates/public/scripts/switcher.js"></script>
 
 <div id="style-switcher">
 	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>
