@@ -16,6 +16,8 @@
 			        <div class="spinner"></div>
 			        <div class="img">
 			        <%
+			        	if(request.getSession().getAttribute("userInfo") != null){ 
+			        		NhanVien objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
 			        		if(!"".equals(objNhanVien.getAvatar())) {
 			        	%>
 			        			<img src="<%=request.getContextPath()%>/files/<%=objNhanVien.getAvatar()%>" alt="img">
@@ -26,8 +28,9 @@
 			        	<%
 			        		}
 			        	%>
-			        		
-			        	
+	
+			        	<%}
+			        %>
 			       	</div>
 			        <div class="info">
 			          <div class="info-back">

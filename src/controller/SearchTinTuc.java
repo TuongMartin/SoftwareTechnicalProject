@@ -37,6 +37,7 @@ public class SearchTinTuc extends HttpServlet{
 		
 		TinTucDAO tinTucDAO = new TinTucDAO();
 		ArrayList<TinTuc> listSearch = null;
+<<<<<<< HEAD
 		String search = new String(request.getParameter("search"));
 		
 		if(!search.equals(""))
@@ -45,6 +46,37 @@ public class SearchTinTuc extends HttpServlet{
 		}
 
 		request.setAttribute("listTinTuc", listSearch);
+=======
+		String searchKey = new String(request.getParameter("search"));
+		
+		int currentPage = 1;
+		int rowItemEachPage = 3;
+		int sumRecordFinded = 0;
+
+		if(!searchKey.equals(""))
+		{
+			sumRecordFinded = tinTucDAO.countTinTucFind(searchKey);
+		}
+
+		if(request.getParameter("page") != null)
+		{
+			currentPage = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		int offset = (currentPage -1) * rowItemEachPage;
+		int sumPage = (int) Math.ceil((float)sumRecordFinded/rowItemEachPage);
+		
+		if(!searchKey.equals(""))
+		{
+			listSearch = tinTucDAO.searchTinTuc(searchKey, offset, rowItemEachPage);
+		}
+
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("sumPage", sumPage);
+		request.setAttribute("listTinTuc", listSearch);
+		request.setAttribute("search", searchKey);
+		
+>>>>>>> master
 		RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
 		rd.forward(request, response);
 	}

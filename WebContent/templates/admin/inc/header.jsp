@@ -61,7 +61,7 @@
 <script src="<%=request.getContextPath()%>/templates/admin/js/jquery.validate.js" type="text/javascript"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/templates/NhanVien/js/dialog.js"></script> 
- <script type="text/javascript" src="<%=request.getContextPath() %>/ckeditor/ckeditor.js" ></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/ckeditor/ckeditor.js" ></script>
 
 </head>
 <body>

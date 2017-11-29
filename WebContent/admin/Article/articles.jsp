@@ -1,3 +1,4 @@
+
 <%@page import="library.CheckRankLibrary"%>
 <%@page import="model.bean.TinTuc"%>
 <%@page import="model.bean.TuVan"%>
@@ -42,7 +43,20 @@
 					<div class="card">
 						<div class="header">
 							<h4 class="title">Danh Sách Tin Tức</h4>
-							
+							<form action="${pageContext.request.contextPath}/AdminSearchTinTuc">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" name="search" class="form-control border-input" placeholder="Tìm Theo Tiêu Đề Bài Viết">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="submit" value="Tìm kiếm" class="is" /> 
+										</div>
+									</div>
+								</div>
+							</form>
 							<% if(request.getAttribute("messageStr") != null){ %>
 							<p class="category success">${messageStr}</p>
 							<% } %>
@@ -112,9 +126,24 @@
 										else
 										{
 											active = "";
-										}%>
+										}
+										
+										if(request.getAttribute("search") == null)
+										{
+											
+										
+								%>
 										<li><a <%=active%> href="<%=request.getContextPath() %>/admin/Article/articles?page=<%=i%>" title=""><%=i%></a></li>
-									<%}
+										<%
+										}
+										else
+										{
+											
+										%>
+										<li><a <%=active%> href="<%=request.getContextPath() %>/AdminSearchTinTuc?search=<%=request.getAttribute("search") %>&page=<%=i%>" title=""><%=i%></a></li>
+										<%	
+										}
+									}
 								}
 								%>
 								</ul>

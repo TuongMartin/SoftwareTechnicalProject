@@ -1,4 +1,5 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/admin/inc/header.jsp"%>
 <%@page import = "java.util.Date"%>
@@ -23,6 +24,7 @@
 					<li><a href="<%=request.getContextPath()%>/admin/logout"> <i
 							class="ti-settings"></i>
 							<p>Log out</p>
+
 					</a></li>
 				</ul>
 

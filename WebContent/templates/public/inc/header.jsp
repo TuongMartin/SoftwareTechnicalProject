@@ -21,7 +21,9 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/templates/public/css/colors/main.css" id="colors">
 <script src="<%=request.getContextPath()%>/templates/admin/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="<%=request.getContextPath()%>/templates/admin/js/jquery.validate.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/templates/admin/js/jquery.validate.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGw-bQBkDDF3ERpXRELFIbMnvEuxtlXBc" async defer>
+</script>
 
 </head>
 

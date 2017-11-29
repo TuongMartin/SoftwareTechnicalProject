@@ -39,13 +39,20 @@ public class AdminManageArticle extends HttpServlet{
 		int rowItemEachPage = 5;
 		int sumPage = (int) Math.ceil((float)sumRecord/rowItemEachPage);
 		
+<<<<<<< HEAD
 		request.setAttribute("sumPage", sumPage);
 		
+=======
+>>>>>>> master
 		if(request.getParameter("page") != null)
 		{
 			currentPage = Integer.parseInt(request.getParameter("page"));
 		}
 		
+<<<<<<< HEAD
+=======
+		request.setAttribute("sumPage", sumPage);
+>>>>>>> master
 		request.setAttribute("currentPage", currentPage);
 		int offset = (currentPage -1) * rowItemEachPage;
 		request.setAttribute("listArticle", tintuc.getListTinTucEachPage(offset,rowItemEachPage));

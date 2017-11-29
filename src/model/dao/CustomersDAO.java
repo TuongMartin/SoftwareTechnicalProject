@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 import java.util.Date;
 
 import library.ConnectionLibraryMySQL;
+import model.bean.CanHo;
 import model.bean.KhachHang;
 
 public class CustomersDAO {

@@ -85,10 +85,13 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/custom.js"></script>
 
 <!-- Maps -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/infobox.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/markerclusterer.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/maps.js"></script>
+
+<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script> -->
+<!-- <script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/infobox.min.js"></script> -->
+<!-- <script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/markerclusterer.js"></script> -->
+<!-- <script type="text/javascript" src="<%=request.getContextPath()%>/templates/public/scripts/maps.js"></script> -->
+
+<!-- End Map -->
 
 <!-- Style Switcher
 ================================================== -->

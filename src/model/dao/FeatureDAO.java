@@ -6,8 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 import library.ConnectionLibraryMySQL;
+=======
+import java.util.Date;
+
+import library.ConnectionLibraryMySQL;
+import model.bean.KhachHang;
+import model.bean.NhanVien;
+import model.bean.TheLoaiBDS;
+>>>>>>> master
 import model.bean.TienIch;
 
 public class FeatureDAO {
@@ -267,4 +276,12 @@ public class FeatureDAO {
 		}
 		return null;
 	}
+<<<<<<< HEAD
 }
+=======
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> master
+>>>>>>> master
