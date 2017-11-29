@@ -44,7 +44,7 @@ public class AdminManageSales extends HttpServlet {
 		int page_curent = 1;
 		SalesDAO salesDAO = new SalesDAO();
 		int sum_news = salesDAO.countItem();
-		int row_count = 2;
+		int row_count = 5;
 		int sum_page = (int) Math.ceil((float)sum_news/row_count);
 		request.setAttribute("sum_page", sum_page);
 		if(request.getParameter("p")!=null){
