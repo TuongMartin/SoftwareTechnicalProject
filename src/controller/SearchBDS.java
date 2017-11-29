@@ -32,43 +32,25 @@ public class SearchBDS extends HttpServlet {
 		ApartmentDAO apartmentDAO = new ApartmentDAO();
 		ArrayList<CanHo> listSearchBDS = new ArrayList<CanHo>();
 		
+		System.out.println("Test");
+		System.out.println(request.getParameter("check"));
 		System.out.println(request.getParameter("beds"));
 		System.out.println(request.getParameter("khuvuc"));
 		System.out.println(request.getParameter("baths"));
 		System.out.println(request.getParameter("typeBDS"));
-
+		System.out.println(request.getParameter("status"));
+		System.out.println(request.getParameter("area-range"));
 		
 		String tinhHoacThanhPho = request.getParameter("khuvuc");
 		String numberBeds = request.getParameter("beds");
 		String numberBaths = request.getParameter("baths");
 		String typeBDS = request.getParameter("typeBDS");
+		String status = request.getParameter("status");
 		
-		if(numberBeds == "Any" || numberBeds == null)
-		{
-			numberBeds = "";
-		}
-		
-		if(numberBaths == "Any" || numberBaths == null)
-		{
-			numberBaths = "";
-		}
-		
-		if(typeBDS == "Any" || typeBDS == null)
-		{
-			typeBDS = "";
-		}
-		
-		if(tinhHoacThanhPho == "Any" || tinhHoacThanhPho == null)
-		{
-			tinhHoacThanhPho = "";
-		}
-		
-		listSearchBDS = apartmentDAO.getBDSNeedSearch(tinhHoacThanhPho, numberBeds, numberBaths, typeBDS);
+		listSearchBDS = apartmentDAO.getBDSNeedSearch(tinhHoacThanhPho, numberBeds, numberBaths, status, typeBDS);
 		request.setAttribute("listSearchBDS", listSearchBDS);
 		
-		System.out.println("size: " + listSearchBDS.size());
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/listings-list-with-sidebar.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/listing-list-with-sidebar.jsp");
 		rd.forward(request, response);
 	}
 

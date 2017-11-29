@@ -306,32 +306,6 @@ public class ApartmentDAO {
 		
 	}
 	
-	public CanHo getItemApartmentLatest() {
-		// TODO Auto-generated method stub
-		conn = connectionLibraryMySQL.getConnectMySQL();
-		String sql = "SELECT * FROM " + table + " ORDER BY idTinDang DESC LIMIT 1";
-		CanHo objCanHo = null;
-		try {
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getInt("kichHoat"));
-			}
-			return objCanHo;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				ps.close();
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
 	
 	public ArrayList<CanHo> getListSimilarTinDang(int idTheLoai, int start, int end){
 		conn = connectionLibraryMySQL.getConnectMySQL();
@@ -441,7 +415,7 @@ public class ApartmentDAO {
 	}
 	
 	
-	public ArrayList<CanHo> getBDSNeedSearch(String tinhHoacThanhPho,  String numberBeds, String numberBaths, String typeBDS){
+	public ArrayList<CanHo> getBDSNeedSearch(String tinhHoacThanhPho,  String numberBeds, String numberBaths, String status, String typeBDS){
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<CanHo> listBDS = new ArrayList<CanHo>();
 		final String ANY = "Any";

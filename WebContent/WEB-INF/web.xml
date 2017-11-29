@@ -153,13 +153,4 @@
     <servlet-name>NhanVienSearchNhatKyTuVan</servlet-name>
     <servlet-class>controller.NhanVienSearchNhatKyTuVan</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>PublicShowListCanHo</servlet-name>
-    <servlet-class>controller.PublicShowListCanHo</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PublicShowListCanHo</servlet-name>
-    <url-pattern>/showlistapartment</url-pattern>
-  </servlet-mapping>
-  
 </web-app>
