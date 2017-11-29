@@ -8,16 +8,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
 
 import java.util.Date;
+>>>>>>> master
 
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
-import model.bean.KhachHang;
 import model.bean.KhuVucBDS;
+<<<<<<< HEAD
+
+
+=======
 import model.bean.NhanVien;
 import model.bean.TheLoaiBDS;
 import model.bean.TinTuc;
+>>>>>>> master
 public class ApartmentDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;
 	private Connection conn;
@@ -28,7 +35,95 @@ public class ApartmentDAO {
 	
 	public ApartmentDAO() {
 		this.connectionLibraryMySQL = new ConnectionLibraryMySQL();
-		this.table = "tindang";
+    this.table = "tindang";
+	}
+	
+	public int numbercanho(int idnhanvien){
+		int number=0;
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "select count(*) as number from tindang where idNhanVien=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idnhanvien);
+			rs=ps.executeQuery();
+			if(rs.next()){
+				number = rs.getInt("number");
+			}
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return number;
+	}
+	
+	public ArrayList<CanHo> getcanhosbyidnv(int idnhanvien,int start,int maxitem){
+		ArrayList<CanHo> canhos = new ArrayList<CanHo>(); 
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "SELECT * FROM tindang INNER JOIN nhanvien on tindang.idNhanVien=nhanvien.IdNhanVien JOIN loaitindang on tindang.idTheLoai=loaitindang.idTheLoai where tindang.idNhanVien=? LIMIT ?, ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idnhanvien);
+			ps.setInt(2,start);
+			ps.setInt(3, maxitem);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				CanHo objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getString("tenCanHo"), rs.getString("diaChi"), rs.getInt("dienTich"), rs.getInt("giaTien"), rs.getInt("totalRooms"), rs.getInt("bedRooms"), rs.getInt("bathRooms"), rs.getString("moTa"), rs.getInt("buildingAge"), rs.getString("parking"), rs.getString("cooling"), rs.getString("heating"), rs.getString("sewer"), rs.getString("water"), rs.getInt("exerciseRoom"), rs.getInt("storageRoom"), rs.getInt("idNhanVien"), rs.getString("TenNhanVien"), rs.getInt("trangThai"), rs.getString("ngayDang"), rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getInt("kichHoat"), rs.getInt("idKhuVuc"), "");
+				canhos.add(objCanHo);
+			}
+			ps.close();
+			conn.close();
+			return canhos;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ArrayList<CanHo> searchcanho(int idnhanvien,int start,int maxitem,String key){
+		ArrayList<CanHo> canhos = new ArrayList<CanHo>();
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "SELECT * from tindang INNER JOIN nhanvien on tindang.idNhanVien=nhanvien.IdNhanVien JOIN loaitindang on tindang.idTheLoai=loaitindang.idTheLoai where tindang.idNhanVien=? and tindang.tenCanHo like '%"+key+"%' limit ?,?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idnhanvien);
+			ps.setInt(2, start);
+			ps.setInt(3, maxitem);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				CanHo objCanHo = new CanHo(rs.getInt("idTinDang"), rs.getString("tenCanHo"), rs.getString("diaChi"), rs.getInt("dienTich"), rs.getInt("giaTien"), rs.getInt("totalRooms"), rs.getInt("bedRooms"), rs.getInt("bathRooms"), rs.getString("moTa"), rs.getInt("buildingAge"), rs.getString("parking"), rs.getString("cooling"), rs.getString("heating"), rs.getString("sewer"), rs.getString("water"), rs.getInt("exerciseRoom"), rs.getInt("storageRoom"), rs.getInt("idNhanVien"), rs.getString("TenNhanVien"), rs.getInt("trangThai"), rs.getString("ngayDang"), rs.getInt("idTheLoai"), rs.getString("tenTheLoai"), rs.getInt("kichHoat"), rs.getInt("idKhuVuc"), "");				
+				canhos.add(objCanHo);
+			}
+			ps.close();
+			conn.close();
+			return canhos;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int numbercanhosearch(int idnhanvien,String key){
+		int number=0;
+		conn = connectionLibraryMySQL.getConnectMySQL();
+		String sql = "select count(*) as number from tindang where tenCanHo LIKE '%"+key+"%' and IdNhanVien=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idnhanvien);
+			rs=ps.executeQuery();
+			if(rs.next()){
+				number = rs.getInt("number");
+			}
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return number;
 	}
 	
 	public int numbercanho(int idnhanvien){
@@ -391,7 +486,10 @@ public class ApartmentDAO {
 				e.printStackTrace();
 			}
 		}
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 	}
 
 	public CanHo getItemApartmentLatest() {
@@ -442,7 +540,10 @@ public class ApartmentDAO {
 		}
 	}
 	
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 	public ArrayList<CanHo> searchApartment(int idCanHo, String tenCanHo) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<CanHo> list = new ArrayList<>();
@@ -483,7 +584,10 @@ public class ApartmentDAO {
 		}
 	}
 	
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 	public ArrayList<CanHo> getItemApartmentNewLy() {
 		// TODO Auto-generated method stub
 		conn = connectionLibraryMySQL.getConnectMySQL();

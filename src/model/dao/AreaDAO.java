@@ -6,13 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import library.ConnectionLibraryMySQL;
-import model.bean.KhachHang;
 import model.bean.KhuVucBDS;
-import model.bean.NhanVien;
-import model.bean.TheLoaiBDS;
 
 public class AreaDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;

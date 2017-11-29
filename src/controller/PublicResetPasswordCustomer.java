@@ -4,13 +4,19 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+<<<<<<< HEAD
+=======
 import javax.servlet.annotation.WebServlet;
+>>>>>>> master
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
+=======
 import library.BCrypt;
+>>>>>>> master
 import library.SendMail;
 import model.bean.KhachHang;
 import model.dao.CustomersDAO;

@@ -1,12 +1,19 @@
 <%@page import="model.bean.NhanVien"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="sidebar" data-background-color="white" data-active-color="danger">
+    	<%
+    	NhanVien objNhanVien = null;
+    	if(request.getSession().getAttribute("userInfo") != null){ 
+    		objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
+			    	
+			    %>
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="<%=request.getContextPath()%>/nhanvien" class="simple-text">Nhân Viên</a>
+                <a href="#" class="simple-text"><%=objNhanVien.getTenNhanVien() %></a>
  
 			    <!-- normal -->
-			    <div class="ih-item circle effect1"><a href="#">
+			    <div class="ih-item circle effect1">
+			    <a href="<%=request.getContextPath()%>/admin/show-editSales?idSales=<%=objNhanVien.getIdNhanVien()%>">
 			        <div class="spinner"></div>
 			        <div class="img">
 			        <%
@@ -46,10 +53,11 @@
 			       	</div>
 			        <div class="info">
 			          <div class="info-back">
-			            <h3>Nhân Viên</h3>
-			            <p>Description goes here</p>
+			            <h3><%=objNhanVien.getTenChucVu() %></h3>
+			            <p>Chức vụ</p>
 			          </div>
-			        </div></a></div>
+			        </div></a>
+			       </div>
 			    <!-- end normal -->
             </div>
 			

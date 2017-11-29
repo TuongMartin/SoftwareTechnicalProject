@@ -1,7 +1,5 @@
 package model.bean;
 
-import java.util.Date;
-
 public class KhachHang {
 	private int id;
 	private String tenKhachHang;

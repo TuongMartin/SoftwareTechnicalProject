@@ -283,7 +283,6 @@
 								<a href="<%= request.getContextPath() %>/blog-post?idTinTuc=<%= obj.getIdTinTuc() %>" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
 							</div>
 
-
 						</div>
 						<!-- Blog Post / End -->
 			<%			

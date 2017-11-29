@@ -1,6 +1,9 @@
 package controller;
 
+<<<<<<< HEAD
+=======
 import java.io.File;
+>>>>>>> master
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -9,12 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+import model.dao.FeatureApartmentDAO;
+import model.dao.FeatureDAO;
+=======
 import model.dao.ApartmentDAO;
 import model.dao.CustomersDAO;
 import model.dao.FeatureApartmentDAO;
 import model.dao.FeatureDAO;
 import model.dao.RealEstateDAO;
 import model.dao.SalesDAO;
+>>>>>>> master
 
 /**
  * Servlet implementation class AdminManageSales

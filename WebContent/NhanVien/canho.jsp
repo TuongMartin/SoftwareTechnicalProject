@@ -18,8 +18,9 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> 
-							<p>Wellcome</p><p>thoát</p>
+					<li><a href="<%=request.getContextPath()%>/admin/logout"><i
+							class="ti-settings"></i>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 

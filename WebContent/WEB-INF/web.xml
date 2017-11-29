@@ -150,6 +150,16 @@
     <servlet-class>controller.SearchTinTuc</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>Controllercanho</servlet-name>
+    <servlet-class>controller.Controllercanho</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controllercanho</servlet-name>
+    <url-pattern>/thanhvien/canhos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Controllerkhachhang</servlet-name>
+    <servlet-class>controller.Controllerkhachhang</servlet-class>
     <servlet-name>ShowApartmentDetail</servlet-name>
     <servlet-class>controller.ShowApartmentDetail</servlet-class>
   </servlet>
@@ -476,5 +486,13 @@
   <servlet-mapping>
     <servlet-name>SaleEvaluateCustomer</servlet-name>
     <url-pattern>/thanhvien/Evaluatekhachhang</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutAdminController</servlet-name>
+    <servlet-class>controller.LogoutAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutAdminController</servlet-name>
+    <url-pattern>/admin/logout</url-pattern>
   </servlet-mapping>
 </web-app>

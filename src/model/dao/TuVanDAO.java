@@ -1,17 +1,24 @@
 package model.dao;
 
 import java.sql.Connection;
+<<<<<<< HEAD
+=======
 import java.sql.Date;
+>>>>>>> master
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+import library.ConnectionLibraryMySQL;
+=======
 import com.sun.javafx.geom.transform.GeneralTransform3D;
 
 import library.ConnectionLibraryMySQL;
 import model.bean.NhanVien;
+>>>>>>> master
 import model.bean.TuVan;
 
 
@@ -21,8 +28,11 @@ public class TuVanDAO{
 	private static final String INSERT_NHAT_KY_TU_VAN = "insert into nhatkytuvan(idnhanvien, tenkhachhangcantuvan, sdt, noidung, ngaytuvan) values(?, ?, ?, ?, ?)";
 	private static final String COUNT_RECORD_NHAT_KY_TU_VAN = "select count(*) as countRecord from nhatkytuvan";
 	private static final String SELECT_LIST_NOI_DUNG_EACH_PAGE = "select * from nhatkytuvan limit ?, ?";
+<<<<<<< HEAD
+=======
 	private static final String SEARCH_NHAT_KY = "select * from nhatkytuvan where tenkhachhangcantuvan like ";
 	private static final String COUNT_RECORD_SEARCH = "select count(*) from nhatkytuvan where tenkhachhangcantuvan like ";
+>>>>>>> master
 	
 	private static final String ID_NHAN_VIEN = "idnhanvien";
 	private static final String TEN_KHACH_HANG = "tenkhachhangcantuvan";
@@ -177,6 +187,8 @@ public class TuVanDAO{
 			}
 		}
 	}
+<<<<<<< HEAD
+=======
 	
 	
 	public ArrayList<TuVan> getListSearchNoiDungTuVan(String searchKey, int offset, int numberItemEachPage){
@@ -250,4 +262,5 @@ public class TuVanDAO{
 			}
 		}
 	}
+>>>>>>> master
 }

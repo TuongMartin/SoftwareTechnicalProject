@@ -29,4 +29,9 @@ public class Image {
 		this.idCanHo = idCanHo;
 	}
 	
+<<<<<<< HEAD
+	
 }
+=======
+}
+>>>>>>> master

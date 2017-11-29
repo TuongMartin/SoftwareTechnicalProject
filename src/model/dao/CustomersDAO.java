@@ -10,11 +10,9 @@ import java.util.ArrayList;
 
 import java.util.Date;
 
-import library.BCrypt;
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
 import model.bean.KhachHang;
-import model.bean.NhanVien;
 
 public class CustomersDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;

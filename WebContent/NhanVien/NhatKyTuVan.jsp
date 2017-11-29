@@ -14,13 +14,13 @@
 						class="icon-bar bar1"></span> <span class="icon-bar bar2"></span>
 					<span class="icon-bar bar3"></span>
 				</button>
-				<a class="navbar-brand" href="/nhanvien">Trang Cá Nhân</a>
+				<a class="navbar-brand" href="/nhanvien">Trang nhân viên</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://vinenter.edu.vn"> <i
+					<li><a href="<%=request.getContextPath()%>/admin/logout"><i
 							class="ti-settings"></i>
-							<p>Settings</p>
+							<p>Log out</p>
 					</a></li>
 				</ul>
 
@@ -52,6 +52,7 @@
 								</div>
 							</form>
 							
+
 							<a href="<%=request.getContextPath()%>/addNK"
 								class="addtop"><img
 								src="<%=request.getContextPath()%>/templates/admin/img/add.png" alt="" /> Thêm</a>
@@ -143,6 +144,7 @@
 											active = "";
 										}%>
 										<li><a <%=active%> href="<%=request.getContextPath() %>/NVSearchNKTV?search=<%=request.getAttribute("search")%>&page=<%=i%>" title=""><%=i%></a></li>
+
 									<%}
 								}
 								%>

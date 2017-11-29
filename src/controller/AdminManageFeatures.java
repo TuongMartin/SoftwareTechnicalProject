@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+import model.dao.FeatureDAO;
+=======
 import model.dao.AreaDAO;
 import model.dao.CustomersDAO;
 import model.dao.FeatureDAO;
 import model.dao.RealEstateDAO;
 import model.dao.SalesDAO;
+>>>>>>> master
 
 /**
  * Servlet implementation class AdminManageSales
@@ -42,7 +46,11 @@ public class AdminManageFeatures extends HttpServlet {
 		int page_curent = 1;
 		FeatureDAO featureDAO = new FeatureDAO();
 		int sum_news = featureDAO.countItem();
+<<<<<<< HEAD
+		int row_count = 2;
+=======
 		int row_count = 5;
+>>>>>>> master
 		int sum_page = (int) Math.ceil((float)sum_news/row_count);
 		request.setAttribute("sum_page", sum_page);
 		if(request.getParameter("p")!=null){
