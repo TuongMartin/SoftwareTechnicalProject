@@ -1,27 +1,17 @@
 package controller;
 
-<<<<<<< HEAD
-import java.io.IOException;
-=======
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
->>>>>>> master
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-
-import model.bean.TienIch;
-import model.dao.FeatureDAO;
-=======
 import javax.servlet.http.Part;
 
 import library.FileNameLibrary;
@@ -32,7 +22,6 @@ import model.bean.TienIch;
 import model.dao.FeatureDAO;
 import model.dao.RealEstateDAO;
 import model.dao.SalesDAO;
->>>>>>> master
 
 /**
  * Servlet implementation class AdminAddNewSale

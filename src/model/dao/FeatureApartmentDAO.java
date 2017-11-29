@@ -5,12 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-<<<<<<< HEAD
-=======
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
->>>>>>> master
 
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;

@@ -17,9 +17,6 @@
 			        <div class="spinner"></div>
 			        <div class="img">
 			        <%
-			        	NhanVien objNhanVien = null;
-			        	if(request.getSession().getAttribute("userInfo") != null){ 
-			        		objNhanVien = (NhanVien) request.getSession().getAttribute("userInfo");
 			        		if(!"".equals(objNhanVien.getAvatar())) {
 			        	%>
 			        			<img src="<%=request.getContextPath()%>/files/<%=objNhanVien.getAvatar()%>" alt="img">
@@ -82,7 +79,7 @@
                     </a>
                 </li>
                 <li class="<%=active4 %>">
-                    <a href="<%=request.getContextPath()%>/admin/showSetCalendar?idSale=<%=((objNhanVien!=null)?objNhanVien.getIdNhanVien():0)%>">
+                    <a href="<%=request.getContextPath()%>/admin/showSetCalendar?idSale=<%=(objNhanVien!=null?objNhanVien.getIdNhanVien():0)%>">
                         <i class="ti-user"></i>
                         <p>Lịch Làm Việc</p>
                     </a>

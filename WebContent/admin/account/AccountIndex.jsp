@@ -128,7 +128,8 @@
 												active = "";
 											}%>
 											<li><a <%=active%> href="<%=request.getContextPath() %>/admin/accounts?p=<%=i%>" title=""><%=i%></a></li>
-										<%}
+										<%
+										}
 									}
 								%>
 								</ul>

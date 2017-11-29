@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
 import model.bean.Image;
-<<<<<<< HEAD
-=======
-import model.bean.ItemAgenda;
->>>>>>> master
 
 public class ImageDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;
@@ -133,10 +129,6 @@ public class ImageDAO {
 		return obj;
 	}
 	
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 	public ArrayList<Image> getListItemImageForApartmentNewly(int idCanHo) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<Image> list = new ArrayList<>();
@@ -213,7 +205,3 @@ public class ImageDAO {
 		}
 	}
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> master

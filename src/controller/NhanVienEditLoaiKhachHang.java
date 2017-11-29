@@ -1,15 +1,13 @@
 package controller;
 
+import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
-import model.bean.Khachhang;
-
+import model.bean.KhachHang;
 
 @WebServlet(urlPatterns = { "/EditLKH" })
 public class NhanVienEditLoaiKhachHang extends HttpServlet{
@@ -34,7 +32,7 @@ public class NhanVienEditLoaiKhachHang extends HttpServlet{
 		
 		String URLForward = (String) request.getAttribute("URLForward");
 		String idLoaiKhachHang = (String) request.getAttribute("idLoaiKhachHang");
-		Khachhang objKhachHang = (Khachhang) request.getAttribute("objKhachHang");
+		KhachHang objKhachHang = (KhachHang) request.getAttribute("objKhachHang");
 		
 		if(objKhachHang != null)
 		{

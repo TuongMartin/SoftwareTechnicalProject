@@ -24,6 +24,7 @@ import model.dao.RealEstateDAO;
 import model.dao.SalesDAO;
 >>>>>>> master
 
+
 /**
  * Servlet implementation class AdminManageSales
  */

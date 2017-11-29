@@ -1,10 +1,7 @@
 package model.dao;
 
 import java.sql.Connection;
-<<<<<<< HEAD
-=======
 import java.sql.PreparedStatement;
->>>>>>> master
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,10 +9,7 @@ import java.util.ArrayList;
 
 import library.ConnectionLibraryMySQL;
 import model.bean.TheLoaiTinTuc;
-<<<<<<< HEAD
-=======
 import model.bean.TinTuc;
->>>>>>> master
 
 public class TheLoaiTinTucDAO {
 	

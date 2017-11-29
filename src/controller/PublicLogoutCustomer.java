@@ -2,25 +2,11 @@ package controller;
 
 import java.io.IOException;
 
-<<<<<<< HEAD
 import javax.servlet.ServletException;
-=======
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
->>>>>>> master
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-<<<<<<< HEAD
-=======
-import library.BCrypt;
-import model.bean.KhachHang;
-import model.dao.CustomersDAO;
-
->>>>>>> master
 
 /**
  * Servlet implementation class ControllerAdminLogin

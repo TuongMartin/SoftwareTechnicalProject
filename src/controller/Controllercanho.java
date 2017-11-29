@@ -1,11 +1,6 @@
 package controller;
 
 import java.io.IOException;
-<<<<<<< HEAD
-=======
-import java.net.URLDecoder;
-import java.net.URLEncoder;
->>>>>>> master
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;

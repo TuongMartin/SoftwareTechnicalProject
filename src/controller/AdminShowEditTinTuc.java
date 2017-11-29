@@ -1,11 +1,7 @@
 package controller;
 
-<<<<<<< HEAD
 import java.io.IOException;
 import java.util.ArrayList;
-
-=======
->>>>>>> master
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,21 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
 import model.bean.TheLoaiTinTuc;
 import model.bean.TinTuc;
 import model.dao.TheLoaiTinTucDAO;
-import model.dao.TinTucDAO;;
-=======
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-
-import model.dao.TheLoaiTinTucDAO;
 import model.dao.TinTucDAO;
-import model.bean.TheLoaiTinTuc;
-import model.bean.TinTuc;;
->>>>>>> master
 
 
 @WebServlet(urlPatterns = { "/ShowEditTT" })

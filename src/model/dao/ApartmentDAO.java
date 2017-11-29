@@ -1,30 +1,15 @@
 package model.dao;
 
-import java.sql.Array;
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
-
-import java.util.Date;
->>>>>>> master
-
 import library.ConnectionLibraryMySQL;
 import model.bean.CanHo;
 import model.bean.KhuVucBDS;
-<<<<<<< HEAD
 
-
-=======
-import model.bean.NhanVien;
-import model.bean.TheLoaiBDS;
-import model.bean.TinTuc;
->>>>>>> master
 public class ApartmentDAO {
 	private ConnectionLibraryMySQL connectionLibraryMySQL;
 	private Connection conn;
@@ -486,10 +471,7 @@ public class ApartmentDAO {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 	}
 
 	public CanHo getItemApartmentLatest() {
@@ -540,10 +522,7 @@ public class ApartmentDAO {
 		}
 	}
 	
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 	public ArrayList<CanHo> searchApartment(int idCanHo, String tenCanHo) {
 		conn = connectionLibraryMySQL.getConnectMySQL();
 		ArrayList<CanHo> list = new ArrayList<>();
@@ -584,10 +563,6 @@ public class ApartmentDAO {
 		}
 	}
 	
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 	public ArrayList<CanHo> getItemApartmentNewLy() {
 		// TODO Auto-generated method stub
 		conn = connectionLibraryMySQL.getConnectMySQL();
